@@ -12,7 +12,7 @@ class NoticiaController extends BaseController {
         // Con el método all() le estamos pidiendo al modelo de Usuario
         // que busque todos los registros contenidos en esa tabla y los devuelva en un Array
         
-        return View::make('noticias.show')->with("noticias",$noticias);
+        return View::make('noticia.show')->with("noticias",$noticias);
         
         // El método make de la clase View indica cual vista vamos a mostrar al usuario
         //y también pasa como parámetro los datos que queramos pasar a la vista.
@@ -26,7 +26,7 @@ class NoticiaController extends BaseController {
         //enviamos un usuario vacio para que cargue el formulario insert
 
         
-        return View::make('noticias.formulario')->with("noticia",$noticia);
+        return View::make('noticia.formulario')->with("noticia",$noticia);
     }
  
  
@@ -75,7 +75,7 @@ return Redirect::to('noticia/insert')->withInput()->withErrors($noticia->errors)
  
            $noticia = Noticia::find($id);
    
-        return View::make('noticias.formulario')->with("noticia", $noticia);
+        return View::make('noticia.formulario')->with("noticia", $noticia);
  
                 
  

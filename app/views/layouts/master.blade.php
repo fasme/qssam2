@@ -31,6 +31,9 @@
 {{HTML::script('js/jquery.dataTables.bootstrap.min.js')}}
 {{HTML::script('js/bootbox.min.js')}}
 {{HTML::script('js/chosen.jquery.min.js')}}
+{{HTML::script('js/bootstrap-wysiwyg.min.js')}}
+{{HTML::script('js/jquery.hotkeys.min.js')}}
+
 	   
 
 
@@ -455,7 +458,7 @@
 
 
 					<li class="" id="noticiaactive">
-						<a href="#" class="dropdown-toggle">
+						<a href="{{URL::to('noticia')}}">
 							<i class="menu-icon fa fa-pencil-square-o"></i>
 							<span class="menu-text"> Noticia </span>
 
