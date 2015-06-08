@@ -223,6 +223,23 @@ return Redirect::to('matriz/update/'.$id)->withInput()->withErrors($matriz->erro
     }
 
 
+    public function pdf(){
+
+        $matrizs = Matriz::all();
+        $view = View::make('matriz.pdf')->with("matrizs",$matrizs);
+        return PDF::load($view, 'A4', 'landscape')->show();
+
+    }
+
+
+    public function pdfid($id){
+
+        $matriz = Matriz::find($id);
+         $view = View::make('matriz.pdfid')->with("matriz",$matriz);
+        return PDF::load($view, 'A4', 'landscape')->show();
+
+    }
+
 
  
 

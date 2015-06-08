@@ -50,16 +50,13 @@
   <td class="td-actions">
                        
                       
-                          <a class="blue bootbox-mostrar" data-id={{$criterioexposicion->id}}>
-                            <i class="fa fa-search-plus bigger-130"></i>
-                          </a>
-
+                   
 
                           <a class="green" href= {{ 'criterioexposicion/update/'.$criterioexposicion->id }}>
                             <i class="fa fa-pencil bigger-130"></i>
                           </a>
 
-                         <a class="red bootbox-confirm" data-id={{ $criterioexposicion->id }}>
+                         <a class="red bootbox-confirm" data-table="criterioexposicion" data-id={{ $criterioexposicion->id }}>
                             <i class="fa fa-trash bigger-130"></i>
                           </a>
                       </td>
@@ -118,16 +115,13 @@
   <td class="td-actions">
                        
                       
-                          <a class="blue bootbox-mostrar" data-id={{$criterioconsecuencia->id}}>
-                            <i class="fa fa-search-plus bigger-130"></i>
-                          </a>
-
+                      
 
                           <a class="green" href= {{ 'criterioconsecuencia/update/'.$criterioconsecuencia->id }}>
                             <i class="fa fa-pencil bigger-130"></i>
                           </a>
 
-                         <a class="red bootbox-confirm" data-id={{ $criterioconsecuencia->id }}>
+                         <a class="red bootbox-confirm" data-table="criterioconsecuencia" data-id={{ $criterioconsecuencia->id }}>
                             <i class="fa fa-trash bigger-130"></i>
                           </a>
                       </td>
@@ -146,7 +140,7 @@
 <div class="col-xs-12">
 
                     <h3 class="header smaller lighter">Probabilidad: 
-                    <a href="{{URL::to('criterioconsecuencia/insert')}}"  class="btn btn-white btn-info btn-bold"> 
+                    <a href="{{URL::to('criterioprobabilidad/insert')}}"  class="btn btn-white btn-info btn-bold"> 
     <i class="ace-icon fa fa-floppy-o bigger-120 blue"></i>Agregar</a>
     </h3>
 
@@ -184,16 +178,13 @@
   <td class="td-actions">
                        
                       
-                          <a class="blue bootbox-mostrar" data-id={{$criterioprobabilidad->id}}>
-                            <i class="fa fa-search-plus bigger-130"></i>
-                          </a>
-
+                 
 
                           <a class="green" href= {{ 'criterioprobabilidad/update/'.$criterioprobabilidad->id }}>
                             <i class="fa fa-pencil bigger-130"></i>
                           </a>
 
-                         <a class="red bootbox-confirm" data-id={{ $criterioprobabilidad->id }}>
+                         <a class="red bootbox-confirm" data-table="criterioprobabilidad" data-id={{ $criterioprobabilidad->id }}>
                             <i class="fa fa-trash bigger-130"></i>
                           </a>
                       </td>
@@ -239,14 +230,27 @@ $( "#criterioexposicionactive" ).addClass( "active" );
 
 $(".bootbox-confirm").on(ace.click_event, function() {
   var id = $(this).data('id');
+  var table = $(this).data("table");
 var tr = $(this).parents('tr'); 
 
           bootbox.confirm("Deseas Eliminar el registro "+id, function(result) {
             if(result) { // si se seleccion OK
               
            
-             
-             $.get("{{ url('criterioexposicion/eliminar')}}",
+             if(table == "exposicion")
+             {
+              alert("exposicion");
+             }
+             if(table == "probabilidad")
+             {
+              alert("probabilidad");
+             }
+             if(table == "consecuencia")
+             {
+              alert("consecuencia");
+             }
+
+             $.get(table+"/eliminar",
               { id: id },
 
               function(data,status){ tr.fadeOut(1000); }

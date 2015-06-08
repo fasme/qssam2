@@ -26,7 +26,7 @@ class CriterioProbabilidadController extends BaseController {
         //enviamos un usuario vacio para que cargue el formulario insert
 
         
-        return View::make('criterioprobabilidads.formulario')->with("criterioprobabilidad",$criterioprobabilidad);
+        return View::make('matriz.criterio.probabilidad.formulario')->with("criterioprobabilidad",$criterioprobabilidad);
     }
  
  
@@ -51,7 +51,7 @@ class CriterioProbabilidadController extends BaseController {
             
            $criterioprobabilidad->save();
 
-            return Redirect::to('criterioprobabilidad')->with("mensaje","Datos Ingresados correctamente");
+            return Redirect::to('criterio')->with("mensaje","Datos Ingresados correctamente");
         }
         else
         {
@@ -75,7 +75,7 @@ return Redirect::to('criterioprobabilidad/insert')->withInput()->withErrors($cri
  
            $criterioprobabilidad = CriterioProbabilidad::find($id);
    
-        return View::make('criterioprobabilidads.formulario')->with("criterioprobabilidad", $criterioprobabilidad);
+        return View::make('matriz.criterio.probabilidad.formulario')->with("criterioprobabilidad", $criterioprobabilidad);
  
                 
  
@@ -105,7 +105,7 @@ return Redirect::to('criterioprobabilidad/insert')->withInput()->withErrors($cri
 
             // Y Devolvemos una redirección a la acción show para mostrar el usuario
             //return Redirect::action('ClienteController@show');
-           return Redirect::to('criterioprobabilidad')->with("mensaje","Datos actualizados correctamente");
+           return Redirect::to('criterio')->with("mensaje","Datos actualizados correctamente");
 
             
         }

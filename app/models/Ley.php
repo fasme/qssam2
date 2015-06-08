@@ -1,21 +1,15 @@
 <?php
-class MatrizActividad extends Eloquent { //Todos los modelos deben extender la clase Eloquent
-    protected $table = 'matriz_actividad';
-    protected $fillable = array('nombre');
+class Ley extends Eloquent { //Todos los modelos deben extender la clase Eloquent
+    protected $table = 'matriz_ley';
+    protected $fillable = array('nombre','articulo','descripcion');
 
 
 
-public function machasmatriz()
+
+public function muchasactividad()
 {
-    return $this->belongsToMany("Matriz",'matriz_matriz_actividad','matriz_actividad_id','matriz_id');
+    return $this->belongsToMany("MatrizActividad",'matriz_matriz_actividad_ley','ley_id','actividad_id');
 }
-
-
-public function muchasley()
-{
-    return $this->belongsToMany("MatrizLey",'matriz_matriz_actividad_ley','actividad_id','ley_id');
-}
-
 
 
 public $errors;

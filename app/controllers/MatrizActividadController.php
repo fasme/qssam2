@@ -23,10 +23,13 @@ class MatrizActividadController extends BaseController {
      public function insert()
     {
         $matrizactividad = new MatrizActividad; 
+        $leys = Ley::lists("nombre","id");
         //enviamos un usuario vacio para que cargue el formulario insert
 
         
-        return View::make('matriz.actividad.formulario')->with("matrizactividad",$matrizactividad);
+        return View::make('matriz.actividad.formulario')
+        ->with("matrizactividad",$matrizactividad)
+        ->with("leys",$leys);
     }
  
  
@@ -51,6 +54,16 @@ class MatrizActividadController extends BaseController {
             
            $matrizactividad->save();
 
+           $matrizactividad = MatrizActividad::find($matrizactividad->id);
+
+           for($i=0;$i<count($datos["actividad_id"]);$i++)
+           {
+            
+            $matrizactividad->muchasley()->attach($datos["actividad_id"][$i]);
+           }
+
+
+
             return Redirect::to('matrizActividad')->with("mensaje","Datos Ingresados correctamente");
         }
         else
@@ -74,8 +87,11 @@ return Redirect::to('matrizActividad/insert')->withInput()->withErrors($matrizac
       
  
            $matrizactividad = MatrizActividad::find($id);
+           $leys = Ley::lists("nombre","id");
    
-        return View::make('matriz.actividad.formulario')->with("matrizactividad", $matrizactividad);
+        return View::make('matriz.actividad.formulario')
+        ->with("matrizactividad", $matrizactividad)
+        ->with("leys",$leys);
  
                 
  
@@ -100,7 +116,15 @@ return Redirect::to('matrizActividad/insert')->withInput()->withErrors($matrizac
              //$usuario->password = Hash::make($usuario->password);
 
       
+           $matrizactividad->muchasley()->detach();
+
+           for($i=0;$i<count($datos["actividad_id"]);$i++)
+           {
             
+            $matrizactividad->muchasley()->attach($datos["actividad_id"][$i]);
+           }
+
+
            $matrizactividad->save();
 
             // Y Devolvemos una redirección a la acción show para mostrar el usuario

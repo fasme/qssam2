@@ -12,7 +12,7 @@ class CriterioConsecuenciaController extends BaseController {
         // Con el método all() le estamos pidiendo al modelo de Usuario
         // que busque todos los registros contenidos en esa tabla y los devuelva en un Array
         
-        return View::make('criterioconsecuencias.show')->with("criterioconsecuencias",$criterioconsecuencias);
+        return View::make('matriz.criterio.consecuencia.show')->with("criterioconsecuencias",$criterioconsecuencias);
         
         // El método make de la clase View indica cual vista vamos a mostrar al usuario
         //y también pasa como parámetro los datos que queramos pasar a la vista.
@@ -26,7 +26,7 @@ class CriterioConsecuenciaController extends BaseController {
         //enviamos un usuario vacio para que cargue el formulario insert
 
         
-        return View::make('criterioconsecuencias.formulario')->with("criterioconsecuencia",$criterioconsecuencia);
+        return View::make('matriz.criterio.consecuencia.formulario')->with("criterioconsecuencia",$criterioconsecuencia);
     }
  
  
@@ -51,7 +51,7 @@ class CriterioConsecuenciaController extends BaseController {
             
            $criterioconsecuencia->save();
 
-            return Redirect::to('criterioconsecuencia')->with("mensaje","Datos Ingresados correctamente");
+            return Redirect::to('criterio')->with("mensaje","Datos Ingresados correctamente");
         }
         else
         {
@@ -75,7 +75,7 @@ return Redirect::to('criterioconsecuencia/insert')->withInput()->withErrors($cri
  
            $criterioconsecuencia = CriterioConsecuencia::find($id);
    
-        return View::make('criterioconsecuencias.formulario')->with("criterioconsecuencia", $criterioconsecuencia);
+        return View::make('matriz.criterio.consecuencia.formulario')->with("criterioconsecuencia", $criterioconsecuencia);
  
                 
  
@@ -105,7 +105,7 @@ return Redirect::to('criterioconsecuencia/insert')->withInput()->withErrors($cri
 
             // Y Devolvemos una redirección a la acción show para mostrar el usuario
             //return Redirect::action('ClienteController@show');
-           return Redirect::to('criterioconsecuencia')->with("mensaje","Datos actualizados correctamente");
+           return Redirect::to('criterio')->with("mensaje","Datos actualizados correctamente");
 
             
         }

@@ -22,6 +22,11 @@ public function muchascargo()
     return $this->belongsToMany("Cargo",'matriz_matriz_cargo','matriz_id','cargo_id');
 }
 
+public function peligro()
+{
+    return $this->belongsTo("MatrizPeligro","matriz_peligro_id");
+}
+
 
 public $errors;
     

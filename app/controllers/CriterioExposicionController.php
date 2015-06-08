@@ -26,7 +26,7 @@ class CriterioExposicionController extends BaseController {
         //enviamos un usuario vacio para que cargue el formulario insert
 
         
-        return View::make('criterioexposicions.formulario')->with("criterioexposicion",$criterioexposicion);
+        return View::make('matriz.criterio.exposicion.formulario')->with("criterioexposicion",$criterioexposicion);
     }
  
  
@@ -51,7 +51,7 @@ class CriterioExposicionController extends BaseController {
             
            $criterioexposicion->save();
 
-            return Redirect::to('criterioexposicion')->with("mensaje","Datos Ingresados correctamente");
+            return Redirect::to('criterio')->with("mensaje","Datos Ingresados correctamente");
         }
         else
         {
@@ -75,7 +75,7 @@ return Redirect::to('criterioexposicion/insert')->withInput()->withErrors($crite
  
            $criterioexposicion = CriterioExposicion::find($id);
    
-        return View::make('criterioexposicions.formulario')->with("criterioexposicion", $criterioexposicion);
+        return View::make('matriz.criterio.exposicion.formulario')->with("criterioexposicion", $criterioexposicion);
  
                 
  
@@ -116,7 +116,7 @@ return Redirect::to('criterioexposicion/update/'.$id)->withInput()->withErrors($
             //return "mal2";
         }
 
-        return Redirect::to('criterioexposicion')->with("mensaje","NO");
+        return Redirect::to('criterio')->with("mensaje","NO");
       
     }
 

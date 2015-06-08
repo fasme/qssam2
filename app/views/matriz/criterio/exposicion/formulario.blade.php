@@ -6,7 +6,7 @@
      
 <div class="page-header position-relative">
             <h1>
-            Matriz Actividad
+              Exposición
               <small>
                 <i class="icon-double-angle-right"></i>
                 
@@ -33,11 +33,11 @@
 
            <?php
   // si existe el usuario carga los datos
-    if ($matrizactividad->exists):
-        $form_data = array('url' => 'matrizActividad/update/'.$matrizactividad->id);
+    if ($criterioexposicion->exists):
+        $form_data = array('url' => 'criterioexposicion/update/'.$criterioexposicion->id);
         $action    = 'Editar';
     else:
-        $form_data = array('url' => 'matrizActividad/insert', 'class'=>'class="form-horizontal');
+        $form_data = array('url' => 'criterioexposicion/insert', 'class'=>'class="form-horizontal');
         $action    = 'Crear';        
     endif;
 
@@ -47,35 +47,22 @@
 {{ Form::open($form_data) }}
        
 
-            
+          
 
              <div class="form-group">
             {{Form::label('', 'Nombre',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-            {{Form::text('nombre', $matrizactividad->nombre)}}
+            {{Form::text('nombre', $criterioexposicion->nombre)}}
             </div>
 
+             <div class="form-group">
+            {{Form::label('', 'Descripcion',array("class"=>"col-sm-3 control-label no-padding-right"))}}
+            {{Form::text('descripcion', $criterioexposicion->descripcion)}}
+            </div>
 
-
-             <?php
-                              $array = MatrizActividad::find($matrizactividad->id);
-                              $arrayName = "";
-                              if(count($array) >0)
-                              {
-
-                              foreach ($array->muchasley as $key) {
-                                $arrayName[] = $key->id;
-                               
-                              }
-                            }
-
-                              ?>
-
-
-            <div class="form-group">
-                              {{Form::label('', 'Actividad',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-                              {{Form::select('actividad_id[]', $leys, $arrayName, array("class"=>"chosen-select", "multiple"=>"multiple"))}}
-                              </div>
-           
+             <div class="form-group">
+            {{Form::label('', 'Factor',array("class"=>"col-sm-3 control-label no-padding-right"))}}
+            {{Form::text('factor', $criterioexposicion->factor)}}
+            </div>
 
 
 
@@ -105,9 +92,7 @@
 
 
 
-$( "#matrizactividadactive" ).addClass( "active" );
-
-$(".chosen-select").chosen();
+$( "#criterioexposicionactive" ).addClass( "active" );
     
   });   
 </script>

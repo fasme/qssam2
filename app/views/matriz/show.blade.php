@@ -15,7 +15,7 @@
                     <a href="{{URL::to('matriz/insert')}}"  class="btn btn-white btn-info btn-bold"> 
     <i class="ace-icon fa fa-floppy-o bigger-120 blue"></i>Agregar</a>
 
-    <a href="{{URL::to('matriz/insert')}}"  class="btn btn-white btn-info btn-bold"> 
+    <a href="{{URL::to('matriz/pdf')}}"  class="btn btn-white btn-info btn-bold"> 
     <i class="ace-icon fa fa-file-pdf-o bigger-120 red"></i>Pdf</a>
     </h3>
 
@@ -64,7 +64,7 @@
                           </a>
 
 
-                          <a class="blue" href= {{ 'matriz/update/'.$matriz->id }}>
+                          <a class="blue" href= {{ 'matriz/pdf/'.$matriz->id }}>
                             <i class="fa fa-print bigger-130"></i>
                           </a>
                       </td>

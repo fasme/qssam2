@@ -90,10 +90,15 @@
 
                               <?php
                               $array = Matriz::find($matriz->id);
+                              $arrayName = "";
+                              if(count($array) >0)
+                              {
+
                               foreach ($array->muchasactividad as $key) {
                                 $arrayName[] = $key->id;
                                
                               }
+                            }
 
                               ?>
 
@@ -103,11 +108,16 @@
                               </div>
 
                               <?php
-                              $array = Matriz::find($matriz->id);
+                               
+                              if(count($array)>0)
+                              {
+
+
                               foreach ($array->muchasriesgo as $key) {
                                 $arrayName[] = $key->id;
                                
                               }
+                            }
 
                               ?>
 
@@ -122,12 +132,14 @@
                               </div>
 
                               <?php
-                              $array = Matriz::find($matriz->id);
+                           
+                               if(count($array)>0)
+                              {
                               foreach ($array->muchascargo as $key) {
                                 $arrayName[] = $key->id;
                                
                               }
-
+                            }
                               ?>
 
                               <div class="form-group">
