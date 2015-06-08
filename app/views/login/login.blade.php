@@ -46,7 +46,7 @@
 		<!--inline styles related to this page-->
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 
-	<body class="login-layout">
+	<body class="login-layout light-login">
 
 	
 		<div class="main-container container-fluid">
@@ -58,10 +58,10 @@
 								<div class="center">
 									<h1>
 										<i class="icon-cogs green"></i>
-										<span class="red">Control de gastos</span>
-										<span class="white">Aplicacion</span>
+										<span class="red">Sistema de Gestión Preventivo</span>
+										
 									</h1>
-									<h4 class="blue">&copy; Jorquera Aguas</h4>
+									<h4 class="blue">&copy; QSSAM</h4>
 								</div>
 							</div>
 

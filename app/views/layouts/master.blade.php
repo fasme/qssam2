@@ -17,6 +17,8 @@
 {{HTML::style('fonts/fonts.googleapis.com.css')}}
 
 {{HTML::style('css/ace.min.css')}}	
+{{HTML::style('css/chosen.min.css')}}	
+
 
 
 
@@ -28,7 +30,7 @@
 {{HTML::script('js/jquery.dataTables.min.js')}}
 {{HTML::script('js/jquery.dataTables.bootstrap.min.js')}}
 {{HTML::script('js/bootbox.min.js')}}
-
+{{HTML::script('js/chosen.jquery.min.js')}}
 	   
 
 
@@ -193,7 +195,7 @@
 								<li class="divider"></li>
 
 								<li>
-									<a href="#">
+									<a href="{{URL::to('logout')}}">
 										<i class="ace-icon fa fa-power-off"></i>
 										Logout
 									</a>

@@ -44,10 +44,10 @@
 				
                 <div class="collapse navbar-collapse navbar-right">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="index.html">Home</a></li>
-                        <li><a href="about-us.html">Mis Actividades</a></li>
-                        <li><a href="services.html">Manual</a></li>
-                        <li><a href="portfolio.html">Biblioteca</a></li>
+                        <li class="active"><a href="{{URL::to('portal')}}">Home</a></li>
+                        <li><a href="{{URL::to('misactividades')}}">Mis Actividades</a></li>
+                        <li><a href="{{URL::to('manualusuario')}}">Manual</a></li>
+                        <li><a href="{{URL::to('bibliotecaportal')}}">Biblioteca</a></li>
                         <!--<li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
@@ -57,7 +57,7 @@
                                 <li><a href="shortcodes.html">Shortcodes</a></li>
                             </ul>
                         </li>-->
-                        <li><a href="blog.html">Administracion</a></li> 
+                        <li><a href="{{URL::to('/')}}">Administracion</a></li> 
                         <li><a href="contact-us.html">Usuario</a></li>                        
                     </ul>
                 </div>

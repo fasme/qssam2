@@ -137,18 +137,8 @@ return Redirect::to('usuarios/insert')->withInput()->withErrors($usuario->errors
 
     if (Auth::attempt(['usuario' => Input::get('usuario'), 'password' => Input::get('password') ])){
        
-         if(Auth::user()->tipousuario == 1)
-         {
-            return Redirect::to('/');
-         }
-         elseif(Auth::user()->tipousuario == 2)
-         {
-            return Redirect::to('/');
-         }
-         if(Auth::user()->tipousuario == 3)
-         {
-            return Redirect::to('consumoTablet');
-         }
+         return Redirect::to("portal");
+         
         //
     }else{
         

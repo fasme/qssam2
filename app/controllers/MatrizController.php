@@ -12,7 +12,7 @@ class MatrizController extends BaseController {
         // Con el método all() le estamos pidiendo al modelo de Usuario
         // que busque todos los registros contenidos en esa tabla y los devuelva en un Array
         
-        return View::make('matrizs.show')->with("matrizs",$matrizs);
+        return View::make('matriz.show')->with("matrizs",$matrizs);
         
         // El método make de la clase View indica cual vista vamos a mostrar al usuario
         //y también pasa como parámetro los datos que queramos pasar a la vista.
@@ -23,10 +23,29 @@ class MatrizController extends BaseController {
      public function insert()
     {
         $matriz = new Matriz; 
-        //enviamos un usuario vacio para que cargue el formulario insert
 
+        $matrizPeligro = MatrizPeligro::lists("nombre","id");
         
-        return View::make('matrizs.formulario')->with("matriz",$matriz);
+        $matrizActividad = MatrizActividad::lists("nombre","id");
+
+        $matrizRiesgo = MatrizRiesgo::lists("nombre","id");
+
+        $matrizCargo = Cargo::lists("nombre","id");
+
+        $criterioConsecuencia = CriterioConsecuencia::lists("descripcion","factor");
+
+        $criterioExposicion = CriterioExposicion::lists("descripcion","factor");
+
+        $criterioProbabilidad = CriterioProbabilidad::lists("descripcion","factor");
+        
+        return View::make('matriz.formulario')->with("matriz",$matriz)
+        ->with("matrizPeligro",$matrizPeligro)
+        ->with("matrizActividad",$matrizActividad)
+        ->with("matrizRiesgo",$matrizRiesgo)
+        ->with("matrizCargo",$matrizCargo)
+        ->with("criterioConsecuencia",$criterioConsecuencia)
+        ->with("criterioExposicion",$criterioExposicion)
+        ->with("criterioProbabilidad",$criterioProbabilidad);
     }
  
  
@@ -75,7 +94,7 @@ return Redirect::to('matriz/insert')->withInput()->withErrors($matriz->errors);
  
            $matriz = Matriz::find($id);
    
-        return View::make('matrizs.formulario')->with("matriz", $matriz);
+        return View::make('matriz.formulario')->with("matriz", $matriz);
  
                 
  
