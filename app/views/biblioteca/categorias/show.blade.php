@@ -2,28 +2,6 @@
  
 
 
-@section('breadcrumb')
-<ul class="breadcrumb">
-            <li>
-              <i class="fa fa-home home-fa fa"></i>
-              <a href="#">Home</a>
-
-              <span class="divider">
-                <i class="fa fa-angle-right arrow-fa fa"></i>
-              </span>
-            </li>
-
-            <li>
-              <a href={{ URL::to('producto') }}>Producto</a>
-
-              <span class="divider">
-                <i class="fa fa-angle-right arrow-fa fa"></i>
-              </span>
-            </li>
-            <li>Ver Productos</li>
-          </ul><!--.breadcrumb-->
-
-          @stop
 
 @section('contenido')
 
@@ -32,7 +10,13 @@
 
 
 <div class="col-xs-12">
-                    <h3 class="header smaller lighter blue">Categoria</h3>
+
+                    <h3 class="header smaller lighter">Categoria: 
+                    <a href="{{URL::to('categoria/insert')}}"  class="btn btn-white btn-info btn-bold"> 
+    <i class="ace-icon fa fa-floppy-o bigger-120 blue"></i>Agregar</a>
+    </h3>
+
+
 
                     <div class="clearfix">
                       <div class="pull-right tableTools-container"></div>
@@ -63,6 +47,10 @@
   <td class="td-actions">
                        
                       
+                          <a class="blue bootbox-mostrar" data-id={{$categoria->id}}>
+                            <i class="fa fa-search-plus bigger-130"></i>
+                          </a>
+
 
                           <a class="green" href= {{ 'categoria/update/'.$categoria->id }}>
                             <i class="fa fa-pencil bigger-130"></i>
@@ -104,7 +92,7 @@ var tr = $(this).parents('tr');
               
            
              
-             $.get("{{ url('producto/eliminar')}}",
+             $.get("{{ url('categoria/eliminar')}}",
               { id: id },
 
               function(data,status){ tr.fadeOut(1000); }
@@ -115,6 +103,28 @@ var tr = $(this).parents('tr');
            
           });
         });
+
+
+$(".bootbox-mostrar").on(ace.click_event, function() {
+  var id = $(this).data('id');
+
+ $.get("{{ url('categoria/mostrar')}}",
+              { id: id },
+              function(data)
+              { 
+                bootbox.dialog({message: data});
+
+              });
+          
+             
+         
+
+
+     
+            
+           
+          });
+     
 
 
 

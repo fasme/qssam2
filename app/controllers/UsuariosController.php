@@ -135,7 +135,7 @@ return Redirect::to('usuarios/insert')->withInput()->withErrors($usuario->errors
 
  public function postLogin(){
 
-    if (Auth::attempt(['username' => Input::get('usuario'), 'password' => Input::get('password') ])){
+    if (Auth::attempt(['usuario' => Input::get('usuario'), 'password' => Input::get('password') ])){
        
          if(Auth::user()->tipousuario == 1)
          {

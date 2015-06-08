@@ -90,7 +90,7 @@ Route::post('categoria/insert', array('uses' => 'CategoriaController@insert2'));
 Route::get('categoria/update/{id}', 'CategoriaController@update');
 Route::post('categoria/update/{id}', 'CategoriaController@update2');
 Route::get('categoria/eliminar', 'CategoriaController@eliminar');
-
+Route::get('categoria/mostrar', 'CategoriaController@mostrar');
 
 //Archivo
 Route::get('archivo', array('uses' => 'ArchivoController@show')); 

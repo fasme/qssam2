@@ -4,7 +4,7 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>Blank Page - Ace Admin</title>
+		<title>QSSAM - Admin</title>
 
 		<meta name="description" content="" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -479,23 +479,7 @@
 
 			<div class="main-content">
 				<div class="main-content-inner">
-					<div class="breadcrumbs" id="breadcrumbs">
-
-						<script type="text/javascript">
-							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
-						</script>
-
-						@yield("breadcrumb")
 					
-
-						<div class="nav-search" id="nav-search">
-							<form class="form-search">
-								<span class="input-icon">
-									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
-									<i class="ace-icon fa fa-search nav-search-icon"></i>
-								</span>
-							</form>
-						</div><!-- /.nav-search -->
 					</div>
 
 					<div class="page-content">
@@ -518,8 +502,8 @@
 				<div class="footer-inner">
 					<div class="footer-content">
 						<span class="bigger-120">
-							<span class="blue bolder">Ace</span>
-							Application &copy; 2013-2014
+							<span class="blue bolder">QSSAM</span>
+							Application &copy; 2015 -
 						</span>
 
 						&nbsp; &nbsp;
@@ -547,8 +531,7 @@
 
 		<!-- basic scripts -->
 
-		<!--[if !IE]> -->
-		<script src="assets/js/jquery.2.1.1.min.js"></script>
+		
 
 		<!-- <![endif]-->
 
@@ -571,8 +554,7 @@
 		<script type="text/javascript">
 			if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
 		</script>
-		<script src="assets/js/bootstrap.min.js"></script>
-
+	
 	
 
 		<!-- inline scripts related to this page -->

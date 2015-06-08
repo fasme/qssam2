@@ -133,6 +133,14 @@ return Redirect::to('categoria/update/'.$id)->withInput()->withErrors($categoria
     }
 
 
+    public function mostrar()
+    {
+         $id = Input::get('id'); //acedemos a la variable id traida por AJAX ($.get)
+        $categoria = Categoria::find($id);
+
+        return $categoria->id;
+    }
+
 
  
 
