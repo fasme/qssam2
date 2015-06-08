@@ -6,7 +6,21 @@ class Matriz extends Eloquent { //Todos los modelos deben extender la clase Eloq
 
 
 
+public function muchasactividad()
+{
+    return $this->belongsToMany("MatrizActividad",'matriz_matriz_actividad','matriz_id','matriz_actividad_id');
+}
 
+public function muchasriesgo()
+{
+    return $this->belongsToMany("MatrizRiesgo",'matriz_matriz_riesgo','matriz_id','matriz_riesgo_id');
+}
+
+
+public function muchascargo()
+{
+    return $this->belongsToMany("Cargo",'matriz_matriz_cargo','matriz_id','cargo_id');
+}
 
 
 public $errors;
@@ -15,8 +29,9 @@ public $errors;
     {
         $rules = array(
             
-          //  'cliente_id'     => 'exists:cliente,id',
-          //  "guiavalue" => "required",
+            'actividad_id'     => 'required',
+           "riesgo_id" => "required",
+           "cargo_id" =>"required",
             
          
         );

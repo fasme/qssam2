@@ -5,6 +5,10 @@ class Cargo extends Eloquent { //Todos los modelos deben extender la clase Eloqu
 
 
 
+public function machasmatriz()
+{
+    return $this->belongsToMany("Matriz",'matriz_matriz_cargo','cargo_id','matriz_id');
+}
 
 
 

@@ -8,7 +8,6 @@ class MatrizPeligro extends Eloquent { //Todos los modelos deben extender la cla
 
 
 
-
 public $errors;
     
     public function isValid($data) // funcion que valida los datos

@@ -74,30 +74,65 @@
                         <div class="widget-main padding-6">
                           <div class="tab-content">
                             <div id="uno" class="tab-pane in active">
+
+                            <div class="form-group">
+                              {{Form::label('', 'Proceso',array("class"=>"col-sm-3 control-label no-padding-right"))}}
+                              {{Form::text('proceso', $matriz->proceso)}}
+                              </div>
                               
+
+
                                <div class="form-group">
                               {{Form::label('', 'Peligro',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-                              {{Form::select('nombre', $matrizPeligro, "", array("class"=>"chosen-select"))}}
+                              {{Form::select('matriz_peligro_id', $matrizPeligro, "", array("class"=>"chosen-select"))}}
                               </div>
+
+
+                              <?php
+                              $array = Matriz::find($matriz->id);
+                              foreach ($array->muchasactividad as $key) {
+                                $arrayName[] = $key->id;
+                               
+                              }
+
+                              ?>
 
                               <div class="form-group">
                               {{Form::label('', 'Actividad',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-                              {{Form::select('actividad_id', $matrizActividad, "", array("class"=>"chosen-select", "multiple"=>"multiple"))}}
+                              {{Form::select('actividad_id[]', $matrizActividad, $arrayName, array("class"=>"chosen-select", "multiple"=>"multiple"))}}
                               </div>
+
+                              <?php
+                              $array = Matriz::find($matriz->id);
+                              foreach ($array->muchasriesgo as $key) {
+                                $arrayName[] = $key->id;
+                               
+                              }
+
+                              ?>
 
                               <div class="form-group">
                               {{Form::label('', 'Riesgo',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-                              {{Form::select('riesgo_id', $matrizRiesgo, "", array("class"=>"chosen-select", "multiple"=>"multiple"))}}
+                              {{Form::select('riesgo_id[]', $matrizRiesgo, $arrayName, array("class"=>"chosen-select", "multiple"=>"multiple"))}}
                               </div>
 
                               <div class="form-group">
                               {{Form::label('', 'Rutinaria',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-                              {{Form::select('riesgo_id', array("si"=>"si","no"=>"no"), "")}}
+                              {{Form::select('rutinaria', array("si"=>"si","no"=>"no"), "")}}
                               </div>
+
+                              <?php
+                              $array = Matriz::find($matriz->id);
+                              foreach ($array->muchascargo as $key) {
+                                $arrayName[] = $key->id;
+                               
+                              }
+
+                              ?>
 
                               <div class="form-group">
                               {{Form::label('', 'Cargo',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-                              {{Form::select('cargo_id', $matrizCargo, "", array("class"=>"chosen-select", "multiple"=>"multiple"))}}
+                              {{Form::select('cargo_id[]', $matrizCargo, $arrayName, array("class"=>"chosen-select", "multiple"=>"multiple"))}}
                               </div>
 
 
@@ -107,21 +142,25 @@
 
                              <div class="form-group">
                               {{Form::label('', 'Factor Consecuencia',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-                              {{Form::select('criterioConsecuencia', $criterioConsecuencia, "")}}
+                              {{Form::select('factorseveridad', $criterioConsecuencia, $matriz->factorseveridad, array("class"=>"fun1", "id"=>"factor1"))}}
                               </div>
                               <div class="form-group">
                               {{Form::label('', 'Factor Exposicion',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-                              {{Form::select('criterioExposicion', $criterioExposicion, "")}}
+                              {{Form::select('factorexposicion', $criterioExposicion, $matriz->factorxposicion, array("class"=>"fun1", "id"=>"factor2"))}}
                               </div>
 
                               <div class="form-group">
                               {{Form::label('', 'Factor Probabilidad',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-                              {{Form::select('criterioProbabilidad', $criterioProbabilidad, "")}}
+                              {{Form::select('factorprobabilidad', $criterioProbabilidad, $matriz->factorprobabilidad, array("class"=>"fun1", "id"=>"factor3"))}}
                               </div>
 
                               <div class="form-group">
                               {{Form::label('', 'Resultado',array("class"=>"col-sm-3 control-label no-padding-right"))}}
                               {{Form::text('resultado', $matriz->resultado, array("id"=>"resultado1", "readonly"=>"readonly"))}}
+                              </div>
+
+                              <div id="color1">
+                             <br>
                               </div>
 
 
@@ -137,7 +176,7 @@
 
                                   <div class="form-group">
                                   {{Form::label('', 'Total',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-                                  {{Form::select('totalprevio', array(1=>"1",2=>"2",3=>"3",4=>"4",5=>"5 o mas"), $matriz->totalprevio)}}
+                                  {{Form::select('totalprevio', array(0=>"0",1=>"1",2=>"2",3=>"3",4=>"4",5=>"5 o mas"), $matriz->totalprevio, array("class"=>"fun2", "id"=>"factorprevio"))}}
                                   </div>
 
                                   <div class="form-group">
@@ -155,9 +194,9 @@
 
                                   <div class="form-group">
                                   {{Form::label('', 'Total',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-                                  {{Form::select('totalsustitucion', array(1=>"1",2=>"2",3=>"3",4=>"4",5=>"5 o mas"), $matriz->totalsustitucion)}}
+                                  {{Form::select('totalsustitucion', array(0=>"0",1=>"1",2=>"2",3=>"3",4=>"4",5=>"5 o mas"), $matriz->totalsustitucion, array("class"=>"fun2", "id"=>"factorsustitucion"))}}
                                   </div>
-
+,
                                   <div class="form-group">
                               {{Form::label('', 'Resultado',array("class"=>"col-sm-3 control-label no-padding-right"))}}
                               {{Form::text('resultadosustitucion', $matriz->resultadosustitucion, array("id"=>"resultado4", "readonly"=>"readonly"))}}
@@ -172,7 +211,7 @@
 
                                   <div class="form-group">
                                   {{Form::label('', 'Total',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-                                  {{Form::select('totaladministrativo', array(1=>"1",2=>"2",3=>"3",4=>"4",5=>"5 o mas"), $matriz->totaladministrativo)}}
+                                  {{Form::select('totaladministrativo', array(0=>"0",1=>"1",2=>"2",3=>"3",4=>"4",5=>"5 o mas"), $matriz->totaladministrativo, array("class"=>"fun2", "id"=>"factoradministrativo"))}}
                                   </div>
 
                                   <div class="form-group">
@@ -180,6 +219,13 @@
                               {{Form::text('resultadoeliminacioon', $matriz->resultadoadministrativo, array("id"=>"resultado6", "readonly"=>"readonly"))}}
                               </div>
 
+                              <div class="hr hr-24"></div>
+
+
+                              <div class="form-group">
+                              {{Form::label('', 'Resultado',array("class"=>"col-sm-3 control-label no-padding-right"))}}
+                              {{Form::text('magnitud', $matriz->magnitud, array("id"=>"magnitud", "readonly"=>"readonly"))}}
+                              </div>
 
                                 </div>
                                 <div class="col-xs-6">
@@ -190,7 +236,7 @@
 
                                   <div class="form-group">
                                   {{Form::label('', 'Total',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-                                  {{Form::select('totaleliminacion', array(1=>"1",2=>"2",3=>"3",4=>"4",5=>"5 o mas"), $matriz->totaleliminacion)}}
+                                  {{Form::select('totaleliminacion', array(0=>"0",1=>"1",2=>"2",3=>"3",4=>"4",5=>"5 o mas"), $matriz->totaleliminacion, array("class"=>"fun2", "id"=>"factoreliminacion"))}}
                                   </div>
 
                                   <div class="form-group">
@@ -207,7 +253,7 @@
 
                                   <div class="form-group">
                                   {{Form::label('', 'Total',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-                                  {{Form::select('totalingenieria', array(1=>"1",2=>"2",3=>"3",4=>"4",5=>"5 o mas"), $matriz->totalingenieria)}}
+                                  {{Form::select('totalingenieria', array(0=>"0",1=>"1",2=>"2",3=>"3",4=>"4",5=>"5 o mas"), $matriz->totalingenieria, array("class"=>"fun2", "id"=>"factoringenieria"))}}
                                   </div>
 
                                   <div class="form-group">
@@ -223,12 +269,18 @@
 
                                   <div class="form-group">
                                   {{Form::label('', 'Total',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-                                  {{Form::select('totalepp', array(1=>"1",2=>"2",3=>"3",4=>"4",5=>"5 o mas"), $matriz->totalepp)}}
+                                  {{Form::select('totalepp', array(0=>"0",1=>"1",2=>"2",3=>"3",4=>"4",5=>"5 o mas"), $matriz->totalepp, array("class"=>"fun2", "id"=>"factorepp"))}}
                                   </div>
 
                                   <div class="form-group">
                               {{Form::label('', 'Resultado',array("class"=>"col-sm-3 control-label no-padding-right"))}}
                               {{Form::text('resultadoeliminacioon', $matriz->resultadoepp, array("id"=>"resultado7", "readonly"=>"readonly"))}}
+                              </div>
+
+                              <div class="hr hr-24"></div>
+
+                              <div id="color2">
+                             <br>
                               </div>
 
 
@@ -271,7 +323,60 @@
   $(document).ready(function(){
    
 
+$(".fun1").change(function(){
 
+var  factor1 = $("#factor1").val();
+var  factor2 = $("#factor2").val();
+var  factor3 = $("#factor3").val();
+var resultado = factor1 * factor2 * factor3;
+$("#resultado1").val(resultado);
+
+$.get("{{url('matriz/cargarMatrizColor')}}",
+  {resultado:resultado},
+  function(data){
+    $("#color1").css("background-color",data);
+     });
+});
+
+
+$(".fun2").change(function(){
+
+var factorprevio = $("#factorprevio").val();
+var resultado2 = Math.pow(0.8,factorprevio) + ((1-(Math.pow(0.8,factorprevio)))*80)/100;
+$("#resultado2").val(resultado2);
+
+var factorsustitucion = $("#factorsustitucion").val();
+var resultado4 = Math.pow(0.35,factorsustitucion);
+$("#resultado4").val(resultado4);
+
+var factoradministrativo = $("#factoradministrativo").val();
+var resultado6 = Math.pow(0.8,factoradministrativo);
+$("#resultado6").val(resultado6);
+
+var factoreliminacion = $("#factoreliminacion").val();
+var resultado3 = Math.pow(0.2,factoreliminacion);
+$("#resultado3").val(resultado3);
+
+
+var factoringenieria = $("#factoringenieria").val();
+var resultado5 = Math.pow(0.6,factoringenieria);
+$("#resultado5").val(resultado5);
+
+var factorepp = $("#factorepp").val();
+var resultado7 = Math.pow(0.9,factorepp);
+$("#resultado7").val(resultado7);
+
+
+var magnitud = resultado2 * resultado3 * resultado4 * resultado5 * resultado6 * resultado7;
+$("#magnitud").val(magnitud);
+
+$.get("{{url('matriz/cargarMatrizColor')}}",
+  {resultado:magnitud},
+  function(data){
+    $("#color2").css("background-color",data);
+     });
+
+});
 
 $( "#matrizactive" ).addClass( "active" );
 

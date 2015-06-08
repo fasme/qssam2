@@ -4,7 +4,10 @@ class MatrizRiesgo extends Eloquent { //Todos los modelos deben extender la clas
     protected $fillable = array('nombre');
 
 
-
+public function machasmatriz()
+{
+    return $this->belongsToMany("Matriz",'matriz_matriz_riesgo','matriz_riesgo_id','matriz_id');
+}
 
 
 

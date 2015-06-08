@@ -12,7 +12,7 @@ class ClasificacionController extends BaseController {
         // Con el método all() le estamos pidiendo al modelo de Usuario
         // que busque todos los registros contenidos en esa tabla y los devuelva en un Array
         
-        return View::make('clasificacions.show')->with("clasificacions",$clasificacions);
+        return View::make('matriz.clasificacion.show')->with("clasificacions",$clasificacions);
         
         // El método make de la clase View indica cual vista vamos a mostrar al usuario
         //y también pasa como parámetro los datos que queramos pasar a la vista.
@@ -26,7 +26,7 @@ class ClasificacionController extends BaseController {
         //enviamos un usuario vacio para que cargue el formulario insert
 
         
-        return View::make('clasificacions.formulario')->with("clasificacion",$clasificacion);
+        return View::make('matriz.clasificacion.formulario')->with("clasificacion",$clasificacion);
     }
  
  
@@ -75,7 +75,7 @@ return Redirect::to('clasificacion/insert')->withInput()->withErrors($clasificac
  
            $clasificacion = Clasificacion::find($id);
    
-        return View::make('clasificacions.formulario')->with("clasificacion", $clasificacion);
+        return View::make('matriz.clasificacion.formulario')->with("clasificacion", $clasificacion);
  
                 
  

@@ -5,7 +5,10 @@ class MatrizActividad extends Eloquent { //Todos los modelos deben extender la c
 
 
 
-
+public function machasmatriz()
+{
+    return $this->belongsToMany("Matriz",'matriz_matriz_actividad','matriz_actividad_id','matriz_id');
+}
 
 
 
