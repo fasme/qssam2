@@ -8,11 +8,12 @@ class PersonalController extends BaseController {
     public function show()
     {
         $personals = Personal::all();
+        $cargos = Cargo::all();
         
         // Con el método all() le estamos pidiendo al modelo de Usuario
         // que busque todos los registros contenidos en esa tabla y los devuelva en un Array
         
-        return View::make('personals.show')->with("personals",$personals);
+        return View::make('personal.show')->with("personals",$personals)->with("cargos",$cargos);
         
         // El método make de la clase View indica cual vista vamos a mostrar al usuario
         //y también pasa como parámetro los datos que queramos pasar a la vista.
@@ -23,10 +24,11 @@ class PersonalController extends BaseController {
      public function insert()
     {
         $personal = new Personal; 
+        $cargo = Cargo::lists("nombre","id");
         //enviamos un usuario vacio para que cargue el formulario insert
 
         
-        return View::make('personals.formulario')->with("personal",$personal);
+        return View::make('personal.formulario')->with("personal",$personal)->with("cargo",$cargo);
     }
  
  
@@ -74,8 +76,9 @@ return Redirect::to('personal/insert')->withInput()->withErrors($personal->error
       
  
            $personal = Personal::find($id);
+           $cargo = Cargo::lists("nombre","id");
    
-        return View::make('personals.formulario')->with("personal", $personal);
+        return View::make('personal.formulario')->with("personal", $personal)->with("cargo",$cargo);
  
                 
  

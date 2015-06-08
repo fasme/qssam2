@@ -12,7 +12,7 @@ class MatrizActividadController extends BaseController {
         // Con el método all() le estamos pidiendo al modelo de Usuario
         // que busque todos los registros contenidos en esa tabla y los devuelva en un Array
         
-        return View::make('matrizactividads.show')->with("matrizactividads",$matrizactividads);
+        return View::make('matriz.actividad.show')->with("matrizactividads",$matrizactividads);
         
         // El método make de la clase View indica cual vista vamos a mostrar al usuario
         //y también pasa como parámetro los datos que queramos pasar a la vista.
@@ -26,7 +26,7 @@ class MatrizActividadController extends BaseController {
         //enviamos un usuario vacio para que cargue el formulario insert
 
         
-        return View::make('matrizactividads.formulario')->with("matrizactividad",$matrizactividad);
+        return View::make('matriz.actividad.formulario')->with("matrizactividad",$matrizactividad);
     }
  
  
@@ -75,7 +75,7 @@ return Redirect::to('matrizactividad/insert')->withInput()->withErrors($matrizac
  
            $matrizactividad = MatrizActividad::find($id);
    
-        return View::make('matrizactividads.formulario')->with("matrizactividad", $matrizactividad);
+        return View::make('matriz.actividad.formulario')->with("matrizactividad", $matrizactividad);
  
                 
  

@@ -11,8 +11,8 @@
 
 <div class="col-xs-12">
 
-                    <h3 class="header smaller lighter">Categoria: 
-                    <a href="{{URL::to('categoria/insert')}}"  class="btn btn-white btn-info btn-bold"> 
+                    <h3 class="header smaller lighter">Actividad No Programada: 
+                    <a href="{{URL::to('actividadnoprogramada/insert')}}"  class="btn btn-white btn-info btn-bold"> 
     <i class="ace-icon fa fa-floppy-o bigger-120 blue"></i>Agregar</a>
     </h3>
 
@@ -29,7 +29,7 @@
 <table id="example" class="table table-striped table-bordered table-hover">
   <thead>
           <tr>
-            <th>Nombre</th>
+            <th>Actividad</th>
           
   <th>Acciones</th>
             
@@ -38,25 +38,25 @@
         <tbody>
 
 
-  @foreach($categorias as $categoria)
+  @foreach($actividadnoprogramadas as $actividadnoprogramada)
            <tr>
 
-             <td> {{ $categoria->nombre}}</td>
+             <td> {{ $actividadnoprogramada->actividad}}</td>
          
 
   <td class="td-actions">
                        
                       
-                          <a class="blue bootbox-mostrar" data-id={{$categoria->id}}>
+                          <a class="blue bootbox-mostrar" data-id={{$actividadnoprogramada->id}}>
                             <i class="fa fa-search-plus bigger-130"></i>
                           </a>
 
 
-                          <a class="green" href= {{ 'categoria/update/'.$categoria->id }}>
+                          <a class="green" href= {{ 'actividadnoprogramada/update/'.$actividadnoprogramada->id }}>
                             <i class="fa fa-pencil bigger-130"></i>
                           </a>
 
-                         <a class="red bootbox-confirm" data-id={{ $categoria->id }}>
+                         <a class="red bootbox-confirm" data-id={{ $actividadnoprogramada->id }}>
                             <i class="fa fa-trash bigger-130"></i>
                           </a>
                       </td>
@@ -81,7 +81,7 @@ $('#example').DataTable( {
 
 
 $( "#bibliotecaactive" ).addClass( "active" );
-$( "#categoriaactive" ).addClass( "active" );
+$( "#actividadnoprogramadaactive" ).addClass( "active" );
 
 
 
@@ -95,7 +95,7 @@ var tr = $(this).parents('tr');
               
            
              
-             $.get("{{ url('categoria/eliminar')}}",
+             $.get("{{ url('actividadnoprogramada/eliminar')}}",
               { id: id },
 
               function(data,status){ tr.fadeOut(1000); }
@@ -111,7 +111,7 @@ var tr = $(this).parents('tr');
 $(".bootbox-mostrar").on(ace.click_event, function() {
   var id = $(this).data('id');
 
- $.get("{{ url('categoria/mostrar')}}",
+ $.get("{{ url('actividadnoprogramada/mostrar')}}",
               { id: id },
               function(data)
               { 

@@ -227,7 +227,7 @@
 					</li>
 
 
-					<li class="">
+					<li class="" id="bibliotecaactive">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-desktop"></i>
 							<span class="menu-text">
@@ -240,7 +240,7 @@
 						<b class="arrow"></b>
 
 						<ul class="submenu">
-							<li class="">
+							<li class="" id="categoriaactive">
 								<a href="{{URL::to('categoria')}}" >
 									<i class="menu-icon fa fa-caret-right"></i>
 
@@ -253,7 +253,7 @@
 								
 							</li>
 
-							<li class="">
+							<li class="" id="archivoactive">
 								<a href="{{URL::to('archivo')}}">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Archivo
@@ -280,7 +280,7 @@
 
 
 
-					<li class="">
+					<li class="" id="actividadactive">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-desktop"></i>
 							<span class="menu-text">
@@ -293,8 +293,8 @@
 						<b class="arrow"></b>
 
 						<ul class="submenu">
-							<li class="">
-								<a href="#" class="dropdown-toggle">
+							<li class="" id="programadaactive">
+								<a href="{{URL::to('actividadprogramada')}}">
 									<i class="menu-icon fa fa-caret-right"></i>
 
 									Programada
@@ -306,8 +306,8 @@
 								
 							</li>
 
-							<li class="">
-								<a href="typography.html">
+							<li class="" id="noprogramadaactive">
+								<a href="{{URL::to('actividadnoprogramada')}}">
 									<i class="menu-icon fa fa-caret-right"></i>
 									No Programada
 								</a>
@@ -315,7 +315,7 @@
 								<b class="arrow"></b>
 							</li>
 
-							<li class="">
+							<li class="" id="pacactive">
 								<a href="elements.html">
 									<i class="menu-icon fa fa-caret-right"></i>
 									PAC
@@ -361,7 +361,7 @@
 					</li>
 
 					<li class="">
-						<a href="#" class="dropdown-toggle">
+						<a href="{{URL::to('personal')}}">
 							<i class="menu-icon fa fa-pencil-square-o"></i>
 							<span class="menu-text"> Personal </span>
 
@@ -374,7 +374,7 @@
 				
 				
 
-					<li class="">
+					<li class="" id="matrizactive">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-tag"></i>
 							<span class="menu-text"> Matriz</span>
@@ -385,8 +385,8 @@
 						<b class="arrow"></b>
 
 						<ul class="submenu">
-							<li class="">
-								<a href="profile.html">
+							<li class="" id="matrizmatrizactive">
+								<a href="{{URL::to('matriz')}}">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Matriz
 								</a>
@@ -394,8 +394,8 @@
 								<b class="arrow"></b>
 							</li>
 
-							<li class="">
-								<a href="inbox.html">
+							<li class="" id="matrizactividadactive">
+								<a href="{{URL::to('matrizActividad')}}">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Actividad
 								</a>
@@ -403,8 +403,8 @@
 								<b class="arrow"></b>
 							</li>
 
-							<li class="">
-								<a href="pricing.html">
+							<li class="" id="matrizriesgoactive">
+								<a href="{{URL::to('matrizRiesgo')}}">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Riesgo
 								</a>
@@ -412,8 +412,8 @@
 								<b class="arrow"></b>
 							</li>
 
-							<li class="">
-								<a href="invoice.html">
+							<li class="" id="matrizpeligroactive">
+								<a href="{{URL::to('matrizPeligro')}}">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Peligro
 								</a>
@@ -421,8 +421,8 @@
 								<b class="arrow"></b>
 							</li>
 
-							<li class="">
-								<a href="invoice.html">
+							<li class="" id="matrizleyactive">
+								<a href="{{URL::to('matrizLey')}}">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Ley
 								</a>
@@ -430,17 +430,17 @@
 								<b class="arrow"></b>
 							</li>
 
-							<li class="">
-								<a href="timeline.html">
+							<li class="" id="consecuenciaactive">
+								<a href="{{URL::to('clasificacion')}}">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Consecuencia
+									Clasificacion
 								</a>
 
 								<b class="arrow"></b>
 							</li>
 
-							<li class="">
-								<a href="email.html">
+							<li class="" id="criterioactive">
+								<a href="{{URL::to('criterio')}}">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Criterio
 								</a>
@@ -452,7 +452,7 @@
 					</li>
 
 
-					<li class="">
+					<li class="" id="noticiaactive">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-pencil-square-o"></i>
 							<span class="menu-text"> Noticia </span>

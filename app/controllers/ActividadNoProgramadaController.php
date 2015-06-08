@@ -12,7 +12,7 @@ class ActividadNoProgramadaController extends BaseController {
         // Con el método all() le estamos pidiendo al modelo de Usuario
         // que busque todos los registros contenidos en esa tabla y los devuelva en un Array
         
-        return View::make('actividadnoprogramadas.show')->with("actividadnoprogramadas",$actividadnoprogramadas);
+        return View::make('actividad.noprogramada.show')->with("actividadnoprogramadas",$actividadnoprogramadas);
         
         // El método make de la clase View indica cual vista vamos a mostrar al usuario
         //y también pasa como parámetro los datos que queramos pasar a la vista.
@@ -26,7 +26,7 @@ class ActividadNoProgramadaController extends BaseController {
         //enviamos un usuario vacio para que cargue el formulario insert
 
         
-        return View::make('actividadnoprogramadas.formulario')->with("actividadnoprogramada",$actividadnoprogramada);
+        return View::make('actividad.noprogramada.formulario')->with("actividadnoprogramada",$actividadnoprogramada);
     }
  
  
@@ -56,7 +56,7 @@ class ActividadNoProgramadaController extends BaseController {
         else
         {
             // En caso de error regresa a la acción create con los datos y los errores encontrados
-return Redirect::to('actividadnoprogramada/insert')->withInput()->withErrors($actividadnoprogramada->errors);
+return Redirect::to('actividadnoprogramada/update/'.$id)->withInput()->withErrors($actividadnoprogramada->errors);
             //return "mal2";
         }
      //   return Redirect::to('usuarios');
@@ -75,7 +75,7 @@ return Redirect::to('actividadnoprogramada/insert')->withInput()->withErrors($ac
  
            $actividadnoprogramada = ActividadNoProgramada::find($id);
    
-        return View::make('actividadnoprogramadas.formulario')->with("actividadnoprogramada", $actividadnoprogramada);
+        return View::make('actividad.noprogramada.formulario')->with("actividadnoprogramada", $actividadnoprogramada);
  
                 
  

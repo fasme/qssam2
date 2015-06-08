@@ -12,7 +12,7 @@ class ArchivoController extends BaseController {
         // Con el método all() le estamos pidiendo al modelo de Usuario
         // que busque todos los registros contenidos en esa tabla y los devuelva en un Array
         
-        return View::make('archivos.show')->with("archivos",$archivos);
+        return View::make('biblioteca.archivos.show')->with("archivos",$archivos);
         
         // El método make de la clase View indica cual vista vamos a mostrar al usuario
         //y también pasa como parámetro los datos que queramos pasar a la vista.
@@ -23,10 +23,11 @@ class ArchivoController extends BaseController {
      public function insert()
     {
         $archivo = new Archivo; 
+        $categoria = Categoria::lists("nombre","id");
         //enviamos un usuario vacio para que cargue el formulario insert
 
         
-        return View::make('archivos.formulario')->with("archivo",$archivo);
+        return View::make('biblioteca.archivos.formulario')->with("archivo",$archivo)->with("categoria",$categoria);
     }
  
  
@@ -75,7 +76,7 @@ return Redirect::to('archivo/insert')->withInput()->withErrors($archivo->errors)
  
            $archivo = Archivo::find($id);
    
-        return View::make('archivos.formulario')->with("archivo", $archivo);
+        return View::make('biblioteca.archivos.formulario')->with("archivo", $archivo);
  
                 
  

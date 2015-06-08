@@ -1,27 +1,6 @@
 @extends('layouts.master')
  
-@section('breadcrumb')
-<ul class="breadcrumb">
-            <li>
-              <i class="icon-home home-icon"></i>
-              <a href="#">Home</a>
 
-              <span class="divider">
-                <i class="icon-angle-right arrow-icon"></i>
-              </span>
-            </li>
-
-            <li>
-              <a href={{ URL::to('categoria') }}>Cliente</a>
-
-              <span class="divider">
-                <i class="icon-angle-right arrow-icon"></i>
-              </span>
-            </li>
-            <li>Ver Cliente</li>
-          </ul><!--.breadcrumb-->
-
-          @stop
  
 @section('contenido')
      
@@ -54,11 +33,11 @@
 
            <?php
   // si existe el usuario carga los datos
-    if ($categoria->exists):
-        $form_data = array('url' => 'categoria/update/'.$categoria->id);
+    if ($archivo->exists):
+        $form_data = array('url' => 'archivo/update/'.$archivo->id);
         $action    = 'Editar';
     else:
-        $form_data = array('url' => 'categoria/insert', 'class'=>'class="form-horizontal');
+        $form_data = array('url' => 'archivo/insert', 'class'=>'class="form-horizontal');
         $action    = 'Crear';        
     endif;
 
@@ -69,7 +48,17 @@
        
             <div class="form-group">
             {{Form::label('Nombre', 'Nombre',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-            {{Form::text('nombre', $categoria->nombre)}}
+            {{Form::text('nombre', $archivo->nombre)}}
+            </div>
+
+            <div class="form-group">
+            {{Form::label('Categoria', 'Categoria',array("class"=>"col-sm-3 control-label no-padding-right"))}}
+            {{Form::select('categoria', $categoria, $archivo->categoria_id)}}
+            </div>
+
+            <div class="form-group">
+            {{Form::label('Archivo', 'Archivo',array("class"=>"col-sm-3 control-label no-padding-right"))}}
+            {{Form::file('archivo', $archivo->archivo)}}
             </div>
            
         
@@ -97,7 +86,7 @@ $('.input-mask-date').mask('99/99/9999');
 $('.input-mask-date2').mask('99/99/9999');
 
 
-$( "#categoriaactive" ).addClass( "active" );
+$( "#archivoactive" ).addClass( "active" );
     
   });   
 </script>

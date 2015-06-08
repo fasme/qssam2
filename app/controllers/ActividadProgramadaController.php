@@ -12,7 +12,7 @@ class ActividadProgramadaController extends BaseController {
         // Con el método all() le estamos pidiendo al modelo de Usuario
         // que busque todos los registros contenidos en esa tabla y los devuelva en un Array
         
-        return View::make('actividadprogramadas.show')->with("actividadprogramadas",$actividadprogramadas);
+        return View::make('actividad.programada.show')->with("actividadprogramadas",$actividadprogramadas);
         
         // El método make de la clase View indica cual vista vamos a mostrar al usuario
         //y también pasa como parámetro los datos que queramos pasar a la vista.
@@ -26,7 +26,7 @@ class ActividadProgramadaController extends BaseController {
         //enviamos un usuario vacio para que cargue el formulario insert
 
         
-        return View::make('actividadprogramadas.formulario')->with("actividadprogramada",$actividadprogramada);
+        return View::make('actividad.programada.formulario')->with("actividadprogramada",$actividadprogramada);
     }
  
  
@@ -75,7 +75,7 @@ return Redirect::to('actividadprogramada/insert')->withInput()->withErrors($acti
  
            $actividadprogramada = ActividadProgramada::find($id);
    
-        return View::make('actividadprogramadas.formulario')->with("actividadprogramada", $actividadprogramada);
+        return View::make('actividad.programada.formulario')->with("actividadprogramada", $actividadprogramada);
  
                 
  
@@ -112,7 +112,7 @@ return Redirect::to('actividadprogramada/insert')->withInput()->withErrors($acti
         else
         {
             // En caso de error regresa a la acción create con los datos y los errores encontrados
-return Redirect::to('actividadprogramada/insert')->withInput()->withErrors($actividadprogramada->errors);
+return Redirect::to('actividadprogramada/update/'.$id)->withInput()->withErrors($actividadprogramada->errors);
             //return "mal2";
         }
 

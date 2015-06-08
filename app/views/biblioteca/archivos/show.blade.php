@@ -11,8 +11,8 @@
 
 <div class="col-xs-12">
 
-                    <h3 class="header smaller lighter">Categoria: 
-                    <a href="{{URL::to('categoria/insert')}}"  class="btn btn-white btn-info btn-bold"> 
+                    <h3 class="header smaller lighter">Archivo: 
+                    <a href="{{URL::to('archivo/insert')}}"  class="btn btn-white btn-info btn-bold"> 
     <i class="ace-icon fa fa-floppy-o bigger-120 blue"></i>Agregar</a>
     </h3>
 
@@ -38,25 +38,25 @@
         <tbody>
 
 
-  @foreach($categorias as $categoria)
+  @foreach($archivos as $archivo)
            <tr>
 
-             <td> {{ $categoria->nombre}}</td>
+             <td> {{ $archivo->nombre}}</td>
          
 
   <td class="td-actions">
                        
                       
-                          <a class="blue bootbox-mostrar" data-id={{$categoria->id}}>
+                          <a class="blue bootbox-mostrar" data-id={{$archivo->id}}>
                             <i class="fa fa-search-plus bigger-130"></i>
                           </a>
 
 
-                          <a class="green" href= {{ 'categoria/update/'.$categoria->id }}>
+                          <a class="green" href= {{ 'archivo/update/'.$archivo->id }}>
                             <i class="fa fa-pencil bigger-130"></i>
                           </a>
 
-                         <a class="red bootbox-confirm" data-id={{ $categoria->id }}>
+                         <a class="red bootbox-confirm" data-id={{ $archivo->id }}>
                             <i class="fa fa-trash bigger-130"></i>
                           </a>
                       </td>
@@ -81,7 +81,7 @@ $('#example').DataTable( {
 
 
 $( "#bibliotecaactive" ).addClass( "active" );
-$( "#categoriaactive" ).addClass( "active" );
+$( "#archivoactive" ).addClass( "active" );
 
 
 
@@ -95,7 +95,7 @@ var tr = $(this).parents('tr');
               
            
              
-             $.get("{{ url('categoria/eliminar')}}",
+             $.get("{{ url('archivo/eliminar')}}",
               { id: id },
 
               function(data,status){ tr.fadeOut(1000); }
@@ -111,7 +111,7 @@ var tr = $(this).parents('tr');
 $(".bootbox-mostrar").on(ace.click_event, function() {
   var id = $(this).data('id');
 
- $.get("{{ url('categoria/mostrar')}}",
+ $.get("{{ url('archivo/mostrar')}}",
               { id: id },
               function(data)
               { 

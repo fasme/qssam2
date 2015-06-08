@@ -12,7 +12,7 @@ class CargoController extends BaseController {
         // Con el método all() le estamos pidiendo al modelo de Usuario
         // que busque todos los registros contenidos en esa tabla y los devuelva en un Array
         
-        return View::make('cargos.show')->with("cargos",$cargos);
+        return View::make('personal.cargo.show')->with("cargos",$cargos);
         
         // El método make de la clase View indica cual vista vamos a mostrar al usuario
         //y también pasa como parámetro los datos que queramos pasar a la vista.
@@ -26,7 +26,7 @@ class CargoController extends BaseController {
         //enviamos un usuario vacio para que cargue el formulario insert
 
         
-        return View::make('cargos.formulario')->with("cargo",$cargo);
+        return View::make('personal.cargo.formulario')->with("cargo",$cargo);
     }
  
  
@@ -51,7 +51,7 @@ class CargoController extends BaseController {
             
            $cargo->save();
 
-            return Redirect::to('cargo')->with("mensaje","Datos Ingresados correctamente");
+            return Redirect::to('personal')->with("mensaje","Datos Ingresados correctamente");
         }
         else
         {
@@ -75,7 +75,7 @@ return Redirect::to('cargo/insert')->withInput()->withErrors($cargo->errors);
  
            $cargo = Cargo::find($id);
    
-        return View::make('cargos.formulario')->with("cargo", $cargo);
+        return View::make('personal.cargo.formulario')->with("cargo", $cargo);
  
                 
  
@@ -105,7 +105,7 @@ return Redirect::to('cargo/insert')->withInput()->withErrors($cargo->errors);
 
             // Y Devolvemos una redirección a la acción show para mostrar el usuario
             //return Redirect::action('ClienteController@show');
-           return Redirect::to('cargo')->with("mensaje","Datos actualizados correctamente");
+           return Redirect::to('personal')->with("mensaje","Datos actualizados correctamente");
 
             
         }

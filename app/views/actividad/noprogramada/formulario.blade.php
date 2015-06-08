@@ -1,27 +1,6 @@
 @extends('layouts.master')
  
-@section('breadcrumb')
-<ul class="breadcrumb">
-            <li>
-              <i class="icon-home home-icon"></i>
-              <a href="#">Home</a>
 
-              <span class="divider">
-                <i class="icon-angle-right arrow-icon"></i>
-              </span>
-            </li>
-
-            <li>
-              <a href={{ URL::to('categoria') }}>Cliente</a>
-
-              <span class="divider">
-                <i class="icon-angle-right arrow-icon"></i>
-              </span>
-            </li>
-            <li>Ver Cliente</li>
-          </ul><!--.breadcrumb-->
-
-          @stop
  
 @section('contenido')
      
@@ -54,11 +33,11 @@
 
            <?php
   // si existe el usuario carga los datos
-    if ($categoria->exists):
-        $form_data = array('url' => 'categoria/update/'.$categoria->id);
+    if ($actividadnoprogramada->exists):
+        $form_data = array('url' => 'actividadnoprogramada/update/'.$actividadnoprogramada->id);
         $action    = 'Editar';
     else:
-        $form_data = array('url' => 'categoria/insert', 'class'=>'class="form-horizontal');
+        $form_data = array('url' => 'actividadnoprogramada/insert', 'class'=>'class="form-horizontal');
         $action    = 'Crear';        
     endif;
 
@@ -67,10 +46,21 @@
 
 {{ Form::open($form_data) }}
        
-            <div class="form-group">
-            {{Form::label('Nombre', 'Nombre',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-            {{Form::text('nombre', $categoria->nombre)}}
+
+             <div class="form-group">
+            {{Form::label('', 'Actividad',array("class"=>"col-sm-3 control-label no-padding-right"))}}
+            {{Form::textarea('actividad', $actividadnoprogramada->actividad)}}
             </div>
+
+             <div class="form-group">
+            {{Form::label('', 'Plazo',array("class"=>"col-sm-3 control-label no-padding-right"))}}
+            {{Form::text('frecuencia', $actividadnoprogramada->frecuencia)}}
+            </div>
+
+
+
+           
+
            
         
      
@@ -97,7 +87,7 @@ $('.input-mask-date').mask('99/99/9999');
 $('.input-mask-date2').mask('99/99/9999');
 
 
-$( "#categoriaactive" ).addClass( "active" );
+$( "#actividadnoprogramadaactive" ).addClass( "active" );
     
   });   
 </script>

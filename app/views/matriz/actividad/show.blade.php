@@ -11,8 +11,8 @@
 
 <div class="col-xs-12">
 
-                    <h3 class="header smaller lighter">Categoria: 
-                    <a href="{{URL::to('categoria/insert')}}"  class="btn btn-white btn-info btn-bold"> 
+                    <h3 class="header smaller lighter">Matriz Actividad: 
+                    <a href="{{URL::to('matrizactividad/insert')}}"  class="btn btn-white btn-info btn-bold"> 
     <i class="ace-icon fa fa-floppy-o bigger-120 blue"></i>Agregar</a>
     </h3>
 
@@ -38,25 +38,25 @@
         <tbody>
 
 
-  @foreach($categorias as $categoria)
+  @foreach($matrizactividads as $matrizactividad)
            <tr>
 
-             <td> {{ $categoria->nombre}}</td>
+             <td> {{ $matrizactividad->nombre}}</td>
          
 
   <td class="td-actions">
                        
                       
-                          <a class="blue bootbox-mostrar" data-id={{$categoria->id}}>
+                          <a class="blue bootbox-mostrar" data-id={{$matrizactividad->id}}>
                             <i class="fa fa-search-plus bigger-130"></i>
                           </a>
 
 
-                          <a class="green" href= {{ 'categoria/update/'.$categoria->id }}>
+                          <a class="green" href= {{ 'matrizactividad/update/'.$matrizactividad->id }}>
                             <i class="fa fa-pencil bigger-130"></i>
                           </a>
 
-                         <a class="red bootbox-confirm" data-id={{ $categoria->id }}>
+                         <a class="red bootbox-confirm" data-id={{ $matrizactividad->id }}>
                             <i class="fa fa-trash bigger-130"></i>
                           </a>
                       </td>
@@ -66,6 +66,10 @@
   </table>
 
   </div>
+
+
+
+<!-- CARGO -->
 
 
   <script type="text/javascript">
@@ -80,8 +84,10 @@ $('#example').DataTable( {
     } );
 
 
+
+
 $( "#bibliotecaactive" ).addClass( "active" );
-$( "#categoriaactive" ).addClass( "active" );
+$( "#matrizactividadactive" ).addClass( "active" );
 
 
 
@@ -95,7 +101,7 @@ var tr = $(this).parents('tr');
               
            
              
-             $.get("{{ url('categoria/eliminar')}}",
+             $.get("{{ url('matrizactividad/eliminar')}}",
               { id: id },
 
               function(data,status){ tr.fadeOut(1000); }
@@ -111,7 +117,7 @@ var tr = $(this).parents('tr');
 $(".bootbox-mostrar").on(ace.click_event, function() {
   var id = $(this).data('id');
 
- $.get("{{ url('categoria/mostrar')}}",
+ $.get("{{ url('matrizactividad/mostrar')}}",
               { id: id },
               function(data)
               { 
