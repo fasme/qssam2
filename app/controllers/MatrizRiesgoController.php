@@ -12,7 +12,7 @@ class MatrizRiesgoController extends BaseController {
         // Con el método all() le estamos pidiendo al modelo de Usuario
         // que busque todos los registros contenidos en esa tabla y los devuelva en un Array
         
-        return View::make('matrizriesgos.show')->with("matrizriesgos",$matrizriesgos);
+        return View::make('matriz.riesgo.show')->with("matrizriesgos",$matrizriesgos);
         
         // El método make de la clase View indica cual vista vamos a mostrar al usuario
         //y también pasa como parámetro los datos que queramos pasar a la vista.
@@ -26,7 +26,7 @@ class MatrizRiesgoController extends BaseController {
         //enviamos un usuario vacio para que cargue el formulario insert
 
         
-        return View::make('matrizriesgos.formulario')->with("matrizriesgo",$matrizriesgo);
+        return View::make('matriz.riesgo.formulario')->with("matrizriesgo",$matrizriesgo);
     }
  
  
@@ -51,12 +51,12 @@ class MatrizRiesgoController extends BaseController {
             
            $matrizriesgo->save();
 
-            return Redirect::to('matrizriesgo')->with("mensaje","Datos Ingresados correctamente");
+            return Redirect::to('matrizRiesgo')->with("mensaje","Datos Ingresados correctamente");
         }
         else
         {
             // En caso de error regresa a la acción create con los datos y los errores encontrados
-return Redirect::to('matrizriesgo/insert')->withInput()->withErrors($matrizriesgo->errors);
+return Redirect::to('matrizRiesgo/insert')->withInput()->withErrors($matrizriesgo->errors);
             //return "mal2";
         }
      //   return Redirect::to('usuarios');
@@ -75,7 +75,7 @@ return Redirect::to('matrizriesgo/insert')->withInput()->withErrors($matrizriesg
  
            $matrizriesgo = MatrizRiesgo::find($id);
    
-        return View::make('matrizriesgos.formulario')->with("matrizriesgo", $matrizriesgo);
+        return View::make('matriz.riesgo.formulario')->with("matrizriesgo", $matrizriesgo);
  
                 
  
@@ -105,7 +105,7 @@ return Redirect::to('matrizriesgo/insert')->withInput()->withErrors($matrizriesg
 
             // Y Devolvemos una redirección a la acción show para mostrar el usuario
             //return Redirect::action('ClienteController@show');
-           return Redirect::to('matrizriesgo')->with("mensaje","Datos actualizados correctamente");
+           return Redirect::to('matrizRiesgo')->with("mensaje","Datos actualizados correctamente");
 
             
         }
@@ -116,7 +116,7 @@ return Redirect::to('matrizriesgo/update/'.$id)->withInput()->withErrors($matriz
             //return "mal2";
         }
 
-        return Redirect::to('matrizriesgo')->with("mensaje","NO");
+        return Redirect::to('matrizRiesgo')->with("mensaje","NO");
       
     }
 

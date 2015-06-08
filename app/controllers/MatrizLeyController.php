@@ -12,7 +12,7 @@ class MatrizLeyController extends BaseController {
         // Con el método all() le estamos pidiendo al modelo de Usuario
         // que busque todos los registros contenidos en esa tabla y los devuelva en un Array
         
-        return View::make('matrizleys.show')->with("matrizleys",$matrizleys);
+        return View::make('matriz.ley.show')->with("matrizleys",$matrizleys);
         
         // El método make de la clase View indica cual vista vamos a mostrar al usuario
         //y también pasa como parámetro los datos que queramos pasar a la vista.
@@ -26,7 +26,7 @@ class MatrizLeyController extends BaseController {
         //enviamos un usuario vacio para que cargue el formulario insert
 
         
-        return View::make('matrizleys.formulario')->with("matrizley",$matrizley);
+        return View::make('matriz.ley.formulario')->with("matrizley",$matrizley);
     }
  
  
@@ -51,7 +51,7 @@ class MatrizLeyController extends BaseController {
             
            $matrizley->save();
 
-            return Redirect::to('matrizley')->with("mensaje","Datos Ingresados correctamente");
+            return Redirect::to('matrizLey')->with("mensaje","Datos Ingresados correctamente");
         }
         else
         {
@@ -75,7 +75,7 @@ return Redirect::to('matrizley/insert')->withInput()->withErrors($matrizley->err
  
            $matrizley = MatrizLey::find($id);
    
-        return View::make('matrizleys.formulario')->with("matrizley", $matrizley);
+        return View::make('matriz.ley.formulario')->with("matrizley", $matrizley);
  
                 
  
@@ -105,18 +105,18 @@ return Redirect::to('matrizley/insert')->withInput()->withErrors($matrizley->err
 
             // Y Devolvemos una redirección a la acción show para mostrar el usuario
             //return Redirect::action('ClienteController@show');
-           return Redirect::to('matrizley')->with("mensaje","Datos actualizados correctamente");
+           return Redirect::to('matrizLey')->with("mensaje","Datos actualizados correctamente");
 
             
         }
         else
         {
             // En caso de error regresa a la acción create con los datos y los errores encontrados
-return Redirect::to('matrizley/update/'.$id)->withInput()->withErrors($matrizley->errors);
+return Redirect::to('matrizLey/update/'.$id)->withInput()->withErrors($matrizley->errors);
             //return "mal2";
         }
 
-        return Redirect::to('matrizley')->with("mensaje","NO");
+        return Redirect::to('matrizLey')->with("mensaje","NO");
       
     }
 

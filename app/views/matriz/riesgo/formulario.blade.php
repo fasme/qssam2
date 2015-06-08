@@ -6,7 +6,7 @@
      
 <div class="page-header position-relative">
             <h1>
-            Matriz Actividad
+            Matriz Riesgo
               <small>
                 <i class="icon-double-angle-right"></i>
                 
@@ -33,11 +33,11 @@
 
            <?php
   // si existe el usuario carga los datos
-    if ($matrizactividad->exists):
-        $form_data = array('url' => 'matrizActividad/update/'.$matrizactividad->id);
+    if ($matrizriesgo->exists):
+        $form_data = array('url' => 'matrizRiesgo/update/'.$matrizriesgo->id);
         $action    = 'Editar';
     else:
-        $form_data = array('url' => 'matrizActividad/insert', 'class'=>'class="form-horizontal');
+        $form_data = array('url' => 'matrizRiesgo/insert', 'class'=>'class="form-horizontal');
         $action    = 'Crear';        
     endif;
 
@@ -51,7 +51,7 @@
 
              <div class="form-group">
             {{Form::label('', 'Nombre',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-            {{Form::text('nombre', $matrizactividad->nombre)}}
+            {{Form::text('nombre', $matrizriesgo->nombre)}}
             </div>
 
            
@@ -86,7 +86,7 @@ $('.input-mask-date').mask('99/99/9999');
 $('.input-mask-date2').mask('99/99/9999');
 
 
-$( "#matrizactividadactive" ).addClass( "active" );
+$( "#matrizriesgoactive" ).addClass( "active" );
     
   });   
 </script>

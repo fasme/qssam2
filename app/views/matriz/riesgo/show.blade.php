@@ -11,8 +11,8 @@
 
 <div class="col-xs-12">
 
-                    <h3 class="header smaller lighter">Matriz Actividad: 
-                    <a href="{{URL::to('matrizActividad/insert')}}"  class="btn btn-white btn-info btn-bold"> 
+                    <h3 class="header smaller lighter">Matriz Riesgo: 
+                    <a href="{{URL::to('matrizRiesgo/insert')}}"  class="btn btn-white btn-info btn-bold"> 
     <i class="ace-icon fa fa-floppy-o bigger-120 blue"></i>Agregar</a>
     </h3>
 
@@ -38,25 +38,25 @@
         <tbody>
 
 
-  @foreach($matrizactividads as $matrizactividad)
+  @foreach($matrizriesgos as $matrizriesgo)
            <tr>
 
-             <td> {{ $matrizactividad->nombre}}</td>
+             <td> {{ $matrizriesgo->nombre}}</td>
          
 
   <td class="td-actions">
                        
                       
-                          <a class="blue bootbox-mostrar" data-id={{$matrizactividad->id}}>
+                          <a class="blue bootbox-mostrar" data-id={{$matrizriesgo->id}}>
                             <i class="fa fa-search-plus bigger-130"></i>
                           </a>
 
 
-                          <a class="green" href= {{ 'matrizActividad/update/'.$matrizactividad->id }}>
+                          <a class="green" href= {{ 'matrizRiesgo/update/'.$matrizriesgo->id }}>
                             <i class="fa fa-pencil bigger-130"></i>
                           </a>
 
-                         <a class="red bootbox-confirm" data-id={{ $matrizactividad->id }}>
+                         <a class="red bootbox-confirm" data-id={{ $matrizriesgo->id }}>
                             <i class="fa fa-trash bigger-130"></i>
                           </a>
                       </td>
@@ -87,7 +87,7 @@ $('#example').DataTable( {
 
 
 $( "#bibliotecaactive" ).addClass( "active" );
-$( "#matrizactividadactive" ).addClass( "active" );
+$( "#matrizriesgoactive" ).addClass( "active" );
 
 
 
@@ -101,7 +101,7 @@ var tr = $(this).parents('tr');
               
            
              
-             $.get("{{ url('matrizActividad/eliminar')}}",
+             $.get("{{ url('matrizRiesgo/eliminar')}}",
               { id: id },
 
               function(data,status){ tr.fadeOut(1000); }
@@ -117,7 +117,7 @@ var tr = $(this).parents('tr');
 $(".bootbox-mostrar").on(ace.click_event, function() {
   var id = $(this).data('id');
 
- $.get("{{ url('matrizActividad/mostrar')}}",
+ $.get("{{ url('matrizRiesgo/mostrar')}}",
               { id: id },
               function(data)
               { 

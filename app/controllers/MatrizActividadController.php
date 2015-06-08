@@ -51,12 +51,12 @@ class MatrizActividadController extends BaseController {
             
            $matrizactividad->save();
 
-            return Redirect::to('matrizactividad')->with("mensaje","Datos Ingresados correctamente");
+            return Redirect::to('matrizActividad')->with("mensaje","Datos Ingresados correctamente");
         }
         else
         {
             // En caso de error regresa a la acción create con los datos y los errores encontrados
-return Redirect::to('matrizactividad/insert')->withInput()->withErrors($matrizactividad->errors);
+return Redirect::to('matrizActividad/insert')->withInput()->withErrors($matrizactividad->errors);
             //return "mal2";
         }
      //   return Redirect::to('usuarios');
@@ -105,7 +105,7 @@ return Redirect::to('matrizactividad/insert')->withInput()->withErrors($matrizac
 
             // Y Devolvemos una redirección a la acción show para mostrar el usuario
             //return Redirect::action('ClienteController@show');
-           return Redirect::to('matrizactividad')->with("mensaje","Datos actualizados correctamente");
+           return Redirect::to('matrizActividad')->with("mensaje","Datos actualizados correctamente");
 
             
         }
@@ -116,7 +116,7 @@ return Redirect::to('matrizactividad/update/'.$id)->withInput()->withErrors($mat
             //return "mal2";
         }
 
-        return Redirect::to('matrizactividad')->with("mensaje","NO");
+        return Redirect::to('matrizActividad')->with("mensaje","NO");
       
     }
 

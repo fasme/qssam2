@@ -6,7 +6,7 @@
      
 <div class="page-header position-relative">
             <h1>
-            Matriz Actividad
+            Matriz Peligro
               <small>
                 <i class="icon-double-angle-right"></i>
                 
@@ -33,11 +33,11 @@
 
            <?php
   // si existe el usuario carga los datos
-    if ($matrizactividad->exists):
-        $form_data = array('url' => 'matrizActividad/update/'.$matrizactividad->id);
+    if ($matrizley->exists):
+        $form_data = array('url' => 'matrizLey/update/'.$matrizley->id);
         $action    = 'Editar';
     else:
-        $form_data = array('url' => 'matrizActividad/insert', 'class'=>'class="form-horizontal');
+        $form_data = array('url' => 'matrizLey/insert', 'class'=>'class="form-horizontal');
         $action    = 'Crear';        
     endif;
 
@@ -51,8 +51,20 @@
 
              <div class="form-group">
             {{Form::label('', 'Nombre',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-            {{Form::text('nombre', $matrizactividad->nombre)}}
+            {{Form::text('nombre', $matrizley->nombre)}}
             </div>
+
+             <div class="form-group">
+            {{Form::label('', 'Articulo',array("class"=>"col-sm-3 control-label no-padding-right"))}}
+            {{Form::text('articulo', $matrizley->articulo)}}
+            </div>
+
+
+            <div class="form-group">
+            {{Form::label('', 'Descripcion',array("class"=>"col-sm-3 control-label no-padding-right"))}}
+            {{Form::text('descripcion', $matrizley->descripcion)}}
+            </div>
+
 
            
 
@@ -86,7 +98,7 @@ $('.input-mask-date').mask('99/99/9999');
 $('.input-mask-date2').mask('99/99/9999');
 
 
-$( "#matrizactividadactive" ).addClass( "active" );
+$( "#matrizleyactive" ).addClass( "active" );
     
   });   
 </script>
