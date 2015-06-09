@@ -21,6 +21,10 @@ Route::get('login', function(){
     return View::make('login.login');
 });
 
+Route::get("prueba", function(){
+	return "hola";
+});
+
 
 Route::post('login', array('uses' => 'UsuariosController@postLogin'));
 
@@ -31,13 +35,13 @@ Route::get('logout', 'UsuariosController@logOut');
 
 
 
-Route::group(array('before' => 'auth'), function()
-{
+//Route::group(array('before' => 'auth'), function()
+//{
 
 
 
-Route::group(array("before"=>"permisoAdmin"), function()
-{
+//Route::group(array("before"=>"permisoAdmin"), function()
+//{
 
 
 Route::get('/', array('uses' => 'DashboardController@show'));
@@ -260,7 +264,7 @@ Route::get('manual', function(){
 });
 
 
-}); // FIN FILTER ADMIN PERMISO
+//}); // FIN FILTER ADMIN PERMISO
 
 
 
@@ -294,7 +298,7 @@ Route::get("manualusuario", function(){
 
 
 
-});  // FIN FILTER
+//});  // FIN FILTER
 
 
 

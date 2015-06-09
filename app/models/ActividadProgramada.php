@@ -3,7 +3,11 @@ class ActividadProgramada extends Eloquent { //Todos los modelos deben extender 
     protected $table = 'actividad_programada';
     protected $fillable = array('elementoestrategico','cumplimientonormativo','numero', 'requisito', 'actividad', 'frecuencia');
 
-
+   public function muchaspersonal()
+{
+    return $this->belongsToMany("Personal",'actividad_responsable','actividad_id','personal_id')
+    ->withpivot("id","estado","tipoactividad","adjunto1");
+}
 
 
 

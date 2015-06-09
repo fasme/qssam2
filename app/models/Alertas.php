@@ -1,5 +1,5 @@
 <?php
-class Alerta extends Eloquent { //Todos los modelos deben extender la clase Eloquent
+class Alertas extends Eloquent { //Todos los modelos deben extender la clase Eloquent
     protected $table = 'alertas';
     protected $fillable = array('mensaje','personal_id','personal_id_admin');
 

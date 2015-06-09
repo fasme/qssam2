@@ -20,6 +20,7 @@ $personal = Personal::find(Auth::user()->id)
 
 
  <table id="example" class="table table-striped table-bordered table-hover">
+
                         <thead>
                           <tr>
                             
@@ -66,12 +67,19 @@ $personal = Personal::find(Auth::user()->id)
                             <td>{{$actividad->pivot->estado}}</td>
                             <td>{{date_format(date_create($actividad->frecuencia),"d/m/Y")}} {{$dif}}</td>
                             <td>
-                            @if($actividad->pivot->estado == "Abierta")
+                             @if($actividad->pivot->estado == "Abierta")
                             <div class="hidden-sm hidden-xs action-buttons">
-                                <a data-toggle="modal" class="botoncito" data-id="{{$actividad->pivot->id}}" data-tipoactividad="{{$actividad->pivot->tipoactividad}}" href="#" >
+                                <a data-toggle="modal" class="botoncito" data-id="{{$actividad->pivot->id}}" data-actividadid="{{$actividad->pivot->actividad_id}}" data-tipoactividad="{{$actividad->pivot->tipoactividad}}" href="#" >
                                   <i class="ace-icon fa fa-archive bigger-130"></i>
                                 </a>
                               </div>
+                              @else
+                              <a href="evidencia/{{ $actividad->pivot->adjunto1}}">{{$actividad->pivot->adjunto1}}</a><br>
+                           <a href="evidencia/{{ $actividad->pivot->adjunto2}}">{{$actividad->pivot->adjunto2}}</a><br>
+                           <a href="evidencia/{{ $actividad->pivot->adjunto3}}">{{$actividad->pivot->adjunto3}}</a><br>
+                           <a href="evidencia/{{ $actividad->pivot->adjunto4}}">{{$actividad->pivot->adjunto4}}</a><br>
+                           <a href="evidencia/{{ $actividad->pivot->adjunto5}}">{{$actividad->pivot->adjunto5}}</a><br>
+
                               @endif
                               </td>
                             </tr>
@@ -146,7 +154,7 @@ $personal = Personal::find(Auth::user()->id)
                             {
                               $dif = "<font color='green'>(". $interval->format('%R%a')." Dias)</font>";
                             }
-                             
+                              
                             ?>
                             <td>{{$actividad->actividad}}</td>
                             <td>{{$actividad->pivot->estado}}</td>
@@ -154,17 +162,17 @@ $personal = Personal::find(Auth::user()->id)
                             <td>
                             @if($actividad->pivot->estado == "Abierta")
                             <div class="hidden-sm hidden-xs action-buttons">
-                                <a data-toggle="modal" class="botoncito" data-id="{{$actividad->pivot->id}}" data-tipoactividad="{{$actividad->pivot->tipoactividad}}" href="#" >
+                                <a data-toggle="modal" class="botoncito" data-id="{{$actividad->pivot->id}}" data-actividadid="{{$actividad->pivot->actividad_id}}" data-tipoactividad="{{$actividad->pivot->tipoactividad}}" href="#" >
                                   <i class="ace-icon fa fa-archive bigger-130"></i>
                                 </a>
                               </div>
                               @else
 
-                              <a href="evidencia/{{ $actividad->pivot->adjunto1}}">{{$actividad->pivot->adjunto1}}</a>
-                            {{ $actividad->pivot->adjunto2}}
-                            {{ $actividad->pivot->adjunto3}}
-                            {{ $actividad->pivot->adjunto4}}
-                            {{ $actividad->pivot->adjunto5}}
+                              <a href="evidencia/{{ $actividad->pivot->adjunto1}}">{{$actividad->pivot->adjunto1}}</a><br>
+                           <a href="evidencia/{{ $actividad->pivot->adjunto2}}">{{$actividad->pivot->adjunto2}}</a><br>
+                           <a href="evidencia/{{ $actividad->pivot->adjunto3}}">{{$actividad->pivot->adjunto3}}</a><br>
+                           <a href="evidencia/{{ $actividad->pivot->adjunto4}}">{{$actividad->pivot->adjunto4}}</a><br>
+                           <a href="evidencia/{{ $actividad->pivot->adjunto5}}">{{$actividad->pivot->adjunto5}}</a><br>
 
                               @endif
                               </td>
@@ -272,8 +280,11 @@ $personal = Personal::find(Auth::user()->id)
         <h4 class="modal-title" id="myModalLabel">Enviar Evidencia</h4>
       </div>
       <div class="modal-body">
-      {{Form::hidden("registroid","",array("id"=>"actividadid"))}}
+      {{Form::hidden("actividadid","",array("id"=>"actividadid"))}}
+      {{Form::hidden("id","",array("id"=>"id"))}}
       {{Form::hidden("tipoactividad","",array("id"=>"tipoactividad"))}}
+      
+      
       {{Form::label("Archivo 1")}}
       {{Form::file("adjunto1")}}
 
@@ -308,11 +319,7 @@ $personal = Personal::find(Auth::user()->id)
 
 
 
-    {{HTML::script('portal1/js/jquery.js')}}
-    {{HTML::script('portal1/js/bootstrap.min.js')}}
-    {{HTML::script('portal1/js/jquery.prettyPhoto.js')}}
-    {{HTML::script('portal1/js/jquery.isotope.min.js')}}
-    {{HTML::script('portal1/js/wow.min.js')}}
+
 
 
 
@@ -359,8 +366,11 @@ var oTable1 =
 $(".botoncito").click(function(){
 
   var id = $(this).data('id');
+  var actividadid = $(this).data('actividadid');
   var tipoactividad = $(this).data('tipoactividad');
-  $("#actividadid").val(id);
+
+  $("#actividadid").val(actividadid);
+  $("#id").val(id);
   $("#tipoactividad").val(tipoactividad);
   //alert(id);
   $('#myModal').modal("show");

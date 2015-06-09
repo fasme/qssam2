@@ -4,6 +4,11 @@ class ActividadNoProgramada extends Eloquent { //Todos los modelos deben extende
     protected $fillable = array('actividad','frecuencia');
 
 
+    public function muchaspersonal()
+{
+    return $this->belongsToMany("Personal",'actividad_responsable','actividad_id','personal_id')
+    ->withpivot("id","estado","tipoactividad","adjunto1");
+}
 
 
 

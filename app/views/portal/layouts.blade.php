@@ -14,6 +14,20 @@
     <link href="portal1/css/prettyPhoto.css" rel="stylesheet">
     <link href="portal1/css/main.css" rel="stylesheet">
     <link href="portal1/css/responsive.css" rel="stylesheet">
+
+
+
+
+
+        <script src="portal1/js/jquery.js"></script>
+    <script src="portal1/js/bootstrap.min.js"></script>
+    <script src="portal1/js/jquery.prettyPhoto.js"></script>
+    <script src="portal1/js/jquery.isotope.min.js"></script>
+    <script src="portal1/js/main.js"></script>
+    <script src="portal1/js/wow.min.js"></script>
+  {{HTML::script('js/jquery.dataTables.min.js')}}
+{{HTML::script('js/jquery.dataTables.bootstrap.min.js')}}
+
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -58,7 +72,9 @@
                             </ul>
                         </li>-->
                         <li><a href="{{URL::to('/')}}">Administracion</a></li> 
-                        <li><a href="contact-us.html">Usuario</a></li>                        
+                        @if (Auth::check())
+                        <li><a href="{{URL::to('logout')}}">Salir ({{Auth::user()->nombre}})</a></li> 
+                        @endif                       
                     </ul>
                 </div>
             </div><!--/.container-->
@@ -90,11 +106,6 @@
         </div>
     </footer><!--/#footer-->
 
-    <script src="portal1/js/jquery.js"></script>
-    <script src="portal1/js/bootstrap.min.js"></script>
-    <script src="portal1/js/jquery.prettyPhoto.js"></script>
-    <script src="portal1/js/jquery.isotope.min.js"></script>
-    <script src="portal1/js/main.js"></script>
-    <script src="portal1/js/wow.min.js"></script>
+
 </body>
 </html>
