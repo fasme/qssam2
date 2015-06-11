@@ -5,7 +5,10 @@ class Alertas extends Eloquent { //Todos los modelos deben extender la clase Elo
 
 
 
-
+public function personal()
+{
+    return $this->belongsTo("Personal");
+}
 
 
 

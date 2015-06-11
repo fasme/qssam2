@@ -6,7 +6,7 @@
      
 <div class="page-header position-relative">
             <h1>
-              Categoria
+              Actividad Programada
               <small>
                 <i class="icon-double-angle-right"></i>
                 
@@ -71,10 +71,31 @@
             {{Form::textarea('actividad', $actividadprogramada->actividad)}}
             </div>
 
+            <?php
+                              $array = ActividadProgramada::find($actividadprogramada->id);
+                              $arrayName = "";
+                              if(count($array) >0)
+                              {
+
+                              foreach ($array->muchaspersonal as $key) {
+                               echo $arrayName[] = $key->id;
+                               
+                              }
+                            }
+
+                              ?>
+
+                              <div class="form-group">
+                              {{Form::label('', 'Personal',array("class"=>"col-sm-3 control-label no-padding-right"))}}
+                              {{Form::select('personal_id[]', $personals, $arrayName, array("class"=>"chosen-select", "multiple"=>"multiple"))}}
+                              </div>
+
              <div class="form-group">
             {{Form::label('', 'Plazo',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-            {{Form::text('frecuencia', $actividadprogramada->frecuencia)}}
+            {{Form::text('frecuencia', date_format(date_create($actividadprogramada->frecuencia),'d/m/Y'), array("class"=>"date-picker", "id"=>"id-date-picker-1", "data-date-format"=>"dd/mm/yyyy"))}}
             </div>
+
+            
 
 
 
@@ -101,13 +122,21 @@
 <script>
   $(document).ready(function(){
    
-
-$('.input-mask-date').mask('99/99/9999');
-$('.input-mask-date2').mask('99/99/9999');
-
+$(".chosen-select").chosen();
 
 $( "#actividadprogramadaactive" ).addClass( "active" );
-    
+
+
+$('.date-picker').datepicker({
+          autoclose: true,
+          todayHighlight: true
+        })
+        //show datepicker when clicking on the icon
+        .next().on(ace.click_event, function(){
+          $(this).prev().focus();
+        });
+
+   
   });   
 </script>
 

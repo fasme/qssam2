@@ -4,6 +4,10 @@ class Categoria extends Eloquent { //Todos los modelos deben extender la clase E
     protected $fillable = array('nombre');
 
 
+public function archivo()
+{
+    return $this->hasMany("Archivo");
+}
 
 
 

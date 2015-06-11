@@ -13,9 +13,7 @@ class Personal extends Eloquent implements UserInterface,RemindableInterface { /
     return $this->belongsTo("Cargo");
    }
 
-   public function personal(){
-    return $this->belongsTo("Personal");
-   }
+
 
 
 
@@ -26,6 +24,8 @@ class Personal extends Eloquent implements UserInterface,RemindableInterface { /
     public function actividadesNoProgramadas(){
         return $this->belongsToMany('ActividadNoProgramada', 'actividad_responsable', 'personal_id', 'actividad_id')->withPivot("tipoactividad","id","estado","adjunto1", "adjunto2","adjunto3","adjunto4","adjunto5");
     }
+
+
 
 
 

@@ -16,14 +16,16 @@
 
 
 
-
 Route::get('login', function(){
     return View::make('login.login');
 });
 
+
 Route::get("prueba", function(){
 	return "hola";
 });
+
+
 
 
 Route::post('login', array('uses' => 'UsuariosController@postLogin'));
@@ -35,13 +37,13 @@ Route::get('logout', 'UsuariosController@logOut');
 
 
 
-//Route::group(array('before' => 'auth'), function()
-//{
+Route::group(array('before' => 'auth'), function()
+{
 
 
 
-//Route::group(array("before"=>"permisoAdmin"), function()
-//{
+Route::group(array("before"=>"permisoAdmin"), function()
+{
 
 
 Route::get('/', array('uses' => 'DashboardController@show'));
@@ -230,6 +232,7 @@ Route::get('actividadpac', array('uses' => 'ActividadPacController@show'));
 
 //Evidencia
 Route::get('evidenciaadmin', array('uses' => 'EvidenciaController@show')); 
+Route::get('evidenciaadmin/eliminar', array('uses' => 'EvidenciaController@eliminar')); 
 
 //clasificacion
 Route::get('clasificacion', array('uses' => 'ClasificacionController@show')); 
@@ -240,7 +243,7 @@ Route::post('clasificacion/update/{id}', 'ClasificacionController@update2');
 Route::get('clasificacion/eliminar', 'ClasificacionController@eliminar');
 
 
-//personal
+//personala
 Route::get('personal', array('uses' => 'PersonalController@show')); 
 Route::get('personal/insert', array('uses' => 'PersonalController@insert'));
 Route::post('personal/insert', array('uses' => 'PersonalController@insert2'));
@@ -264,7 +267,7 @@ Route::get('manual', function(){
 });
 
 
-//}); // FIN FILTER ADMIN PERMISO
+}); // FIN FILTER ADMIN PERMISO
 
 
 
@@ -298,7 +301,7 @@ Route::get("manualusuario", function(){
 
 
 
-//});  // FIN FILTER
+});  // FIN FILTER
 
 
 

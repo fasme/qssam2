@@ -32,7 +32,7 @@ $personal = Personal::find(Auth::user()->id)
 
                             <th>
                               <i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
-                              Accion
+                              Subir Evidencia
                             </th>
                             
 
@@ -70,7 +70,7 @@ $personal = Personal::find(Auth::user()->id)
                              @if($actividad->pivot->estado == "Abierta")
                             <div class="hidden-sm hidden-xs action-buttons">
                                 <a data-toggle="modal" class="botoncito" data-id="{{$actividad->pivot->id}}" data-actividadid="{{$actividad->pivot->actividad_id}}" data-tipoactividad="{{$actividad->pivot->tipoactividad}}" href="#" >
-                                  <i class="ace-icon fa fa-archive bigger-130"></i>
+                                  <i class="ace-icon fa fa-upload bigger-130"></i>
                                 </a>
                               </div>
                               @else
@@ -130,7 +130,7 @@ $personal = Personal::find(Auth::user()->id)
 
                             <th>
                               <i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
-                              Accion
+                              Subir Evidencia
                             </th>
                             
 
@@ -163,7 +163,7 @@ $personal = Personal::find(Auth::user()->id)
                             @if($actividad->pivot->estado == "Abierta")
                             <div class="hidden-sm hidden-xs action-buttons">
                                 <a data-toggle="modal" class="botoncito" data-id="{{$actividad->pivot->id}}" data-actividadid="{{$actividad->pivot->actividad_id}}" data-tipoactividad="{{$actividad->pivot->tipoactividad}}" href="#" >
-                                  <i class="ace-icon fa fa-archive bigger-130"></i>
+                                  <i class="ace-icon fa fa-upload bigger-130"></i>
                                 </a>
                               </div>
                               @else

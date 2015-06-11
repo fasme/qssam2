@@ -23,10 +23,13 @@ class ActividadProgramadaController extends BaseController {
      public function insert()
     {
         $actividadprogramada = new ActividadProgramada; 
+        $personals = Personal::lists("nombre","id");
         //enviamos un usuario vacio para que cargue el formulario insert
 
         
-        return View::make('actividad.programada.formulario')->with("actividadprogramada",$actividadprogramada);
+        return View::make('actividad.programada.formulario')
+        ->with("actividadprogramada",$actividadprogramada)
+        ->with("personals",$personals);
     }
  
  
@@ -42,6 +45,13 @@ class ActividadProgramadaController extends BaseController {
         
         if ($actividadprogramada->isValid($datos))
         {
+
+            if($datos["frecuencia"])
+            {
+                list($dia,$mes,$ano) = explode("/",$datos['frecuencia']);
+            $datos['frecuencia'] = "$ano-$mes-$dia";
+
+            }
             // Si la data es valida se la asignamos al usuario
             $actividadprogramada->fill($datos);
             // Guardamos el usuario
@@ -50,6 +60,15 @@ class ActividadProgramadaController extends BaseController {
       
             
            $actividadprogramada->save();
+
+             $actividadprogramada = ActividadProgramada::find($actividadprogramada->id);
+           //echo count($datos["actividad_id"]);
+           for($i=0;$i<count($datos["personal_id"]);$i++)
+           {
+            
+            $actividadprogramada->muchaspersonal()->attach($datos["personal_id"][$i]);
+           }
+
 
             return Redirect::to('actividadprogramada')->with("mensaje","Datos Ingresados correctamente");
         }
@@ -74,8 +93,11 @@ return Redirect::to('actividadprogramada/insert')->withInput()->withErrors($acti
       
  
            $actividadprogramada = ActividadProgramada::find($id);
+           $personals = Personal::lists("nombre","id");
    
-        return View::make('actividad.programada.formulario')->with("actividadprogramada", $actividadprogramada);
+        return View::make('actividad.programada.formulario')
+        ->with("actividadprogramada", $actividadprogramada)
+        ->with("personals",$personals);
  
                 
  
@@ -94,12 +116,26 @@ return Redirect::to('actividadprogramada/insert')->withInput()->withErrors($acti
         
         if ($actividadprogramada->isValid($datos))
         {
+
+            if($datos["frecuencia"])
+            {
+                list($dia,$mes,$ano) = explode("/",$datos['frecuencia']);
+            $datos['frecuencia'] = "$ano-$mes-$dia";
+
+            }
             // Si la data es valida se la asignamos al usuario
             $actividadprogramada->fill($datos);
             // Guardamos el usuario
              //$usuario->password = Hash::make($usuario->password);
 
-      
+        $actividadprogramada->muchaspersonal()->detach();
+           for($i=0;$i<count($datos["personal_id"]);$i++)
+           {
+            
+            $actividadprogramada->muchaspersonal()->attach($datos["personal_id"][$i],array("estado"=>"Abierta","tipoactividad"=>"programada"));
+           }
+
+
             
            $actividadprogramada->save();
 

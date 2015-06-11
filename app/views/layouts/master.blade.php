@@ -18,6 +18,7 @@
 
 {{HTML::style('css/ace.min.css')}}	
 {{HTML::style('css/chosen.min.css')}}	
+{{HTML::style('css/datepicker.min.css')}}	
 
 
 
@@ -33,6 +34,10 @@
 {{HTML::script('js/chosen.jquery.min.js')}}
 {{HTML::script('js/bootstrap-wysiwyg.min.js')}}
 {{HTML::script('js/jquery.hotkeys.min.js')}}
+{{HTML::script('js/bootstrap-datepicker.min.js')}}
+
+
+
 
 	   
 
@@ -102,7 +107,7 @@
 						<li class="purple">
 							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
 								<i class="ace-icon fa fa-bell icon-animated-bell"></i>
-								<span class="badge badge-important">1</span>
+								<span class="badge badge-important">{{Alertas::where("personal_id_admin","=",Auth::user()->id)->get()->count()}}</span>
 							</a>
 
 							<ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
@@ -114,13 +119,15 @@
 								<li class="dropdown-content">
 									<ul class="dropdown-menu dropdown-navbar navbar-pink">
 										
-										
+										@foreach(Alertas::where("personal_id_admin","=",Auth::user()->id)->get() as $alerta)
 										<li>
 											<a href="#">
 												<i class="btn btn-xs btn-primary fa fa-user"></i>
+												{{"<b>".$alerta->personal->nombre."</b> ".$alerta->mensaje}}
 												
 											</a>
 										</li>
+										@endforeach
 										
 
 									
@@ -129,8 +136,8 @@
 								</li>
 
 								<li class="dropdown-footer">
-									<a href="#">
-										See all notifications
+									<a href="{{URL::to('evidenciaadmin/eliminar')}}">
+										Borrar Notificaciones
 										<i class="ace-icon fa fa-arrow-right"></i>
 									</a>
 								</li>
@@ -144,7 +151,7 @@
 							
 								<span class="user-info">
 									<small>Bienvenido,</small>
-									Jason
+									{{Auth::user()->nombre}}
 								</span>
 
 								<i class="ace-icon fa fa-caret-down"></i>
@@ -294,6 +301,15 @@
 								<a href="elements.html">
 									<i class="menu-icon fa fa-caret-right"></i>
 									PAC
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li class="" id="pacactive">
+								<a href="{{URL::to('evidenciaadmin')}}">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Evidencia
 								</a>
 
 								<b class="arrow"></b>
@@ -508,28 +524,7 @@
 
 		
 
-		<!-- <![endif]-->
 
-		<!--[if IE]>
-<script src="assets/js/jquery.1.11.1.min.js"></script>
-<![endif]-->
-
-		<!--[if !IE]> -->
-		<script type="text/javascript">
-			window.jQuery || document.write("<script src='assets/js/jquery.min.js'>"+"<"+"/script>");
-		</script>
-
-		<!-- <![endif]-->
-
-		<!--[if IE]>
-<script type="text/javascript">
- window.jQuery || document.write("<script src='assets/js/jquery1x.min.js'>"+"<"+"/script>");
-</script>
-<![endif]-->
-		<script type="text/javascript">
-			if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
-		</script>
-	
 	
 
 		<!-- inline scripts related to this page -->

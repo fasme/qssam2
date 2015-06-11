@@ -6,7 +6,7 @@ class ActividadProgramada extends Eloquent { //Todos los modelos deben extender 
    public function muchaspersonal()
 {
     return $this->belongsToMany("Personal",'actividad_responsable','actividad_id','personal_id')
-    ->withpivot("id","estado","tipoactividad","adjunto1");
+    ->withpivot("id","estado","tipoactividad","adjunto1","adjunto2","adjunto3","adjunto4","adjunto5");
 }
 
 
@@ -19,8 +19,8 @@ public $errors;
     {
         $rules = array(
             
-          //  'cliente_id'     => 'exists:cliente,id',
-          //  "guiavalue" => "required",
+           'frecuencia'     => 'required',
+            "personal_id" => "required",
             
          
         );

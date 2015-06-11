@@ -40,10 +40,24 @@ class ArchivoController extends BaseController {
         $archivo = new Archivo;
 
         $datos = Input::all(); 
+
+        $random = rand(0,99999);
         
         if ($archivo->isValid($datos))
         {
             // Si la data es valida se la asignamos al usuario
+
+
+            if (Input::hasFile("archivo"))
+                {
+                    $adjunto1 = Input::file('archivo');
+                    $datos["archivo"] = $random."_".$adjunto1->getClientOriginalName();
+                    $adjunto1->move("archivos/biblioteca",$random."_".$adjunto1->getClientOriginalName());
+                    
+                   
+                }
+
+
             $archivo->fill($datos);
             // Guardamos el usuario
             /* $usuario->password = Hash::make($usuario->password);*/
@@ -75,8 +89,11 @@ return Redirect::to('archivo/insert')->withInput()->withErrors($archivo->errors)
       
  
            $archivo = Archivo::find($id);
+           $categoria = Categoria::lists("nombre","id");
    
-        return View::make('biblioteca.archivos.formulario')->with("archivo", $archivo);
+        return View::make('biblioteca.archivos.formulario')
+        ->with("archivo", $archivo)
+        ->with("categoria",$categoria);
  
                 
  
@@ -92,10 +109,24 @@ return Redirect::to('archivo/insert')->withInput()->withErrors($archivo->errors)
 
 
         $datos = Input::all(); 
+
+         $random = rand(0,99999);
         
         if ($archivo->isValid($datos))
         {
             // Si la data es valida se la asignamos al usuario
+
+
+            if (Input::hasFile("archivo"))
+                {
+                    $adjunto1 = Input::file('archivo');
+                    $datos["archivo"] = $random."_".$adjunto1->getClientOriginalName();
+                    $adjunto1->move("archivos/biblioteca",$random."_".$adjunto1->getClientOriginalName());
+                    
+                   
+                }
+
+
             $archivo->fill($datos);
             // Guardamos el usuario
              //$usuario->password = Hash::make($usuario->password);

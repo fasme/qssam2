@@ -6,7 +6,7 @@
      
 <div class="page-header position-relative">
             <h1>
-              Categoria
+              Archivo
               <small>
                 <i class="icon-double-angle-right"></i>
                 
@@ -34,10 +34,10 @@
            <?php
   // si existe el usuario carga los datos
     if ($archivo->exists):
-        $form_data = array('url' => 'archivo/update/'.$archivo->id);
+        $form_data = array('url' => 'archivo/update/'.$archivo->id, 'files'=>true);
         $action    = 'Editar';
     else:
-        $form_data = array('url' => 'archivo/insert', 'class'=>'class="form-horizontal');
+        $form_data = array('url' => 'archivo/insert', 'class'=>'class="form-horizontal', 'files'=>true);
         $action    = 'Crear';        
     endif;
 
@@ -53,12 +53,12 @@
 
             <div class="form-group">
             {{Form::label('Categoria', 'Categoria',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-            {{Form::select('categoria', $categoria, $archivo->categoria_id)}}
+            {{Form::select('categoria_id', $categoria, $archivo->categoria_id)}}
             </div>
 
             <div class="form-group">
             {{Form::label('Archivo', 'Archivo',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-            {{Form::file('archivo', $archivo->archivo)}}
+            {{Form::file('archivo')}}
             </div>
            
         

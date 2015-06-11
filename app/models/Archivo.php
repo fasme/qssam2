@@ -5,6 +5,11 @@ class Archivo extends Eloquent { //Todos los modelos deben extender la clase Elo
 
 
 
+public function categoria()
+{
+    return $this->belongsTo("Categoria");
+}
+
 
 
 

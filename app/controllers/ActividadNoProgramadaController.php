@@ -23,10 +23,13 @@ class ActividadNoProgramadaController extends BaseController {
      public function insert()
     {
         $actividadnoprogramada = new ActividadNoProgramada; 
+        $personals = Personal::lists("nombre","id");
         //enviamos un usuario vacio para que cargue el formulario insert
 
         
-        return View::make('actividad.noprogramada.formulario')->with("actividadnoprogramada",$actividadnoprogramada);
+        return View::make('actividad.noprogramada.formulario')
+        ->with("actividadnoprogramada",$actividadnoprogramada)
+        ->with("personals",$personals);
     }
  
  
@@ -42,7 +45,13 @@ class ActividadNoProgramadaController extends BaseController {
         
         if ($actividadnoprogramada->isValid($datos))
         {
-            // Si la data es valida se la asignamos al usuario
+            if($datos["frecuencia"])
+            {
+                list($dia,$mes,$ano) = explode("/",$datos['frecuencia']);
+            $datos['frecuencia'] = "$ano-$mes-$dia";
+
+            }
+
             $actividadnoprogramada->fill($datos);
             // Guardamos el usuario
             /* $usuario->password = Hash::make($usuario->password);*/
@@ -50,6 +59,24 @@ class ActividadNoProgramadaController extends BaseController {
       
             
            $actividadnoprogramada->save();
+
+           $actividadnoprogramada = ActividadNoProgramada::find($actividadnoprogramada->id);
+           //echo count($datos["actividad_id"]);
+           for($i=0;$i<count($datos["personal_id"]);$i++)
+           {
+            
+            $actividadnoprogramada->muchaspersonal()->attach($datos["personal_id"][$i],array("estado"=>"Abierta","tipoactividad"=>"noprogramada"));
+            
+
+            $alerta = new Alertas;
+            $alerta->mensaje = "ha enviado una Nueva Actividad";
+            $alerta->personal_id = Auth::user()->id;  // id_de
+            $alerta->personal_id_admin = $datos["personal_id"][$i];  // id_para
+            $alerta->save();
+
+
+           }
+
 
             return Redirect::to('actividadnoprogramada')->with("mensaje","Datos Ingresados correctamente");
         }
@@ -74,8 +101,11 @@ return Redirect::to('actividadnoprogramada/update/'.$id)->withInput()->withError
       
  
            $actividadnoprogramada = ActividadNoProgramada::find($id);
+           $personals = Personal::lists("nombre","id");
    
-        return View::make('actividad.noprogramada.formulario')->with("actividadnoprogramada", $actividadnoprogramada);
+        return View::make('actividad.noprogramada.formulario')
+        ->with("actividadnoprogramada", $actividadnoprogramada)
+        ->with("personals",$personals);
  
                 
  
@@ -94,13 +124,36 @@ return Redirect::to('actividadnoprogramada/update/'.$id)->withInput()->withError
         
         if ($actividadnoprogramada->isValid($datos))
         {
-            // Si la data es valida se la asignamos al usuario
+
+           if($datos["frecuencia"])
+            {
+                list($dia,$mes,$ano) = explode("/",$datos['frecuencia']);
+            $datos['frecuencia'] = "$ano-$mes-$dia";
+
+            }
             $actividadnoprogramada->fill($datos);
             // Guardamos el usuario
              //$usuario->password = Hash::make($usuario->password);
 
       
             
+
+
+        $actividadnoprogramada->muchaspersonal()->detach();
+           for($i=0;$i<count($datos["personal_id"]);$i++)
+           {
+            
+            $actividadnoprogramada->muchaspersonal()->attach($datos["personal_id"][$i]);
+           
+            $alerta = new Alertas;
+            $alerta->mensaje = "ha enviado una Nueva Actividad";
+            $alerta->personal_id = Auth::user()->id;  // id_de
+            $alerta->personal_id_admin = $datos["personal_id"][$i];  // id_para
+            $alerta->save();
+            
+           }
+
+
            $actividadnoprogramada->save();
 
             // Y Devolvemos una redirección a la acción show para mostrar el usuario

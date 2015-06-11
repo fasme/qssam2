@@ -109,16 +109,13 @@
   <td class="td-actions">
                        
                       
-                          <a class="blue bootbox-mostrar" data-id={{$cargo->id}}>
-                            <i class="fa fa-search-plus bigger-130"></i>
-                          </a>
 
 
                           <a class="green" href= {{ 'cargo/update/'.$cargo->id }}>
                             <i class="fa fa-pencil bigger-130"></i>
                           </a>
 
-                         <a class="red bootbox-confirm" data-id={{ $cargo->id }}>
+                         <a class="red bootbox-confirmcargo" data-id={{ $cargo->id }}>
                             <i class="fa fa-trash bigger-130"></i>
                           </a>
                       </td>
@@ -165,6 +162,29 @@ var tr = $(this).parents('tr');
            
              
              $.get("{{ url('personal/eliminar')}}",
+              { id: id },
+
+              function(data,status){ tr.fadeOut(1000); }
+).fail(function(data){bootbox.alert("No se puede eliminar un registro padre: una restricción de clave externa falla");});
+
+     
+            }
+           
+          });
+        });
+
+
+
+$(".bootbox-confirmcargo").on(ace.click_event, function() {
+  var id = $(this).data('id');
+var tr = $(this).parents('tr'); 
+
+          bootbox.confirm("Deseas Eliminar el registro "+id, function(result) {
+            if(result) { // si se seleccion OK
+              
+           
+             
+             $.get("{{ url('cargo/eliminar')}}",
               { id: id },
 
               function(data,status){ tr.fadeOut(1000); }
