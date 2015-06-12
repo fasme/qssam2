@@ -19,12 +19,12 @@
 {{HTML::style('css/ace.min.css')}}	
 {{HTML::style('css/chosen.min.css')}}	
 {{HTML::style('css/datepicker.min.css')}}	
+{{HTML::style('css/tabletools.css')}}	
 
 
-
-
-{{HTML::script('js/ace-extra.min.js')}}
 {{HTML::script('js/jquery.2.1.1.min.js')}}
+{{HTML::script('js/ace-extra.min.js')}}
+
 {{HTML::script('js/bootstrap.min.js')}}
 {{HTML::script('js/ace-elements.min.js')}}
 {{HTML::script('js/ace.min.js')}}	
@@ -35,6 +35,8 @@
 {{HTML::script('js/bootstrap-wysiwyg.min.js')}}
 {{HTML::script('js/jquery.hotkeys.min.js')}}
 {{HTML::script('js/bootstrap-datepicker.min.js')}}
+{{HTML::script('js/dataTables.tableTools.min.js')}}
+
 
 
 

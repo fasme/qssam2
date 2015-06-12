@@ -240,6 +240,22 @@ return Redirect::to('matriz/update/'.$id)->withInput()->withErrors($matriz->erro
 
     }
 
+    public function pdffiltro(){
+
+          $datos = Input::all();
+
+          $matrizs = Matriz::Wherein("id", $datos["selectmatrices"])->get();
+
+          $view = View::make('matriz.pdf')->with("matrizs",$matrizs);
+       return PDF::load($view, 'A4', 'landscape')->show();
+        
+        //$matriz = Matriz::find($id);
+        // $view = View::make('matriz.pdfid')->with("matriz",$matriz);
+        //return PDF::load($view, 'A4', 'landscape')->show();
+
+    }
+
+
 
  
 

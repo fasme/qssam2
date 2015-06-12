@@ -51,7 +51,7 @@ $archivos = Archivo::all();
                                   <span class="label label-success arrowed">Vista Previa</span>
                                 </a>
 
-                                <a data-toggle="modal" class="botoncito2" data-id="{{$archivo->id}}"  href="#" >
+                                <a href="archivos/biblioteca/{{$archivo->archivo}}" >
                                   <span class="label label-warning arrowed">Descargar</span>
                                 </a>
 

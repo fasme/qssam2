@@ -60,7 +60,7 @@
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="{{URL::to('portal')}}">Home</a></li>
                         <li><a href="{{URL::to('misactividades')}}">Mis Actividades</a></li>
-                        <li><a href="{{URL::to('manualusuario')}}">Manual</a></li>
+                        <li><a href="{{URL::to('matrizportal')}}">Matriz</a></li>
                         <li><a href="{{URL::to('bibliotecaportal')}}">Biblioteca</a></li>
                         <!--<li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down"></i></a>

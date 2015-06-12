@@ -170,6 +170,7 @@ Route::get('matriz/eliminar', 'MatrizController@eliminar');
 Route::get('matriz/mostrar', 'MatrizController@mostrar');
 Route::get('matriz/pdf', 'MatrizController@pdf');
 Route::get('matriz/pdf/{id}', 'MatrizController@pdfid');
+Route::post('matriz/pdf/filtro', 'MatrizController@pdffiltro');
 Route::get("matriz/cargarMatrizColor", "MatrizController@cargarColorMatriz");
 
 
@@ -296,6 +297,11 @@ Route::get('bibliotecaportal', function(){
 
 Route::get("manualusuario", function(){
 	return View::make("portal.manual");
+});
+
+
+Route::get("matrizportal", function(){
+	return View::make("portal.matriz");
 });
 
 

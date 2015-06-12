@@ -10,15 +10,23 @@
 
 
 <div class="col-xs-12">
+{{Form::open(array("url"=>"matriz/pdf/filtro"))}}
+                 
 
-                    <h3 class="header smaller lighter">Matriz: 
                     <a href="{{URL::to('matriz/insert')}}"  class="btn btn-white btn-info btn-bold"> 
     <i class="ace-icon fa fa-floppy-o bigger-120 blue"></i>Agregar</a>
 
     <a href="{{URL::to('matriz/pdf')}}"  class="btn btn-white btn-info btn-bold"> 
-    <i class="ace-icon fa fa-file-pdf-o bigger-120 red"></i>Pdf</a>
-    </h3>
+    <i class="ace-icon fa fa-file-pdf-o bigger-120 red"></i>Matriz Completa</a>
 
+    
+   <input type="submit" class="btn btn-white btn-info btn-bold" value="Matriz Filtrada">
+   <select id="selectmatrices" name="selectmatrices[]" multiple="multiple" style="visibility:hidden">
+  
+  
+   </select>
+   
+{{Form::close()}}
 
 
                     <div class="clearfix">
@@ -30,6 +38,7 @@
         
  
 <table id="example" class="table table-striped table-bordered table-hover">
+<div class="info"></div>
   <thead>
           <tr>
             <th>Proceso</th>
@@ -42,7 +51,7 @@
 
 
   @foreach($matrizs as $matriz)
-           <tr>
+           <tr  id="{{$matriz->id}}">
 
              <td> {{ $matriz->proceso}}</td>
          
@@ -65,7 +74,7 @@
 
 
                           <a class="blue" href= {{ 'matriz/pdf/'.$matriz->id }}>
-                            <i class="fa fa-print bigger-130"></i>
+                            <i class="fa fa-file-pdf-o bigger-130"></i>
                           </a>
                       </td>
 </tr>
@@ -84,7 +93,7 @@
  $(document).ready(function() {
 
 
-$('#example').DataTable( {
+var table = $('#example').DataTable( {
       
        "language": {
                 "url": "datatables.spanish.json"
@@ -92,6 +101,50 @@ $('#example').DataTable( {
     } );
 
 
+var tableTools = new $.fn.dataTable.TableTools( table, {
+  'sRowSelect': "multi",
+  "fnRowSelected": function(nodes) {
+      var a = nodes[0].id;
+      $("#selectmatrices").append("<option value="+a+" selected>"+a+"</option>");
+      /*
+        if (myDeselectList) {
+            var nodeList = myDeselectList;
+            myDeselectList = null;
+            this.fnDeselect(nodeList);
+        }
+        */
+    },
+    "fnRowDeselected": function(nodes){
+      var a = nodes[0].id;
+      $("#selectmatrices option[value="+a+"]").remove();
+
+    },
+      "aButtons": [
+                    {
+                        "sExtends": "copy",
+                        //"sTitle": "Report Name",
+                        //"sPdfMessage": "Summary Info",
+                       // "sFileName": "<?php print('Actividad No Programada'); ?>.pdf",
+                        //"sPdfOrientation": "landscape",
+                        "oSelectorOpts": {page: 'current'},
+
+                    },
+                   
+                    {
+                        "sExtends": "pdf",
+                        //"sTitle": "Report Name",
+                        //"sPdfMessage": "Summary Info",
+                        "sFileName": "<?php print('Informe'); ?>.pdf",
+                        "sPdfOrientation": "landscape",
+                        "oSelectorOpts": {page: 'current'},
+
+                    },
+                    "print"
+                ]
+    
+      
+    } );
+$( tableTools.fnContainer() ).insertAfter('div.info');
 
 
 $( "#bibliotecaactive" ).addClass( "active" );

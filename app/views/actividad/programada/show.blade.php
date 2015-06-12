@@ -11,7 +11,7 @@
 
 <div class="col-xs-12">
 
-                    <h3 class="header smaller lighter">Archivo: 
+                    <h3 class="header smaller lighter">Actividad Programada: 
                     <a href="{{URL::to('actividadprogramada/insert')}}"  class="btn btn-white btn-info btn-bold"> 
     <i class="ace-icon fa fa-floppy-o bigger-120 blue"></i>Agregar</a>
     </h3>
@@ -20,6 +20,7 @@
 
                     <div class="clearfix">
                       <div class="pull-right tableTools-container"></div>
+
                     </div>
                     <div class="table-header">
                       Resultados
@@ -27,6 +28,7 @@
         
  
 <table id="example" class="table table-striped table-bordered table-hover">
+<div class="info"></div>
   <thead>
           <tr>
             <th>Actividad</th>
@@ -72,12 +74,47 @@
  $(document).ready(function() {
 
 
-$('#example').DataTable( {
+var table = $('#example').DataTable( {
+      
       
        "language": {
                 "url": "datatables.spanish.json"
             }
     } );
+
+
+var tableTools = new $.fn.dataTable.TableTools( table, {
+  
+
+    
+      "aButtons": [
+                    {
+                        "sExtends": "copy",
+                        //"sTitle": "Report Name",
+                        //"sPdfMessage": "Summary Info",
+                       // "sFileName": "<?php print('Actividad No Programada'); ?>.pdf",
+                        //"sPdfOrientation": "landscape",
+                        "oSelectorOpts": {page: 'current'},
+
+                    },
+                   
+                    {
+                        "sExtends": "pdf",
+                        //"sTitle": "Report Name",
+                        //"sPdfMessage": "Summary Info",
+                        "sFileName": "<?php print('Actividad Programada'); ?>.pdf",
+                        "sPdfOrientation": "landscape",
+                        "oSelectorOpts": {page: 'current'},
+
+                    },
+                    "print",
+
+                ]
+      
+    } );
+
+
+$( tableTools.fnContainer() ).insertAfter('div.info');
 
 
 $( "#bibliotecaactive" ).addClass( "active" );
