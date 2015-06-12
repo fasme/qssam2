@@ -391,6 +391,8 @@ $.get("{{url('matriz/cargarMatrizColor')}}",
 });
 
 $( "#matrizactive" ).addClass( "active" );
+$( "#matrizmatrizactive" ).addClass( "active" );
+
 
 $('.chosen-select').chosen(); 
 

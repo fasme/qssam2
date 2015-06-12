@@ -6,7 +6,7 @@
 <div class="row">
 
 
- <h3 class="header smaller lighter">Actividad Programada: 
+ <h3 class="header smaller lighter">Evidencia: 
                 
     </h3>
 
@@ -142,7 +142,8 @@
  $(document).ready(function() {
 
 
-  $( "#personalactive" ).addClass( "active" );
+ $( "#actividadactive" ).addClass( "active" );
+$( "#evidenciaactive" ).addClass( "active" );
 
 /*
 $('#example tfoot th').each( function () {

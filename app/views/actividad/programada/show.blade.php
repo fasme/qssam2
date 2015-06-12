@@ -117,8 +117,8 @@ var tableTools = new $.fn.dataTable.TableTools( table, {
 $( tableTools.fnContainer() ).insertAfter('div.info');
 
 
-$( "#bibliotecaactive" ).addClass( "active" );
-$( "#actividadprogramadaactive" ).addClass( "active" );
+$( "#actividadactive" ).addClass( "active" );
+$( "#programadaactive" ).addClass( "active" );
 
 
 

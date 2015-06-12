@@ -104,7 +104,7 @@
    
 
 
-
+$( "#matrizactive" ).addClass( "active" );
 $( "#matrizactividadactive" ).addClass( "active" );
 
 $(".chosen-select").chosen();

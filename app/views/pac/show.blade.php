@@ -11,8 +11,8 @@
 
 <div class="col-xs-12">
 
-                    <h3 class="header smaller lighter">Matriz Peligro: 
-                    <a href="{{URL::to('matrizPeligro/insert')}}"  class="btn btn-white btn-info btn-bold"> 
+                    <h3 class="header smaller lighter">Plan de Accion: 
+                    <a href="{{URL::to('pac/insert')}}"  class="btn btn-white btn-info btn-bold"> 
     <i class="ace-icon fa fa-floppy-o bigger-120 blue"></i>Agregar</a>
     </h3>
 
@@ -20,6 +20,7 @@
 
                     <div class="clearfix">
                       <div class="pull-right tableTools-container"></div>
+
                     </div>
                     <div class="table-header">
                       Resultados
@@ -27,9 +28,10 @@
         
  
 <table id="example" class="table table-striped table-bordered table-hover">
+<div class="info"></div>
   <thead>
           <tr>
-            <th>Nombre</th>
+            <th>Actividad</th>
           
   <th>Acciones</th>
             
@@ -38,25 +40,25 @@
         <tbody>
 
 
-  @foreach($matrizpeligros as $matrizpeligro)
+  @foreach($pacs as $pac)
            <tr>
 
-             <td> {{ $matrizpeligro->nombre}}</td>
+             <td> {{ $pac->actividad}}</td>
          
 
   <td class="td-actions">
                        
                       
-                          <a class="blue bootbox-mostrar" data-id={{$matrizpeligro->id}}>
+                          <a class="blue bootbox-mostrar" data-id={{$pac->id}}>
                             <i class="fa fa-search-plus bigger-130"></i>
                           </a>
 
 
-                          <a class="green" href= {{ 'matrizPeligro/update/'.$matrizpeligro->id }}>
+                          <a class="green" href= {{ 'pac/update/'.$pac->id }}>
                             <i class="fa fa-pencil bigger-130"></i>
                           </a>
 
-                         <a class="red bootbox-confirm" data-id={{ $matrizpeligro->id }}>
+                         <a class="red bootbox-confirm" data-id={{ $pac->id }}>
                             <i class="fa fa-trash bigger-130"></i>
                           </a>
                       </td>
@@ -68,15 +70,12 @@
   </div>
 
 
-
-<!-- CARGO -->
-
-
   <script type="text/javascript">
  $(document).ready(function() {
 
 
-$('#example').DataTable( {
+var table = $('#example').DataTable( {
+      
       
        "language": {
                 "url": "datatables.spanish.json"
@@ -84,10 +83,42 @@ $('#example').DataTable( {
     } );
 
 
+var tableTools = new $.fn.dataTable.TableTools( table, {
+  
+
+    
+      "aButtons": [
+                    {
+                        "sExtends": "copy",
+                        //"sTitle": "Report Name",
+                        //"sPdfMessage": "Summary Info",
+                       // "sFileName": "<?php print('Actividad No Programada'); ?>.pdf",
+                        //"sPdfOrientation": "landscape",
+                        "oSelectorOpts": {page: 'current'},
+
+                    },
+                   
+                    {
+                        "sExtends": "pdf",
+                        //"sTitle": "Report Name",
+                        //"sPdfMessage": "Summary Info",
+                        "sFileName": "<?php print('Actividad Programada'); ?>.pdf",
+                        "sPdfOrientation": "landscape",
+                        "oSelectorOpts": {page: 'current'},
+
+                    },
+                    "print",
+
+                ]
+      
+    } );
 
 
-$( "#matrizactive" ).addClass( "active" );
-$( "#matrizpeligroactive" ).addClass( "active" );
+$( tableTools.fnContainer() ).insertAfter('div.info');
+
+
+$( "#bibliotecaactive" ).addClass( "active" );
+$( "#pacactive" ).addClass( "active" );
 
 
 
@@ -101,7 +132,7 @@ var tr = $(this).parents('tr');
               
            
              
-             $.get("{{ url('matrizPeligro/eliminar')}}",
+             $.get("{{ url('pac/eliminar')}}",
               { id: id },
 
               function(data,status){ tr.fadeOut(1000); }
@@ -117,7 +148,7 @@ var tr = $(this).parents('tr');
 $(".bootbox-mostrar").on(ace.click_event, function() {
   var id = $(this).data('id');
 
- $.get("{{ url('matrizPeligro/mostrar')}}",
+ $.get("{{ url('pac/mostrar')}}",
               { id: id },
               function(data)
               { 

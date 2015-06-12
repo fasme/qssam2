@@ -124,8 +124,8 @@
    
 $(".chosen-select").chosen();
 
-$( "#actividadprogramadaactive" ).addClass( "active" );
-
+$( "#actividadactive" ).addClass( "active" );
+$( "#programadaactive" ).addClass( "active" );
 
 $('.date-picker').datepicker({
           autoclose: true,

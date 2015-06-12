@@ -146,7 +146,7 @@ $('#example1').DataTable( {
     } );
 
 
-$( "#bibliotecaactive" ).addClass( "active" );
+
 $( "#personalactive" ).addClass( "active" );
 
 

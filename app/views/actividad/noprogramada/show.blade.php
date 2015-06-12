@@ -80,8 +80,8 @@ $('#example').DataTable( {
     } );
 
 
-$( "#bibliotecaactive" ).addClass( "active" );
-$( "#actividadnoprogramadaactive" ).addClass( "active" );
+$( "#actividadactive" ).addClass( "active" );
+$( "#noprogramadaactive" ).addClass( "active" );
 
 
 

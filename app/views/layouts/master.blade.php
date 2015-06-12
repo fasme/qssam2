@@ -308,7 +308,7 @@
 								<b class="arrow"></b>
 							</li>
 
-							<li class="" id="pacactive">
+							<li class="" id="evidenciaactive">
 								<a href="{{URL::to('evidenciaadmin')}}">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Evidencia
@@ -322,38 +322,19 @@
 						</ul>
 					</li>
 
-					<li class="">
-						<a href="#" class="dropdown-toggle">
+					<li class="" id="pacactive">
+						<a href="{{URL::to('pac')}}">
 							<i class="menu-icon fa fa-list"></i>
 							<span class="menu-text"> PAC </span>
 
-							<b class="arrow fa fa-angle-down"></b>
+							
 						</a>
 
 						<b class="arrow"></b>
 
-						<ul class="submenu">
-							<li class="">
-								<a href="tables.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									__
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="jqgrid.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									__
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-						</ul>
 					</li>
 
-					<li class="">
+					<li class="" id="personalactive">
 						<a href="{{URL::to('personal')}}">
 							<i class="menu-icon fa fa-pencil-square-o"></i>
 							<span class="menu-text"> Personal </span>

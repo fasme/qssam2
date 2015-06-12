@@ -222,7 +222,7 @@ $('#example').DataTable( {
 
 
 
-$( "#bibliotecaactive" ).addClass( "active" );
+$( "#matrizactive" ).addClass( "active" );
 $( "#criterioexposicionactive" ).addClass( "active" );
 
 

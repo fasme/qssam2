@@ -82,10 +82,7 @@
   $(document).ready(function(){
    
 
-$('.input-mask-date').mask('99/99/9999');
-$('.input-mask-date2').mask('99/99/9999');
-
-
+$( "#matrizactive" ).addClass( "active" );
 $( "#matrizriesgoactive" ).addClass( "active" );
     
   });   

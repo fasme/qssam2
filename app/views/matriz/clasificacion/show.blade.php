@@ -87,7 +87,7 @@ $('#example').DataTable( {
 
 
 
-$( "#bibliotecaactive" ).addClass( "active" );
+$( "#matrizactive" ).addClass( "active" );
 $( "#clasificacionactive" ).addClass( "active" );
 
 

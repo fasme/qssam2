@@ -260,6 +260,14 @@ Route::get('cargo/update/{id}', 'CargoController@update');
 Route::post('cargo/update/{id}', 'CargoController@update2');
 Route::get('cargo/eliminar', 'CargoController@eliminar');
 
+//PAC
+Route::get('pac', array('uses' => 'PacController@show')); 
+Route::get('pac/insert', array('uses' => 'PacController@insert'));
+Route::post('pac/insert', array('uses' => 'PacController@insert2'));
+Route::get('pac/update/{id}', 'PacController@update');
+Route::post('pac/update/{id}', 'PacController@update2');
+Route::get('pac/eliminar', 'PacController@eliminar');
+
 
 // Manual
 

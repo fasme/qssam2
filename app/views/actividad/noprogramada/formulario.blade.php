@@ -105,7 +105,8 @@
 
 
 
-$( "#actividadnoprogramadaactive" ).addClass( "active" );
+$( "#actividadactive" ).addClass( "active" );
+$( "#noprogramadaactive" ).addClass( "active" );
 
 
 $(".chosen-select").chosen();
