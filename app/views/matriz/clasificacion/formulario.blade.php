@@ -51,12 +51,12 @@
 
              <div class="form-group">
             {{Form::label('', 'Desde',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-            {{Form::text('desde', $clasificacion->desde)}}
+            {{Form::number('desde', $clasificacion->desde)}}
             </div>
 
             <div class="form-group">
             {{Form::label('', 'Hasta',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-            {{Form::text('hasta', $clasificacion->hasta)}}
+            {{Form::number('hasta', $clasificacion->hasta)}}
             </div>
 
             <div class="form-group">

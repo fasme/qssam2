@@ -23,11 +23,14 @@ class PacController extends BaseController {
      public function insert()
     {
         $pac = new Pac; 
-        $categoria = Categoria::lists("nombre","id");
+        $personals = Personal::lists("nombre","id");
+        $personal = Personal::where("id","=",Auth::user()->id)->lists("nombre","id");
         //enviamos un usuario vacio para que cargue el formulario insert
 
         
-        return View::make('pac.formulario')->with("pac",$pac)->with("categoria",$categoria);
+        return View::make('pac.formulario')->with("pac",$pac)
+        ->with("personals",$personals)
+        ->with("personal",$personal);
     }
  
  
@@ -41,6 +44,8 @@ class PacController extends BaseController {
 
         $datos = Input::all(); 
 
+
+
         $random = rand(0,99999);
         
         if ($pac->isValid($datos))
@@ -48,14 +53,6 @@ class PacController extends BaseController {
             // Si la data es valida se la asignamos al usuario
 
 
-            if (Input::hasFile("pac"))
-                {
-                    $adjunto1 = Input::file('pac');
-                    $datos["pac"] = $random."_".$adjunto1->getClientOriginalName();
-                    $adjunto1->move("pacs/biblioteca",$random."_".$adjunto1->getClientOriginalName());
-                    
-                   
-                }
 
 
             $pac->fill($datos);
@@ -65,6 +62,30 @@ class PacController extends BaseController {
       
             
            $pac->save();
+
+
+            $pac = Pac::find($pac->id);
+
+
+           for($i=0; $i<count($datos["selectpac"]); $i++)
+        {
+            $pacactividad = new ActividadPac;
+            $pacactividad->actividad = $datos["actividad"][$i];
+            $pacactividad->personal_id = $datos["selectpac"][$i];
+            $pacactividad->tipoplan = $datos["tipoplan"][$i];
+
+            
+            list($dia,$mes,$ano) = explode("/",$datos['plazo'][$i]);
+            $pacactividad->plazo = "$ano-$mes-$dia";
+
+
+
+            $pac->actividadPac()->save($pacactividad);
+            
+            //echo $datos["selectpac"][$i]." ".$datos["actividad"][$i]."<br>";
+        }
+
+
 
             return Redirect::to('pac')->with("mensaje","Datos Ingresados correctamente");
         }
@@ -89,11 +110,13 @@ return Redirect::to('pac/insert')->withInput()->withErrors($pac->errors);
       
  
            $pac = Pac::find($id);
-           $categoria = Categoria::lists("nombre","id");
+           $personals = Personal::lists("nombre","id");
+            $personal = Personal::where("id","=",Auth::user()->id)->lists("nombre","id");
    
         return View::make('pac.formulario')
         ->with("pac", $pac)
-        ->with("categoria",$categoria);
+        ->with("personals",$personals)
+        ->with("personal",$personal);
  
                 
  
@@ -117,14 +140,24 @@ return Redirect::to('pac/insert')->withInput()->withErrors($pac->errors);
             // Si la data es valida se la asignamos al usuario
 
 
-            if (Input::hasFile("pac"))
-                {
-                    $adjunto1 = Input::file('pac');
-                    $datos["pac"] = $random."_".$adjunto1->getClientOriginalName();
-                    $adjunto1->move("pacs/biblioteca",$random."_".$adjunto1->getClientOriginalName());
-                    
-                   
-                }
+            $pac->actividadPac()->delete();
+           for($i=0; $i<count($datos["selectpac"]); $i++)
+        {
+            $pacactividad = new ActividadPac;
+            $pacactividad->actividad = $datos["actividad"][$i];
+            $pacactividad->personal_id = $datos["selectpac"][$i];
+            $pacactividad->tipoplan = $datos["tipoplan"][$i];
+
+            
+            list($dia,$mes,$ano) = explode("/",$datos['plazo'][$i]);
+            $pacactividad->plazo = "$ano-$mes-$dia";
+
+
+
+            $pac->actividadPac()->save($pacactividad);
+            
+            //echo $datos["selectpac"][$i]." ".$datos["actividad"][$i]."<br>";
+        }
 
 
             $pac->fill($datos);

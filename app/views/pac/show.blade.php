@@ -43,7 +43,7 @@
   @foreach($pacs as $pac)
            <tr>
 
-             <td> {{ $pac->actividad}}</td>
+             <td> {{ $pac->faena}}</td>
          
 
   <td class="td-actions">

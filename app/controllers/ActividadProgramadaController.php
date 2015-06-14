@@ -66,7 +66,7 @@ class ActividadProgramadaController extends BaseController {
            for($i=0;$i<count($datos["personal_id"]);$i++)
            {
             
-            $actividadprogramada->muchaspersonal()->attach($datos["personal_id"][$i]);
+            $actividadprogramada->muchaspersonal()->attach($datos["personal_id"][$i],array("estado"=>"Abierta","tipoactividad"=>"noprogramada"));
            }
 
 

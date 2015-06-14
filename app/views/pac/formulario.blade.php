@@ -46,6 +46,14 @@
 
 {{ Form::open($form_data) }}
        
+  
+
+   <div class="form-group">
+            {{Form::label('', 'Quien Ingresa Reporte',array("class"=>"col-sm-3 control-label no-padding-right"))}}
+            {{Form::select('personal_id', $personal, $pac->personal_id)}}
+            </div>
+
+
 
              <div class="form-group">
             {{Form::label('', 'Faena',array("class"=>"col-sm-3 control-label no-padding-right"))}}
@@ -56,19 +64,19 @@
             <div class="col-xs-4">
                 <div class="form-group">
                 {{Form::label('', 'OHSAS 18001',array("class"=>"col-sm-4 control-label no-padding-right"))}}
-                {{Form::checkbox('faena', $pac->faena)}}
+                {{Form::checkbox('ohsas','1', $pac->ohsas)}}
                 </div>
             </div>
             <div class="col-xs-4">
                  <div class="form-group">
                 {{Form::label('', 'ISO 9001',array("class"=>"col-sm-4 control-label no-padding-right"))}}
-                {{Form::checkbox('faena', $pac->faena)}}
+                {{Form::checkbox('iso9','1', $pac->iso9)}}
                 </div>
             </div>
              <div class="col-xs-4">
                  <div class="form-group">
                 {{Form::label('', 'ISO 14001',array("class"=>"col-sm-4 control-label no-padding-right"))}}
-                {{Form::checkbox('faena', $pac->faena)}}
+                {{Form::checkbox('iso1','1', $pac->iso1)}}
                 </div>
             </div>
             </div>
@@ -79,19 +87,19 @@
              <div class="col-xs-4">
                 <div class="form-group">
                 {{Form::label('', 'Aud. Interna',array("class"=>"col-sm-4 control-label no-padding-right"))}}
-                {{Form::checkbox('faena', $pac->faena)}}
+                {{Form::checkbox('audinterna','1', $pac->audinterna)}}
                 </div>
             </div>
             <div class="col-xs-4">
                  <div class="form-group">
                 {{Form::label('', 'Aud. Externa',array("class"=>"col-sm-4 control-label no-padding-right"))}}
-                {{Form::checkbox('faena', $pac->faena)}}
+                {{Form::checkbox('audexterna','1', $pac->audexterna)}}
                 </div>
             </div>
              <div class="col-xs-4">
                  <div class="form-group">
                 {{Form::label('', 'Rev. Gerencial ',array("class"=>"col-sm-4 control-label no-padding-right"))}}
-                {{Form::checkbox('faena', $pac->faena)}}
+                {{Form::checkbox('revgerencial','1', $pac->revgerencial)}}
                 </div>
             </div>
 </div>
@@ -102,19 +110,19 @@
              <div class="col-xs-4">
                 <div class="form-group">
                 {{Form::label('', 'Recl. Cliente',array("class"=>"col-sm-4 control-label no-padding-right"))}}
-                {{Form::checkbox('faena', $pac->faena)}}
+                {{Form::checkbox('reccliente','1', $pac->reccliente)}}
                 </div>
             </div>
             <div class="col-xs-4">
                  <div class="form-group">
                 {{Form::label('', 'Inspecciones',array("class"=>"col-sm-4 control-label no-padding-right"))}}
-                {{Form::checkbox('faena', $pac->faena)}}
+                {{Form::checkbox('inspecciones','1', $pac->inspecciones)}}
                 </div>
             </div>
              <div class="col-xs-4">
                  <div class="form-group">
                 {{Form::label('', 'Legal',array("class"=>"col-sm-4 control-label no-padding-right"))}}
-                {{Form::checkbox('faena', $pac->faena)}}
+                {{Form::checkbox('legal','1', $pac->legal)}}
                 </div>
             </div>
 </div>
@@ -124,19 +132,19 @@
              <div class="col-xs-4">
                 <div class="form-group">
                 {{Form::label('', 'NC',array("class"=>"col-sm-4 control-label no-padding-right"))}}
-                {{Form::checkbox('faena', $pac->faena)}}
+                {{Form::checkbox('nc', '1', $pac->nc)}}
                 </div>
             </div>
             <div class="col-xs-4">
                  <div class="form-group">
                 {{Form::label('', 'OBS',array("class"=>"col-sm-4 control-label no-padding-right"))}}
-                {{Form::checkbox('faena', $pac->faena)}}
+                {{Form::checkbox('obs', '1',$pac->obs)}}
                 </div>
             </div>
              <div class="col-xs-4">
                  <div class="form-group">
                 {{Form::label('', 'OM',array("class"=>"col-sm-4 control-label no-padding-right"))}}
-                {{Form::checkbox('faena', $pac->faena)}}
+                {{Form::checkbox('om', '1', $pac->om)}}
                 </div>
             </div>
 </div>
@@ -146,34 +154,51 @@
 <div class="col-xs-12">
     <div class="form-group">
     {{Form::label('', 'NO CONFORMIDAD N°1: IDENTIFICACIÓN DE PELIGROS Y ASPECTOS',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-    {{Form::textarea('faena', $pac->faena,['size' => '60x2'])}}
+    {{Form::textarea('identificacion', $pac->identificacion,['size' => '60x2'])}}
     </div>
 
     <div class="form-group">
     {{Form::label('', 'Por que ?',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-    {{Form::textarea('faena', $pac->faena,['size' => '60x2'])}}
+    {{Form::textarea('porque1', $pac->porque1,['size' => '60x2'])}}
     </div>
 
     <div class="form-group">
     {{Form::label('', 'Por que ?',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-    {{Form::textarea('faena', $pac->faena,['size' => '60x2'])}}
+    {{Form::textarea('porque2', $pac->porque2,['size' => '60x2'])}}
     </div>
 
     <div class="form-group">
     {{Form::label('', 'Por que ?',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-    {{Form::textarea('faena', $pac->faena,['size' => '60x2'])}}
+    {{Form::textarea('porque3', $pac->porque3,['size' => '60x2'])}}
     </div>
 
     <div class="form-group">
     {{Form::label('', 'Por que ?',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-    {{Form::textarea('faena', $pac->faena,['size' => '60x2'])}}
+    {{Form::textarea('porque4', $pac->porque4,['size' => '60x2'])}}
     </div>
 
     <div class="form-group">
     {{Form::label('', 'Por que ?',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-    {{Form::textarea('faena', $pac->faena,['size' => '60x2'])}}
+    {{Form::textarea('porque5', $pac->porque5,['size' => '60x2'])}}
     </div>
 </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+  @foreach($pac->actividadPac as $actividadpac)
+
+  <div>{{Form::select("selectpac[]",$personals,$actividadpac->personal_id)}}{{Form::text("actividad[]", $actividadpac->actividad)}}{{Form::text("plazo[]", date_format(date_create($actividadpac->plazo), 'd/m/Y'), array("id"=>"plazo", "class"=>"date-picker",  "data-date-format"=>"dd/mm/yyyy"))}}{{Form::select("tipoplan[]",array("1"=>"Plan de accion inmediato","2"=>"Plan de accion Correctivo","3"=>"Plan de accion preventivo"), $actividadpac->tipoplan)}}<a href="#" class="eliminar">&times;</a></div>
+
+  @endforeach
+            <a id="agregarCampo" class="btn btn-info" href="#">Agregar PAC inmediato</a>
+        <div id="contenedor">
+           
+
+        
+
+</div>
+  </div>
 </div>
           
 
@@ -207,20 +232,55 @@
 
 
 
-$( "#actividadactive" ).addClass( "active" );
-$( "#noprogramadaactive" ).addClass( "active" );
+$( "#pacactive" ).addClass( "active" );
 
 
 $(".chosen-select").chosen();
 
-$('.date-picker').datepicker({
+
+
+
+
+
+
+
+var MaxInputs       = 8; //Número Maximo de Campos
+    var contenedor       = $("#contenedor"); //ID del contenedor
+    var AddButton       = $("#agregarCampo"); //ID del Botón Agregar
+
+    //var x = número de campos existentes en el contenedor
+    var x = $("#contenedor div").length + 1;
+    var FieldCount = x-1; //para el seguimiento de los campos
+
+    $(AddButton).click(function (e) {
+        if(x <= MaxInputs) //max input box allowed
+        {
+            FieldCount++;
+            //agregar campo
+
+            $(contenedor).after('<div>{{Form::select("selectpac[]",$personals)}}{{Form::text("actividad[]")}}{{Form::text("plazo[]", "", array("id"=>"plazo", "class"=>"date-picker",  "data-date-format"=>"dd/mm/yyyy"))}}{{Form::select("tipoplan[]",array("1"=>"Plan de accion inmediato","2"=>"Plan de accion Correctivo","3"=>"Plan de accion preventivo"))}}<a href="#" class="eliminar">&times;</a></div>');
+            x++; //text box increment
+           
+
+            $('.date-picker').datepicker({
           autoclose: true,
           todayHighlight: true
-        })
-        //show datepicker when clicking on the icon
-        .next().on(ace.click_event, function(){
-          $(this).prev().focus();
         });
+
+            //$("#plazo").addClass("date-picker");
+
+        }
+        return false;
+    });
+
+    $("body").on("click",".eliminar", function(e){ //click en eliminar campo
+        if( x > 1 ) {
+            $(this).parent('div').remove(); //eliminar el campo
+            x--;
+        }
+        return false;
+    });
+
 
 
     

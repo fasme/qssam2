@@ -6,7 +6,7 @@
 <div class="row">
 
 
- <h3 class="header smaller lighter">Evidencia: 
+ <h3 class="header smaller lighter">Evidencia (Actividad Programada): 
                 
     </h3>
 
