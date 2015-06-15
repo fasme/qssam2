@@ -32,6 +32,18 @@ class EvidenciaController extends BaseController {
         return Redirect::to(url(URL::previous()));
     }
 
+    public function cerraractividad(){
+
+       
+
+        $id = Input::get("id");
+        $actividadrespoonsable = DB::table('actividad_responsable')
+            ->Where("id","=",$id)->update(array("estado"=>"Cerrada"));
+
+        //return $id;
+        
+    }
+
 
 
 

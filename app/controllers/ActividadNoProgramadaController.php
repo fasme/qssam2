@@ -65,7 +65,7 @@ class ActividadNoProgramadaController extends BaseController {
            for($i=0;$i<count($datos["personal_id"]);$i++)
            {
             
-            $actividadnoprogramada->muchaspersonal()->attach($datos["personal_id"][$i],array("estado"=>"Abierta","tipoactividad"=>"noprogramada"));
+            $actividadnoprogramada->muchaspersonal()->attach($datos["personal_id"][$i],array("personal_admin_id"=>Auth::user()->id, "estado"=>"Abierta","tipoactividad"=>"noprogramada"));
             
 
             $alerta = new Alertas;

@@ -115,7 +115,7 @@
 							<ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
 								<li class="dropdown-header">
 									<i class="ace-icon fa fa-exclamation-triangle"></i>
-									Notificationes
+									Notificaciones
 								</li>
 
 								<li class="dropdown-content">
@@ -213,7 +213,7 @@
 
 					<li class="" id="bibliotecaactive">
 						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-desktop"></i>
+							<i class="menu-icon fa fa-book"></i>
 							<span class="menu-text">
 								Biblioteca
 							</span>
@@ -334,9 +334,21 @@
 
 					</li>
 
+					<li class="" id="kpiactive">
+						<a href="{{URL::to('kpi')}}">
+							<i class="menu-icon fa fa-list"></i>
+							<span class="menu-text"> KPI </span>
+
+							
+						</a>
+
+						<b class="arrow"></b>
+
+					</li>
+
 					<li class="" id="personalactive">
 						<a href="{{URL::to('personal')}}">
-							<i class="menu-icon fa fa-pencil-square-o"></i>
+							<i class="menu-icon fa fa-users"></i>
 							<span class="menu-text"> Personal </span>
 
 							

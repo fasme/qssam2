@@ -91,7 +91,7 @@ class MatrizController extends BaseController {
            
            
           
-            //return Redirect::to('matriz')->with("mensaje","Datos Ingresados correctamente");
+            return Redirect::to('matriz')->with("mensaje","Datos Ingresados correctamente");
         }
         else
         {

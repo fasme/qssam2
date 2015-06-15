@@ -234,6 +234,8 @@ Route::get('actividadpac', array('uses' => 'ActividadPacController@show'));
 //Evidencia
 Route::get('evidenciaadmin', array('uses' => 'EvidenciaController@show')); 
 Route::get('evidenciaadmin/eliminar', array('uses' => 'EvidenciaController@eliminar')); 
+Route::get('evidenciaadmin/cerraractividad', array('uses' => 'EvidenciaController@cerraractividad')); 
+
 
 //clasificacion
 Route::get('clasificacion', array('uses' => 'ClasificacionController@show')); 
@@ -267,6 +269,15 @@ Route::post('pac/insert', array('uses' => 'PacController@insert2'));
 Route::get('pac/update/{id}', 'PacController@update');
 Route::post('pac/update/{id}', 'PacController@update2');
 Route::get('pac/eliminar', 'PacController@eliminar');
+
+
+//PAC
+Route::get('kpi', array('uses' => 'KpiController@show')); 
+Route::get('kpi/insert', array('uses' => 'KpiController@insert'));
+Route::post('kpi/insert', array('uses' => 'KpiController@insert2'));
+Route::get('kpi/update/{id}', 'KpiController@update');
+Route::post('kpi/update/{id}', 'KpiController@update2');
+Route::get('kpi/eliminar', 'KpiController@eliminar');
 
 
 // Manual

@@ -48,7 +48,7 @@
 
                         
                          @foreach($personals as $personal)
-                             @foreach($personal->actividadesProgramadas as $actividad)
+                             @foreach($personal->actividadesProgramadas()->Where("personal_admin_id","=",Auth::user()->id)->get() as $actividad)
 
                          
                             
@@ -88,7 +88,10 @@
                            <a href="archivos/evidencia/{{ $actividad->pivot->adjunto3}}">{{$actividad->pivot->adjunto3}}</a><br>
                            <a href="archivos/evidencia/{{ $actividad->pivot->adjunto4}}">{{$actividad->pivot->adjunto4}}</a><br>
                            <a href="archivos/evidencia/{{ $actividad->pivot->adjunto5}}">{{$actividad->pivot->adjunto5}}</a><br>
-
+                           
+                                     @if($actividad->pivot->estado != "Cerrada")
+                                      <a href='#' data-id="{{$actividad->pivot->id}}" class="bootbox-confirm"><button class="btn btn-success">Cerrar actividad</button></a>
+                                    @endif
                               @endif
                               </td>
                             </tr>
@@ -187,6 +190,32 @@ var oTable2 =
                 "url": "js/spanish.datatables.json"
             }
         });
+
+
+
+
+
+$(".bootbox-confirm").on(ace.click_event, function() {
+  var id = $(this).data('id');
+var tr = $(this).parents('tr'); 
+
+          bootbox.confirm("Deseas cerrar la actividad "+id, function(result) {
+            if(result) { // si se seleccion OK
+              
+           
+             
+             $.get("{{ url('evidenciaadmin/cerraractividad')}}",
+              { id: id },
+
+              function(data,status){ alert(data);}
+).fail(function(data){bootbox.alert("No se puede eliminar un registro padre: una restricción de clave externa falla");});
+
+     
+            }
+           
+          });
+        });
+
 
 
 
