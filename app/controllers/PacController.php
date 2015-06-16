@@ -81,6 +81,10 @@ class PacController extends BaseController {
 
 
             $pac->actividadPac()->save($pacactividad);
+
+            $pacactividad = ActividadPac::find($pacactividad->id);
+            $pacactividad->muchaspersonal()->attach($datos["selectpac"][$i],array("personal_admin_id"=>Auth::user()->id, "estado"=>"Abierta","tipoactividad"=>"pac"));
+
             
             //echo $datos["selectpac"][$i]." ".$datos["actividad"][$i]."<br>";
         }

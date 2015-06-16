@@ -73,6 +73,7 @@
   <script type="text/javascript">
  $(document).ready(function() {
 
+$( "#pacactive" ).addClass( "active" );
 
 var table = $('#example').DataTable( {
       
@@ -117,8 +118,8 @@ var tableTools = new $.fn.dataTable.TableTools( table, {
 $( tableTools.fnContainer() ).insertAfter('div.info');
 
 
-$( "#bibliotecaactive" ).addClass( "active" );
-$( "#pacactive" ).addClass( "active" );
+
+
 
 
 
