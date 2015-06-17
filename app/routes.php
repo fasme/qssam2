@@ -47,6 +47,7 @@ Route::group(array("before"=>"permisoAdmin"), function()
 
 
 Route::get('/', array('uses' => 'DashboardController@show'));
+}); // FIN FILTER ADMIN PERMISO
 
 // USUARIOS
 Route::get('usuarios', array('uses' => 'UsuariosController@show')); 
@@ -287,7 +288,7 @@ Route::get('manual', function(){
 });
 
 
-}); // FIN FILTER ADMIN PERMISO
+
 
 
 

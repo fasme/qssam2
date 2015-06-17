@@ -51,6 +51,30 @@ class KpiController extends BaseController {
          
            $kpi->save();
 
+           $kpi = Kpi::find($kpi->id);
+
+           for($i=0; $i<count($datos["selectpac"]); $i++)
+        {
+            $kpiactividad = new ActividadKpi;
+            $kpiactividad->actividad = $datos["actividad"][$i];
+            $kpiactividad->personal_id = $datos["selectpac"][$i];
+           
+
+            
+            list($dia,$mes,$ano) = explode("/",$datos['plazo'][$i]);
+            $kpiactividad->plazo = "$ano-$mes-$dia";
+
+
+
+            $kpi->actividadKpi()->save($kpiactividad);
+
+            $kpiactividad = ActividadKpi::find($kpiactividad->id);
+            $kpiactividad->muchaspersonal()->attach($datos["selectpac"][$i],array("personal_admin_id"=>Auth::user()->id, "estado"=>"Abierta","tipoactividad"=>"kpi"));
+
+            
+            //echo $datos["selectpac"][$i]." ".$datos["actividad"][$i]."<br>";
+        }
+
          
            
           

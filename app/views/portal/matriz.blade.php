@@ -67,7 +67,7 @@
  $(document).ready(function() {
 
 
-  $( "#actividadactive" ).addClass( "active" );
+  $( "#matrizactive" ).addClass( "active" );
 
 var oTable1 = 
         $('#example')

@@ -6,7 +6,10 @@ class Kpi extends Eloquent { //Todos los modelos deben extender la clase Eloquen
 
 
 
-
+public function actividadKpi()
+{
+    return $this->hasMany("ActividadKpi");
+}
 
 public $errors;
     

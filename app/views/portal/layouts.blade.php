@@ -23,10 +23,11 @@
     <script src="portal1/js/bootstrap.min.js"></script>
     <script src="portal1/js/jquery.prettyPhoto.js"></script>
     <script src="portal1/js/jquery.isotope.min.js"></script>
-    <script src="portal1/js/main.js"></script>
+    
     <script src="portal1/js/wow.min.js"></script>
   {{HTML::script('js/jquery.dataTables.min.js')}}
 {{HTML::script('js/jquery.dataTables.bootstrap.min.js')}}
+<script src="portal1/js/main.js"></script>
 
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
@@ -58,10 +59,10 @@
 				
                 <div class="collapse navbar-collapse navbar-right">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="{{URL::to('portal')}}">Home</a></li>
-                        <li><a href="{{URL::to('misactividades')}}">Mis Actividades</a></li>
-                        <li><a href="{{URL::to('matrizportal')}}">Matriz</a></li>
-                        <li><a href="{{URL::to('bibliotecaportal')}}">Biblioteca</a></li>
+                        <li id="homeactive"><a href="{{URL::to('portal')}}">Home</a></li>
+                        <li id="actividadactive"><a href="{{URL::to('misactividades')}}">Mis Actividades</a></li>
+                        <li id="matrizactive"><a href="{{URL::to('matrizportal')}}">Matriz</a></li>
+                        <li id="biblioactive"><a href="{{URL::to('bibliotecaportal')}}">Biblioteca</a></li>
                         <!--<li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">

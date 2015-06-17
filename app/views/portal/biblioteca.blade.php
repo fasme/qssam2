@@ -126,7 +126,7 @@ $archivos = Archivo::all();
  $(document).ready(function() {
 
 
-  $( "#actividadactive" ).addClass( "active" );
+  $( "#biblioactive" ).addClass( "active" );
 
 var oTable1 = 
         $('#example')

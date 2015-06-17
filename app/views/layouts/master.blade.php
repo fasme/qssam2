@@ -442,13 +442,41 @@
 						<a href="{{URL::to('noticia')}}">
 							<i class="menu-icon fa fa-pencil-square-o"></i>
 							<span class="menu-text"> Noticia </span>
+						</a>
+					</li>
 
-							
+					<li class="" id="noticiaactive">
+						<a href="#" class="dropdown-toggle">
+							<i class="menu-icon fa fa-truck"></i>
+							<span class="menu-text"> Mantención </span>
+							<b class="arrow fa fa-angle-down"></b>
 						</a>
 
-						
 
-						
+						<ul class="submenu">
+							<li class="" id="categoriaactive">
+								<a href="{{URL::to('categoria')}}" >
+									<i class="menu-icon fa fa-caret-right"></i>
+
+									Vehiculo
+									
+								</a>
+
+								<b class="arrow"></b>
+
+								
+							</li>
+
+							<li class="" id="archivoactive">
+								<a href="{{URL::to('archivo')}}">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Mantencion
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+						</ul>
+
 					</li>
 
 					
