@@ -80,7 +80,6 @@ $('#example').DataTable( {
     } );
 
 
-$( "#bibliotecaactive" ).addClass( "active" );
 $( "#noticiaactive" ).addClass( "active" );
 
 

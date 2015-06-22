@@ -83,7 +83,7 @@
                         <li class="dropdown">
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <i class="ace-icon fa fa-bell icon-animated-bell"></i>
-                                <span class="">{{Alertas::where("personal_id_admin","=",Auth::user()->id)->get()->count()}}</span>
+                                <span class="">{{Alertas::where("personal_id","=",Auth::user()->id)->get()->count()}}</span>
                             </a>
 
                             <ul class="dropdown-menu">
@@ -92,7 +92,7 @@
                                 <li class="">
                                     <ul>
                                         
-                                        @foreach(Alertas::where("personal_id_admin","=",Auth::user()->id)->get() as $alerta)
+                                        @foreach(Alertas::where("personal_id","=",Auth::user()->id)->get() as $alerta)
                                         <li>
                                             <a href="#">
                                                 <i class="btn btn-xs btn-primary fa fa-user"></i>

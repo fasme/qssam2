@@ -83,11 +83,11 @@ $actividadresponsable = DB::table('actividad_responsable')->Where("personal_id",
                             $interval = $datetime1->diff($datetime2);
                             if($interval->format("%R") == "+")
                             {
-                              $dif = "<font color='red'>(". $interval->format('%R%a')." Dias)</font>";
+                              $dif = "<font color='red'>(". $interval->format('Pasado %a')." Dias)</font>";
                             }
                             else
                             {
-                              $dif = "<font color='green'>(". $interval->format('%R%a')." Dias)</font>";
+                              $dif = "<font color='green'>(". $interval->format('Faltan %a')." Dias)</font>";
                             }
 
                             ?>
@@ -108,11 +108,11 @@ $actividadresponsable = DB::table('actividad_responsable')->Where("personal_id",
                               </div>
                               @else
 
-                              <a href="evidencia/{{ $actividad->adjunto1}}">{{$actividad->adjunto1}}</a><br>
-                           <a href="evidencia/{{ $actividad->adjunto2}}">{{$actividad->adjunto2}}</a><br>
-                           <a href="evidencia/{{ $actividad->adjunto3}}">{{$actividad->adjunto3}}</a><br>
-                           <a href="evidencia/{{ $actividad->adjunto4}}">{{$actividad->adjunto4}}</a><br>
-                           <a href="evidencia/{{ $actividad->adjunto5}}">{{$actividad->adjunto5}}</a><br>
+                              <a href="archivos/evidencia/{{ $actividad->adjunto1}}">{{$actividad->adjunto1}}</a><br>
+                           <a href="archivos/evidencia/{{ $actividad->adjunto2}}">{{$actividad->adjunto2}}</a><br>
+                           <a href="archivos/evidencia/{{ $actividad->adjunto3}}">{{$actividad->adjunto3}}</a><br>
+                           <a href="archivos/evidencia/{{ $actividad->adjunto4}}">{{$actividad->adjunto4}}</a><br>
+                           <a href="archivos/evidencia/{{ $actividad->adjunto5}}">{{$actividad->adjunto5}}</a><br>
 
                               @endif
                               </td>

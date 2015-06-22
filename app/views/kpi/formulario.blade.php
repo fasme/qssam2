@@ -62,7 +62,11 @@
   <div class="col-xs-12">
  
 
- 
+ @foreach($kpi->actividadKpi as $actividadkpi)
+
+  <div>{{Form::select("selectpac[]",$personals,$actividadkpi->personal_id)}}{{Form::text("actividad[]", $actividadkpi->actividad)}}{{Form::text("frecuencia[]", date_format(date_create($actividadkpi->frecuencia), 'd/m/Y'), array("id"=>"plazo", "class"=>"date-picker",  "data-date-format"=>"dd/mm/yyyy"))}}<a href="#" class="eliminar">&times;</a></div>
+
+  @endforeach
 
             <a id="agregarCampo" class="btn btn-info" href="#">Agregar Objetivo</a>
         <div id="contenedor">
