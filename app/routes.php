@@ -272,13 +272,32 @@ Route::post('pac/update/{id}', 'PacController@update2');
 Route::get('pac/eliminar', 'PacController@eliminar');
 
 
-//PAC
+//KPI
 Route::get('kpi', array('uses' => 'KpiController@show')); 
 Route::get('kpi/insert', array('uses' => 'KpiController@insert'));
 Route::post('kpi/insert', array('uses' => 'KpiController@insert2'));
 Route::get('kpi/update/{id}', 'KpiController@update');
 Route::post('kpi/update/{id}', 'KpiController@update2');
 Route::get('kpi/eliminar', 'KpiController@eliminar');
+
+
+//VEHICULO
+Route::get('vehiculo', array('uses' => 'VehiculoController@show')); 
+Route::get('vehiculo/insert', array('uses' => 'VehiculoController@insert'));
+Route::post('vehiculo/insert', array('uses' => 'VehiculoController@insert2'));
+Route::get('vehiculo/update/{id}', 'VehiculoController@update');
+Route::post('vehiculo/update/{id}', 'VehiculoController@update2');
+Route::get('vehiculo/eliminar', 'VehiculoController@eliminar');
+
+
+//VEHICULO
+Route::get('mantencion', array('uses' => 'MantencionController@show')); 
+Route::get('mantencion/insert/{idvehiculo}', array('uses' => 'MantencionController@insert'));
+Route::post('mantencion/insert', array('uses' => 'MantencionController@insert2'));
+Route::get('mantencion/update/{id}', 'MantencionController@update');
+Route::post('mantencion/update/{id}', 'MantencionController@update2');
+Route::get('mantencion/eliminar', 'MantencionController@eliminar');
+
 
 
 // Manual

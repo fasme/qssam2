@@ -27,8 +27,10 @@
         
  
 <table id="example" class="table table-striped table-bordered table-hover">
+<div class="info"></div>
   <thead>
           <tr>
+          <th>Categoria</th>
             <th>Nombre</th>
           
   <th>Acciones</th>
@@ -40,7 +42,7 @@
 
   @foreach($archivos as $archivo)
            <tr>
-
+           <td>{{$archivo->categoria->nombre}}</td>
              <td> {{ $archivo->nombre}}</td>
          
 
@@ -72,13 +74,46 @@
  $(document).ready(function() {
 
 
-$('#example').DataTable( {
+var table = $('#example').DataTable( {
       
        "language": {
                 "url": "datatables.spanish.json"
             }
     } );
 
+
+var tableTools = new $.fn.dataTable.TableTools( table, {
+  
+
+    
+      "aButtons": [
+                    {
+                        "sExtends": "copy",
+                        //"sTitle": "Report Name",
+                        //"sPdfMessage": "Summary Info",
+                       // "sFileName": "<?php print('Actividad No Programada'); ?>.pdf",
+                        //"sPdfOrientation": "landscape",
+                        "oSelectorOpts": {page: 'current'},
+
+                    },
+                   
+                    {
+                        "sExtends": "pdf",
+                        //"sTitle": "Report Name",
+                        //"sPdfMessage": "Summary Info",
+                        "sFileName": "<?php print('Actividad Programada'); ?>.pdf",
+                        "sPdfOrientation": "landscape",
+                        "oSelectorOpts": {page: 'current'},
+
+                    },
+                    "print",
+
+                ]
+      
+    } );
+
+
+$( tableTools.fnContainer() ).insertAfter('div.info');
 
 $( "#bibliotecaactive" ).addClass( "active" );
 $( "#archivoactive" ).addClass( "active" );

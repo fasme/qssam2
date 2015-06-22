@@ -61,8 +61,8 @@ class KpiController extends BaseController {
            
 
             
-            list($dia,$mes,$ano) = explode("/",$datos['plazo'][$i]);
-            $kpiactividad->plazo = "$ano-$mes-$dia";
+            list($dia,$mes,$ano) = explode("/",$datos['frecuencia'][$i]);
+            $kpiactividad->frecuencia = "$ano-$mes-$dia";
 
 
 

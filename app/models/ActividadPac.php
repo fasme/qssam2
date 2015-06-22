@@ -1,7 +1,7 @@
 <?php
 class ActividadPac extends Eloquent { //Todos los modelos deben extender la clase Eloquent
     protected $table = 'actividad_pac';
-    protected $fillable = array('actividad','plazo','personal_id','tipoplan');
+    protected $fillable = array('actividad','frecuencia','personal_id','tipoplan');
 
 
     public function muchaspersonal()

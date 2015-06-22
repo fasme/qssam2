@@ -14,6 +14,7 @@
     <link href="portal1/css/prettyPhoto.css" rel="stylesheet">
     <link href="portal1/css/main.css" rel="stylesheet">
     <link href="portal1/css/responsive.css" rel="stylesheet">
+    {{HTML::style('css/tabletools.css')}}
 
 
 
@@ -25,8 +26,10 @@
     <script src="portal1/js/jquery.isotope.min.js"></script>
     
     <script src="portal1/js/wow.min.js"></script>
+
   {{HTML::script('js/jquery.dataTables.min.js')}}
 {{HTML::script('js/jquery.dataTables.bootstrap.min.js')}}
+{{HTML::script('js/dataTables.tableTools.min.js')}}
 <script src="portal1/js/main.js"></script>
 
     <!--[if lt IE 9]>

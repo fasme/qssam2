@@ -42,6 +42,7 @@
   <thead>
           <tr>
             <th>Proceso</th>
+            <th>Actividad</th>
           
   <th>Acciones</th>
             
@@ -54,6 +55,11 @@
            <tr  id="{{$matriz->id}}">
 
              <td> {{ $matriz->proceso}}</td>
+             <td>
+             @foreach($matriz->muchasactividad as $actividad)
+                            {{$actividad->nombre." / "}}
+                            @endforeach
+                            </td>
          
 
   <td class="td-actions">

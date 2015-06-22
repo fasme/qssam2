@@ -127,7 +127,7 @@ var MaxInputs       = 8; //Número Maximo de Campos
             FieldCount++;
             //agregar campo
 
-            $(contenedor).after('<div>{{Form::select("selectpac[]",$personals)}}{{Form::text("actividad[]","",array("placeholder"=>"Actividad"))}}{{Form::text("plazo[]", "", array("id"=>"plazo", "class"=>"date-picker",  "data-date-format"=>"dd/mm/yyyy"))}}<a href="#" class="eliminar">&times;</a></div>');
+            $(contenedor).after('<div>{{Form::select("selectpac[]",$personals)}}{{Form::text("actividad[]","",array("placeholder"=>"Actividad"))}}{{Form::text("frecuencia[]", "", array("id"=>"plazo", "class"=>"date-picker",  "data-date-format"=>"dd/mm/yyyy"))}}<a href="#" class="eliminar">&times;</a></div>');
             x++; //text box increment
            
 

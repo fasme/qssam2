@@ -20,12 +20,15 @@ $archivos = Archivo::all();
 
 
  <table id="example" class="table table-striped table-bordered table-hover">
-
+<div class="info"></div>
                         <thead>
                           <tr>
                             
                             <th>Nombre Documento</th>
                             <th>Categoria</th>
+                            <th>Codigo</th>
+                            <th>Version</th>
+                            <th>Tiempo Vigencia</th>
                           
                              <th>Estado</th>
                             
@@ -45,9 +48,12 @@ $archivos = Archivo::all();
 
                             <td>{{ $archivo->nombre}}</td>
                             <td>{{$archivo->categoria->nombre}}</td>
+                            <td>{{$archivo->codigo}}</td>
+                            <td>{{$archivo->version}}</td>
+                            <td>{{$archivo->tiempo}}</td>
                             
                             <td>
-                            <a data-toggle="modal" class="botoncito" data-urlarchivo="https://docs.google.com/viewer?url=http://190.47.105.44/qssam2/public/archivos/biblioteca/{{$archivo->archivo}}&embedded=true"  href="#" >
+                            <a data-toggle="modal" class="botoncito" data-urlarchivo="https://docs.google.com/viewer?url=http://190.47.105.44/avach/public/archivos/biblioteca/{{$archivo->archivo}}&embedded=true"  href="#" >
                                   <span class="label label-success arrowed">Vista Previa</span>
                                 </a>
 
@@ -128,7 +134,7 @@ $archivos = Archivo::all();
 
   $( "#biblioactive" ).addClass( "active" );
 
-var oTable1 = 
+var table = 
         $('#example')
         //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
         .dataTable( {
@@ -136,6 +142,53 @@ var oTable1 =
                 "url": "js/spanish.datatables.json"
             }
         });
+
+
+
+        var tableTools = new $.fn.dataTable.TableTools( table, {
+  
+  "fnRowSelected": function(nodes) {
+      var a = nodes[0].id;
+      $("#selectmatrices").append("<option value="+a+" selected>"+a+"</option>");
+      /*
+        if (myDeselectList) {
+            var nodeList = myDeselectList;
+            myDeselectList = null;
+            this.fnDeselect(nodeList);
+        }
+        */
+    },
+    "fnRowDeselected": function(nodes){
+      var a = nodes[0].id;
+      $("#selectmatrices option[value="+a+"]").remove();
+
+    },
+      "aButtons": [
+                    {
+                        "sExtends": "copy",
+                        //"sTitle": "Report Name",
+                        //"sPdfMessage": "Summary Info",
+                       // "sFileName": "<?php print('Actividad No Programada'); ?>.pdf",
+                        //"sPdfOrientation": "landscape",
+                        "oSelectorOpts": {page: 'current'},
+
+                    },
+                   
+                    {
+                        "sExtends": "pdf",
+                        //"sTitle": "Report Name",
+                        //"sPdfMessage": "Summary Info",
+                        "sFileName": "<?php print('Informe'); ?>.pdf",
+                        "sPdfOrientation": "landscape",
+                        "oSelectorOpts": {page: 'current'},
+
+                    },
+                    "print"
+                ]
+    
+      
+    } );
+$( tableTools.fnContainer() ).insertAfter('div.info');
 
 
 

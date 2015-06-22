@@ -299,14 +299,6 @@
 								<b class="arrow"></b>
 							</li>
 
-							<li class="" id="pacactive1">
-								<a href="elements.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									PAC
-								</a>
-
-								<b class="arrow"></b>
-							</li>
 
 							<li class="" id="evidenciaactive">
 								<a href="{{URL::to('evidenciaadmin')}}">
@@ -444,7 +436,7 @@
 							<span class="menu-text"> Noticia </span>
 						</a>
 					</li>
-
+<!--
 					<li class="" id="noticiaactive">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-truck"></i>
@@ -454,8 +446,8 @@
 
 
 						<ul class="submenu">
-							<li class="" id="categoriaactive">
-								<a href="{{URL::to('categoria')}}" >
+							<li class="" id="vehiculoactive">
+								<a href="{{URL::to('vehiculo')}}" >
 									<i class="menu-icon fa fa-caret-right"></i>
 
 									Vehiculo
@@ -467,8 +459,8 @@
 								
 							</li>
 
-							<li class="" id="archivoactive">
-								<a href="{{URL::to('archivo')}}">
+							<li class="" id="mantencionactive">
+								<a href="{{URL::to('mantencion')}}">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Mantencion
 								</a>
@@ -478,8 +470,7 @@
 						</ul>
 
 					</li>
-
-					
+					-->
 				</ul><!-- /.nav-list -->
 
 				<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">

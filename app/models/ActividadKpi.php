@@ -1,7 +1,7 @@
 <?php
 class ActividadKpi extends Eloquent { //Todos los modelos deben extender la clase Eloquent
     protected $table = 'actividad_kpi';
-    protected $fillable = array('actividad','plazo','personal_id','tipoplan');
+    protected $fillable = array('actividad','frecuencia','personal_id','tipoplan');
 
 
     public function muchaspersonal()
