@@ -31,7 +31,8 @@
 <div class="info"></div>
   <thead>
           <tr>
-            <th>Actividad</th>
+          <th>Objetivo</th>
+            <th>Meta</th>
           
   <th>Acciones</th>
             
@@ -42,8 +43,9 @@
 
   @foreach($kpis as $kpi)
            <tr>
-
+           <td>{{$kpi->kpiobjetivo->nombre}}</td>
              <td> {{ $kpi->meta}}</td>
+          
          
 
   <td class="td-actions">
@@ -70,11 +72,79 @@
   </div>
 
 
+
+  <!-- OBJETIVO -->
+
+<div class="col-xs-6">
+
+                    <h3 class="header smaller lighter">Objetivo: 
+                    <a href="{{URL::to('kpiobjetivo/insert')}}"  class="btn btn-white btn-info btn-bold"> 
+    <i class="ace-icon fa fa-floppy-o bigger-120 blue"></i>Agregar</a>
+    </h3>
+
+
+
+                    <div class="clearfix">
+                      <div class="pull-right tableTools-container"></div>
+                    </div>
+                    <div class="table-header">
+                      Resultados
+                    </div>
+        
+ 
+<table id="example1" class="table table-striped table-bordered table-hover">
+  <thead>
+          <tr>
+            <th>Nombre</th>
+          
+  <th>Acciones</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+
+
+  @foreach($kpiobjetivos as $kpiobjetivo)
+           <tr>
+
+             <td> {{ $kpiobjetivo->nombre}}</td>
+         
+
+  <td class="td-actions">
+                       
+                      
+
+
+                          <a class="green" href= {{ 'kpiobjetivo/update/'.$kpiobjetivo->id }}>
+                            <i class="fa fa-pencil bigger-130"></i>
+                          </a>
+
+                         <a class="red bootbox-confirmcargo" data-id={{ $kpiobjetivo->id }}>
+                            <i class="fa fa-trash bigger-130"></i>
+                          </a>
+                      </td>
+</tr>
+          @endforeach
+        </tbody>
+  </table>
+
+  </div>
+
+
   <script type="text/javascript">
  $(document).ready(function() {
 
 
 var table = $('#example').DataTable( {
+      
+      
+       "language": {
+                "url": "datatables.spanish.json"
+            }
+    } );
+
+
+var table = $('#example1').DataTable( {
       
       
        "language": {

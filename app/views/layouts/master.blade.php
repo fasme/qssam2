@@ -261,7 +261,17 @@
 						</ul>
 					</li>
 
+					<li class="" id="evidenciaactive">
+						<a href="{{URL::to('evidenciaadmin')}}">
+							<i class="menu-icon fa fa-list"></i>
+							<span class="menu-text"> Evidencia </span>
 
+							
+						</a>
+
+					
+
+					</li>
 
 
 					<li class="" id="actividadactive">
@@ -300,14 +310,7 @@
 							</li>
 
 
-							<li class="" id="evidenciaactive">
-								<a href="{{URL::to('evidenciaadmin')}}">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Evidencia
-								</a>
-
-								<b class="arrow"></b>
-							</li>
+						
 
 							
 							
@@ -329,10 +332,12 @@
 					<li class="" id="kpiactive">
 						<a href="{{URL::to('kpi')}}">
 							<i class="menu-icon fa fa-list"></i>
-							<span class="menu-text"> KPI </span>
+							<span class="menu-text"> Kpi </span>
 
 							
 						</a>
+
+					
 
 					
 
@@ -411,7 +416,7 @@
 							<li class="" id="consecuenciaactive">
 								<a href="{{URL::to('clasificacion')}}">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Clasificacion
+									Clasificacion Riesgo
 								</a>
 
 								<b class="arrow"></b>
@@ -434,6 +439,14 @@
 						<a href="{{URL::to('noticia')}}">
 							<i class="menu-icon fa fa-pencil-square-o"></i>
 							<span class="menu-text"> Noticia </span>
+						</a>
+					</li>
+
+
+					<li class="" id="medicaactive">
+						<a href="{{URL::to('medica')}}">
+							<i class="menu-icon fa fa-ambulance"></i>
+							<span class="menu-text"> Atencion Medica </span>
 						</a>
 					</li>
 <!--

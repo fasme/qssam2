@@ -51,6 +51,12 @@
 
 
              <div class="form-group">
+            {{Form::label('', 'Objetivo',array("class"=>"col-sm-3 control-label no-padding-right"))}}
+            {{Form::select('kpiobjetivo_id',$kpiobjetivos, $kpi->kpiobjetivo_id)}}
+            </div>
+
+
+            <div class="form-group">
             {{Form::label('', 'Meta',array("class"=>"col-sm-3 control-label no-padding-right"))}}
             {{Form::text('meta', $kpi->meta)}}
             </div>
@@ -68,7 +74,7 @@
 
   @endforeach
 
-            <a id="agregarCampo" class="btn btn-info" href="#">Agregar Objetivo</a>
+            <a id="agregarCampo" class="btn btn-info" href="#">Agregar Actividad</a>
         <div id="contenedor">
            
 

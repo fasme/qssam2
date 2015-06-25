@@ -165,25 +165,15 @@ var table =
     },
       "aButtons": [
                     {
-                        "sExtends": "copy",
-                        //"sTitle": "Report Name",
-                        //"sPdfMessage": "Summary Info",
-                       // "sFileName": "<?php print('Actividad No Programada'); ?>.pdf",
-                        //"sPdfOrientation": "landscape",
-                        "oSelectorOpts": {page: 'current'},
-
-                    },
-                   
-                    {
                         "sExtends": "pdf",
-                        //"sTitle": "Report Name",
-                        //"sPdfMessage": "Summary Info",
+                        "sButtonText":"Listado Maestro",
+                        "sTitle": "Report Name",
+                        "sPdfMessage": "Summary Info",
                         "sFileName": "<?php print('Informe'); ?>.pdf",
                         "sPdfOrientation": "landscape",
                         "oSelectorOpts": {page: 'current'},
 
-                    },
-                    "print"
+                    }
                 ]
     
       

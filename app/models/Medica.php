@@ -1,20 +1,16 @@
 <?php
-class Kpi extends Eloquent { //Todos los modelos deben extender la clase Eloquent
-    protected $table = 'kpi';
-    protected $fillable = array('meta','kpiobjetivo_id');
+class Medica extends Eloquent { //Todos los modelos deben extender la clase Eloquent
+    protected $table = 'medica';
+    protected $fillable = array('personal_id','diaturno','diagnostico','tratamiento','edad','domicilio');
 
 
 
-
-public function actividadKpi()
+public function personal()
 {
-    return $this->hasMany("ActividadKpi");
+    return $this->belongsTo("Personal");
 }
 
-public function kpiobjetivo()
-{
-    return $this->BelongsTo("kpiobjetivo");
-}
+
 
 public $errors;
     

@@ -182,7 +182,6 @@ $actividadresponsable = DB::table('actividad_responsable')->Where("personal_admi
  $(document).ready(function() {
 
 
- $( "#actividadactive" ).addClass( "active" );
 $( "#evidenciaactive" ).addClass( "active" );
 
 /*

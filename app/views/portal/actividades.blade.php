@@ -83,11 +83,16 @@ $actividadresponsable = DB::table('actividad_responsable')->Where("personal_id",
                             $interval = $datetime1->diff($datetime2);
                             if($interval->format("%R") == "+")
                             {
-                              $dif = "<font color='red'>(". $interval->format('Pasado %a')." Dias)</font>";
+                              $dif = "<font color='red'>(". $interval->format('Atrasado %a')." Dias)</font>";
                             }
                             else
                             {
                               $dif = "<font color='green'>(". $interval->format('Faltan %a')." Dias)</font>";
+                            }
+
+                            if($actividad->estado == "Cerrada")
+                            {
+                              $dif = "";
                             }
 
                             ?>
