@@ -215,6 +215,28 @@ var tr = $(this).parents('tr');
         });
 
 
+$(".bootbox-confirmcargo").on(ace.click_event, function() {
+  var id = $(this).data('id');
+var tr = $(this).parents('tr'); 
+
+          bootbox.confirm("Deseas Eliminar el registro "+id, function(result) {
+            if(result) { // si se seleccion OK
+              
+           
+             
+             $.get("{{ url('kpiobjetivo/eliminar')}}",
+              { id: id },
+
+              function(data,status){ tr.fadeOut(1000); }
+).fail(function(data){bootbox.alert("No se puede eliminar un registro padre: una restricción de clave externa falla");});
+
+     
+            }
+           
+          });
+        });
+
+
 $(".bootbox-mostrar").on(ace.click_event, function() {
   var id = $(this).data('id');
 
