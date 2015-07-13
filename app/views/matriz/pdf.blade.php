@@ -65,7 +65,7 @@ $html .= "<td>".number_format($matriz->resultadoepp,3)."</td>";
 
 
 $html .= "<td>".number_format($matriz->magnitud,3)."</td>";
-$clasificacion = Clasificacion::Where("desde","<=",$matriz->resultado)->Where("hasta",">",$matriz->resultado)->first();
+$clasificacion = Clasificacion::Where("desde","<=",$matriz->magnitud)->Where("hasta",">",$matriz->magnitud)->first();
 
 $html .= "<td bgcolor=".$clasificacion->color."></td>";
 
@@ -184,14 +184,16 @@ $html .="</table><br>";
 <?php
 $html .= "<table width='50%' border='1'><tr><th>Version</th><th>Cambio</th></tr>";
 ?>
-@foreach(Cambio::all() as $cambio)
+
 <?php
 
-
+$cambio = Cambio::orderby("id","desc")->first();
+if($cambio)
+{
 $html .= "<tr><td>$cambio->version</td><td>$cambio->descripcion</td></tr>";
-
+}
 ?>
-@endforeach
+
 <?php
 $html .= "</table>"
 ?>

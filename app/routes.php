@@ -106,6 +106,7 @@ Route::post('archivo/insert', array('uses' => 'ArchivoController@insert2'));
 Route::get('archivo/update/{id}', 'ArchivoController@update');
 Route::post('archivo/update/{id}', 'ArchivoController@update2');
 Route::get('archivo/eliminar', 'ArchivoController@eliminar');
+Route::get('archivo/archivoobsoleto', 'ArchivoController@archivoobsoleto');
 
 //criterio
 Route::get('criterio', array('uses' => 'CriterioController@show')); 
@@ -159,6 +160,7 @@ Route::post('noticia/insert', array('uses' => 'NoticiaController@insert2'));
 Route::get('noticia/update/{id}', 'NoticiaController@update');
 Route::post('noticia/update/{id}', 'NoticiaController@update2');
 Route::get('noticia/eliminar', 'NoticiaController@eliminar');
+Route::post('noticia/uploadimage', 'NoticiaController@uploadimage');
 
 
 // matriz
@@ -263,6 +265,8 @@ Route::post('personal/insert', array('uses' => 'PersonalController@insert2'));
 Route::get('personal/update/{id}', 'PersonalController@update');
 Route::post('personal/update/{id}', 'PersonalController@update2');
 Route::get('personal/eliminar', 'PersonalController@eliminar');
+Route::get('personal/cambiarclave', 'PersonalController@cambiarclave');
+Route::post('personal/cambiarclave/{id}', 'PersonalController@cambiarclave2');
 
 //cargo
 Route::get('cargo', array('uses' => 'CargoController@show')); 
@@ -326,11 +330,68 @@ Route::post('medica/update/{id}', 'MedicaController@update2');
 Route::get('medica/eliminar', 'MedicaController@eliminar');
 
 
+//Producto
+Route::get('producto', array('uses' => 'ProductoController@show')); 
+Route::get('producto/insert', array('uses' => 'ProductoController@insert'));
+Route::post('producto/insert', array('uses' => 'ProductoController@insert2'));
+Route::get('producto/update/{id}', 'ProductoController@update');
+Route::post('producto/update/{id}', 'ProductoController@update2');
+Route::get('producto/eliminar', 'ProductoController@eliminar');
+
+
+//ProductoTransaccion
+Route::get('productotransaccion', array('uses' => 'ProductoTransaccionController@show')); 
+Route::get('productotransaccion/insert', array('uses' => 'ProductoTransaccionController@insert'));
+Route::post('productotransaccion/insert', array('uses' => 'ProductoTransaccionController@insert2'));
+Route::get('productotransaccion/update/{id}', 'ProductoTransaccionController@update');
+Route::post('productotransaccion/update/{id}', 'ProductoTransaccionController@update2');
+Route::get('productotransaccion/eliminar', 'ProductoTransaccionController@eliminar');
+
+
+//INFORMES
+
+Route::get("informeevidencia", array("uses"=>"InformeController@informeevidencia"));
+Route::get("informemantencion", array("uses"=>"InformeController@informemantencion"));
+Route::get("informemantencionmensual", array("uses"=>"InformeController@informemantencionmensual"));
+Route::get("informemantencionanual", array("uses"=>"InformeController@informemantencionanual"));
+Route::get("informemantencionvehiculo", array("uses"=>"InformeController@informemantencionvehiculo"));
+
+
 // Manual
 
 Route::get('manual', function(){
 	return View::make('manual.show');
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -369,6 +430,17 @@ Route::get("matrizportal", function(){
 	return View::make("portal.matriz");
 });
 
+
+Route::get("mantencionportal", function(){
+	return View::make("portal.mantencion");
+});
+
+
+Route::get("mantencionportal/mostrar", array("uses"=>"MantencionController@insertPortal"));
+Route::post('mantencionportal/insert', array('uses' => 'MantencionController@insert2Portal'));
+Route::post('mantencionportal/update/{id}', array('uses' => 'MantencionController@update2Portal'));
+Route::get('vehiculoportal/update', array('uses' => 'VehiculoController@updatePortal'));
+Route::post('vehiculoportal/update/{id}', array('uses' => 'VehiculoController@update2Portal'));
 
 
 

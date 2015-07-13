@@ -8,29 +8,39 @@
     <title>Qssam Portal</title>
 	
 	<!-- core CSS -->
-    <link href="portal1/css/bootstrap.min.css" rel="stylesheet">
-    <link href="portal1/css/font-awesome.min.css" rel="stylesheet">
-    <link href="portal1/css/animate.min.css" rel="stylesheet">
-    <link href="portal1/css/prettyPhoto.css" rel="stylesheet">
-    <link href="portal1/css/main.css" rel="stylesheet">
-    <link href="portal1/css/responsive.css" rel="stylesheet">
-    {{HTML::style('css/tabletools.css')}}
-
-
-
-
-
-        <script src="portal1/js/jquery.js"></script>
-    <script src="portal1/js/bootstrap.min.js"></script>
-    <script src="portal1/js/jquery.prettyPhoto.js"></script>
-    <script src="portal1/js/jquery.isotope.min.js"></script>
     
-    <script src="portal1/js/wow.min.js"></script>
+   
+   {{HTML::style('portal1/css/bootstrap.min.css')}}
+   {{HTML::style('portal1/css/font-awesome.min.css')}}
+    {{HTML::style('portal1/css/animate.min.css')}}
+    {{HTML::style('portal1/css/prettyPhoto.css')}}
+    {{HTML::style('portal1/css/main.css')}}
+    {{HTML::style('portal1/css/responsive.css')}}
+    
+    
 
-  {{HTML::script('js/jquery.dataTables.min.js')}}
-{{HTML::script('js/jquery.dataTables.bootstrap.min.js')}}
+
+    {{HTML::style('css/tabletools.css')}}
+    {{HTML::style('portal1/css/datepicker.min.css')}}   
+
+
+
+
+
+{{HTML::script('portal1/js/jquery.js')}}
+{{HTML::script('portal1/js/bootstrap.min.js')}}
+{{HTML::script('portal1/js/jquery.prettyPhoto.js')}}
+{{HTML::script('portal1/js/jquery.isotope.min.js')}}
+
+{{HTML::script('portal1/js/wow.min.js')}}
+
+
+  {{HTML::script('portal1/js/jquery.dataTables.min.js')}}
+{{HTML::script('portal1/js/jquery.dataTables.bootstrap.min.js')}}
 {{HTML::script('js/dataTables.tableTools.min.js')}}
-<script src="portal1/js/main.js"></script>
+
+{{HTML::script('portal1/js/main.js')}}
+{{HTML::script('portal1/js/bootstrap-datepicker.min.js')}}
 
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
@@ -57,15 +67,18 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html"><img src="images/logo1.png" alt="logo" width="200"></a>
+                    <a class="navbar-brand" href="{{URL::to('portal')}}">{{ HTML::image('portal1/images/logo1.png', 'picture',array("width"=>"150") ) }} </a>
                 </div>
 				
                 <div class="collapse navbar-collapse navbar-right">
                     <ul class="nav navbar-nav">
-                        <li id="homeactive"><a href="{{URL::to('portal')}}">Home</a></li>
-                        <li id="actividadactive"><a href="{{URL::to('misactividades')}}">Mis Actividades</a></li>
+                       <!-- <li id="homeactive"><a href="{{URL::to('portal')}}">Home</a></li>-->
+                        <li id="actividadactive"><a href="{{URL::to('misactividades')}}">Actividades</a></li>
                         <li id="matrizactive"><a href="{{URL::to('matrizportal')}}">Matriz</a></li>
                         <li id="biblioactive"><a href="{{URL::to('bibliotecaportal')}}">Biblioteca</a></li>
+                    <!--   <li id="mantencionactive"><a href="{{URL::to('mantencionportal')}}">Mantencion</a></li> -->
+                       
+
                         <!--<li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
@@ -75,8 +88,8 @@
                                 <li><a href="shortcodes.html">Shortcodes</a></li>
                             </ul>
                         </li>-->
-                        @if(Auth::user()->perfil == "admin")
-                        <li><a href="{{URL::to('/')}}">Administracion</a></li> 
+                        @if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "adminprevencion") || (Auth::user()->perfil == "adminmantencion") || (Auth::user()->perfil == "admingerente"))
+                         <li><a href="{{URL::to('/')}}">Administracion</a></li> 
                         @endif
                         @if (Auth::check())
 
@@ -94,8 +107,8 @@
                                         
                                         @foreach(Alertas::where("personal_id","=",Auth::user()->id)->get() as $alerta)
                                         <li>
-                                            <a href="#">
-                                                <i class="btn btn-xs btn-primary fa fa-user"></i>
+                                            <a href="{{URL::to('misactividades')}}">
+                                                
                                                 {{"<b>".$alerta->personal->nombre."</b> ".$alerta->mensaje}}
                                                 
                                             </a>
@@ -117,7 +130,18 @@
                             </ul>
                         </li>
 
-                        <li><a href="{{URL::to('logout')}}">Salir ({{Auth::user()->nombre}})</a></li> 
+                        
+                            <li class="dropdown">
+                            <a data-toggle="dropdown" class="dropdown-toggle">{{Auth::user()->nombre}} </a>
+                            <ul class="dropdown-menu">
+
+                            <li>
+                            <a href="{{URL::to('personal/cambiarclave')}}">Cambiar Clave</a>
+                            </li> 
+                            <li>
+                            <a href="{{URL::to('logout')}}">Cerrar Sesión</a>
+                            </li> 
+                        
                         @endif                       
                     </ul>
                 </div>

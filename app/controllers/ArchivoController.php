@@ -7,7 +7,7 @@ class ArchivoController extends BaseController {
      */
     public function show()
     {
-        $archivos = Archivo::all();
+        $archivos = Archivo::where("obsoleto","<>","si")->get();
         
         // Con el método all() le estamos pidiendo al modelo de Usuario
         // que busque todos los registros contenidos en esa tabla y los devuelva en un Array
@@ -51,8 +51,8 @@ class ArchivoController extends BaseController {
             if (Input::hasFile("archivo"))
                 {
                     $adjunto1 = Input::file('archivo');
-                    $datos["archivo"] = $random."_".$adjunto1->getClientOriginalName();
-                    $adjunto1->move("archivos/biblioteca",$random."_".$adjunto1->getClientOriginalName());
+                    $datos["archivo"] = $random."_".str_replace(" ","_",$adjunto1->getClientOriginalName());
+                    $adjunto1->move("archivos/biblioteca",$random."_".str_replace(" ","_",$adjunto1->getClientOriginalName()));
                     
                    
                 }
@@ -108,7 +108,7 @@ return Redirect::to('archivo/insert')->withInput()->withErrors($archivo->errors)
 
 
 
-        $datos = Input::all(); 
+         $datos = Input::all(); 
 
          $random = rand(0,99999);
         
@@ -120,8 +120,8 @@ return Redirect::to('archivo/insert')->withInput()->withErrors($archivo->errors)
             if (Input::hasFile("archivo"))
                 {
                     $adjunto1 = Input::file('archivo');
-                    $datos["archivo"] = $random."_".$adjunto1->getClientOriginalName();
-                    $adjunto1->move("archivos/biblioteca",$random."_".$adjunto1->getClientOriginalName());
+                     $datos["archivo"] = $random."_".str_replace(" ","_",$adjunto1->getClientOriginalName());
+                    $adjunto1->move("archivos/biblioteca",$random."_".str_replace(" ","_",$adjunto1->getClientOriginalName()));
                     
                    
                 }
@@ -164,6 +164,16 @@ return Redirect::to('archivo/update/'.$id)->withInput()->withErrors($archivo->er
     //return Redirect::to('usuarios/insert');
     }
 
+
+    public function archivoobsoleto(){
+
+        $archivos = Archivo::where("obsoleto","=","si")->get();
+        
+        // Con el método all() le estamos pidiendo al modelo de Usuario
+        // que busque todos los registros contenidos en esa tabla y los devuelva en un Array
+        
+        return View::make('biblioteca.archivos.obsoletos')->with("archivos",$archivos);
+    }
 
 
  

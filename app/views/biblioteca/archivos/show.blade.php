@@ -30,8 +30,11 @@
 <div class="info"></div>
   <thead>
           <tr>
-          <th>Categoria</th>
-            <th>Nombre</th>
+          <th>Nombre Documento</th>
+                            <th>Categoria</th>
+                            <th>Codigo</th>
+                            <th>Version</th>
+                            <th>Tiempo Vigencia</th>
           
   <th>Acciones</th>
             
@@ -42,8 +45,11 @@
 
   @foreach($archivos as $archivo)
            <tr>
-           <td>{{$archivo->categoria->nombre}}</td>
-             <td> {{ $archivo->nombre}}</td>
+           <td>{{ $archivo->nombre}}</td>
+                            <td>{{$archivo->categoria->nombre}}</td>
+                            <td>{{$archivo->codigo}}</td>
+                            <td>{{$archivo->version}}</td>
+                            <td>{{$archivo->tiempo}}</td>
          
 
   <td class="td-actions">
@@ -87,26 +93,18 @@ var tableTools = new $.fn.dataTable.TableTools( table, {
 
     
       "aButtons": [
-                    {
-                        "sExtends": "copy",
-                        //"sTitle": "Report Name",
-                        //"sPdfMessage": "Summary Info",
-                       // "sFileName": "<?php print('Actividad No Programada'); ?>.pdf",
-                        //"sPdfOrientation": "landscape",
-                        "oSelectorOpts": {page: 'current'},
-
-                    },
+                    
                    
                     {
                         "sExtends": "pdf",
+                        "sButtonText":"Listado pdf",
                         //"sTitle": "Report Name",
                         //"sPdfMessage": "Summary Info",
-                        "sFileName": "<?php print('Actividad Programada'); ?>.pdf",
+                        "sFileName": "<?php print('Informe'); ?>.pdf",
                         "sPdfOrientation": "landscape",
                         "oSelectorOpts": {page: 'current'},
 
-                    },
-                    "print",
+                    }
 
                 ]
       

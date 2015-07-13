@@ -38,6 +38,9 @@
 {{HTML::script('js/dataTables.tableTools.min.js')}}
 
 
+{{HTML::script('js/chartjs/Chart.js')}}
+
+
 
 
 
@@ -106,6 +109,7 @@
 					<ul class="nav ace-nav">
 						
 
+
 						<li class="purple">
 							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
 								<i class="ace-icon fa fa-bell icon-animated-bell"></i>
@@ -123,8 +127,8 @@
 										
 										@foreach(Alertas::where("personal_id_admin","=",Auth::user()->id)->get() as $alerta)
 										<li>
-											<a href="#">
-												<i class="btn btn-xs btn-primary fa fa-user"></i>
+											<a href="{{URL::to('evidenciaadmin')}}">
+												<!--<i class="btn btn-xs btn-primary fa fa-user"></i>-->
 												{{"<b>".$alerta->personal->nombre."</b> ".$alerta->mensaje}}
 												
 											</a>
@@ -160,26 +164,16 @@
 							</a>
 
 							<ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-								<li>
-									<a href="#">
-										<i class="ace-icon fa fa-cog"></i>
-										Settings
-									</a>
-								</li>
+								
 
-								<li>
-									<a href="profile.html">
-										<i class="ace-icon fa fa-user"></i>
-										Profile
-									</a>
-								</li>
+								
 
 								<li class="divider"></li>
 
 								<li>
 									<a href="{{URL::to('logout')}}">
 										<i class="ace-icon fa fa-power-off"></i>
-										Logout
+										Cerrar Sesión
 									</a>
 								</li>
 							</ul>
@@ -201,15 +195,21 @@
 
 
 				<ul class="nav nav-list">
+
+				@if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "adminmantencion") || (Auth::user()->perfil == "adminprevencion") || (Auth::user()->perfil == "admingerente"))
 					<li class="">
-						<a href="index.html">
+						<a href="{{URL::to('portal')}}"> 
 							<i class="menu-icon fa fa-tachometer"></i>
-							<span class="menu-text"> Dashboard </span>
+							<span class="menu-text"> Portal </span>
 						</a>
 
 						<b class="arrow"></b>
 					</li>
 
+					@endif
+
+
+@if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "admingerente"))
 
 					<li class="" id="bibliotecaactive">
 						<a href="#" class="dropdown-toggle">
@@ -246,6 +246,16 @@
 								<b class="arrow"></b>
 							</li>
 
+
+							<li class="" id="obsoletoactive">
+								<a href="{{URL::to('archivo/archivoobsoleto')}}">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Obsoleto
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
 							<!--<li class="">
 								<a href="elements.html">
 									<i class="menu-icon fa fa-caret-right"></i>
@@ -261,18 +271,11 @@
 						</ul>
 					</li>
 
-					<li class="" id="evidenciaactive">
-						<a href="{{URL::to('evidenciaadmin')}}">
-							<i class="menu-icon fa fa-list"></i>
-							<span class="menu-text"> Evidencia </span>
+				@endif
 
-							
-						</a>
 
-					
 
-					</li>
-
+@if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "adminmantencion") || (Auth::user()->perfil == "adminprevencion") || (Auth::user()->perfil == "admingerente"))
 
 					<li class="" id="actividadactive">
 						<a href="#" class="dropdown-toggle">
@@ -309,13 +312,36 @@
 								<b class="arrow"></b>
 							</li>
 
-
 						
+
+							
 
 							
 							
 						</ul>
 					</li>
+@endif
+
+
+				@if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "adminmantencion") || (Auth::user()->perfil == "adminprevencion") || (Auth::user()->perfil == "admingerente"))
+
+					<li class="" id="pacactive">
+						<a href="{{URL::to('evidenciaadmin')}}">
+							<i class="menu-icon fa fa-archive"></i>
+							<span class="menu-text"> Evidencia </span>
+
+							
+						</a>
+
+						
+
+					</li>
+
+					@endif
+
+
+									@if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "adminmantencion") || (Auth::user()->perfil == "adminprevencion") || (Auth::user()->perfil == "admingerente"))
+
 
 					<li class="" id="pacactive">
 						<a href="{{URL::to('pac')}}">
@@ -329,19 +355,28 @@
 
 					</li>
 
+					@endif
+
+
+
+				@if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "admingerente"))
+
 					<li class="" id="kpiactive">
 						<a href="{{URL::to('kpi')}}">
 							<i class="menu-icon fa fa-list"></i>
-							<span class="menu-text"> Kpi </span>
+							<span class="menu-text"> KPI </span>
 
 							
 						</a>
 
 					
 
-					
-
 					</li>
+
+					@endif
+
+@if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "admingerente"))
+
 
 					<li class="" id="personalactive">
 						<a href="{{URL::to('personal')}}">
@@ -352,10 +387,12 @@
 						</a>
 
 					</li>
+	@endif
 
 				
 				
 				
+@if((Auth::user()->perfil == "admin")  || (Auth::user()->perfil == "adminprevencion") || (Auth::user()->perfil == "admingerente"))
 
 					<li class="" id="matrizactive">
 						<a href="#" class="dropdown-toggle">
@@ -416,7 +453,7 @@
 							<li class="" id="consecuenciaactive">
 								<a href="{{URL::to('clasificacion')}}">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Clasificacion Riesgo
+									Clasificacion
 								</a>
 
 								<b class="arrow"></b>
@@ -433,7 +470,10 @@
 
 						</ul>
 					</li>
+@endif
 
+
+@if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "adminmantencion") || (Auth::user()->perfil == "adminprevencion") || (Auth::user()->perfil == "admingerente"))
 
 					<li class="" id="noticiaactive">
 						<a href="{{URL::to('noticia')}}">
@@ -441,7 +481,10 @@
 							<span class="menu-text"> Noticia </span>
 						</a>
 					</li>
+@endif
 
+
+@if((Auth::user()->perfil == "admin")  || (Auth::user()->perfil == "adminprevencion") || (Auth::user()->perfil == "admingerente"))
 
 					<li class="" id="medicaactive">
 						<a href="{{URL::to('medica')}}">
@@ -449,11 +492,16 @@
 							<span class="menu-text"> Atencion Medica </span>
 						</a>
 					</li>
+@endif
+
+					
+
+@if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "adminmantencion")  || (Auth::user()->perfil == "admingerente"))
 <!--
-					<li class="" id="noticiaactive">
+					<li class="" id="mantencionactive">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-truck"></i>
-							<span class="menu-text"> Mantención </span>
+							<span class="menu-text">Mantención </span>
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
 
@@ -475,15 +523,130 @@
 							<li class="" id="mantencionactive">
 								<a href="{{URL::to('mantencion')}}">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Mantencion
+									Ultima Mantencion
 								</a>
 
 								<b class="arrow"></b>
 							</li>
 						</ul>
-
 					</li>
 					-->
+@endif			
+
+
+@if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "admingerente"))
+
+					<li class="" id="bodegaactive">
+						<a href="#" class="dropdown-toggle">
+							<i class="menu-icon fa fa-certificate"></i>
+							<span class="menu-text">Bodega </span>
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+
+						<ul class="submenu">
+							<li class="" id="productoactive">
+								<a href="{{URL::to('producto')}}" >
+									<i class="menu-icon fa fa-caret-right"></i>
+
+									Producto
+									
+								</a>
+
+								<b class="arrow"></b>
+
+								
+							</li>
+
+							<li class="" id="transaccionactive">
+								<a href="{{URL::to('productotransaccion')}}">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Transaccion
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+						</ul>
+					</li>
+					
+@endif
+
+
+
+@if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "admingerente"))
+
+					<li class="" id="informeactive">
+						<a href="#" class="dropdown-toggle">
+							<i class="menu-icon fa fa-line-chart"></i>
+							<span class="menu-text">Informes </span>
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+
+						<ul class="submenu">
+							<li class="" id="informeevidenciaactive">
+								<a href="{{URL::to('informeevidencia')}}" >
+									<i class="menu-icon fa fa-caret-right"></i>
+
+									Evidencias
+									
+								</a>
+
+								<b class="arrow"></b>
+
+								
+							</li>
+<!--
+							<li class="" id="informeactive">
+						<a href="#" class="dropdown-toggle">
+							<i class="menu-icon fa fa-line-chart"></i>
+							<span class="menu-text">Mantencion </span>
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+
+						<ul class="submenu">
+							<li class="" id="informeevidenciaactive">
+								<a href="{{URL::to('informemantencionmensual')}}" >
+									<i class="menu-icon fa fa-caret-right"></i>
+
+									Mensual
+									
+								</a>
+
+								<b class="arrow"></b>
+
+								
+							</li>
+
+							<li class="" id="informemantencionactive">
+								<a href="{{URL::to('informemantencionanual')}}">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Anual
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li class="" id="informevehiculoactive">
+								<a href="{{URL::to('informemantencionvehiculo')}}">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Vehiculo
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+						</ul>
+					</li>
+-->
+
+						</ul>
+					</li>
+@endif
+
+
+
+
 				</ul><!-- /.nav-list -->
 
 				<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">

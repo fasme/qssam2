@@ -14,7 +14,7 @@
 
 <?php
 //$actividadProgramadas = ActividadProgramada::all();
-$archivos = Archivo::all();
+$archivos = Archivo::where("obsoleto","<>","si")->get();
 ?>
 
 
@@ -53,14 +53,15 @@ $archivos = Archivo::all();
                             <td>{{$archivo->tiempo}}</td>
                             
                             <td>
-                            <a data-toggle="modal" class="botoncito" data-urlarchivo="https://docs.google.com/viewer?url=http://190.47.105.44/avach/public/archivos/biblioteca/{{$archivo->archivo}}&embedded=true"  href="#" >
+                            <a data-toggle="modal" class="botoncito" data-urlarchivo="https://docs.google.com/viewer?url=http://chaxapreventivo.cl/public/archivos/biblioteca/{{$archivo->archivo}}&embedded=true"  href="#" >
                                   <span class="label label-success arrowed">Vista Previa</span>
                                 </a>
 
-                                <a href="archivos/biblioteca/{{$archivo->archivo}}" >
-                                  <span class="label label-warning arrowed">Descargar</span>
-                                </a>
+                               
 
+{{
+link_to_asset('archivos/biblioteca/'.$archivo->archivo, "Descargar", array("class"=>"label label-warning arrowed"))
+}}
                                 </td>
                           
                             </tr>
@@ -139,7 +140,7 @@ var table =
         //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
         .dataTable( {
             "language": {
-                "url": "js/spanish.datatables.json"
+                "url": "datatables.spanish.json"
             }
         });
 
@@ -167,11 +168,12 @@ var table =
                     {
                         "sExtends": "pdf",
                         "sButtonText":"Listado Maestro",
-                        "sTitle": "Report Name",
-                        "sPdfMessage": "Summary Info",
+                        "sTitle": "LISTADO MAESTRO DE DOCUMENTOS Y REGISTROS",
+                        "sPdfMessage": "",
                         "sFileName": "<?php print('Informe'); ?>.pdf",
                         "sPdfOrientation": "landscape",
                         "oSelectorOpts": {page: 'current'},
+                         "mColumns": [ 0, 1,2,3,4 ]
 
                     }
                 ]
