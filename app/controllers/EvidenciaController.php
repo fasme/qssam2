@@ -47,11 +47,41 @@ class EvidenciaController extends BaseController {
        
 
         $id = Input::get("id");
-        $actividadrespoonsable = DB::table('actividad_responsable')
-            ->Where("id","=",$id)->update(array("estado"=>"Cerrada"));
+        $tabla  = Input::get("tipoactividad");
 
-        //return $id;
+        if($tabla == "noprogramada")
+        {
+            $actividadrespoonsable = DB::table('actividad_responsable_noprogramada')
+            ->Where("id","=",$id)->update(array("estado"=>"Cerrada"));
+        }
+
+        if($tabla == "programada")
+        {
+            $actividadrespoonsable = DB::table('actividad_responsable_programada')
+            ->Where("id","=",$id)->update(array("estado"=>"Cerrada"));
+        }
+
+        if($tabla == "mantencion")
+        {
+            $actividadrespoonsable = DB::table('actividad_responsable_mantencion')
+            ->Where("id","=",$id)->update(array("estado"=>"Cerrada"));
+        }
+
+        if($tabla == "pac")
+        {
+            $actividadrespoonsable = DB::table('actividad_responsable_pac')
+            ->Where("id","=",$id)->update(array("estado"=>"Cerrada"));
+        }
+
+        if($tabla == "kpi")
+        {
+            $actividadrespoonsable = DB::table('actividad_responsable_kpi')
+            ->Where("id","=",$id)->update(array("estado"=>"Cerrada"));
+        }
         
+
+      //return Redirect::to(url(URL::previous()));
+        return "Actividad Cerrada Correctamente";
     }
 
 

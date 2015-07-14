@@ -6,7 +6,7 @@
      
 <div class="page-header position-relative">
             <h1>
-              Producto
+              Bodega
               <small>
                 <i class="icon-double-angle-right"></i>
                 
@@ -33,11 +33,11 @@
 
            <?php
   // si existe el usuario carga los datos
-    if ($producto->exists):
-        $form_data = array('url' => 'producto/update/'.$producto->id, 'files'=>true);
+    if ($bodega->exists):
+        $form_data = array('url' => 'bodega/update/'.$bodega->id, 'files'=>true);
         $action    = 'Editar';
     else:
-        $form_data = array('url' => 'producto/insert', 'class'=>'class="form-horizontal', 'files'=>true);
+        $form_data = array('url' => 'bodega/insert', 'class'=>'class="form-horizontal', 'files'=>true);
         $action    = 'Crear';        
     endif;
 
@@ -48,25 +48,10 @@
        
             <div class="form-group">
             {{Form::label('Nombre', 'Nombre',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-            {{Form::text('nombre', $producto->nombre)}}
-            </div>
-
-         <div class="form-group">
-            {{Form::label('', 'Codigo',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-            {{Form::text('codigo', $producto->codigo)}}
+            {{Form::text('nombre', $bodega->nombre)}}
             </div>
 
 
-            <div class="form-group">
-            {{Form::label('', 'Unidad',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-            {{Form::text('unidad', $producto->unidad)}}
-            (kg, lt, un)
-            </div>
-
-            <div class="form-group">
-            {{Form::label('', 'Tipo',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-            {{Form::select('tipoproducto', array(1=>"Insumo",2=>"Herramienta",3=>"Equipo",4=>"Activo"), $producto->tipoproducto)}}
-            </div>
 
 
 
@@ -100,7 +85,7 @@ $('.input-mask-date').mask('99/99/9999');
 $('.input-mask-date2').mask('99/99/9999');
 
 
-$( "#productoactive" ).addClass( "active" );
+$( "#bodegaactive" ).addClass( "active" );
     
   });   
 </script>

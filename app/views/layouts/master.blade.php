@@ -545,6 +545,22 @@
 
 
 						<ul class="submenu">
+
+
+						<li class="" id="bodegaactive">
+								<a href="{{URL::to('bodega')}}" >
+									<i class="menu-icon fa fa-caret-right"></i>
+
+									Bodega
+									
+								</a>
+
+								<b class="arrow"></b>
+
+								
+							</li>
+
+
 							<li class="" id="productoactive">
 								<a href="{{URL::to('producto')}}" >
 									<i class="menu-icon fa fa-caret-right"></i>

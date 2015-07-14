@@ -330,6 +330,15 @@ Route::post('medica/update/{id}', 'MedicaController@update2');
 Route::get('medica/eliminar', 'MedicaController@eliminar');
 
 
+
+//Bodega
+Route::get('bodega', array('uses' => 'BodegaController@show')); 
+Route::get('bodega/insert', array('uses' => 'BodegaController@insert'));
+Route::post('bodega/insert', array('uses' => 'BodegaController@insert2'));
+Route::get('bodega/update/{id}', 'BodegaController@update');
+Route::post('bodega/update/{id}', 'BodegaController@update2');
+Route::get('bodega/eliminar', 'BodegaController@eliminar');
+
 //Producto
 Route::get('producto', array('uses' => 'ProductoController@show')); 
 Route::get('producto/insert', array('uses' => 'ProductoController@insert'));

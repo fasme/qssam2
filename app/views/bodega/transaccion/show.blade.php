@@ -30,49 +30,47 @@
 <div class="info"></div>
   <thead>
           <tr>
-          <th>Nombre</th>
+          <th>Bodega</th>
+          <th>Producto</th>
                             <th>Cantidad</th>
                             <th>Tipo</th>
                            
           
-  <th>Acciones</th>
+ 
             
           </tr>
         </thead>
+
+
+
+        <tfoot>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                
+              
+            </tr>
+        </tfoot>
+
+
         <tbody>
 
 
-  @foreach($productotransaccions as $productotransaccion)
+  @foreach($bodegas as $bodega)
+      @foreach($bodega->muchasproducto as $producto)
            <tr>
-           <td>{{ $productotransaccion->producto->nombre}}</td>
-                            
-                            <td>{{$productotransaccion->cantidad}}</td>
-                            <td>@if ($productotransaccion->tipo == 1) 
-                            Entrada
-                            @elseif ($productotransaccion->tipo == 2)
-                            Salida
-                            @endif</td>
-                            
-         
-
-  <td class="td-actions">
-                       
-                      
-                        <!--  <a class="blue bootbox-mostrar" data-id={{$productotransaccion->id}}>
-                            <i class="fa fa-search-plus bigger-130"></i>
-                          </a>
-
-
-                          <a class="green" href= {{ 'productotransaccion/update/'.$productotransaccion->id }}>
-                            <i class="fa fa-pencil bigger-130"></i>
-                          </a>
-
-                         <a class="red bootbox-confirm" data-id={{ $productotransaccion->id }}>
-                            <i class="fa fa-trash bigger-130"></i>
-                          </a>-->
-                      </td>
+           <td>{{ $bodega->nombre}}</td>
+           <td>{{ $producto->nombre}}</td>
+           <td>{{$producto->pivot->cantidad}}</td>
+           <td>
+           @if($producto->pivot->tipo == 1){{"Entrada"}} @endif
+           @if($producto->pivot->tipo == 2){{"Salida"}} @endif
+           </td>
 </tr>
           @endforeach
+    @endforeach
         </tbody>
   </table>
 
@@ -83,12 +81,83 @@
  $(document).ready(function() {
 
 
+$("#example tfoot th").eq(0).html('<input type="text" size="1" placeholder="Buscar" style="width:50px" />');
+$("#example tfoot th").eq(1).html('<input type="text" size="1" placeholder="Buscar" style="width:50px" />');
+
+
 var table = $('#example').DataTable( {
       
-       "language": {
-                "url": "datatables.spanish.json"
-            }
+       
+
+         "language": {
+                
+               "infoEmpty": "Nasdasd",
+                "info": "Mostrando Resultados _PAGE_ of _PAGES_",
+                "lengthMenu": "Mostrar _MENU_ Registros",
+                "search": "Buscar:",
+                "paginate": {
+                  "next": "Siguiente",
+                  "previous": "Anterior"
+                }
+            },
+            
+
+
+             "footerCallback": function ( row, data, start, end, display ) {
+      
+          var api = this.api(), data;
+     
+            // Remove the formatting to get integer data for summation
+            var intVal = function ( i ) {
+                return typeof i === 'string' ?
+                    i.replace(/[\$,]/g, '')*1 :
+                    typeof i === 'number' ?
+                        i : 0;
+            };
+ 
+            // Total over all pages
+            total = api
+                .column( 2 )
+                .data()
+                .reduce( function (a, b) {
+                    
+                  //  alert(a + b);
+                   // $.fn.dataTable.render.number( '\'', '.', 0, '$' );
+                    return intVal(a) + intVal(b);
+
+                } );
+ 
+            // Total over this page
+            pageTotal = api
+                .column( 2, { page: 'current'} )
+                .data()
+                .reduce( function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0 );
+ 
+            // Update footer
+            $( api.column( 2 ).footer() ).html(
+                pageTotal
+            );
+         }
+
     } );
+
+
+
+
+
+
+ table.columns().every( function () {
+        var that = this;
+ 
+        $( 'input', this.footer() ).on( 'keyup change', function () {
+            that
+                .search( this.value )
+                .draw();
+        } );
+    } );
+
 
 
 var tableTools = new $.fn.dataTable.TableTools( table, {
@@ -116,8 +185,11 @@ var tableTools = new $.fn.dataTable.TableTools( table, {
 
 $( tableTools.fnContainer() ).insertAfter('div.info');
 
+
+
+
 $( "#bodegaactive" ).addClass( "active" );
-$( "#productotransaccionactive" ).addClass( "active" );
+$( "#bodegaactive" ).addClass( "active" );
 
 
 
@@ -131,7 +203,7 @@ var tr = $(this).parents('tr');
               
            
              
-             $.get("{{ url('productotransaccion/eliminar')}}",
+             $.get("{{ url('bodega/eliminar')}}",
               { id: id },
 
               function(data,status){ tr.fadeOut(1000); }
@@ -147,7 +219,7 @@ var tr = $(this).parents('tr');
 $(".bootbox-mostrar").on(ace.click_event, function() {
   var id = $(this).data('id');
 
- $.get("{{ url('productotransaccion/mostrar')}}",
+ $.get("{{ url('bodega/mostrar')}}",
               { id: id },
               function(data)
               { 

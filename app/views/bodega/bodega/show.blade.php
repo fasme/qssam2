@@ -11,8 +11,8 @@
 
 <div class="col-xs-12">
 
-                    <h3 class="header smaller lighter">Producto: 
-                    <a href="{{URL::to('producto/insert')}}"  class="btn btn-white btn-info btn-bold"> 
+                    <h3 class="header smaller lighter">Bodega: 
+                    <a href="{{URL::to('bodega/insert')}}"  class="btn btn-white btn-info btn-bold"> 
     <i class="ace-icon fa fa-floppy-o bigger-120 blue"></i>Agregar</a>
     </h3>
 
@@ -31,8 +31,7 @@
   <thead>
           <tr>
           <th>Nombre</th>
-                            
-                            <th>Tipo</th>
+                           
                            
           
   <th>Acciones</th>
@@ -42,32 +41,27 @@
         <tbody>
 
 
-  @foreach($productos as $producto)
+  @foreach($bodegas as $bodega)
            <tr>
-           <td>{{ $producto->nombre}}</td>
+           <td>{{ $bodega->nombre}}</td>
                             
                            
-                            <td>@if ($producto->tipoproducto == 1) 
-                            Insumo
-                            @elseif ($producto->tipoproducto == 2)
-                            Herramienta
-                            @endif</td>
                             
          
 
   <td class="td-actions">
                        
                       
-                          <a class="blue bootbox-mostrar" data-id={{$producto->id}}>
+                          <a class="blue bootbox-mostrar" data-id={{$bodega->id}}>
                             <i class="fa fa-search-plus bigger-130"></i>
                           </a>
 
 
-                          <a class="green" href= {{ 'producto/update/'.$producto->id }}>
+                          <a class="green" href= {{ 'bodega/update/'.$bodega->id }}>
                             <i class="fa fa-pencil bigger-130"></i>
                           </a>
 
-                         <a class="red bootbox-confirm" data-id={{ $producto->id }}>
+                         <a class="red bootbox-confirm" data-id={{ $bodega->id }}>
                             <i class="fa fa-trash bigger-130"></i>
                           </a>
                       </td>
@@ -117,7 +111,7 @@ var tableTools = new $.fn.dataTable.TableTools( table, {
 $( tableTools.fnContainer() ).insertAfter('div.info');
 
 $( "#bodegaactive" ).addClass( "active" );
-$( "#productoactive" ).addClass( "active" );
+$( "#bodegaactive" ).addClass( "active" );
 
 
 
@@ -131,7 +125,7 @@ var tr = $(this).parents('tr');
               
            
              
-             $.get("{{ url('producto/eliminar')}}",
+             $.get("{{ url('bodega/eliminar')}}",
               { id: id },
 
               function(data,status){ tr.fadeOut(1000); }
@@ -147,7 +141,7 @@ var tr = $(this).parents('tr');
 $(".bootbox-mostrar").on(ace.click_event, function() {
   var id = $(this).data('id');
 
- $.get("{{ url('producto/mostrar')}}",
+ $.get("{{ url('bodega/mostrar')}}",
               { id: id },
               function(data)
               { 

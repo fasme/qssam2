@@ -147,7 +147,7 @@ $random = rand(0,99999);
                     $datos["archivo1"] = $random."_".$adjunto1->getClientOriginalName();
                     $adjunto1->move("archivos/noticia",$random."_".$adjunto1->getClientOriginalName());
                     
-                    $noticia->archivo1 = $datos["archivo1"];
+                  
                     
                    
                 }
@@ -157,7 +157,7 @@ $random = rand(0,99999);
                     $adjunto1 = Input::file('archivo2');
                     $datos["archivo2"] = $random."_".$adjunto1->getClientOriginalName();
                     $adjunto1->move("archivos/noticia",$random."_".$adjunto1->getClientOriginalName());
-                    $noticia->archivo2 = $datos["archivo2"];
+                   
                  
                 
                 }
@@ -168,7 +168,7 @@ $random = rand(0,99999);
                     $datos["archivo3"] = $random."_".$adjunto1->getClientOriginalName();
                     $adjunto1->move("archivos/noticia",$random."_".$adjunto1->getClientOriginalName());
                     
-                    $noticia->archivo3 = $datos["archivo3"];
+                   
                
                 }
 
@@ -178,12 +178,12 @@ $random = rand(0,99999);
                     $datos["archivo4"] = $random."_".$adjunto1->getClientOriginalName();
                     $adjunto1->move("archivos/noticia",$random."_".$adjunto1->getClientOriginalName());
                     
-                    $noticia->archivo4 = $datos["archivo4"];
+                   
                 
                 }
 
             
-                //return $noticia->fill($datos);
+                $noticia->fill($datos);
                 $noticia->save();
       
           return Redirect::to('noticia')->with("mensaje","Datos actualizados correctamente");

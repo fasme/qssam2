@@ -32,34 +32,35 @@
   <div class="col-xs-12">
 
            <?php
-  // si existe el usuario carga los datos
-    if ($productotransaccion->exists):
-        $form_data = array('url' => 'productotransaccion/update/'.$productotransaccion->id, 'files'=>true);
-        $action    = 'Editar';
-    else:
+
         $form_data = array('url' => 'productotransaccion/insert', 'class'=>'class="form-horizontal', 'files'=>true);
-        $action    = 'Crear';        
-    endif;
+        
 
 ?>
 
 
 {{ Form::open($form_data) }}
-       
+            
+
+            <div class="form-group">
+            {{Form::label('Bodega', 'Nombre',array("class"=>"col-sm-3 control-label no-padding-right"))}}
+            {{Form::select('bodega_id',$bodegas, "",  array("class"=>"chosen-select col-sm-3"))}}
+            </div>
+
             <div class="form-group">
             {{Form::label('Producto', 'Nombre',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-            {{Form::select('producto_id',$productos, $productotransaccion->id,  array("class"=>"chosen-select"))}}
+            {{Form::select('producto_id',$productos, "",  array("class"=>"chosen-select col-sm-3"))}}
             </div>
 
             <div class="form-group">
             {{Form::label('', 'Tipo',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-            {{Form::select('tipo', array(1=>"Entrada",2=>"Salida"),$productotransaccion->tipo )}}
+            {{Form::select('tipo', array(1=>"Entrada",2=>"Salida"),"" )}}
             </div>
 
 
             <div class="form-group">
             {{Form::label('', 'Cantidad',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-            {{Form::number('cantidad',$productotransaccion->cantidad)}}
+            {{Form::number('cantidad',"")}}
             </div>
 
 
