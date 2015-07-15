@@ -228,7 +228,7 @@ return Redirect::to('matriz/update/'.$id)->withInput()->withErrors($matriz->erro
     public function pdf(){
 
         $matrizs = Matriz::all();
-        $view = View::make('matriz.pdf')->with("matrizs",$matrizs);
+        return $view = View::make('matriz.pdf')->with("matrizs",$matrizs);
         return PDF::load($view, 'tabloid', 'landscape')->show();
 
     }
