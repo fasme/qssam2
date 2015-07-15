@@ -155,8 +155,10 @@ return Redirect::to('prestamo/update/'.$id)->withInput()->withErrors($prestamo->
     public function devolver()
     {
         $id = Input::get('id');
+        $cantidad = Input::get('cantidad');
+        $cantidad = $cantidad*-1;
 
-        DB::update('update bodega_producto  set cantidad=cantidad-cantidad, tipo=4  where id = ?', array($id));
+        DB::update('update bodega_producto  set cantidad=cantidad-?, tipo=4  where id = ?', array($cantidad,$id));
         return $id;
     }
 

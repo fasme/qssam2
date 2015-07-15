@@ -67,10 +67,10 @@
            <td>{{Personal::find($prestamo->personal_id)->nombre}}</td>
            <td>{{$prestamo->cantidad}}</td>
            <td>
-           @if($prestamo->tipo == 3) {{"Prestamo"}}  <a class="red bootbox-confirm" data-id={{ $prestamo->bodega_producto_id }}>
+           @if($prestamo->cantidad != 0) {{"Prestamo"}}  <a class="red bootbox-confirm" data-id={{ $prestamo->bodega_producto_id }}>
                              <span class="label label-success arrowed">Devolver</span>
                           </a> @endif
-           @if($prestamo->tipo == 4) {{"Entregado"}} @endif
+           @if($prestamo->tipo == 0) {{"Entregado"}} @endif
            </td>
 </tr>
     @endforeach
@@ -157,7 +157,7 @@ $( "#bodegaactive" ).addClass( "active" );
 
 
 
-
+/*
 $(".bootbox-confirm").on(ace.click_event, function() {
   var id = $(this).data('id');
 //var tr = $(this).parents('tr'); 
@@ -170,7 +170,7 @@ $(".bootbox-confirm").on(ace.click_event, function() {
              $.get("{{ url('prestamo/devolver')}}",
               { id: id },
 
-              function(data,status){ /*tr.fadeOut(1000);*/ }
+              function(data,status){  }
 ).fail(function(data){bootbox.alert("No se puede eliminar un registro padre: una restricción de clave externa falla");});
 
      
@@ -178,7 +178,29 @@ $(".bootbox-confirm").on(ace.click_event, function() {
            
           });
         });
+*/
 
+
+
+$(".bootbox-confirm").on(ace.click_event, function() {
+  var id = $(this).data('id');
+          bootbox.prompt("Cantidad a Devolver", function(result) {
+            if(result){
+            
+            $.get("{{ url('prestamo/devolver')}}",
+              { id: id, cantidad:result },
+
+              function(data,status){ alert("Devolucion Correcta"); }
+).fail(function(data)
+{bootbox.alert("No se puede eliminar un registro padre: una restricción de clave externa falla");
+});
+}
+
+     
+            });
+        });
+
+        
 
 
 

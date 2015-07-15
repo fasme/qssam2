@@ -56,7 +56,7 @@
 
             <div class="form-group">
             {{Form::label('', 'Tipo',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-            {{Form::select('tipo', array(1=>"Entrada",2=>"Salida",3=>"Prestamo"),"" )}}
+            {{Form::select('tipo', array(1=>"Entrada",2=>"Salida", 5=>"A Mantencion"),"" )}}
             </div>
 
 
