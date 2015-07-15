@@ -228,6 +228,7 @@ return Redirect::to('matriz/update/'.$id)->withInput()->withErrors($matriz->erro
     public function pdf(){
 
         $matrizs = Matriz::all();
+        $headers = array('Content-Type' => 'application/pdf');
         $view = View::make('matriz.pdf')->with("matrizs",$matrizs);
         return PDF::load($view, 'a4', 'landscape')->show();
 
@@ -237,7 +238,9 @@ return Redirect::to('matriz/update/'.$id)->withInput()->withErrors($matriz->erro
     public function pdfid($id){
 
         $matriz = Matriz::find($id);
-         $view = View::make('matriz.pdfid')->with("matriz",$matriz);
+         $view = View::make('matriz.pdfid')->with("matriz",$matriz, 200, $headers);
+
+         
         return PDF::load($view, 'tabloid', 'landscape')->show();
 
     }
