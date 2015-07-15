@@ -197,5 +197,5 @@ $html .= "<tr><td>$cambio->version</td><td>$cambio->descripcion</td></tr>";
 $html .= "</table>"
 ?>
 <?php
-echo $html;
+return $html;
 ?>
