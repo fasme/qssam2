@@ -230,7 +230,7 @@ return Redirect::to('matriz/update/'.$id)->withInput()->withErrors($matriz->erro
         $matrizs = Matriz::all();
         $headers = array('Content-Type' => 'application/pdf');
         $view = View::make('matriz.pdf')->with("matrizs",$matrizs);
-        return PDF::load($view, 'a4', 'landscape')->show();
+        return PDF::load($view, 'a4', 'landscape')->download();
 
     }
 
@@ -238,10 +238,10 @@ return Redirect::to('matriz/update/'.$id)->withInput()->withErrors($matriz->erro
     public function pdfid($id){
 
         $matriz = Matriz::find($id);
-         $view = View::make('matriz.pdfid')->with("matriz",$matriz, 200, $headers);
+         $view = View::make('matriz.pdfid')->with("matriz",$matriz);
 
-         
-        return PDF::load($view, 'tabloid', 'landscape')->show();
+
+        return PDF::load($view, 'tabloid', 'landscape')->download();
 
     }
 
@@ -252,7 +252,7 @@ return Redirect::to('matriz/update/'.$id)->withInput()->withErrors($matriz->erro
           $matrizs = Matriz::Wherein("id", $datos["selectmatrices"])->get();
 
           $view = View::make('matriz.pdf')->with("matrizs",$matrizs);
-       return PDF::load($view, 'tabloid', 'landscape')->show();
+       return PDF::load($view, 'tabloid', 'landscape')->download();
         
         //$matriz = Matriz::find($id);
         // $view = View::make('matriz.pdfid')->with("matriz",$matriz);
