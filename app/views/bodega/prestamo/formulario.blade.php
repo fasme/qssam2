@@ -47,16 +47,18 @@
             {{Form::select('bodega_id',$bodegas, "",  array("class"=>"chosen-select col-sm-3"))}}
             </div>
 
-            <div class="form-group">
-            {{Form::label('Producto', 'Producto',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-            {{Form::select('producto_id',$productos, "",  array("class"=>"chosen-select col-sm-3"))}}
-            </div>
+            
 
             <div class="form-group">
             {{Form::label('Producto', 'Personal',array("class"=>"col-sm-3 control-label no-padding-right"))}}
             {{Form::select('personal_id',$personals, "",  array("class"=>"chosen-select col-sm-3"))}}
             </div>
 
+          <!--  <div class="form-group">
+            {{Form::label('Producto', 'Producto',array("class"=>"col-sm-3 control-label no-padding-right"))}}
+            {{Form::select('producto_id',$productos, "",  array("class"=>"chosen-select col-sm-3"))}}
+            </div>
+-->
 
 
             <div class="form-group">
@@ -65,10 +67,32 @@
             </div>
 
 
-            <div class="form-group">
+         <!--   <div class="form-group">
             {{Form::label('', 'Cantidad',array("class"=>"col-sm-3 control-label no-padding-right"))}}
             {{Form::number('cantidad',"")}}
             </div>
+            -->
+
+
+
+            <div class="row">
+  <div class="col-xs-12">
+ 
+
+ 
+
+
+ 
+
+            <a id="agregarCampo" class="btn btn-info" href="#">Agregar Producto</a>
+        <div id="contenedor">
+           
+
+        
+
+</div>
+  </div>
+</div>
 
 
 
@@ -102,6 +126,50 @@
 
 $( "#productotransaccionactive" ).addClass( "active" );
 $('.chosen-select').chosen(); 
+
+
+
+var MaxInputs       = 8; //Número Maximo de Campos
+    var contenedor       = $("#contenedor"); //ID del contenedor
+    var AddButton       = $("#agregarCampo"); //ID del Botón Agregar
+
+    //var x = número de campos existentes en el contenedor
+    var x = $("#contenedor div").length + 1;
+    var FieldCount = x-1; //para el seguimiento de los campos
+
+    $(AddButton).click(function (e) {
+        if(x <= MaxInputs) //max input box allowed
+        {
+            FieldCount++;
+            //agregar campo
+
+            $(contenedor).after('<div>{{Form::select("producto_id[]",$productos,"",array("class"=>"chosen-select col-sm-3"))}}{{Form::text("cantidad[]","",array("placeholder"=>"Cantidad"))}}<a href="#" class="eliminar">&times;</a></div>');
+            x++; //text box increment
+           
+
+           /* $('.date-picker').datepicker({
+          autoclose: true,
+          todayHighlight: true
+        });
+*/
+
+   $('.chosen-select').chosen(); 
+
+            //$("#plazo").addClass("date-picker");
+
+        }
+        return false;
+    });
+
+    $("body").on("click",".eliminar", function(e){ //click en eliminar campo
+        if( x > 1 ) {
+            $(this).parent('div').remove(); //eliminar el campo
+            x--;
+        }
+        return false;
+    });
+
+
     
   });   
 </script>

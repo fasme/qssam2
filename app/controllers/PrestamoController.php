@@ -45,27 +45,30 @@ class PrestamoController extends BaseController {
 
         $datos = Input::all(); 
 
-        $bodega = Bodega::find($datos["bodega_id"]);
-         $producto = Producto::find($datos["producto_id"]);
 
+         for($i=0; $i<count($datos["producto_id"]); $i++)
+        {
+        $bodega = Bodega::find($datos["bodega_id"]);
+         //$producto = Producto::find($datos["producto_id"]);
+        $producto = Producto::find($datos["producto_id"][$i]);
         $random = rand(0,99999);
         
      
 
           
-                $datos["cantidad"] = $datos["cantidad"] * -1;
+                $datos["cantidad"][$i] = $datos["cantidad"][$i] * -1;
             
 
 
       
-          $bodega_producto =  $bodega->muchasproducto()->attach($datos["producto_id"], array("tipo"=>$datos["tipo"], "cantidad"=>$datos["cantidad"]));
+          $bodega_producto =  $bodega->muchasproducto()->attach($datos["producto_id"][$i], array("tipo"=>$datos["tipo"], "cantidad"=>$datos["cantidad"][$i]));
          
          $lastid = DB::select("select max(id) as ultimoid from bodega_producto");
          $lastid= $lastid[0]->ultimoid;
           
         //DB::insert('insert into bodega_prestamo (bodega_id, producto_id, personal_id, tipo,cantidad) values (?, ?,?,?,?)', array($datos["bodega_id"], $datos["producto_id"], $datos["personal_id"], $datos["tipo"], $datos["cantidad"]));
         DB::insert('insert into prestamo (bodega_producto_id, personal_id) values (?,?)', array($lastid, $datos["personal_id"])) ;
-       
+       }
        return Redirect::to('prestamo');
     // el método redirect nos devuelve a la ruta de mostrar la lista de los usuarios
  
