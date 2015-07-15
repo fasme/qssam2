@@ -61,17 +61,16 @@
 
   @foreach($prestamos as $prestamo)
 
- 
            <tr>
            <td>{{Bodega::find($prestamo->bodega_id)->nombre}}</td>
            <td>{{ Producto::find($prestamo->producto_id)->nombre}}</td>
            <td>{{Personal::find($prestamo->personal_id)->nombre}}</td>
            <td>{{$prestamo->cantidad}}</td>
            <td>
-           @if($prestamo->tipo == 1) {{"Prestamo"}}  <a class="red bootbox-confirm" data-id={{ $prestamo->id }}>
+           @if($prestamo->tipo == 3) {{"Prestamo"}}  <a class="red bootbox-confirm" data-id={{ $prestamo->bodega_producto_id }}>
                              <span class="label label-success arrowed">Devolver</span>
                           </a> @endif
-           @if($prestamo->tipo == 2) {{"Entregado"}} @endif
+           @if($prestamo->tipo == 4) {{"Entregado"}} @endif
            </td>
 </tr>
     @endforeach
@@ -85,8 +84,8 @@
  $(document).ready(function() {
 
 
-$("#example tfoot th").eq(0).html('<input type="text" size="1" placeholder="Buscar" style="width:50px" />');
-$("#example tfoot th").eq(1).html('<input type="text" size="1" placeholder="Buscar" style="width:50px" />');
+//$("#example tfoot th").eq(0).html('<input type="text" size="1" placeholder="Buscar" style="width:50px" />');
+//$("#example tfoot th").eq(1).html('<input type="text" size="1" placeholder="Buscar" style="width:50px" />');
 
 
 var table = $('#example').DataTable( {
@@ -95,7 +94,7 @@ var table = $('#example').DataTable( {
 
          "language": {
                 
-               "infoEmpty": "Nasdasd",
+               "infoEmpty": "Vacio",
                 "info": "Mostrando Resultados _PAGE_ of _PAGES_",
                 "lengthMenu": "Mostrar _MENU_ Registros",
                 "search": "Buscar:",
@@ -106,52 +105,13 @@ var table = $('#example').DataTable( {
             },
             
 
-
-             "footerCallback": function ( row, data, start, end, display ) {
-      
-          var api = this.api(), data;
-     
-            // Remove the formatting to get integer data for summation
-            var intVal = function ( i ) {
-                return typeof i === 'string' ?
-                    i.replace(/[\$,]/g, '')*1 :
-                    typeof i === 'number' ?
-                        i : 0;
-            };
- 
-            // Total over all pages
-            total = api
-                .column( 2 )
-                .data()
-                .reduce( function (a, b) {
-                    
-                  //  alert(a + b);
-                   // $.fn.dataTable.render.number( '\'', '.', 0, '$' );
-                    return intVal(a) + intVal(b);
-
-                } );
- 
-            // Total over this page
-            pageTotal = api
-                .column( 2, { page: 'current'} )
-                .data()
-                .reduce( function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0 );
- 
-            // Update footer
-            $( api.column( 2 ).footer() ).html(
-                pageTotal
-            );
-         }
-
     } );
 
 
 
 
 
-
+/*
  table.columns().every( function () {
         var that = this;
  
@@ -162,7 +122,7 @@ var table = $('#example').DataTable( {
         } );
     } );
 
-
+*/
 
 var tableTools = new $.fn.dataTable.TableTools( table, {
   
@@ -202,7 +162,7 @@ $(".bootbox-confirm").on(ace.click_event, function() {
   var id = $(this).data('id');
 //var tr = $(this).parents('tr'); 
 
-          bootbox.confirm("Deseas Devolver  "+id, function(result) {
+          bootbox.confirm("Deseas Devolver  ", function(result) {
             if(result) { // si se seleccion OK
               
            
@@ -218,6 +178,9 @@ $(".bootbox-confirm").on(ace.click_event, function() {
            
           });
         });
+
+
+
 
 
 $(".bootbox-mostrar").on(ace.click_event, function() {

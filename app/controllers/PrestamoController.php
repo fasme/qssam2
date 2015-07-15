@@ -7,7 +7,9 @@ class PrestamoController extends BaseController {
      */
     public function show()
     {
-         $prestamos = DB::table("bodega_prestamo")->get();
+        $prestamos = DB::table("bodega_producto")
+        ->join('prestamo', 'bodega_producto.id', '=', 'prestamo.bodega_producto_id')
+        ->get();
         
         // Con el método all() le estamos pidiendo al modelo de Usuario
         // que busque todos los registros contenidos en esa tabla y los devuelva en un Array
@@ -43,12 +45,26 @@ class PrestamoController extends BaseController {
 
         $datos = Input::all(); 
 
-        $datos["cantidad"] = $datos["cantidad"] * -1;
+        $bodega = Bodega::find($datos["bodega_id"]);
+         $producto = Producto::find($datos["producto_id"]);
 
         $random = rand(0,99999);
-
-        DB::insert('insert into bodega_prestamo (bodega_id, producto_id, personal_id, tipo,cantidad) values (?, ?,?,?,?)', array($datos["bodega_id"], $datos["producto_id"], $datos["personal_id"], $datos["tipo"], $datos["cantidad"]));
         
+     
+
+          
+                $datos["cantidad"] = $datos["cantidad"] * -1;
+            
+
+
+      
+          $bodega_producto =  $bodega->muchasproducto()->attach($datos["producto_id"], array("tipo"=>$datos["tipo"], "cantidad"=>$datos["cantidad"]));
+         
+         $lastid = DB::select("select max(id) as ultimoid from bodega_producto");
+         $lastid= $lastid[0]->ultimoid;
+          
+        //DB::insert('insert into bodega_prestamo (bodega_id, producto_id, personal_id, tipo,cantidad) values (?, ?,?,?,?)', array($datos["bodega_id"], $datos["producto_id"], $datos["personal_id"], $datos["tipo"], $datos["cantidad"]));
+        DB::insert('insert into prestamo (bodega_producto_id, personal_id) values (?,?)', array($lastid, $datos["personal_id"])) ;
        
        return Redirect::to('prestamo');
     // el método redirect nos devuelve a la ruta de mostrar la lista de los usuarios
@@ -137,7 +153,7 @@ return Redirect::to('prestamo/update/'.$id)->withInput()->withErrors($prestamo->
     {
         $id = Input::get('id');
 
-        DB::update('update bodega_prestamo set cantidad = cantidad*-1, tipo=2  where id = ?', array($id));
+        DB::update('update bodega_producto  set cantidad=cantidad-cantidad, tipo=4  where id = ?', array($id));
         return $id;
     }
 
