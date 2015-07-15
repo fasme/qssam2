@@ -357,6 +357,15 @@ Route::post('productotransaccion/update/{id}', 'ProductoTransaccionController@up
 Route::get('productotransaccion/eliminar', 'ProductoTransaccionController@eliminar');
 
 
+//Prestamo
+Route::get('prestamo', array('uses' => 'PrestamoController@show')); 
+Route::get('prestamo/insert', array('uses' => 'PrestamoController@insert'));
+Route::post('prestamo/insert', array('uses' => 'PrestamoController@insert2'));
+Route::get('prestamo/update/{id}', 'PrestamoController@update');
+Route::post('prestamo/update/{id}', 'PrestamoController@update2');
+Route::get('prestamo/eliminar', 'PrestamoController@eliminar');
+Route::get('prestamo/devolver', 'PrestamoController@devolver');
+
 //INFORMES
 
 Route::get("informeevidencia", array("uses"=>"InformeController@informeevidencia"));

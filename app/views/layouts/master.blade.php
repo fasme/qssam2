@@ -582,6 +582,18 @@
 
 								<b class="arrow"></b>
 							</li>
+
+							<li class="" id="prestamoactive">
+								<a href="{{URL::to('prestamo')}}">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Prestamos/Devoluciones
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							
+							
+
 						</ul>
 					</li>
 					

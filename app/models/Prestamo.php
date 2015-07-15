@@ -1,22 +1,24 @@
 <?php
-class producto extends Eloquent { //Todos los modelos deben extender la clase Eloquent
-    protected $table = 'producto';
-    protected $fillable = array('nombre','stock','tipoproducto','codigo', 'unidad');
+class Prestamo extends Eloquent { //Todos los modelos deben extender la clase Eloquent
+    protected $table = 'bodega_prestamo';
+    protected $fillable = array('bodega_id','producto_id','personal_id');
 
 
-
-public function productotransaccion()
+/*
+public function categoria()
 {
-    return $this->hasMany("ProductoTransaccion");
+    return $this->belongsTo("Categoria");
 }
+*/
 
 
-public function muchasbodega()
+    public function muchasproducto()
 {
-    return $this->belongsToMany("Bodega",'bodega_producto','producto_id','bodega_id')
-    ->withpivot("tipo","cantidad")
+    return $this->belongsToMany("Producto",'bodega_producto','bodega_id','producto_id')
+    ->withpivot("tipo","cantidad","personal_id")
     ->withTimestamps();
 }
+
 
 
 

@@ -33,7 +33,7 @@
 
            <?php
 
-        $form_data = array('url' => 'productotransaccion/insert', 'class'=>'class="form-horizontal', 'files'=>true);
+        $form_data = array('url' => 'prestamo/insert', 'class'=>'class="form-horizontal', 'files'=>true);
         
 
 ?>
@@ -52,11 +52,16 @@
             {{Form::select('producto_id',$productos, "",  array("class"=>"chosen-select col-sm-3"))}}
             </div>
 
+            <div class="form-group">
+            {{Form::label('Producto', 'Personal',array("class"=>"col-sm-3 control-label no-padding-right"))}}
+            {{Form::select('personal_id',$personals, "",  array("class"=>"chosen-select col-sm-3"))}}
+            </div>
+
 
 
             <div class="form-group">
             {{Form::label('', 'Tipo',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-            {{Form::select('tipo', array(1=>"Entrada",2=>"Salida",3=>"Prestamo"),"" )}}
+            {{Form::select('tipo', array(1=>"Prestamo"),"" )}}
             </div>
 
 

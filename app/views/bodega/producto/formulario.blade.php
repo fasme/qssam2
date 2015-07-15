@@ -59,8 +59,8 @@
 
             <div class="form-group">
             {{Form::label('', 'Unidad',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-            {{Form::text('unidad', $producto->unidad)}}
-            (kg, lt, un)
+            {{Form::select('unidad',array("kg"=>"kg","lt"=>"lt","un"=>"un"), $producto->unidad)}}
+            
             </div>
 
             <div class="form-group">

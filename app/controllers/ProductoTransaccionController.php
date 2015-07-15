@@ -26,6 +26,7 @@ class ProductoTransaccionController extends BaseController {
         //$productotransaccion = new ProductoTransaccion; 
         $productos = Producto::lists("nombre","id");
         $bodegas = Bodega::lists("nombre","id");
+    //    $personals = Personal::lists("nombre","id");
     
         
         return View::make('bodega.transaccion.formulario')

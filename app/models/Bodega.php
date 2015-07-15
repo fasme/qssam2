@@ -22,6 +22,8 @@ public function categoria()
 
 
 
+
+
 public $errors;
     
     public function isValid($data) // funcion que valida los datos
