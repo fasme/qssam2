@@ -601,6 +601,56 @@
 
 
 
+
+@if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "admingerente"))
+
+					<li class="" id="Capacitacionactive">
+						<a href="#" class="dropdown-toggle">
+							<i class="menu-icon fa fa-graduation-cap"></i>
+							<span class="menu-text">Capacitación </span>
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+
+						<ul class="submenu">
+
+
+						
+
+
+							<li class="" id="cursoactive">
+								<a href="{{URL::to('curso')}}" >
+									<i class="menu-icon fa fa-caret-right"></i>
+
+									Curso
+									
+								</a>
+
+								<b class="arrow"></b>
+
+								
+							</li>
+
+							<li class="" id="asistenciaactive">
+								<a href="{{URL::to('asistencia')}}">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Asistencia
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							
+							
+							
+
+						</ul>
+					</li>
+					
+@endif
+
+
+
 @if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "admingerente"))
 
 					<li class="" id="informeactive">

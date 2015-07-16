@@ -366,6 +366,20 @@ Route::post('prestamo/update/{id}', 'PrestamoController@update2');
 Route::get('prestamo/eliminar', 'PrestamoController@eliminar');
 Route::get('prestamo/devolver', 'PrestamoController@devolver');
 
+
+
+
+//Curso
+Route::get('curso', array('uses' => 'CursoController@show')); 
+Route::get('curso/insert', array('uses' => 'CursoController@insert'));
+Route::post('curso/insert', array('uses' => 'CursoController@insert2'));
+Route::get('curso/update/{id}', 'CursoController@update');
+Route::post('curso/update/{id}', 'CursoController@update2');
+Route::get('curso/eliminar', 'CursoController@eliminar');
+Route::get('curso/eliminarasignacion', 'CursoController@eliminarasignacion');
+
+
+
 //INFORMES
 
 Route::get("informeevidencia", array("uses"=>"InformeController@informeevidencia"));
