@@ -145,6 +145,33 @@ return Redirect::to('curso/update/'.$id)->withInput()->withErrors($curso->errors
     }
 
 
+    public function asignar($id)
+    {
+        $curso = Curso::find($id);
+        $personals = Personal::lists("nombre","id");
+
+        return View::make("capacitacion.asignar.formulario")
+        ->with("curso",$curso)
+        ->with("personals",$personals);
+    }
+
+public function asignar2($id)
+{
+
+    $datos = Input::all();
+     $curso = Curso::find($id);
+
+
+     foreach ($datos["personal_id"] as $personalid) {
+       
+        $personal = Personal::find($personalid);
+         $curso->muchaspersonal()->attach($personal);
+     }
+        //$personal = Personal::find($personalid);
+
+      
+      
+}
 
     public function eliminar()
     {

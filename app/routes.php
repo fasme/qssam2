@@ -377,8 +377,8 @@ Route::get('curso/update/{id}', 'CursoController@update');
 Route::post('curso/update/{id}', 'CursoController@update2');
 Route::get('curso/eliminar', 'CursoController@eliminar');
 Route::get('curso/eliminarasignacion', 'CursoController@eliminarasignacion');
-
-
+Route::get('curso/asignar/{id}', 'CursoController@asignar');
+Route::post('curso/asignar/{id}', 'CursoController@asignar2');
 
 //INFORMES
 
