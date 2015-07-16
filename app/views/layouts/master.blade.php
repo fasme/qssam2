@@ -604,7 +604,7 @@
 
 @if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "admingerente"))
 
-					<li class="" id="Capacitacionactive">
+					<li class="" id="capacitacionactive">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-graduation-cap"></i>
 							<span class="menu-text">Capacitación </span>
@@ -631,7 +631,7 @@
 								
 							</li>
 
-							<li class="" id="asistenciaactive">
+						<!--	<li class="" id="asistenciaactive">
 								<a href="{{URL::to('asistencia')}}">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Asistencia
@@ -640,7 +640,7 @@
 								<b class="arrow"></b>
 							</li>
 
-							
+							-->
 							
 							
 

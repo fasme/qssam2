@@ -168,7 +168,7 @@ public function asignar2($id)
          $curso->muchaspersonal()->attach($personal);
      }
         //$personal = Personal::find($personalid);
-
+     return Redirect::to("curso");
       
       
 }

@@ -194,7 +194,7 @@ $('#example2').DataTable( {
             }
     } );
 
-$( "#bibliotecaactive" ).addClass( "active" );
+$( "#capacitacionactive" ).addClass( "active" );
 $( "#cursoactive" ).addClass( "active" );
 
 

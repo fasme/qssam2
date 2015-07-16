@@ -83,7 +83,8 @@ $('.date-picker').datepicker({
           todayHighlight: true
         });
 
-$( "#cursoactive" ).addClass( "active" );
+$( "#capacitacionactive" ).addClass( "active" );
+$("#cursoactive").addClass("active");
 
 $(".chosen-select").chosen();
   });   
