@@ -173,6 +173,22 @@ public function asignar2($id)
       
 }
 
+
+
+public function cerrar($id)
+{
+    $curso = Curso::find($id);
+    return View::make("capacitacion.curso.cerrar")
+    ->with("curso",$curso);
+    //return $id;
+}
+
+public function cerrar2($id)
+{
+    return $datos = Input::all();
+
+}
+
     public function eliminar()
     {
         $id = Input::get('id'); //acedemos a la variable id traida por AJAX ($.get)

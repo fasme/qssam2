@@ -14,6 +14,8 @@
                     <h3 class="header smaller lighter">Transacción: 
                     <a href="{{URL::to('productotransaccion/insert')}}"  class="btn btn-white btn-info btn-bold"> 
     <i class="ace-icon fa fa-floppy-o bigger-120 blue"></i>Agregar</a>
+
+     
     </h3>
 
 
@@ -83,6 +85,7 @@
 
 $("#example tfoot th").eq(0).html('<input type="text" size="1" placeholder="Buscar" style="width:50px" />');
 $("#example tfoot th").eq(1).html('<input type="text" size="1" placeholder="Buscar" style="width:50px" />');
+$("#example tfoot th").eq(3).html('<input type="text" size="1" placeholder="Buscar" style="width:50px" />');
 
 
 var table = $('#example').DataTable( {

@@ -66,7 +66,7 @@ class ProductoTransaccionController extends BaseController {
             /* $usuario->password = Hash::make($usuario->password);*/
 
       
-            $bodega->muchasproducto()->attach($datos["producto_id"], array("tipo"=>$datos["tipo"], "cantidad"=>$datos["cantidad"]));
+            $bodega->muchasproducto()->attach($datos["producto_id"], array("tipo"=>$datos["tipo"], "cantidad"=>$datos["cantidad"], "documento"=>$datos["documento"], "numdocumento"=>$datos["numdocumento"]));
           // $productotransaccion->save();
 
             return Redirect::to('productotransaccion')->with("mensaje","Datos Ingresados correctamente");
