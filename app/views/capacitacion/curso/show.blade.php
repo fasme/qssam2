@@ -72,10 +72,11 @@
                           <a class="green" href={{'curso/asignar/'.$curso->id}}>
                           <span class="label label-white middle">Asignar Personal</span>
                           </a>
-
+                          @if($curso->estado == "Abierto")
                           <a class="red" href={{'curso/cerrar/'.$curso->id}}>
                           <span class="label label-white middle">Cerrar Curso</span>
                           </a>
+                          @endif
                       </td>
 </tr>
           @endforeach
@@ -141,6 +142,8 @@
           <tr>
             <th>Curso</th>
             <th>Personal</th>
+            <th>Aprobado</th>
+            <th>Asistencia</th>
            
               
           
@@ -157,6 +160,8 @@
 
              <td> {{ $curso->nombre}}</td>
               <td> {{ $personal->nombre}}</td>
+              <td>{{$personal->pivot->aprobado}}</td>
+              <td>{{$personal->pivot->asistencia}}</td>
              
 
   <td class="td-actions">

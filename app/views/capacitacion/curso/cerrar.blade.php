@@ -37,22 +37,39 @@
         </thead>
         <tbody>
 
+<?php 
+$arreglo = array(); 
+
+$array = array();
+?>
+
 
   @foreach($curso->muchaspersonal()->get() as $personal)
            <tr>
+           
+           	
+
+           	<?php 
+           	
+             //array_push($arreglo, $personal->id);
+           $array = array_add($array, $personal->id, $personal->nombre);
+           	?>
 
              <td> {{ $personal->nombre}}</td>
              
              <td>{{ $personal->rut}}</td>
+             
              <td> {{ Form::select("asistencia[]", array("si"=>"si", "no"=>"no"))}}</td>
              <td> {{ Form::select("aprobado[]", array("si"=>"si", "no"=>"no"))}}</td>
              <td> {{ Form::text("observacion[]","")}}</td>
-           
+           	
          
 
 
 </tr>
           @endforeach
+          {{Form::select("personalid[]", $array, "",array("id"=>"personals", "multiple"=>"multiple", "style"=>"visibility:hidden"))}}
+    
         </tbody>
   </table>
 
@@ -109,16 +126,12 @@ $( "#cursoactive" ).addClass( "active" );
 
 
 
+$('#personals>option').each(function(index, element) {
 
+$(this).attr({'selected':'selected'})
+
+});
          
-
-
-     
-            
-           
-          });
-     
-
 
 
 

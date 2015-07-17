@@ -40,6 +40,7 @@ class CursoController extends BaseController {
         $curso = new Curso;
 
         $datos = Input::all(); 
+        $datos["estado"] = "Abierto";
 
         $random = rand(0,99999);
         
@@ -185,7 +186,37 @@ public function cerrar($id)
 
 public function cerrar2($id)
 {
-    return $datos = Input::all();
+      $datos = Input::all();
+      //return $datos["aprobado"][0];
+     $i=0;
+
+     $curso = Curso::find($id);
+     $curso->estado = "Cerrado";
+     $curso->save();
+
+    foreach ($datos["personalid"] as $personal) {
+
+        
+        
+        //echo $curso;
+        $personal1 = $curso->muchaspersonal()->get();
+        $personal1 = $personal1->find($personal);
+        $personal1->pivot->aprobado = $datos["aprobado"][$i];
+        $personal1->pivot->asistencia = $datos["asistencia"][$i];
+        $personal1->pivot->observacion = $datos["observacion"][$i];
+        $personal1->pivot->save();
+
+        $i++;
+
+       // echo $personal;
+        # code...
+    }
+
+    //$datos["estado"] = "Abierto";
+
+
+    return Redirect::to('curso')->with("mensaje","Datos actualizados correctamente");
+
 
 }
 

@@ -9,7 +9,7 @@ class Curso extends Eloquent { //Todos los modelos deben extender la clase Eloqu
 public function muchaspersonal()
 {
     return $this->belongsToMany("Personal",'curso_personal','curso_id','personal_id')
-    ->withpivot("id")
+    ->withpivot("id", "aprobado")
     ->withTimestamps();
 }
 
