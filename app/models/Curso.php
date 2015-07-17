@@ -1,7 +1,7 @@
 <?php
 class Curso extends Eloquent { //Todos los modelos deben extender la clase Eloquent
     protected $table = 'curso';
-    protected $fillable = array('nombre','fecha','lugar', 'contenido','relator','otec','duracion');
+    protected $fillable = array('nombre','fecha','lugar', 'contenido','relator','otec','duracion','estado');
 
 
 
