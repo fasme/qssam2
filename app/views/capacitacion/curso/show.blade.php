@@ -69,10 +69,11 @@
                          <a class="red bootbox-confirm" data-id={{ $curso->id }}>
                             <i class="fa fa-trash bigger-130"></i>
                           </a>
+                          @if($curso->estado == "Abierto")
                           <a class="green" href={{'curso/asignar/'.$curso->id}}>
                           <span class="label label-white middle">Asignar Personal</span>
                           </a>
-                          @if($curso->estado == "Abierto")
+                          
                           <a class="red" href={{'curso/cerrar/'.$curso->id}}>
                           <span class="label label-white middle">Cerrar Curso</span>
                           </a>
