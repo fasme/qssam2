@@ -48,17 +48,16 @@ class ProductoTransaccionController extends BaseController {
         $datos = Input::all(); 
 
          $bodega = Bodega::find($datos["bodega_id"]);
-         $producto = Producto::find($datos["producto_id"]);
 
-        $random = rand(0,99999);
+         for($i=0; $i<count($datos["producto_id"]); $i++)
+        {
         
-     
-            // Si la data es valida se la asignamos al usuario
+         //$producto = Producto::find($datos["producto_id"]);
+        $producto = Producto::find($datos["producto_id"][$i]);
 
-
-            if($datos["tipo"] == 2)
+        if($datos["tipo"] == 2)
             {
-                $datos["cantidad"] = $datos["cantidad"] * -1;
+                $datos["cantidad"][$i] = $datos["cantidad"][$i] * -1;
             }
 
           //  $productotransaccion->fill($datos);
@@ -66,8 +65,17 @@ class ProductoTransaccionController extends BaseController {
             /* $usuario->password = Hash::make($usuario->password);*/
 
       
-            $bodega->muchasproducto()->attach($datos["producto_id"], array("tipo"=>$datos["tipo"], "cantidad"=>$datos["cantidad"], "documento"=>$datos["documento"], "numdocumento"=>$datos["numdocumento"]));
-          // $productotransaccion->save();
+            $bodega->muchasproducto()->attach($datos["producto_id"][$i], array("tipo"=>$datos["tipo"], "cantidad"=>$datos["cantidad"][$i], "documento"=>$datos["documento"], "numdocumento"=>$datos["numdocumento"]));
+         
+    }
+
+    
+        
+     
+            // Si la data es valida se la asignamos al usuario
+
+
+             // $productotransaccion->save();
 
             return Redirect::to('productotransaccion')->with("mensaje","Datos Ingresados correctamente");
        

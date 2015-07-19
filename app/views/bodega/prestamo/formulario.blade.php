@@ -129,7 +129,7 @@ $('.chosen-select').chosen();
 
 
 
-var MaxInputs       = 8; //Número Maximo de Campos
+var MaxInputs       = 20; //Número Maximo de Campos
     var contenedor       = $("#contenedor"); //ID del contenedor
     var AddButton       = $("#agregarCampo"); //ID del Botón Agregar
 
