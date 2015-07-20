@@ -384,7 +384,8 @@ Route::post('curso/cerrar/{id}', 'CursoController@cerrar2');
 
 //INFORMES
 
-Route::get("informeevidencia", array("uses"=>"InformeController@informeevidencia"));
+Route::get("informeevidencia", array("uses"=>"InformeController@informeevidenciamensual"));
+Route::post("informepdf", array("uses"=>"InformeController@informepdf"));
 Route::get("informemantencion", array("uses"=>"InformeController@informemantencion"));
 Route::get("informemantencionmensual", array("uses"=>"InformeController@informemantencionmensual"));
 Route::get("informemantencionanual", array("uses"=>"InformeController@informemantencionanual"));
