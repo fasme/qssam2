@@ -51,6 +51,10 @@
                             Insumo
                             @elseif ($producto->tipoproducto == 2)
                             Herramienta
+                            @elseif ($producto->tipoproducto == 3)
+                            Equipo
+                            @elseif ($producto->tipoproducto == 4)
+                            Activo
                             @endif</td>
                             
          
