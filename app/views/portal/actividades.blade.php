@@ -62,24 +62,10 @@ $actividadresponsable_mantencion = DB::table('actividad_responsable_mantencion')
                             $busqueda = "";
                             ?>
 
-                            @if($actividad->tipoactividad == "programada")
-                            <?php 
-                            $busqueda = ActividadProgramada::find($actividad->actividad_id);
-                            ?>
-                            @elseif($actividad->tipoactividad == "noprogramada")
-                            <?php
+                          <?php
                              $busqueda = ActividadNoProgramada::find($actividad->actividad_id);
                             ?>
-                            @elseif($actividad->tipoactividad == "kpi")
-                            <?php
-                            $busqueda = ActividadKpi::find($actividad->actividad_id);
-                              ?>
-                            @elseif($actividad->tipoactividad == "pac")
-                            <?php
-                            $busqueda = ActividadPac::find($actividad->actividad_id);
-                              ?>
-                            @endif
-
+                            
 
 
                             <?php
@@ -149,24 +135,11 @@ $actividadresponsable_mantencion = DB::table('actividad_responsable_mantencion')
                             $busqueda = "";
                             ?>
 
-                            @if($actividad->tipoactividad == "programada")
-                            <?php 
-                            $busqueda = ActividadProgramada::find($actividad->actividad_id);
-                            ?>
-                            @elseif($actividad->tipoactividad == "noprogramada")
-                            <?php
-                             $busqueda = ActividadNoProgramada::find($actividad->actividad_id);
-                            ?>
-                            @elseif($actividad->tipoactividad == "kpi")
+                         
                             <?php
                             $busqueda = ActividadKpi::find($actividad->actividad_id);
                               ?>
-                            @elseif($actividad->tipoactividad == "pac")
-                            <?php
-                            $busqueda = ActividadPac::find($actividad->actividad_id);
-                              ?>
-                            @endif
-
+                           
 
 
                             <?php
@@ -233,24 +206,10 @@ $actividadresponsable_mantencion = DB::table('actividad_responsable_mantencion')
                             $busqueda = "";
                             ?>
 
-                            @if($actividad->tipoactividad == "programada")
                             <?php 
                             $busqueda = ActividadProgramada::find($actividad->actividad_id);
                             ?>
-                            @elseif($actividad->tipoactividad == "noprogramada")
-                            <?php
-                             $busqueda = ActividadNoProgramada::find($actividad->actividad_id);
-                            ?>
-                            @elseif($actividad->tipoactividad == "kpi")
-                            <?php
-                            $busqueda = ActividadKpi::find($actividad->actividad_id);
-                              ?>
-                            @elseif($actividad->tipoactividad == "pac")
-                            <?php
-                            $busqueda = ActividadPac::find($actividad->actividad_id);
-                              ?>
-                            @endif
-
+                        
 
 
                             <?php
@@ -316,23 +275,11 @@ $actividadresponsable_mantencion = DB::table('actividad_responsable_mantencion')
                             $busqueda = "";
                             ?>
 
-                            @if($actividad->tipoactividad == "programada")
-                            <?php 
-                            $busqueda = ActividadProgramada::find($actividad->actividad_id);
-                            ?>
-                            @elseif($actividad->tipoactividad == "noprogramada")
-                            <?php
-                             $busqueda = ActividadNoProgramada::find($actividad->actividad_id);
-                            ?>
-                            @elseif($actividad->tipoactividad == "kpi")
-                            <?php
-                            $busqueda = ActividadKpi::find($actividad->actividad_id);
-                              ?>
-                            @elseif($actividad->tipoactividad == "pac")
+                            
                             <?php
                             $busqueda = ActividadPac::find($actividad->actividad_id);
                               ?>
-                            @endif
+                         
 
 
 

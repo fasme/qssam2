@@ -78,23 +78,10 @@ $actividadresponsable_mantencion = DB::table('actividad_responsable_mantencion')
                            $busqueda = "";
                             ?>
 
-                            @if($actividad->tipoactividad == "programada")
-                            <?php 
-                            $busqueda = ActividadProgramada::find($actividad->actividad_id);
-                            ?>
-                            @elseif($actividad->tipoactividad == "noprogramada")
+                          
                             <?php
                              $busqueda = ActividadNoProgramada::find($actividad->actividad_id);
                             ?>
-                            @elseif($actividad->tipoactividad == "kpi")
-                            <?php
-                            $busqueda = ActividadKpi::find($actividad->actividad_id);
-                              ?>
-                            @elseif($actividad->tipoactividad == "pac")
-                            <?php
-                            $busqueda = ActividadPac::find($actividad->actividad_id);
-                              ?>
-                            @endif
 
                          
                             
@@ -112,6 +99,11 @@ $actividadresponsable_mantencion = DB::table('actividad_responsable_mantencion')
                             else
                             {
                               $dif = "<font color='green'>(". $interval->format('%R%a')." Dias)</font>";
+                            }
+
+                             if($actividad->estado == "Cerrada")
+                            {
+                              $dif = "";
                             }
                              
                             ?>
@@ -157,23 +149,11 @@ $actividadresponsable_mantencion = DB::table('actividad_responsable_mantencion')
                            $busqueda = "";
                             ?>
 
-                            @if($actividad->tipoactividad == "programada")
-                            <?php 
-                            $busqueda = ActividadProgramada::find($actividad->actividad_id);
-                            ?>
-                            @elseif($actividad->tipoactividad == "noprogramada")
-                            <?php
-                             $busqueda = ActividadNoProgramada::find($actividad->actividad_id);
-                            ?>
-                            @elseif($actividad->tipoactividad == "kpi")
+                            
                             <?php
                             $busqueda = ActividadKpi::find($actividad->actividad_id);
                               ?>
-                            @elseif($actividad->tipoactividad == "pac")
-                            <?php
-                            $busqueda = ActividadPac::find($actividad->actividad_id);
-                              ?>
-                            @endif
+                           
 
                          
                             
@@ -191,6 +171,11 @@ $actividadresponsable_mantencion = DB::table('actividad_responsable_mantencion')
                             else
                             {
                               $dif = "<font color='green'>(". $interval->format('%R%a')." Dias)</font>";
+                            }
+
+                             if($actividad->estado == "Cerrada")
+                            {
+                              $dif = "";
                             }
                              
                             ?>
@@ -236,23 +221,10 @@ $actividadresponsable_mantencion = DB::table('actividad_responsable_mantencion')
                            $busqueda = "";
                             ?>
 
-                            @if($actividad->tipoactividad == "programada")
                             <?php 
                             $busqueda = ActividadProgramada::find($actividad->actividad_id);
                             ?>
-                            @elseif($actividad->tipoactividad == "noprogramada")
-                            <?php
-                             $busqueda = ActividadNoProgramada::find($actividad->actividad_id);
-                            ?>
-                            @elseif($actividad->tipoactividad == "kpi")
-                            <?php
-                            $busqueda = ActividadKpi::find($actividad->actividad_id);
-                              ?>
-                            @elseif($actividad->tipoactividad == "pac")
-                            <?php
-                            $busqueda = ActividadPac::find($actividad->actividad_id);
-                              ?>
-                            @endif
+                           
 
                          
                             
@@ -270,6 +242,12 @@ $actividadresponsable_mantencion = DB::table('actividad_responsable_mantencion')
                             else
                             {
                               $dif = "<font color='green'>(". $interval->format('%R%a')." Dias)</font>";
+                            }
+
+
+                             if($actividad->estado == "Cerrada")
+                            {
+                              $dif = "";
                             }
                              
                             ?>
@@ -315,23 +293,12 @@ $actividadresponsable_mantencion = DB::table('actividad_responsable_mantencion')
                            $busqueda = "";
                             ?>
 
-                            @if($actividad->tipoactividad == "programada")
-                            <?php 
-                            $busqueda = ActividadProgramada::find($actividad->actividad_id);
-                            ?>
-                            @elseif($actividad->tipoactividad == "noprogramada")
-                            <?php
-                             $busqueda = ActividadNoProgramada::find($actividad->actividad_id);
-                            ?>
-                            @elseif($actividad->tipoactividad == "kpi")
-                            <?php
-                            $busqueda = ActividadKpi::find($actividad->actividad_id);
-                              ?>
-                            @elseif($actividad->tipoactividad == "pac")
+                          
+                          
                             <?php
                             $busqueda = ActividadPac::find($actividad->actividad_id);
                               ?>
-                            @endif
+                           
 
                          
                             
@@ -349,6 +316,11 @@ $actividadresponsable_mantencion = DB::table('actividad_responsable_mantencion')
                             else
                             {
                               $dif = "<font color='green'>(". $interval->format('%R%a')." Dias)</font>";
+                            }
+
+                             if($actividad->estado == "Cerrada")
+                            {
+                              $dif = "";
                             }
                              
                             ?>

@@ -96,6 +96,10 @@ $mantencion = "";
                          <a class="red bootbox-confirm" data-id={{ $mantencion->id }}> 
                             <i class="fa fa-trash bigger-130"></i> 
                           </a> 
+
+
+                          
+
                       </td>
 
 
