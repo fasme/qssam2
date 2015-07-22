@@ -44,7 +44,7 @@
 
             <div class="form-group">
             {{Form::label('Bodega', 'Bodega',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-            {{Form::select('bodega_id',$bodegas, "",  array("class"=>"chosen-select col-sm-3"))}}
+            {{Form::select('bodega_id',$bodegas, "",  array("class"=>"chosen-select col-sm-3", "id"=>"bodegaid"))}}
             </div>
 
             
@@ -143,10 +143,27 @@ var MaxInputs       = 20; //Número Maximo de Campos
             FieldCount++;
             //agregar campo
 
-            $(contenedor).after('<div>{{Form::select("producto_id[]",$productos,"",array("class"=>"chosen-select col-sm-3"))}}{{Form::text("cantidad[]","",array("placeholder"=>"Cantidad"))}}<a href="#" class="eliminar">&times;</a></div>');
+            $(contenedor).after('<div>{{Form::select("producto_id[]",$productos,"",array("class"=>"chosen-select col-sm-3", "id"=>"productos"))}}{{Form::text("cantidad[]","",array("placeholder"=>"Cantidad"))}}{{Form::text("stock","",array("id"=>"stock", "readonly"=>"readonly"))}}<a href="#" class="eliminar">&times;</a></div>');
             x++; //text box increment
            
 
+            $("#productos").change(function(){
+            var productoid = $("#productos").val();
+            var bodegaid = $("#bodegaid").val();
+
+                $.get("{{ url('bodega/stock')}}",
+                  { productoid: productoid, bodegaid: bodegaid },
+                  function(data)
+                  { 
+                    $("#cantidad").focus();
+                    $("#stock").val(data);
+                   // alert(data);
+                    //bootbox.dialog({message: data});
+                   
+
+                  });
+      
+    });
            /* $('.date-picker').datepicker({
           autoclose: true,
           todayHighlight: true

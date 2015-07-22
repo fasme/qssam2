@@ -338,6 +338,7 @@ Route::post('bodega/insert', array('uses' => 'BodegaController@insert2'));
 Route::get('bodega/update/{id}', 'BodegaController@update');
 Route::post('bodega/update/{id}', 'BodegaController@update2');
 Route::get('bodega/eliminar', 'BodegaController@eliminar');
+Route::get('bodega/stock', 'BodegaController@stock');
 
 //Producto
 Route::get('producto', array('uses' => 'ProductoController@show')); 

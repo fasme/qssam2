@@ -147,6 +147,20 @@ return Redirect::to('bodega/update/'.$id)->withInput()->withErrors($bodega->erro
     }
 
 
+    public function stock()
+    {
+          $datos = Input::all();
+
+          $productoid = $datos["productoid"];
+          $bodegaid = $datos["bodegaid"];
+
+          $bodega = Bodega::find($bodegaid);
+
+          return $bodega->muchasproducto()->where("producto_id","=",$productoid)->sum('cantidad');
+
+    }
+
+
 
 
 
