@@ -6,6 +6,11 @@ class InformeController extends BaseController {
     /**
      * Mustra la lista con todos los usuarios
      */
+
+
+
+    // MANTENCION
+
     public function informeevidencia()
     {
        
@@ -53,8 +58,6 @@ class InformeController extends BaseController {
      
     }
 
-
-
     public function informemantencionanual()
     {
         $titulo = "Mantencion Programda vs Mantencion Realizada";
@@ -83,9 +86,6 @@ class InformeController extends BaseController {
 
     }
 
-
-
-
     public function informemantencionvehiculo()
     {
 
@@ -110,6 +110,7 @@ class InformeController extends BaseController {
         $realizada[] = DB::table('actividad_responsable_mantencion')->join("mantencion","mantencion.id","=","actividad_responsable_mantencion.actividad_id")->where(DB::raw("MONTH(mantencion.fecha_mantencion)"),"=",$data["mes"])->where(DB::raw("YEAR(mantencion.fecha_mantencion)"),"=",$data["ano"])->where("mantencion.vehiculo_id","=",$vehiculo->id)->count("*");
         }
 
+        //return json_encode($vehiculos);
 
         
        
@@ -125,7 +126,23 @@ class InformeController extends BaseController {
     }
 
 
- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ // EVIDENCIAS
 
 public function informeevidenciamensual()
 {
@@ -164,6 +181,49 @@ $cerradas = $actividadresponsable + $actividadresponsable_kpi + $actividadrespon
         ->with("titulo", $titulo)
         ->with("data",$data);
         
+}
+
+
+
+
+
+
+
+
+
+// BODEGA
+
+public function bodegastock(){
+
+        $titulo = "Stock de Productos";
+        $data = Input::all();
+
+         if(!isset($data["bodegaid"]))
+        {
+            $data["bodegaid"] = Bodega::first()->id;
+        }      
+        $bodegas = Bodega::lists("nombre","id"); 
+
+        $bodega = Bodega::find($data["bodegaid"]);
+     $productos = $bodega->muchasproducto()->groupby("producto_id")->select(DB::raw("SUM(cantidad) as suma, nombre"))->get();
+
+         $productosarray = "";
+         foreach ($productos as $producto) {
+             $productosarray[] = $producto->nombre;
+             $stock[] = $producto->suma;//$stock[] = ;
+         }
+
+
+         
+         //return json_encode($productosarray);
+
+        return View::make('informe.bodega.bodegastock')
+        ->with("productos",json_encode($productosarray))
+        ->with("stock",json_encode($stock))
+        ->with("titulo", $titulo)
+        ->with("data",$data)
+        ->with("bodegas",$bodegas);
+
 }
 
 

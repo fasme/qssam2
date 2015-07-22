@@ -392,6 +392,7 @@ Route::get("informemantencionmensual", array("uses"=>"InformeController@informem
 Route::get("informemantencionanual", array("uses"=>"InformeController@informemantencionanual"));
 Route::get("informemantencionvehiculo", array("uses"=>"InformeController@informemantencionvehiculo"));
 
+Route::get("informebodegastock", "InformeController@bodegastock");
 
 // Manual
 

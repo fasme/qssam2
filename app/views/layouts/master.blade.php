@@ -691,6 +691,36 @@
 						</ul>
 
 
+						<ul class="submenu">
+							
+							<li class="" id="informeactive">
+						<a href="#" class="dropdown-toggle">
+							<i class="menu-icon fa fa-line-chart"></i>
+							<span class="menu-text">Boedega </span>
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+
+								<ul class="submenu">
+									<li class="" id="iniformebodegaactive">
+										<a href="{{URL::to('informebodegastock')}}" >
+											<i class="menu-icon fa fa-caret-right"></i>
+
+											Stock
+											
+										</a>
+
+										<b class="arrow"></b>
+
+										
+									</li>
+
+									
+								</ul>
+						</li>
+						</ul>
+
+
 
 					
 
