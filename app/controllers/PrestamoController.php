@@ -69,9 +69,8 @@ class PrestamoController extends BaseController {
         //DB::insert('insert into bodega_prestamo (bodega_id, producto_id, personal_id, tipo,cantidad) values (?, ?,?,?,?)', array($datos["bodega_id"], $datos["producto_id"], $datos["personal_id"], $datos["tipo"], $datos["cantidad"]));
         DB::insert('insert into prestamo (bodega_producto_id, personal_id) values (?,?)', array($lastid, $datos["personal_id"])) ;
        }
-       return Redirect::to('prestamo');
-    // el método redirect nos devuelve a la ruta de mostrar la lista de los usuarios
- 
+       //return Redirect::to('prestamo');
+    return Redirect::back()->with('message','Datos ingresado Correctamente');  
     }
  
      /**

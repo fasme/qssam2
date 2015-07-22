@@ -6,7 +6,7 @@
 <section id="services" class="service-item">
        <div class="container">
             <div class="center wow fadeInDown">
-                <h2>Biblioteca</h2>
+                <h2>Prestamos</h2>
              </div>
 
             <div class="row">
@@ -92,6 +92,73 @@
 
              {{Form::submit('Guardar', array('class'=>'btn btn-small btn-success'))}}
         {{ Form::close() }}
+</div> <!-- fin well -->
+
+
+
+ <div class="center wow fadeInDown">
+                <h2>Devoluciones</h2>
+             </div>
+
+<div class="well">
+
+
+
+<table id="example" class="table table-striped table-bordered table-hover">
+<div class="info"></div>
+  <thead>
+          <tr>
+          <th>Bodega</th>
+          <th>Producto</th>
+          <th>Personal</th>
+                            <th>Cantidad</th>
+                            <th>Estado</th>
+                           
+          
+ 
+            
+          </tr>
+        </thead>
+
+
+
+        <tfoot>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                
+              
+            </tr>
+        </tfoot>
+
+
+        <tbody>
+
+<?php
+$prestamos = DB::table("bodega_producto")
+        ->join('prestamo', 'bodega_producto.id', '=', 'prestamo.bodega_producto_id')
+        ->get();
+?>
+  @foreach($prestamos as $prestamo)
+
+           <tr>
+           <td>{{Bodega::find($prestamo->bodega_id)->nombre}}</td>
+           <td>{{ Producto::find($prestamo->producto_id)->nombre}}</td>
+           <td>{{Personal::find($prestamo->personal_id)->nombre}}</td>
+           <td>{{$prestamo->cantidad}}</td>
+           <td>
+           @if($prestamo->cantidad != 0) {{"Prestamo"}}  <a class="red bootbox-confirm" data-id={{ $prestamo->bodega_producto_id }}>
+                             <span class="label label-success arrowed">Devolver</span>
+                          </a> @endif
+           @if($prestamo->tipo == 0) {{"Entregado"}} @endif
+           </td>
+</tr>
+    @endforeach
+        </tbody>
+  </table>
+
 </div>
 
 
@@ -130,6 +197,28 @@
 
 $( "#productotransaccionactive" ).addClass( "active" );
 $('.chosen-select').chosen(); 
+
+
+
+var table = $('#example').DataTable( {
+      
+       
+
+         "language": {
+                
+               "infoEmpty": "Vacio",
+                "info": "Mostrando Resultados _PAGE_ of _PAGES_",
+                "lengthMenu": "Mostrar _MENU_ Registros",
+                "search": "Buscar:",
+                "paginate": {
+                  "next": "Siguiente",
+                  "previous": "Anterior"
+                }
+            },
+            
+
+    } );
+
 
 
 
@@ -192,6 +281,28 @@ var MaxInputs       = 20; //Número Maximo de Campos
         return false;
     });
 
+
+
+
+
+
+$(".bootbox-confirm").on(ace.click_event, function() {
+  var id = $(this).data('id');
+          bootbox.prompt("Cantidad a Devolver", function(result) {
+            if(result){
+            
+            $.get("{{ url('prestamo/devolver')}}",
+              { id: id, cantidad:result },
+
+              function(data,status){ alert("Devolucion Correcta"); }
+).fail(function(data)
+{bootbox.alert("No se puede eliminar un registro padre: una restricción de clave externa falla");
+});
+}
+
+     
+            });
+        });
 
 
 

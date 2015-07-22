@@ -14,6 +14,9 @@
             </h1>
           </div><!--/.page-header-->
 
+<div class="alert alert-success">
+{{ Session::get('message') }}
+</div>
 
      @if ($errors->any())
     <div class="alert alert-danger">

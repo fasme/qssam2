@@ -6,7 +6,7 @@
 <section id="services" class="service-item">
        <div class="container">
             <div class="center wow fadeInDown">
-                <h2>Biblioteca</h2>
+                <h2>Entrada/Salida</h2>
              </div>
 
             <div class="row">
