@@ -16,7 +16,7 @@
     {{HTML::style('portal1/css/prettyPhoto.css')}}
     {{HTML::style('portal1/css/main.css')}}
     {{HTML::style('portal1/css/responsive.css')}}
-    
+    {{HTML::style('portal1/css/chosen.css')}}
     
 
 
@@ -41,6 +41,7 @@
 
 {{HTML::script('portal1/js/main.js')}}
 {{HTML::script('portal1/js/bootstrap-datepicker.min.js')}}
+{{HTML::script('portal1/js/chosen.jquery.min.js')}}
 
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
@@ -79,15 +80,14 @@
                     <!--   <li id="mantencionactive"><a href="{{URL::to('mantencionportal')}}">Mantencion</a></li> -->
                        
 
-                        <!--<li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down"></i></a>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Bodega <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="blog-item.html">Blog Single</a></li>
-                                <li><a href="pricing.html">Pricing</a></li>
-                                <li><a href="404.html">404</a></li>
-                                <li><a href="shortcodes.html">Shortcodes</a></li>
+                                <li><a href="transaccionportal">Entrada/Salida</a></li>
+                                <li><a href="prestamoportal">Prestamos/Devoluciones</a></li>
+                         
                             </ul>
-                        </li>-->
+                        </li>
                         @if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "adminprevencion") || (Auth::user()->perfil == "adminmantencion") || (Auth::user()->perfil == "admingerente"))
                          <li><a href="{{URL::to('/')}}">Administracion</a></li> 
                         @endif

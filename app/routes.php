@@ -480,6 +480,14 @@ Route::post('vehiculoportal/update/{id}', array('uses' => 'VehiculoController@up
 
 
 
+Route::get("transaccionportal", function(){
+	return View::make("portal.transaccion");
+});
+
+Route::get("prestamoportal", function(){
+	return View::make("portal.prestamo");
+});
+
 });  // FIN FILTER
 
 
