@@ -67,6 +67,14 @@ class ActividadProgramadaController extends BaseController {
            {
             
             $actividadprogramada->muchaspersonal()->attach($datos["personal_id"][$i],array("personal_admin_id"=>Auth::user()->id, "estado"=>"Abierta","tipoactividad"=>"programada"));
+            
+            $alerta = new Alertas;
+            $alerta->mensaje = "ha enviado una Nueva Actividad";
+            $alerta->personal_id = $datos["personal_id"][$i];  // id_de
+            $alerta->personal_id_admin = Auth::user()->id;  // id_para
+            $alerta->tipo = "aportal";
+            $alerta->save();
+
            }
 
 
@@ -138,6 +146,13 @@ return Redirect::to('actividadprogramada/insert')->withInput()->withErrors($acti
 
             
            $actividadprogramada->save();
+
+            $alerta = new Alertas;
+            $alerta->mensaje = "ha enviado una Nueva Actividad";
+            $alerta->personal_id = $datos["personal_id"][$i];  // id_de
+            $alerta->personal_id_admin = Auth::user()->id;  // id_para
+            $alerta->tipo = "aportal";
+            $alerta->save();
 
             // Y Devolvemos una redirección a la acción show para mostrar el usuario
             //return Redirect::action('ClienteController@show');

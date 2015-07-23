@@ -85,6 +85,13 @@ class PacController extends BaseController {
             $pacactividad = ActividadPac::find($pacactividad->id);
             $pacactividad->muchaspersonal()->attach($datos["selectpac"][$i],array("personal_admin_id"=>Auth::user()->id, "estado"=>"Abierta","tipoactividad"=>"pac"));
 
+
+            $alerta = new Alertas;
+            $alerta->mensaje = "ha enviado una Nueva Actividad";
+            $alerta->personal_id = $datos["selectpac"][$i];  // id_de
+            $alerta->personal_id_admin = Auth::user()->id;  // id_para
+            $alerta->tipo = "aportal";
+            $alerta->save();
             
             //echo $datos["selectpac"][$i]." ".$datos["actividad"][$i]."<br>";
         }
@@ -159,6 +166,13 @@ return Redirect::to('pac/insert')->withInput()->withErrors($pac->errors);
 
 
             $pac->actividadPac()->save($pacactividad);
+
+             $alerta = new Alertas;
+            $alerta->mensaje = "ha enviado una Nueva Actividad";
+            $alerta->personal_id = $datos["selectpac"][$i];  // id_de
+            $alerta->personal_id_admin = Auth::user()->id;  // id_para
+            $alerta->tipo = "aportal";
+            $alerta->save();
             
             //echo $datos["selectpac"][$i]." ".$datos["actividad"][$i]."<br>";
         }

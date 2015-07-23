@@ -153,7 +153,10 @@ return Redirect::to('personal/update/'.$id)->withInput()->withErrors($personal->
         $alerta->mensaje = "ha enviado una nueva evidencia";
         $alerta->personal_id = Auth::user()->id; // id de
         $alerta->personal_id_admin = $administrador->id; //id para
+        $alerta->tipo = "aadmin";
         $alerta->save();
+
+       
         }
         
 

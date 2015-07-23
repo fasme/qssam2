@@ -98,7 +98,8 @@
                         <li class="dropdown">
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <i class="ace-icon fa fa-bell icon-animated-bell"></i>
-                                <span class="">{{Alertas::where("personal_id","=",Auth::user()->id)->get()->count()}}</span>
+
+                                <span class="">{{Alertas::where("personal_id","=",Auth::user()->id)->where("tipo","=","aportal")->count()}}</span>
                             </a>
 
                             <ul class="dropdown-menu">
@@ -107,11 +108,11 @@
                                 <li class="">
                                     <ul>
                                         
-                                        @foreach(Alertas::where("personal_id","=",Auth::user()->id)->get() as $alerta)
+                                        @foreach(Alertas::where("personal_id","=",Auth::user()->id)->where("tipo","=","aportal")->get() as $alerta)
                                         <li>
                                             <a href="{{URL::to('misactividades')}}">
                                                 
-                                                {{"<b>".$alerta->personal->nombre."</b> ".$alerta->mensaje}}
+                                                {{$alerta->mensaje}}
                                                 
                                             </a>
                                         </li>
