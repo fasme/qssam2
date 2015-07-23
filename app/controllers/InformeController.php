@@ -227,8 +227,200 @@ public function bodegastock(){
 }
 
 
-public function informepdf(){
 
+public function massalida(){
+
+        $titulo = "Stock de Productos";
+        $data = Input::all();
+
+         if(!isset($data["bodegaid"]))
+        {
+            $data["bodegaid"] = Bodega::first()->id;
+        }      
+        $bodegas = Bodega::lists("nombre","id"); 
+
+        $bodega = Bodega::find($data["bodegaid"]);
+      $productos = $bodega->muchasproducto()->groupby("producto_id")->select(DB::raw("SUM(cantidad) as suma,nombre"))->where("tipo","=",2)->take(10)->get();
+
+         $productosarray = "";
+         foreach ($productos as $producto) {
+             $productosarray[] = $producto->nombre;
+             $stock[] = ($producto->suma)*-1;//$stock[] = ;
+         }
+
+
+         
+         //return json_encode($productosarray);
+
+        return View::make('informe.bodega.massalida')
+        ->with("productos",json_encode($productosarray))
+        ->with("stock",json_encode($stock))
+        ->with("titulo", $titulo)
+        ->with("data",$data)
+        ->with("bodegas",$bodegas);
+
+}
+
+
+
+public function masentrada(){
+
+        $titulo = "Producto con mas entradas";
+        $data = Input::all();
+
+         if(!isset($data["bodegaid"]))
+        {
+            $data["bodegaid"] = Bodega::first()->id;
+        }      
+        $bodegas = Bodega::lists("nombre","id"); 
+
+        $bodega = Bodega::find($data["bodegaid"]);
+      $productos = $bodega->muchasproducto()->groupby("producto_id")->select(DB::raw("SUM(cantidad) as suma,nombre"))->where("tipo","=",1)->take(10)->get();
+
+         $productosarray = "";
+         foreach ($productos as $producto) {
+             $productosarray[] = $producto->nombre;
+             $stock[] = ($producto->suma);//$stock[] = ;
+         }
+
+
+         
+         //return json_encode($productosarray);
+
+        return View::make('informe.bodega.masentrada')
+        ->with("productos",json_encode($productosarray))
+        ->with("stock",json_encode($stock))
+        ->with("titulo", $titulo)
+        ->with("data",$data)
+        ->with("bodegas",$bodegas);
+
+}
+
+
+public function sindevolucion(){
+
+        $titulo = "Productos sin devolucion";
+        $data = Input::all();
+
+         if(!isset($data["bodegaid"]))
+        {
+            $data["bodegaid"] = Bodega::first()->id;
+        }      
+        $bodegas = Bodega::lists("nombre","id"); 
+
+        $bodega = Bodega::find($data["bodegaid"]);
+      $productos = $bodega->muchasproducto()->groupby("producto_id")->select(DB::raw("SUM(cantidad) as suma,nombre"))->where("tipo","=",3)->get();
+
+         $productosarray = "";
+         foreach ($productos as $producto) {
+             $productosarray[] = $producto->nombre;
+             $stock[] = ($producto->suma)*-1;//$stock[] = ;
+         }
+
+
+         
+         //return json_encode($productosarray);
+
+        return View::make('informe.bodega.sindevolucion')
+        ->with("productos",json_encode($productosarray))
+        ->with("stock",json_encode($stock))
+        ->with("titulo", $titulo)
+        ->with("data",$data)
+        ->with("bodegas",$bodegas);
+
+}
+
+
+
+
+
+
+
+
+
+// ATENCION MEDICA
+
+public function atencionmedicaanual(){
+
+    $titulo = "Cantidad de atencion medicas";
+    $personals = Personal::lists("nombre","id");
+    $personals0 = array(""=>"-- ninguno --");
+    $personals = $personals0 + $personals;
+        $data = Input::all();
+       
+        if(!isset($data["ano"]))
+        {
+            $data["ano"] = date("Y");
+        }  
+        if(!isset($data["personal"]))
+        {
+            $data["personal"] = "";
+        }  
+       
+
+
+        for($i=1; $i<=12; $i++)
+        {
+       // $programada[] = DB::table('actividad_responsable_mantencion')->join("mantencion","mantencion.id","=","actividad_responsable_mantencion.actividad_id")->where(DB::raw("MONTH(mantencion.fecha_mantencion)"),"=",$i)->where(DB::raw("YEAR(mantencion.fecha_mantencion)"),"=",$data["ano"])->count("*");
+       // $realizada[] =  DB::table('actividad_responsable_mantencion')->join("mantencion","mantencion.id","=","actividad_responsable_mantencion.actividad_id")->where(DB::raw("MONTH(mantencion.fecha_mantencion)"),"=",$i)->where(DB::raw("YEAR(mantencion.fecha_mantencion)"),"=",$data["ano"])->where("estado","=","Cerrada")->count("*");
+          $sql = Medica::where(DB::raw("MONTH(created_at)"),"=",$i)->where(DB::raw("YEAR(created_at)"),"=",$data["ano"]); 
+           
+           if($data["personal"] != "")
+           {
+            $sql = $sql->where("personal_id","=",$data["personal"]); 
+           }
+
+
+
+           
+            $cantidad[] = $sql->count("*");
+        }
+    
+       
+        return View::make('informe.medica.atencionmedicaanual')
+        ->with("cantidad",$cantidad)
+        ->with("personals",$personals)
+        ->with("titulo", $titulo)
+        ->with("data",$data);
+}
+
+
+
+public function atencionmedicapersonal()
+{
+        $titulo = "Cantidad de atencion medicas";
+        $data = Input::all();
+
+        //$personals = Personal::lists("nombre","id");
+       $cantidad = array();
+       $personals=array();
+         if(!isset($data["mes"]))
+        {
+            $data["mes"] = date("n");
+        }
+        if(!isset($data["ano"]))
+        {
+            $data["ano"] = date("Y");
+        }   
+
+         $atencionmedicas = Medica::join("personal","personal.id","=","medica.personal_id")->where(DB::raw("MONTH(medica.created_at)"),"=",$data["mes"])->where(DB::raw("YEAR(medica.created_at)"),"=",$data["ano"])->select(DB::raw("COUNT(*) as cant, personal_id"))->groupby("personal_id")->get(); 
+           
+        foreach ($atencionmedicas as $atencion) {
+           $cantidad[] = $atencion->cant;
+           $personals[] = Personal::find($atencion->personal_id)->nombre;
+        }
+       
+       //return json_encode($personals);
+        return View::make('informe.medica.atencionmedicapersonal')
+        ->with("cantidad",json_encode($cantidad))
+        ->with("personals",json_encode($personals))
+        ->with("titulo", $titulo)
+        ->with("data",$data);
+}
+
+
+
+public function informepdf(){
     $data = Input::all();
 
     $view = View::make('informe.informepdf')

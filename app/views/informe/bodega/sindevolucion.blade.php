@@ -4,7 +4,7 @@
 
             
 
- <h3 class="header smaller lighter">Stock de Productos 
+ <h3 class="header smaller lighter">Productos sin devolucion
                 
     </h3>
 
@@ -18,7 +18,7 @@
   <div class="col-xs-12">
       <div class="alert alert-block alert-success">
 
-      {{ Form::open(array('url' => "informebodegastock", "method"=>"get")) }}
+      {{ Form::open(array('url' => "informesindevolucion", "method"=>"get")) }}
             <div class="form-group">
             {{Form::label('', 'Bodega',array("class"=>"col-sm-3 control-label no-padding-right"))}}
             {{Form::select('bodegaid',$bodegas,$data['bodegaid'])}}
@@ -71,7 +71,7 @@ $( "#informeactive" ).addClass( "active" );
     labels: {{$productos}},
     datasets: [
         {
-            label: "Stock",
+            label: "Cantidad",
             fillColor: "#FA5858",
           //  strokeColor: "rgba(220,220,220,0.8)",
            // highlightFill: "rgba(220,220,220,0.75)",

@@ -4,13 +4,13 @@
 
             
 
- <h3 class="header smaller lighter">Stock de Productos 
+ <h3 class="header smaller lighter">Atencion Medicas: 
                 
     </h3>
 
-
 <?php
-
+$meses = array(1=>"Enero",2=>"Feberero", 3=>"Marzo",4=>"Abril",5=>"Mayo",6=>"Junio",7=>"Julio",8=>"Agosto",9=>"Septiembre",10=>"Octubre",11=>"Noviembre",12=>"Diciembre");
+$mesnombre = $meses[$data["mes"]];
 ?>
 
 
@@ -18,11 +18,12 @@
   <div class="col-xs-12">
       <div class="alert alert-block alert-success">
 
-      {{ Form::open(array('url' => "informebodegastock", "method"=>"get")) }}
+      {{ Form::open(array('url' => "informeatencionmedicapersonal", "method"=>"get")) }}
             <div class="form-group">
-            {{Form::label('', 'Bodega',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-            {{Form::select('bodegaid',$bodegas,$data['bodegaid'])}}
+            {{Form::label('', 'Fecha',array("class"=>"col-sm-3 control-label no-padding-right"))}}
+            {{Form::select('mes',$meses, $data["mes"])}}
 
+            {{Form::select('ano',array("2015"=>"2015","2016"=>"2016","2017"=>"2017","2018"=>"2018"), $data["ano"])}}
             {{Form::submit()}}
 
       {{ Form::close()}}
@@ -32,22 +33,13 @@
 </div>
 
  <div class="row">
-  <div class="col-xs-6">
- <canvas id="myChart1" width="400" height="300"></canvas>
+  <div class="col-xs-9">
+ <canvas id="myChart1" width="800" height="300"></canvas>
  </div>
- <div class="col-xs-6">
+ <div class="col-xs-3">
  <div id="chart1"></div>
+  <a class="label label-success" href='' download="GraficoAnual.png"  id="img1">Descargar Grafico</a>
 
-
-{{ Form::open(array('url' => "informepdf")) }}
-            <div class="form-group">
-            {{Form::hidden('img',"", array("id"=>"img64"))}}
-            {{Form::hidden('titulo',$titulo)}}
-            {{Form::submit("Descargar PDF", array("class"=>"btn btn-success"))}}
-
-            
-
-      {{ Form::close()}}
 
  </div>
  </div>
@@ -60,23 +52,28 @@
     
      $(document).ready(function() {
 
-$( "#informeactive" ).addClass( "active" );
+      $( "#informeactive" ).addClass( "active" );
 
-      
 
-     var ctx = document.getElementById("myChart1").getContext("2d");
+      var ctx = document.getElementById("myChart1").getContext("2d");
 
+     var arreglo = new Array();
+     var ve;
+for (var i=0; i<3; i++) { 
+ arreglo[i] = "asde,"; 
+ ve = ve+"_"+i;
+}
 
  var data = {
-    labels: {{$productos}},
+    labels: {{$personals}},
     datasets: [
         {
-            label: "Stock",
+            label: "Cantidad de atencion medica",
             fillColor: "#FA5858",
           //  strokeColor: "rgba(220,220,220,0.8)",
            // highlightFill: "rgba(220,220,220,0.75)",
            // highlightStroke: "rgba(220,220,220,1)",
-            data: {{$stock}}
+            data: {{$cantidad}}
         }
     ]
 };
@@ -91,7 +88,8 @@ var options = {
                 +'<% } %>'
               +'</ul>',
 
-              animation: false
+              animation: false,
+
   };
 
 
@@ -99,9 +97,9 @@ var options = {
 var myBarChart = new Chart(ctx).Bar(data,options);
 var legend = myBarChart.generateLegend();
 
-var wa = ctx.canvas.toDataURL();
 
-    $("#img64").val(wa);
+var url=myBarChart.toBase64Image();
+    document.getElementById("img1").href=url;
 
   //and append it to your page somewhere
   $('#chart1').append(legend);

@@ -696,7 +696,7 @@
 							<li class="" id="informeactive">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-line-chart"></i>
-							<span class="menu-text">Boedega </span>
+							<span class="menu-text">Bodega </span>
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
 
@@ -707,6 +707,79 @@
 											<i class="menu-icon fa fa-caret-right"></i>
 
 											Stock
+										</a>
+										<b class="arrow"></b>
+									</li>
+
+									<li class="" id="iniformebodegaactive">
+										<a href="{{URL::to('informemassalida')}}" >
+											<i class="menu-icon fa fa-caret-right"></i>
+
+											Productos con mas salidas
+										</a>
+										<b class="arrow"></b>
+									</li>
+
+									<li class="" id="iniformebodegaactive">
+										<a href="{{URL::to('informemasentrada')}}" >
+											<i class="menu-icon fa fa-caret-right"></i>
+
+											Productos con mas entradas
+										</a>
+										<b class="arrow"></b>
+									</li>
+
+									<li class="" id="iniformebodegaactive">
+										<a href="{{URL::to('informesindevolucion')}}" >
+											<i class="menu-icon fa fa-caret-right"></i>
+
+											Productos sin devolucion
+										</a>
+										<b class="arrow"></b>
+									</li>
+								</ul>
+
+
+								
+
+
+
+						</li>
+						</ul>
+
+
+
+
+						<ul class="submenu">
+							
+							<li class="" id="informeactive">
+						<a href="#" class="dropdown-toggle">
+							<i class="menu-icon fa fa-line-chart"></i>
+							<span class="menu-text">Atencion Medica </span>
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+
+								<ul class="submenu">
+									<li class="" id="informeevidenciaactive">
+										<a href="{{URL::to('informeatencionmedicaanual')}}" >
+											<i class="menu-icon fa fa-caret-right"></i>
+
+											Anual
+											
+										</a>
+
+										<b class="arrow"></b>
+
+										
+									</li>
+
+
+									<li class="" id="informeevidenciaactive">
+										<a href="{{URL::to('informeatencionmedicapersonal')}}" >
+											<i class="menu-icon fa fa-caret-right"></i>
+
+											Por Personal
 											
 										</a>
 
