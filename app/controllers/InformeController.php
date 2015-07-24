@@ -208,6 +208,7 @@ public function bodegastock(){
      $productos = $bodega->muchasproducto()->groupby("producto_id")->select(DB::raw("SUM(cantidad) as suma, nombre"))->get();
 
          $productosarray = "";
+         $stock = array();
          foreach ($productos as $producto) {
              $productosarray[] = $producto->nombre;
              $stock[] = $producto->suma;//$stock[] = ;
@@ -232,6 +233,7 @@ public function massalida(){
 
         $titulo = "Stock de Productos";
         $data = Input::all();
+        $stock = array();
 
          if(!isset($data["bodegaid"]))
         {
@@ -267,6 +269,7 @@ public function masentrada(){
 
         $titulo = "Producto con mas entradas";
         $data = Input::all();
+        $stock = array();
 
          if(!isset($data["bodegaid"]))
         {
@@ -301,6 +304,7 @@ public function sindevolucion(){
 
         $titulo = "Productos sin devolucion";
         $data = Input::all();
+        $stock = array();
 
          if(!isset($data["bodegaid"]))
         {

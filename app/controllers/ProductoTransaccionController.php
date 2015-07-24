@@ -77,8 +77,8 @@ class ProductoTransaccionController extends BaseController {
 
              // $productotransaccion->save();
 
-            return Redirect::to('productotransaccion')->with("mensaje","Datos Ingresados correctamente");
-       
+            //return Redirect::to('productotransaccion')->with("mensaje","Datos Ingresados correctamente");
+       return Redirect::back()->with('message','Datos ingresado Correctamente'); 
      //   return Redirect::to('usuarios');
     // el método redirect nos devuelve a la ruta de mostrar la lista de los usuarios
  
