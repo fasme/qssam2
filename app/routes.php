@@ -496,6 +496,16 @@ Route::get("prestamoportal", function(){
 	return View::make("portal.prestamo");
 });
 
+
+
+
+
+// Manual
+
+Route::get('manualportal', function(){
+	return View::make('portal.manualportal');
+});
+
 });  // FIN FILTER
 
 

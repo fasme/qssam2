@@ -172,6 +172,13 @@
                 <div class="col-sm-6">
                     &copy; 2015 - QSSAM
                 </div>
+
+                <div class="col-sm-6">
+                    <a href="{{URL::to('manualportal')}}">
+                                        Manual Usuario
+                    <i class="ace-icon fa fa-arrow-right"></i>
+                    </a>
+                </div>
                
             </div>
         </div>
