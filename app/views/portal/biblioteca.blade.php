@@ -53,7 +53,7 @@ $archivos = Archivo::where("obsoleto","<>","si")->get();
                             <td>{{$archivo->tiempo}}</td>
                             
                             <td>
-                            <a data-toggle="modal" class="botoncito" data-urlarchivo="https://docs.google.com/viewer?url=http://avachintranet.cl/public/archivos/biblioteca/{{$archivo->archivo}}&embedded=true"  href="#" >
+                            <a data-toggle="modal" class="botoncito" data-urlarchivo="https://docs.google.com/viewer?url=http://avachintranet.cl/qssam2/public/archivos/biblioteca/{{$archivo->archivo}}&embedded=true"  href="#" >
                                   <span class="label label-success arrowed">Vista Previa</span>
                                 </a>
 
