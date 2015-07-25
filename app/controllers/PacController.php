@@ -142,7 +142,7 @@ return Redirect::to('pac/insert')->withInput()->withErrors($pac->errors);
 
 
 
-        $datos = Input::all(); 
+         $datos = Input::all(); 
 
          $random = rand(0,99999);
         

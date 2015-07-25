@@ -188,7 +188,7 @@
   <div class="col-xs-12">
   @foreach($pac->actividadPac as $actividadpac)
 
-  <div>{{Form::select("selectpac[]",$personals,$actividadpac->personal_id)}}{{Form::text("actividad[]", $actividadpac->actividad)}}{{Form::text("plazo[]", date_format(date_create($actividadpac->plazo), 'd/m/Y'), array("id"=>"plazo", "class"=>"date-picker",  "data-date-format"=>"dd/mm/yyyy"))}}{{Form::select("tipoplan[]",array("1"=>"Plan de accion inmediato","2"=>"Plan de accion Correctivo","3"=>"Plan de accion preventivo"), $actividadpac->tipoplan)}}<a href="#" class="eliminar">&times;</a></div>
+  <div>{{Form::select("selectpac[]",$personals,$actividadpac->personal_id)}}{{Form::text("actividad[]", $actividadpac->actividad)}}{{Form::text("frecuencia[]", date_format(date_create($actividadpac->plazo), 'd/m/Y'), array("id"=>"plazo", "class"=>"date-picker",  "data-date-format"=>"dd/mm/yyyy"))}}{{Form::select("tipoplan[]",array("1"=>"Plan de accion inmediato","2"=>"Plan de accion Correctivo","3"=>"Plan de accion preventivo"), $actividadpac->tipoplan)}}<a href="#" class="eliminar">&times;</a></div>
 
   @endforeach
             <a id="agregarCampo" class="btn btn-info" href="#">Agregar Solucion</a>
