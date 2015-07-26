@@ -17,10 +17,10 @@
 $personal = Personal::find(Auth::user()->id);
 
 $actividadresponsable = DB::table('actividad_responsable_noprogramada')->Where("personal_id","=",Auth::user()->id)->get();
-$actividadresponsable_kpi = DB::table('actividad_responsable_kpi')->Where("personal_id","=",Auth::user()->id)->get();
+//$actividadresponsable_kpi = DB::table('actividad_responsable_kpi')->Where("personal_id","=",Auth::user()->id)->get();
 $actividadresponsable_programada = DB::table('actividad_responsable_programada')->Where("personal_id","=",Auth::user()->id)->get();
 
-$actividadresponsable_pac = DB::table('actividad_responsable_pac')->Where("personal_id","=",Auth::user()->id)->get();
+//$actividadresponsable_pac = DB::table('actividad_responsable_pac')->Where("personal_id","=",Auth::user()->id)->get();
 $actividadresponsable_mantencion = DB::table('actividad_responsable_mantencion')->Where("personal_id","=",Auth::user()->id)->get();
 
 //print_r($actividadresponsable);
@@ -125,72 +125,73 @@ $actividadresponsable_mantencion = DB::table('actividad_responsable_mantencion')
 
 
 
-                            @foreach($actividadresponsable_kpi as $actividad)
-                          <tr>
-                        
-                           <?php
-                           
-                            
-                             
-                            $busqueda = "";
+                             @foreach(Kpi::all() as $actividad)
+                                  @foreach($actividad->muchaspersonal()->where("personal_id","=",Auth::user()->id)->get() as $actividad2)
+                                
+
+                                 
+                              <?php
+                           $busqueda = "";
                             ?>
 
-                         
+                            
                             <?php
-                            $busqueda = ActividadKpi::find($actividad->actividad_id);
+                            //$busqueda = ActividadKpi::find($actividad->actividad_id);
                               ?>
                            
 
-
-                            <?php
-
-                            $datetime1 = new DateTime($busqueda->frecuencia);
+                         
+                            
+                          <tr>
+                            
+                        
+                           <?php
+                            $datetime1 = new DateTime($actividad->frecuencia);
                             $datetime2 = new DateTime(date("Y/m/d"));
                             $interval = $datetime1->diff($datetime2);
                             if($interval->format("%R") == "+")
                             {
-                              $dif = "<font color='red'>(". $interval->format('Atrasado %a')." Dias)</font>";
+                              $dif = "<font color='red'>(". $interval->format('%R%a')." Dias)</font>";
                             }
                             else
                             {
-                              $dif = "<font color='green'>(". $interval->format('Faltan %a')." Dias)</font>";
+                              $dif = "<font color='green'>(". $interval->format('%R%a')." Dias)</font>";
                             }
 
-                            if($actividad->estado == "Cerrada")
+                             if($actividad->estado == "Cerrada")
                             {
                               $dif = "";
                             }
-
+                             
                             ?>
-                            <td>{{$busqueda->actividad}}</td>
+
+                            <td>{{ $actividad2->pivot->actividad}}</td>
+                            <td>{{"KPI"}}</td>
+                            <td>{{$actividad2->pivot->estado}}</td>
                             
-                            
-                            
-                            <td>{{$actividad->tipoactividad}}</td>
-                            <td>{{$actividad->estado}}</td>
-                            <td>{{date_format(date_create($busqueda->frecuencia),"d/m/Y")}} {{$dif}}</td>
-                            
-                            <td>
-                            @if($actividad->estado == "Abierta")
+
+                          
+                            <td>{{date_format(date_create($actividad2->pivot->frecuencia),"d/m/Y")}} {{$dif}}</td>
+                             <td>
+                            @if($actividad2->pivot->estado == "Abierta")
                             <div class="hidden-sm hidden-xs action-buttons">
-                                <a data-toggle="modal" class="botoncito" data-id="{{$actividad->id}}" data-actividadid="{{$actividad->actividad_id}}" data-tipoactividad="{{$actividad->tipoactividad}}" href="#" >
+                                <a data-toggle="modal" class="botoncito" data-id="{{$actividad2->pivot->id}}" data-actividadid="{{$actividad2->pivot->kpi_id}}" data-tipoactividad="kpi" href="#" >
                                   <i class="ace-icon fa fa-upload bigger-130"></i>
                                 </a>
                               </div>
                               @else
 
-                              <a href="archivos/evidencia/{{ $actividad->adjunto1}}">{{$actividad->adjunto1}}</a><br>
-                           <a href="archivos/evidencia/{{ $actividad->adjunto2}}">{{$actividad->adjunto2}}</a><br>
-                           <a href="archivos/evidencia/{{ $actividad->adjunto3}}">{{$actividad->adjunto3}}</a><br>
-                           <a href="archivos/evidencia/{{ $actividad->adjunto4}}">{{$actividad->adjunto4}}</a><br>
-                           <a href="archivos/evidencia/{{ $actividad->adjunto5}}">{{$actividad->adjunto5}}</a><br>
+                              <a href="archivos/evidencia/{{ $actividad2->pivot->adjunto1}}">{{$actividad2->pivot->adjunto1}}</a><br>
+                           <a href="archivos/evidencia/{{ $actividad2->pivot->adjunto2}}">{{$actividad2->pivot->adjunto2}}</a><br>
+                           <a href="archivos/evidencia/{{ $actividad2->pivot->adjunto3}}">{{$actividad2->pivot->adjunto3}}</a><br>
+                           <a href="archivos/evidencia/{{ $actividad2->pivot->adjunto4}}">{{$actividad2->pivot->adjunto4}}</a><br>
+                           <a href="archivos/evidencia/{{ $actividad2->pivot->adjunto5}}">{{$actividad2->pivot->adjunto5}}</a><br>
 
                               @endif
                               </td>
-                           
                             </tr>
-
-                            @endforeach
+                                @endforeach
+                                  @endforeach
 
 
 
@@ -214,7 +215,7 @@ $actividadresponsable_mantencion = DB::table('actividad_responsable_mantencion')
 
                             <?php
 
-                            $datetime1 = new DateTime($busqueda->frecuencia);
+                            $datetime1 = new DateTime($actividad->frecuencia);
                             $datetime2 = new DateTime(date("Y/m/d"));
                             $interval = $datetime1->diff($datetime2);
                             if($interval->format("%R") == "+")
@@ -238,7 +239,7 @@ $actividadresponsable_mantencion = DB::table('actividad_responsable_mantencion')
                             
                             <td>{{$actividad->tipoactividad}}</td>
                             <td>{{$actividad->estado}}</td>
-                            <td>{{date_format(date_create($busqueda->frecuencia),"d/m/Y")}} {{$dif}}</td>
+                            <td>{{date_format(date_create($actividad->frecuencia),"d/m/Y")}} {{$dif}}</td>
                             
                             <td>
                             @if($actividad->estado == "Abierta")
@@ -265,73 +266,75 @@ $actividadresponsable_mantencion = DB::table('actividad_responsable_mantencion')
 
 
 
-                            @foreach($actividadresponsable_pac as $actividad)
+                            @foreach(Pac::all() as $actividad)
+                                  @foreach($actividad->muchaspersonal()->where("personal_id","=",Auth::user()->id)->get() as $actividad2)
+                                
+
+                                 
+                              <?php
+                           $busqueda = "";
+                            ?>
+
+                            
+                            <?php
+                            //$busqueda = ActividadKpi::find($actividad->actividad_id);
+                              ?>
+                           
+
+                         
+                            
                           <tr>
+                            
                         
                            <?php
-                           
-                            
-                             
-                            $busqueda = "";
-                            ?>
-
-                            
-                            <?php
-                            $busqueda = ActividadPac::find($actividad->actividad_id);
-                              ?>
-                         
-
-
-
-                            <?php
-
-                            $datetime1 = new DateTime($busqueda->frecuencia);
+                            $datetime1 = new DateTime($actividad->frecuencia);
                             $datetime2 = new DateTime(date("Y/m/d"));
                             $interval = $datetime1->diff($datetime2);
                             if($interval->format("%R") == "+")
                             {
-                              $dif = "<font color='red'>(". $interval->format('Atrasado %a')." Dias)</font>";
+                              $dif = "<font color='red'>(". $interval->format('%R%a')." Dias)</font>";
                             }
                             else
                             {
-                              $dif = "<font color='green'>(". $interval->format('Faltan %a')." Dias)</font>";
+                              $dif = "<font color='green'>(". $interval->format('%R%a')." Dias)</font>";
                             }
 
-                            if($actividad->estado == "Cerrada")
+                             if($actividad->estado == "Cerrada")
                             {
                               $dif = "";
                             }
-
+                             
                             ?>
-                            <td>{{$busqueda->actividad}}</td>
+
+                            <td>{{ $actividad2->pivot->actividad}}</td>
+                            <td>{{"Pac"}}</td>
+                            <td>{{$actividad2->pivot->estado}}</td>
                             
-                            
-                            
-                            <td>{{$actividad->tipoactividad}}</td>
-                            <td>{{$actividad->estado}}</td>
-                            <td>{{date_format(date_create($busqueda->frecuencia),"d/m/Y")}} {{$dif}}</td>
-                            
-                            <td>
-                            @if($actividad->estado == "Abierta")
+
+                          
+                            <td>{{date_format(date_create($actividad2->pivot->frecuencia),"d/m/Y")}} {{$dif}}</td>
+                             <td>
+                            @if($actividad2->pivot->estado == "Abierta")
                             <div class="hidden-sm hidden-xs action-buttons">
-                                <a data-toggle="modal" class="botoncito" data-id="{{$actividad->id}}" data-actividadid="{{$actividad->actividad_id}}" data-tipoactividad="{{$actividad->tipoactividad}}" href="#" >
+                                <a data-toggle="modal" class="botoncito" data-id="{{$actividad2->pivot->id}}" data-actividadid="{{$actividad2->pivot->pac_id}}" data-tipoactividad="pac" href="#" >
                                   <i class="ace-icon fa fa-upload bigger-130"></i>
                                 </a>
                               </div>
                               @else
 
-                              <a href="archivos/evidencia/{{ $actividad->adjunto1}}">{{$actividad->adjunto1}}</a><br>
-                           <a href="archivos/evidencia/{{ $actividad->adjunto2}}">{{$actividad->adjunto2}}</a><br>
-                           <a href="archivos/evidencia/{{ $actividad->adjunto3}}">{{$actividad->adjunto3}}</a><br>
-                           <a href="archivos/evidencia/{{ $actividad->adjunto4}}">{{$actividad->adjunto4}}</a><br>
-                           <a href="archivos/evidencia/{{ $actividad->adjunto5}}">{{$actividad->adjunto5}}</a><br>
+                              <a href="archivos/evidencia/{{ $actividad2->pivot->adjunto1}}">{{$actividad2->pivot->adjunto1}}</a><br>
+                           <a href="archivos/evidencia/{{ $actividad2->pivot->adjunto2}}">{{$actividad2->pivot->adjunto2}}</a><br>
+                           <a href="archivos/evidencia/{{ $actividad2->pivot->adjunto3}}">{{$actividad2->pivot->adjunto3}}</a><br>
+                           <a href="archivos/evidencia/{{ $actividad2->pivot->adjunto4}}">{{$actividad2->pivot->adjunto4}}</a><br>
+                           <a href="archivos/evidencia/{{ $actividad2->pivot->adjunto5}}">{{$actividad2->pivot->adjunto5}}</a><br>
 
                               @endif
                               </td>
-                           
                             </tr>
+                                @endforeach
+                                  @endforeach
 
-                            @endforeach
+
 
 
 
@@ -386,7 +389,7 @@ $actividadresponsable_mantencion = DB::table('actividad_responsable_mantencion')
                             <td>
                             @if($actividad->estado == "Abierta")
                             <div class="hidden-sm hidden-xs action-buttons">
-                                <a data-toggle="modal" class="botoncito" data-id="{{$actividad->id}}" data-actividadid="{{$actividad->actividad_id}}" data-tipoactividad="{{$actividad->tipoactividad}}" href="#" >
+                                <a data-toggle="modal" class="botoncito" data-id="{{$actividad2->pivot->id}}" data-actividadid="{{$actividad2->pivot->actividad_id}}" data-tipoactividad="kpi" href="#" >
                                   <i class="ace-icon fa fa-upload bigger-130"></i>
                                 </a>
                               </div>

@@ -249,7 +249,7 @@ return Redirect::to('personal/update/'.$id)->withInput()->withErrors($personal->
 
 
 
-            $actividadrespoonsable = DB::table('actividad_responsable_kpi')
+            $actividadrespoonsable = DB::table('actividad_kpi')
             ->Where("id","=",$datos["id"]);
 
             $adjunto11 ="";
@@ -313,7 +313,7 @@ return Redirect::to('personal/update/'.$id)->withInput()->withErrors($personal->
               //  $actividadrespoonsable->pivot->estado = "Pendiente";
                 //$actividadrespoonsable->save();
 
-                $actividadrespoonsable = DB::table('actividad_responsable_kpi')
+                $actividadrespoonsable = DB::table('actividad_kpi')
             ->Where("id","=",$datos["id"])->update(array('adjunto1' => $adjunto11,'adjunto2' => $adjunto22,'adjunto3' => $adjunto33,'adjunto4' => $adjunto44,'adjunto5' => $adjunto55, "estado"=>"Pendiente", "fechaenvio"=>date("Y-m-d")));
 
         }
@@ -402,7 +402,7 @@ return Redirect::to('personal/update/'.$id)->withInput()->withErrors($personal->
 
 
 
-            $actividadrespoonsable = DB::table('actividad_responsable_pac')
+            $actividadrespoonsable = DB::table('actividad_pac')
             ->Where("id","=",$datos["id"]);
 
             $adjunto11 ="";
@@ -466,7 +466,7 @@ return Redirect::to('personal/update/'.$id)->withInput()->withErrors($personal->
               //  $actividadrespoonsable->pivot->estado = "Pendiente";
                 //$actividadrespoonsable->save();
 
-                $actividadrespoonsable = DB::table('actividad_responsable_pac')
+                $actividadrespoonsable = DB::table('actividad_pac')
             ->Where("id","=",$datos["id"])->update(array('adjunto1' => $adjunto11,'adjunto2' => $adjunto22,'adjunto3' => $adjunto33,'adjunto4' => $adjunto44,'adjunto5' => $adjunto55, "estado"=>"Pendiente", "fechaenvio"=>date("Y-m-d")));
 
         }
