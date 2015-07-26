@@ -190,6 +190,23 @@ return Redirect::to('actividadnoprogramada/insert')->withInput()->withErrors($ac
 
 
 
+     public function mostrar()
+    {
+
+$id = Input::get('id'); //acedemos a la variable id traida por AJAX ($.get)
+       
+        $actividadnoprogramada = ActividadNoProgramada::find($id);
+           $personals = Personal::lists("nombre","id");
+   
+        return View::make('actividad.noprogramada.mostrar')
+        ->with("actividadnoprogramada", $actividadnoprogramada)
+        ->with("personals",$personals);
+ 
+        
+    }
+
+
+
  
 
 
