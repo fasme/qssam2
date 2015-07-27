@@ -97,12 +97,12 @@ var tableTools = new $.fn.dataTable.TableTools( table, {
                     {
                         "sExtends": "pdf",
                         "sButtonText":"Listado pdf",
-                        //"sTitle": "Report Name",
+                        "sTitle": "Biblioteca listado maestro de documentos y registros Obsoletos",
                         //"sPdfMessage": "Summary Info",
                         "sFileName": "<?php print('Informe'); ?>.pdf",
                         "sPdfOrientation": "landscape",
                         "oSelectorOpts": {page: 'current'},
-
+                         "mColumns": [ 0, 1,2,3 ]
                     }
 
                 ]

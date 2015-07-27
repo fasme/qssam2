@@ -93,7 +93,7 @@ var tableTools = new $.fn.dataTable.TableTools( table, {
                    {
                         "sExtends": "pdf",
                         "sButtonText":"Listado pdf",
-                        //"sTitle": "Report Name",
+                        "sTitle": "plan de actividades no programadas",
                         //"sPdfMessage": "Summary Info",
                         "sFileName": "<?php print('Informe'); ?>.pdf",
                         "sPdfOrientation": "landscape",
