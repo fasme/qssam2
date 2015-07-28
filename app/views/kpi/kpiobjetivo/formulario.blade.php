@@ -52,7 +52,7 @@
 
              <div class="form-group">
             {{Form::label('', 'Objetivo',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-            {{Form::text('nombre', $kpiobjetivo->nombre)}}
+            {{Form::textarea('nombre', $kpiobjetivo->nombre)}}
             </div>
 
 
