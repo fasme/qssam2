@@ -78,8 +78,14 @@
             </div>
 
             <div class="form-group">
-            {{Form::label('', 'Domicilio',array("class"=>"col-sm-3 control-label no-padding-right"))}}
+            {{Form::label('', 'Proyecto',array("class"=>"col-sm-3 control-label no-padding-right"))}}
             {{Form::text('domicilio', $medica->domicilio)}}
+            </div>
+
+
+            <div class="form-group">
+            {{Form::label('', 'Clasificacion',array("class"=>"col-sm-3 control-label no-padding-right"))}}
+            {{Form::text('clasificacion', $medica->clasificacion)}}
             </div>
 
             
