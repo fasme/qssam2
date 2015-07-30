@@ -88,6 +88,11 @@
             {{Form::text('clasificacion', $medica->clasificacion)}}
             </div>
 
+
+            <div class="form-group">
+            {{Form::label('', 'Comuna',array("class"=>"col-sm-3 control-label no-padding-right"))}}
+            {{Form::text('comuna', $medica->comuna)}}
+            </div>
             
 
 
