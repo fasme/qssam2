@@ -27,6 +27,7 @@
         
  
 <table id="example" class="table table-striped table-bordered table-hover">
+<div class="info"></div>
   <thead>
           <tr>
             <th>Nombre</th>
@@ -139,6 +140,7 @@
         
  
 <table id="example2" class="table table-striped table-bordered table-hover">
+<div class="info2"></div>
   <thead>
           <tr>
             <th>Curso</th>
@@ -189,20 +191,71 @@
  $(document).ready(function() {
 
 
-$('#example').DataTable( {
+var table = $('#example').DataTable( {
       
        "language": {
                 "url": "datatables.spanish.json"
             }
     } );
 
+var tableTools = new $.fn.dataTable.TableTools( table, {
+  
 
-$('#example2').DataTable( {
+    
+      "aButtons": [
+                   {
+                        "sExtends": "pdf",
+                        "sButtonText":"Listado pdf",
+                        "sTitle": "Cursos",
+                        //"sPdfMessage": "Summary Info",
+                        "sFileName": "<?php print('Informe'); ?>.pdf",
+                        "sPdfOrientation": "landscape",
+                        "oSelectorOpts": {page: 'current'},
+                        "mColumns": [ 0, 1,2,3,4,5 ]
+
+                    }
+
+                ]
+      
+    } );
+
+
+$( tableTools.fnContainer() ).insertAfter('div.info');
+
+
+
+
+
+var table2 = $('#example2').DataTable( {
       
        "language": {
                 "url": "datatables.spanish.json"
             }
     } );
+
+var tableTools = new $.fn.dataTable.TableTools( table2, {
+  
+
+    
+      "aButtons": [
+                   {
+                        "sExtends": "pdf",
+                        "sButtonText":"Listado Pdf",
+                        "sTitle": "Asignaciones",
+                        //"sPdfMessage": "Summary Info",
+                        "sFileName": "<?php print('Informe'); ?>.pdf",
+                        "sPdfOrientation": "landscape",
+                        "oSelectorOpts": {page: 'current'},
+                        "mColumns": [ 0, 1,2,3 ]
+
+                    }
+
+                ]
+      
+    } );
+
+$( tableTools.fnContainer() ).insertAfter('div.info2');
+
 
 $( "#capacitacionactive" ).addClass( "active" );
 $( "#cursoactive" ).addClass( "active" );

@@ -27,13 +27,16 @@
         
  
 <table id="example" class="table table-striped table-bordered table-hover">
+<div class="info"></div>
   <thead>
           <tr>
             <th>Nombre</th>
             <th>Tratamiento</th>
             <th>Diagnostico</th>
             <th>Edad</th>
-            <th>Domicilio</th>
+            <th>Proyecto</th>
+            <th>Clasificacion</th>
+            <th>Comuna</th>
   <th>Acciones</th>
             
           </tr>
@@ -49,7 +52,8 @@
              <td>{{$medica->diagnostico}}</td>
              <td>{{$medica->edad}}</td>
              <td>{{$medica->domicilio}}</td>
-         
+              <td>{{$medica->clasificacion}}</td>
+              <td>{{$medica->comuna}}</td>
 
   <td class="td-actions">
                        
@@ -79,7 +83,7 @@
  $(document).ready(function() {
 
 
-$('#example').DataTable( {
+var table = $('#example').DataTable( {
       
        "language": {
                 "url": "datatables.spanish.json"
@@ -87,6 +91,29 @@ $('#example').DataTable( {
     } );
 
 
+var tableTools = new $.fn.dataTable.TableTools( table, {
+  
+
+    
+      "aButtons": [
+                   {
+                        "sExtends": "pdf",
+                        "sButtonText":"Listado pdf",
+                        "sTitle": "Atencion Medica",
+                        //"sPdfMessage": "Summary Info",
+                        "sFileName": "<?php print('Informe'); ?>.pdf",
+                        "sPdfOrientation": "landscape",
+                        "oSelectorOpts": {page: 'current'},
+                        "mColumns": [ 0, 1,2,3,4,5,6 ]
+
+                    }
+
+                ]
+      
+    } );
+
+
+$( tableTools.fnContainer() ).insertAfter('div.info');
 
 
 
