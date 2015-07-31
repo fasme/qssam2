@@ -47,6 +47,8 @@ class MedicaController extends BaseController {
         if ($medica->isValid($datos))
         {
              
+             list($dia,$mes,$ano) = explode("/",$datos['fecha']);
+            $datos['fecha'] = "$ano-$mes-$dia";
 
                 
             $medica->fill($datos);
@@ -103,6 +105,10 @@ $random = rand(0,99999);
         
         if ($medica->isValid($datos))
         {
+
+            list($dia,$mes,$ano) = explode("/",$datos['fecha']);
+            $datos['fecha'] = "$ano-$mes-$dia";
+            
 
                 $medica->fill($datos);
 

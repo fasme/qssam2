@@ -93,6 +93,12 @@
             {{Form::label('', 'Comuna',array("class"=>"col-sm-3 control-label no-padding-right"))}}
             {{Form::text('comuna', $medica->comuna)}}
             </div>
+
+
+            <div class="form-group">
+            {{Form::label('', 'Fecha',array("class"=>"col-sm-3 control-label no-padding-right"))}}
+            {{Form::text('fecha', date_format(date_create($medica->fecha),'d/m/Y'), array("class"=>"date-picker", "id"=>"id-date-picker-1", "data-date-format"=>"dd/mm/yyyy"))}}
+            </div>
             
 
 
@@ -121,6 +127,12 @@
    
 
 $( "#medicaactive" ).addClass( "active" );
+
+   
+$('.date-picker').datepicker({
+          autoclose: true,
+          todayHighlight: true
+        });
     
   });   
 </script>

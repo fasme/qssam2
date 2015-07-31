@@ -1,7 +1,7 @@
 <?php
 class Medica extends Eloquent { //Todos los modelos deben extender la clase Eloquent
     protected $table = 'medica';
-    protected $fillable = array('personal_id','diaturno','diagnostico','tratamiento','edad','domicilio','clasificacion','comuna');
+    protected $fillable = array('personal_id','diaturno','diagnostico','tratamiento','edad','domicilio','clasificacion','comuna','fecha');
 
 
 
