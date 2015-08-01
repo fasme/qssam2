@@ -82,7 +82,8 @@
                     <!--   <li id="mantencionactive"><a href="{{URL::to('mantencionportal')}}">Mantencion</a></li> -->
                        
 
-                        <li class="dropdown">
+                      @if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "usuariobodega"))  
+                      <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Bodega <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
                                 <li><a href="transaccionportal">Entrada/Salida</a></li>
@@ -90,6 +91,7 @@
                          
                             </ul>
                         </li>
+                        @endif
                         @if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "adminprevencion") || (Auth::user()->perfil == "adminmantencion") || (Auth::user()->perfil == "admingerente"))
                          <li><a href="{{URL::to('/')}}">Administracion</a></li> 
                         @endif

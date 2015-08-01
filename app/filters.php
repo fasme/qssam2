@@ -94,7 +94,8 @@ Route::filter("permisoAdmin",function()
 {
 	if(Auth::user()->perfil != "admin")
 	{
-		return "no";
+		//return "no";
+		return View::make("portal.index");
 	}
 	
 });
