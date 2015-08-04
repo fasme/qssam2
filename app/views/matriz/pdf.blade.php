@@ -1,3 +1,4 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <?php
 $html ="";
 $html .= "<h1>Identificacion de Peligros, Valoración de Riesgos y Determinacion</h1>";

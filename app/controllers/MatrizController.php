@@ -225,12 +225,11 @@ return Redirect::to('matriz/update/'.$id)->withInput()->withErrors($matriz->erro
     }
 
 
-    public function pdf(){
+  public function pdf(){
 
         $matrizs = Matriz::all();
-        //$headers = array('Content-Type' => 'application/pdf');
         $view = View::make('matriz.pdf')->with("matrizs",$matrizs);
-        return PDF::load($view, 'tabloid', 'landscape')->download();
+        return PDF::load($view, 'tabloid', 'landscape')->show();
 
     }
 
