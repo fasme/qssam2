@@ -229,7 +229,11 @@ return Redirect::to('matriz/update/'.$id)->withInput()->withErrors($matriz->erro
 
         $matrizs = Matriz::all();
         $view = View::make('matriz.pdf')->with("matrizs",$matrizs);
-        return PDF::load($view, 'tabloid', 'landscape')->show();
+        //return PDF::load($view, 'tabloid', 'landscape')->show();
+
+        $headers = array('Content-Type' => 'application/pdf');
+
+return Response::make(PDF::load($view, 'A4', 'portrait')->show('my_pdf'), 200, $headers);
 
     }
 
