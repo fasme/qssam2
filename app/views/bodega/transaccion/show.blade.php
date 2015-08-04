@@ -35,7 +35,11 @@
           <th>Bodega</th>
           <th>Producto</th>
                             <th>Cantidad</th>
+                            <th>Documento</th>
+                            <th>N de Documento</th>
                             <th>Tipo</th>
+                            <th>Origen/Destino</th>
+                            <th>Fecha</th>
                            
           
  
@@ -67,9 +71,20 @@
            <td>{{ $producto->nombre}}</td>
            <td>{{$producto->pivot->cantidad}}</td>
            <td>
+           @if($producto->pivot->tipo == 1){{"Factura"}} @endif
+           @if($producto->pivot->tipo == 2){{"Guia"}} @endif
+          
+           </td>
+           <td>{{$producto->pivot->documento}}</td>
+           <td>
            @if($producto->pivot->tipo == 1){{"Entrada"}} @endif
            @if($producto->pivot->tipo == 2){{"Salida"}} @endif
+           @if($producto->pivot->tipo == 3){{"Prestamo"}} @endif
+           @if($producto->pivot->tipo == 4){{"Devolucion"}} @endif
            </td>
+           <td>{{$producto->pivot->origendestino}}</td>
+           <td>{{ date_format(date_create($producto->pivot->created_at), 'd/m/Y')}}
+         
 </tr>
           @endforeach
     @endforeach

@@ -147,6 +147,19 @@ return Redirect::to('medica/update/'.$id)->withInput()->withErrors($medica->erro
     }
 
 
+    public function mostrar()
+    {
+
+             $id = Input::get("id");
+ $medica = Medica::find($id);
+           $personal = Personal::lists("nombre","id");
+   
+        return View::make('medica.mostrar')->with("medica", $medica)
+        ->with("personal",$personal);
+ 
+    }
+
+
 
  
 

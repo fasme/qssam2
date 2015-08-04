@@ -56,19 +56,35 @@
 
             <div class="form-group">
             {{Form::label('', 'Tipo',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-            {{Form::select('tipo', array(1=>"Entrada",2=>"Salida", 5=>"A Mantencion"),"" )}}
+            {{Form::select('tipo', array(""=>"--Seleccione--",1=>"Entrada",2=>"Salida"),"", array("id"=>"tipo") )}}
             </div>
 
-<!--
-            <div class="form-group">
-            {{Form::label('', 'Cantidad',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-            {{Form::number('cantidad',"")}}
+
+            <div id="divocultoentrada">
+              <div class="form-group">
+              {{Form::label('', 'Documento',array("class"=>"col-sm-3 control-label no-padding-right"))}}
+              {{Form::select('documento', array(1=>"Factura"),"" )}}
+              </div>
+              <div class="form-group">
+              {{Form::label('', 'Proveedor/Empresa',array("class"=>"col-sm-3 control-label no-padding-right"))}}
+              {{Form::text('origendestino',"" )}}
+              </div>
+
             </div>
--->
-            <div class="form-group">
-            {{Form::label('', 'Documento',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-            {{Form::select('documento', array(1=>"Factura",2=>"Guia"),"" )}}
+
+            <div id="divocultosalida">
+              <div class="form-group">
+              {{Form::label('', 'Documento',array("class"=>"col-sm-3 control-label no-padding-right"))}}
+              {{Form::select('documento', array(2=>"Guia"),"" )}}
+              </div>
+              <div class="form-group">
+              {{Form::label('', 'Destino',array("class"=>"col-sm-3 control-label no-padding-right"))}}
+              {{Form::text('origendestino',"" )}}
+              </div>
             </div>
+
+
+            
 
 
              <div class="form-group">
@@ -119,6 +135,30 @@ $( "#productotransaccionactive" ).addClass( "active" );
 $('.chosen-select').chosen(); 
 
 
+
+$("#divocultoentrada").hide();
+$("#divocultosalida").hide();
+
+//$("#divocultoentrada").hide();
+//$("#divocultosalida").hide();
+
+$("#tipo").change(function(){ 
+  if($("#tipo").val() == 1) // entrada
+  {
+    $("#divocultoentrada").show();
+    $("#divocultosalida").hide();
+    $("#divocultoentrada").find("input,select,textarea,button").prop('disabled',false);
+    $("#divocultosalida").find("input,select,textarea,button").prop('disabled',true);
+
+  }
+  if($("#tipo").val() == 2) // entrada
+  {
+    $("#divocultosalida").show();
+    $("#divocultoentrada").hide();
+    $("#divocultosalida").find("input,select,textarea,button").prop('disabled',false);
+    $("#divocultoentrada").find("input,select,textarea,button").prop('disabled',true);
+  }
+});
 
 
 var MaxInputs       = 20; //Número Maximo de Campos

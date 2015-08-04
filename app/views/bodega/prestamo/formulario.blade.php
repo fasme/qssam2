@@ -6,7 +6,7 @@
      
 <div class="page-header position-relative">
             <h1>
-              Entrada/Salida
+              Prestamos
               <small>
                 <i class="icon-double-angle-right"></i>
                 
@@ -66,7 +66,7 @@
 
             <div class="form-group">
             {{Form::label('', 'Tipo',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-            {{Form::select('tipo', array(3=>"Prestamo"),"" )}}
+            {{Form::select('tipo', array(3=>"Prestamo", 5=>"A Mantencion"),"" )}}
             </div>
 
 

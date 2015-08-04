@@ -32,9 +32,11 @@
   <thead>
           <tr>
             <th>Quien ingresa</th>
-            <th>Faena</th>
-            <th>Causa</th>
             <th>Origen</th>
+            <th>Faena</th>
+            <th>Causa Inicial</th>
+            <th>Causa Raiz</th>
+            
           
   <th>Acciones</th>
             
@@ -46,10 +48,12 @@
   @foreach($pacs as $pac)
            <tr>
 
-             <td> {{ $pac->personal_id}}</td>
+             <td> {{ Personal::find($pac->personal_id)->nombre}}</td>
+             <td> {{ $pac->porque1}}</td>
          <td> {{ $pac->faena}}</td>
          <td> {{ $pac->identificacion}}</td>
-         <td> {{ $pac->porque1}}</td>
+         <td> {{$pac->porque5}}</td>
+         
 
   <td class="td-actions">
                        

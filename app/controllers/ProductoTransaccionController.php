@@ -45,7 +45,7 @@ class ProductoTransaccionController extends BaseController {
 
 
 
-        $datos = Input::all(); 
+         $datos = Input::all(); 
 
          $bodega = Bodega::find($datos["bodega_id"]);
 
@@ -65,7 +65,7 @@ class ProductoTransaccionController extends BaseController {
             /* $usuario->password = Hash::make($usuario->password);*/
 
       
-            $bodega->muchasproducto()->attach($datos["producto_id"][$i], array("tipo"=>$datos["tipo"], "cantidad"=>$datos["cantidad"][$i], "documento"=>$datos["documento"], "numdocumento"=>$datos["numdocumento"]));
+            $bodega->muchasproducto()->attach($datos["producto_id"][$i], array("tipo"=>$datos["tipo"], "cantidad"=>$datos["cantidad"][$i], "documento"=>$datos["documento"], "numdocumento"=>$datos["numdocumento"], "origendestino"=>$datos["origendestino"]));
          
     }
 

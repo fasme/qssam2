@@ -294,7 +294,8 @@ $(".bootbox-confirm").on(ace.click_event, function() {
             $.get("{{ url('prestamo/devolver')}}",
               { id: id, cantidad:result },
 
-              function(data,status){ alert("Devolucion Correcta"); }
+              function(data,status){ location.reload(); 
+              }
 ).fail(function(data)
 {bootbox.alert("No se puede eliminar un registro padre: una restricción de clave externa falla");
 });

@@ -84,6 +84,13 @@
             {{Form::label('', 'Obsoleto?',array("class"=>"col-sm-3 control-label no-padding-right"))}}
             {{Form::checkbox('obsoleto', "si", $archivo->obsoleto)}}
             </div>
+
+
+
+            <div class="form-group">
+            {{Form::label('',"Fecha Elaboración", array("class"=>"col-sm-3 control-label no-padding-right"))}}
+            {{Form::text("elaboracion", date_format(date_create($archivo->elaboracion), 'd/m/Y'), array("class"=>"date-picker",  "data-date-format"=>"dd/mm/yyyy"))}}
+            </div>
         
      
 
@@ -104,9 +111,11 @@
 <script>
   $(document).ready(function(){
    
+$('.date-picker').datepicker({
+          autoclose: true,
+          todayHighlight: true
+        });
 
-$('.input-mask-date').mask('99/99/9999');
-$('.input-mask-date2').mask('99/99/9999');
 
 
 $( "#archivoactive" ).addClass( "active" );

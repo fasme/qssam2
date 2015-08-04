@@ -37,6 +37,8 @@
             <th>Proyecto</th>
             <th>Clasificacion</th>
             <th>Comuna</th>
+            <th>Fecha</th>
+            <th>Dia Turno</th>
   <th>Acciones</th>
             
           </tr>
@@ -54,6 +56,9 @@
              <td>{{$medica->domicilio}}</td>
               <td>{{$medica->clasificacion}}</td>
               <td>{{$medica->comuna}}</td>
+              <td>{{ date_format(date_create($medica->fecha), 'd/m/Y')}}
+         
+              <td>{{$medica->diaturno}}</td>
 
   <td class="td-actions">
                        

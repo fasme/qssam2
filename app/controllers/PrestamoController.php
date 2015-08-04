@@ -155,10 +155,26 @@ return Redirect::to('prestamo/update/'.$id)->withInput()->withErrors($prestamo->
     {
         $id = Input::get('id');
         $cantidad = Input::get('cantidad');
-        $cantidad = $cantidad*-1;
+        // -5 
+        
 
-        DB::update('update bodega_producto  set cantidad=cantidad-?, tipo=4  where id = ?', array($cantidad,$id));
-        return $id;
+        $bodegaprestamo = DB::table('bodega_producto')->where("id","=",$id)->first();
+
+        $cantidadactual = $bodegaprestamo->cantidad;
+
+        if(($cantidad + $cantidadactual) <= 0)
+        {
+            $cantidad = $cantidad*-1;
+            DB::update('update bodega_producto  set cantidad=cantidad-?  where id = ?', array($cantidad,$id));
+            return "OK";
+
+        }
+        else
+        {
+            return "ERROR";
+        }
+
+        
     }
 
 

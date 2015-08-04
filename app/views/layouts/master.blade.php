@@ -325,7 +325,7 @@
 
 				@if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "adminmantencion") || (Auth::user()->perfil == "adminprevencion") || (Auth::user()->perfil == "admingerente"))
 
-					<li class="" id="pacactive">
+					<li class="" id="evidenciaactive">
 						<a href="{{URL::to('evidenciaadmin')}}">
 							<i class="menu-icon fa fa-archive"></i>
 							<span class="menu-text"> Evidencia </span>

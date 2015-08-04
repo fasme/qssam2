@@ -14,7 +14,7 @@ public function productotransaccion()
 public function muchasbodega()
 {
     return $this->belongsToMany("Bodega",'bodega_producto','producto_id','bodega_id')
-    ->withpivot("tipo","cantidad")
+    ->withpivot("tipo","cantidad","documento","numdocumento","origendestino")
     ->withTimestamps();
 }
 

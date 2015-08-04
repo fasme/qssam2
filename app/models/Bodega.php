@@ -15,7 +15,7 @@ public function categoria()
     public function muchasproducto()
 {
     return $this->belongsToMany("Producto",'bodega_producto','bodega_id','producto_id')
-    ->withpivot("id", "tipo","cantidad","documento","numdocumento")
+    ->withpivot("id", "tipo","cantidad","documento","numdocumento","origendestino")
     ->withTimestamps();
 }
 

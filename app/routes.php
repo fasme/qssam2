@@ -332,6 +332,7 @@ Route::post('medica/insert', array('uses' => 'MedicaController@insert2'));
 Route::get('medica/update/{id}', 'MedicaController@update');
 Route::post('medica/update/{id}', 'MedicaController@update2');
 Route::get('medica/eliminar', 'MedicaController@eliminar');
+Route::get('medica/mostrar', 'MedicaController@mostrar');
 
 
 

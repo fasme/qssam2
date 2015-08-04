@@ -147,6 +147,8 @@
             <th>Personal</th>
             <th>Aprobado</th>
             <th>Asistencia</th>
+            <th>Fecha</th>
+            <th>Observacion</th>
            
               
           
@@ -165,6 +167,9 @@
               <td> {{ $personal->nombre}}</td>
               <td>{{$personal->pivot->aprobado}}</td>
               <td>{{$personal->pivot->asistencia}}</td>
+              <td>{{date_format(date_create($curso->fecha),"d/m/Y")}}</td>
+              <td>{{$personal->pivot->observacion}}</td>
+                            
              
 
   <td class="td-actions">
