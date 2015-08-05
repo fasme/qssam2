@@ -6,7 +6,7 @@
      
 <div class="page-header position-relative">
             <h1>
-              Consecuencia
+              Control de Cambios
               <small>
                 <i class="icon-double-angle-right"></i>
                 
@@ -57,6 +57,21 @@
             <div class="form-group">
             {{Form::label('', 'Descripcion',array("class"=>"col-sm-3 control-label no-padding-right"))}}
             {{Form::textarea('descripcion', $cambio->descripcion)}}
+            </div>
+
+            <div class="form-group">
+            {{Form::label('', 'Responsable Del Cambio',array("class"=>"col-sm-3 control-label no-padding-right"))}}
+            {{Form::text('responsable', $cambio->responsable)}}
+            </div>
+
+            <div class="form-group">
+            {{Form::label('', 'Revisado Por',array("class"=>"col-sm-3 control-label no-padding-right"))}}
+            {{Form::text('revisado', $cambio->revisado)}}
+            </div>
+
+            <div class="form-group">
+            {{Form::label('', 'Aprobado Por',array("class"=>"col-sm-3 control-label no-padding-right"))}}
+            {{Form::text('aprobado', $cambio->aprobado)}}
             </div>
 
             

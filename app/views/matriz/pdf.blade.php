@@ -7,7 +7,7 @@ $html .= "<table width='100%' border='1' style='font-size:15px;'>
 <tr style='background-color:#F2F2F2'><th>Proceso</th><th>Actividad</th><th>Cargo</th><th>Peligro</th><th>R</th><th>Riesgo</th>
 <th>F. Sev.</th><th>F. Exp.</th><th>F. Prob.</th><th>Res.</th><th>Clas.</th>
 <th>Previo</th><th>Factor</th><th>Eliminacion</th><th>Factor</th><th>Sustitucion</th><th>Factor</th><th>Ingenieria</th><th>Factor</th><th>Administrativo</th><th>Factor</th><th>Epp</th><th>Factor</th>
-<th>Mag.</th><th>Res.</th>
+<th>Mag.</th><th>Clas.</th>
 
 </tr>
 ";
@@ -44,7 +44,7 @@ $html .= "<td>".$matriz->resultado."</td>";
 
 $clasificacion = Clasificacion::Where("desde","<=",$matriz->resultado)->Where("hasta",">",$matriz->resultado)->first();
 
-$html .= "<td bgcolor=".$clasificacion->color."></td>";
+$html .= "<td bgcolor=".$clasificacion->color.">$clasificacion->clasificacion</td>";
 
 
 
@@ -67,7 +67,7 @@ $html .= "<td>".number_format($matriz->resultadoepp,3)."</td>";
 $html .= "<td>".number_format($matriz->magnitud,3)."</td>";
 $clasificacion = Clasificacion::Where("desde","<=",$matriz->magnitud)->Where("hasta",">",$matriz->magnitud)->first();
 
-$html .= "<td bgcolor=".$clasificacion->color."></td>";
+$html .= "<td bgcolor=".$clasificacion->color.">$clasificacion->clasificacion</td>";
 
 $html .= "</tr>";
 ?>

@@ -111,6 +111,9 @@
           <tr>
             <th>Version</th>
             <th>Descripcion</th>
+            <th>Responsable</th>
+            <th>Revisado por</th>
+            <th>Aprobado por</th>
           
   <th>Acciones</th>
             
@@ -128,6 +131,9 @@
                             {{$cambio->descripcion}}
                            
                             </td>
+            <td> {{ $cambio->responsable}}</td>
+            <td> {{ $cambio->revisado}}</td>
+            <td> {{ $cambio->aprobado}}</td>
          
 
   <td class="td-actions">
