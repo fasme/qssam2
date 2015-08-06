@@ -412,7 +412,7 @@ Route::get("enviaremail", function(){
 
 Mail::send('emails.welcome', array('key' => 'value'), function($message)
 {
-    $message->to('foo@example.com', 'John Smith')->subject('Welcome!');
+    $message->to('fasme2h@gmail.com', 'John Smith')->subject('Welcome!');
 });
 });
 // Manual
