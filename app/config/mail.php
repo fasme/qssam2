@@ -28,7 +28,7 @@ return array(
 	|
 	*/
 
-	'host' => 'avach.overlink.cl ',
+	'host' => 'avach.overlink.cl',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => null, 'name' => null),
+	'from' => array('address' => "administracion@avachintranet.cl", 'name' => "Admin"),
 
 	/*
 	|--------------------------------------------------------------------------
