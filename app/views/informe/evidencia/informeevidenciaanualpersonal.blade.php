@@ -4,7 +4,7 @@
 
             
 
- <h3 class="header smaller lighter">Cantidad de atencion medicas: 
+ <h3 class="header smaller lighter">Evidencias Anual: 
                 
     </h3>
 
@@ -14,7 +14,7 @@
   <div class="col-xs-12">
       <div class="alert alert-block alert-success">
 
-      {{ Form::open(array('url' => "informeatencionmedicaanual", "method"=>"get")) }}
+      {{ Form::open(array('url' => "informeevidenciaanualpersonal", "method"=>"get")) }}
             <div class="form-group">
             
 
@@ -64,12 +64,23 @@
     labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"],
     datasets: [
         {
-            label: "Cantidad de atencion medicas",
+            label: "Abiertas",
             fillColor: "#FA5858",
           //  strokeColor: "rgba(220,220,220,0.8)",
            // highlightFill: "rgba(220,220,220,0.75)",
            // highlightStroke: "rgba(220,220,220,1)",
-            data: [{{$cantidad["0"]}},{{$cantidad["1"]}},{{$cantidad["2"]}},{{$cantidad["3"]}},{{$cantidad["4"]}},{{$cantidad["5"]}},{{$cantidad["6"]}},{{$cantidad["7"]}},{{$cantidad["8"]}},{{$cantidad["9"]}},{{$cantidad["10"]}},{{$cantidad["11"]}}]
+            data: [{{$abiertas["0"]}},{{$abiertas["1"]}},{{$abiertas["2"]}},{{$abiertas["3"]}},{{$abiertas["4"]}},{{$abiertas["5"]}},{{$abiertas["6"]}},{{$abiertas["7"]}},{{$abiertas["8"]}},{{$abiertas["9"]}},{{$abiertas["10"]}},{{$abiertas["11"]}}]
+          
+        },
+
+         {
+            label: "Cerradas",
+            fillColor: "#000000",
+          //  strokeColor: "rgba(220,220,220,0.8)",
+           // highlightFill: "rgba(220,220,220,0.75)",
+           // highlightStroke: "rgba(220,220,220,1)",
+            data: [{{$cerradas["0"]}},{{$cerradas["1"]}},{{$cerradas["2"]}},{{$cerradas["3"]}},{{$cerradas["4"]}},{{$cerradas["5"]}},{{$cerradas["6"]}},{{$cerradas["7"]}},{{$cerradas["8"]}},{{$cerradas["9"]}},{{$cerradas["10"]}},{{$cerradas["11"]}}]
+          
         }
     ]
 };
