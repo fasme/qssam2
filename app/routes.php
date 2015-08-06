@@ -406,6 +406,15 @@ Route::get("informeatencionmedicaanual", "InformeController@atencionmedicaanual"
 Route::get("informeatencionmedicapersonal", "InformeController@atencionmedicapersonal");
 
 
+//Mail
+Route::get("enviaremail", function(){
+
+
+Mail::send('emails.welcome', array('key' => 'value'), function($message)
+{
+    $message->to('foo@example.com', 'John Smith')->subject('Welcome!');
+});
+});
 // Manual
 
 Route::get('manual', function(){
