@@ -32,6 +32,9 @@
             <th>Nombre</th>
             <th>Articulo</th>
             <th>Descripcion</th>
+            <th>Cumple</th>
+            <th>Evidencia</th>
+            <th>Responsable</th>
           
   <th>Acciones</th>
             
@@ -46,6 +49,9 @@
              <td> {{ $matrizley->nombre}}</td>
               <td> {{ $matrizley->articulo}}</td>
                <td> {{ $matrizley->descripcion}}</td>
+               <td> {{ $matrizley->cumple}}</td>
+               <td> {{ $matrizley->evidencia}}</td>
+               <td> {{ $matrizley->responsable}}</td>
          
 
   <td class="td-actions">
