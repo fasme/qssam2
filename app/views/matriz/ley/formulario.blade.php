@@ -97,7 +97,7 @@
              <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">Responsable </label>
 
               <div class="col-md-9">
-            {{Form::text('responsable', , $matrizley->responsable, array("class"=>"form-control"))}}
+            {{Form::text('responsable', $matrizley->responsable, array("class"=>"form-control"))}}
               </div>
             </div>
 
