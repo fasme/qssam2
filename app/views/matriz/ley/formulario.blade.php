@@ -71,7 +71,7 @@
 
               <div class="col-md-9">
 
-            {{Form::text('descripcion', $matrizley->descripcion, array("class"=>"form-control"))}}
+            {{Form::textarea('descripcion', $matrizley->descripcion, array("class"=>"form-control"))}}
               </div>
             </div>
 
