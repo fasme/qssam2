@@ -27,6 +27,7 @@
         
  
 <table id="example" class="table table-striped table-bordered table-hover">
+<div class="info"></div>
   <thead>
           <tr>
             <th>Nombre</th>
@@ -86,7 +87,7 @@
  $(document).ready(function() {
 
 
-$('#example').DataTable( {
+var table = $('#example').DataTable( {
       
        "language": {
                 "url": "datatables.spanish.json"
@@ -94,6 +95,30 @@ $('#example').DataTable( {
     } );
 
 
+
+var tableTools = new $.fn.dataTable.TableTools( table, {
+  
+
+    
+      "aButtons": [
+                   {
+                        "sExtends": "pdf",
+                        "sButtonText":"Listado pdf",
+                        "sTitle": "Atencion Medica",
+                        //"sPdfMessage": "Summary Info",
+                        "sFileName": "<?php print('Informe'); ?>.pdf",
+                        "sPdfOrientation": "landscape",
+                        "oSelectorOpts": {page: 'current'},
+                        "mColumns": [ 0, 1,2,3,4,5 ]
+
+                    }
+
+                ]
+      
+    } );
+
+
+$( tableTools.fnContainer() ).insertAfter('div.info');
 
 
 $( "#matrizactive" ).addClass( "active" );
