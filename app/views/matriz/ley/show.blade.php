@@ -30,6 +30,8 @@
   <thead>
           <tr>
             <th>Nombre</th>
+            <th>Articulo</th>
+            <th>Descripcion</th>
           
   <th>Acciones</th>
             
@@ -42,6 +44,8 @@
            <tr>
 
              <td> {{ $matrizley->nombre}}</td>
+              <td> {{ $matrizley->articulo}}</td>
+               <td> {{ $matrizley->descripcion}}</td>
          
 
   <td class="td-actions">

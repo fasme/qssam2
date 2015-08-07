@@ -34,10 +34,10 @@
            <?php
   // si existe el usuario carga los datos
     if ($matrizley->exists):
-        $form_data = array('url' => 'matrizLey/update/'.$matrizley->id);
+        $form_data = array('url' => 'matrizLey/update/'.$matrizley->id, "class"=>"form-horizontal");
         $action    = 'Editar';
     else:
-        $form_data = array('url' => 'matrizLey/insert', 'class'=>'class="form-horizontal');
+        $form_data = array('url' => 'matrizLey/insert', 'class'=>'form-horizontal');
         $action    = 'Crear';        
     endif;
 
@@ -50,19 +50,29 @@
             
 
              <div class="form-group">
-            {{Form::label('', 'Nombre',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-            {{Form::text('nombre', $matrizley->nombre)}}
+               <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"> Nombre </label>
+
+                <div class="col-md-9">
+                {{Form::text('nombre', $matrizley->nombre, array("class"=>"form-control"))}}
+                </div>
             </div>
 
              <div class="form-group">
-            {{Form::label('', 'Articulo',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-            {{Form::text('articulo', $matrizley->articulo)}}
+             <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">Articulo </label>
+
+              <div class="col-md-9">
+            {{Form::text('articulo', $matrizley->articulo, array("class"=>"form-control"))}}
+              </div>
             </div>
 
 
             <div class="form-group">
-            {{Form::label('', 'Descripcion',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-            {{Form::text('descripcion', $matrizley->descripcion)}}
+             <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">Descripcion </label>
+
+              <div class="col-md-9">
+
+            {{Form::text('descripcion', $matrizley->descripcion, array("class"=>"form-control"))}}
+              </div>
             </div>
 
 
