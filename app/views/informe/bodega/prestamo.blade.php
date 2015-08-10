@@ -31,7 +31,7 @@
           <th>Producto</th>
           <th>Personal</th>
                             <th>Cantidad</th>
-                            <th>Estado</th>
+                            
                             <th>Fecha Prestamo</th>
                             <th>Fecha Devolucion</th>
                            
@@ -49,7 +49,7 @@
                 <th></th>
                 <th></th>
                 <th></th>
-                <th></th>
+                
                 
               
             </tr>
@@ -66,10 +66,7 @@
            <td>{{ Producto::find($prestamo->producto_id)->nombre}}</td>
            <td>{{Personal::find($prestamo->personal_id)->nombre}}</td>
            <td>{{$prestamo->cantidad}}</td>
-           <td>
-           @if($prestamo->cantidad != 0) {{"Prestamo"}} @endif
-           @if($prestamo->tipo == 0) {{"Entregado"}} @endif
-           </td>
+           
            <td>
            	 @if($prestamo->tipo == 3)
            	 {{ date_format(date_create($prestamo->created_at), 'd/m/Y H:i')}}
