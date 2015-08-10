@@ -403,6 +403,7 @@ Route::get("informebodegastock", "InformeController@bodegastock");
 Route::get("informemassalida", "InformeController@massalida");
 Route::get("informemasentrada", "InformeController@masentrada");
 Route::get("informesindevolucion", "InformeController@sindevolucion");
+Route::get("informeprestamo", "InformeController@prestamo");
 
 Route::get("informeatencionmedicaanual", "InformeController@atencionmedicaanual");
 Route::get("informeatencionmedicapersonal", "InformeController@atencionmedicapersonal");

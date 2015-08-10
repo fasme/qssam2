@@ -749,6 +749,15 @@
 										</a>
 										<b class="arrow"></b>
 									</li>
+
+									<li class="" id="informebodegaactive">
+										<a href="{{URL::to('informeprestamo')}}" >
+											<i class="menu-icon fa fa-caret-right"></i>
+
+											Prestamos
+										</a>
+										<b class="arrow"></b>
+									</li>
 								</ul>
 
 

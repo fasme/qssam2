@@ -162,10 +162,12 @@ return Redirect::to('prestamo/update/'.$id)->withInput()->withErrors($prestamo->
 
         $cantidadactual = $bodegaprestamo->cantidad;
 
+        $fecha = date("Y-m-d H:i");
+
         if(($cantidad + $cantidadactual) <= 0)
         {
             $cantidad = $cantidad*-1;
-            DB::update('update bodega_producto  set cantidad=cantidad-?  where id = ?', array($cantidad,$id));
+            DB::update('update bodega_producto  set cantidad=cantidad-?, updated_at=?  where id = ?', array($cantidad,$fecha,$id));
             return "OK";
 
         }

@@ -393,7 +393,39 @@ public function sindevolucion(){
 
 }
 
+public function prestamo()
+{
+        $titulo = "Prestamos";
+        $data = Input::all();
+        $stock = array();
 
+         $prestamos = DB::table("bodega_producto")
+        ->join('prestamo', 'bodega_producto.id', '=', 'prestamo.bodega_producto_id')
+        ->get();
+
+         if(!isset($data["bodegaid"]))
+        {
+            $data["bodegaid"] = Bodega::first()->id;
+        }      
+        $bodegas = Bodega::lists("nombre","id"); 
+
+        $bodega = Bodega::find($data["bodegaid"]);
+         $productos = $bodega->muchasproducto()->groupby("producto_id")->select(DB::raw("SUM(cantidad) as suma,nombre"))->where("tipo","=",3)->get();
+
+         $productosarray = "";
+         foreach ($productos as $producto) {
+             $productosarray[] = $producto->nombre;
+             $stock[] = ($producto->suma)*-1;//$stock[] = ;
+         }
+
+        return View::make('informe.bodega.prestamo')
+        ->with("productos",json_encode($productosarray))
+        ->with("stock",json_encode($stock))
+        ->with("titulo", $titulo)
+        ->with("data",$data)
+        ->with("bodegas",$bodegas)
+        ->with("prestamos",$prestamos);
+}
 
 
 
