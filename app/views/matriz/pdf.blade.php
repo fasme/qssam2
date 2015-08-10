@@ -198,14 +198,14 @@ $html .= "</table><br>";
 
 
 <?php
-$html .= "<table width='50%' border='1'><tr><th>Realizado Por:</th><th>Fecha</th></tr>";
+$html .= "<table width='50%' border='1'><tr><th>Realizado Por:</th><th>Firma</th></tr>";
 ?>
 <?php
 
 $cambio = Cambio::orderby("id","desc")->first();
 if($cambio)
 {
-$html .= "<tr><td>$cambio->responsable</td><td>$cambio->created_at</td></tr>";
+$html .= "<tr><td>$cambio->responsable</td><td></td></tr>";
 
 }
 ?>
@@ -214,14 +214,14 @@ $html .= "</table><br>";
 ?>
 
 <?php
-$html .= "<table width='50%' border='1'><tr><th>Revisado Por:</th><th>Fecha</th></tr>";
+$html .= "<table width='50%' border='1'><tr><th>Revisado Por:</th><th>Firma</th></tr>";
 ?>
 <?php
 
 $cambio = Cambio::orderby("id","desc")->first();
 if($cambio)
 {
-$html .= "<tr><td>$cambio->revisado</td><td>$cambio->created_at</td></tr>";
+$html .= "<tr><td>$cambio->revisado</td><td></td></tr>";
 
 }
 ?>
@@ -231,14 +231,14 @@ $html .= "</table><br>";
 
 
 <?php
-$html .= "<table width='50%' border='1'><tr><th>Aprobado Por:</th><th>Fecha</th></tr>";
+$html .= "<table width='50%' border='1'><tr><th>Aprobado Por:</th><th>Firma</th></tr>";
 ?>
 <?php
 
 $cambio = Cambio::orderby("id","desc")->first();
 if($cambio)
 {
-$html .= "<tr><td>$cambio->aprobado</td><td>$cambio->created_at</td></tr>";
+$html .= "<tr><td>$cambio->aprobado</td><td></td></tr>";
 
 }
 ?>
