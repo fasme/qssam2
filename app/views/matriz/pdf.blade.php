@@ -179,12 +179,10 @@ $html .= "<br><table style='page-break-after:always;'></br></table><br>";
 $html .="</table><br>";
 //$html .= "<br><table style='page-break-after:always;'></br></table><br>";  
 ?>
-
-
 <?php
+
 $html .= "<table width='50%' border='1'><tr><th>Version</th><th>Cambio</th></tr>";
 ?>
-
 <?php
 
 $cambio = Cambio::orderby("id","desc")->first();
@@ -193,10 +191,62 @@ if($cambio)
 $html .= "<tr><td>$cambio->version</td><td>$cambio->descripcion</td></tr>";
 }
 ?>
+<?php
+$html .= "</table><br>";
+?>
+
+
 
 <?php
-$html .= "</table>"
+$html .= "<table width='50%' border='1'><tr><th>Realizado Por:</th><th>Fecha</th></tr>";
 ?>
+<?php
+
+$cambio = Cambio::orderby("id","desc")->first();
+if($cambio)
+{
+$html .= "<tr><td>$cambio->responsable</td><td>$cambio->created_at</td></tr>";
+
+}
+?>
+<?php
+$html .= "</table><br>";
+?>
+
+<?php
+$html .= "<table width='50%' border='1'><tr><th>Revisado Por:</th><th>Fecha</th></tr>";
+?>
+<?php
+
+$cambio = Cambio::orderby("id","desc")->first();
+if($cambio)
+{
+$html .= "<tr><td>$cambio->revisado</td><td>$cambio->created_at</td></tr>";
+
+}
+?>
+<?php
+$html .= "</table><br>";
+?>
+
+
+<?php
+$html .= "<table width='50%' border='1'><tr><th>Aprobado Por:</th><th>Fecha</th></tr>";
+?>
+<?php
+
+$cambio = Cambio::orderby("id","desc")->first();
+if($cambio)
+{
+$html .= "<tr><td>$cambio->aprobado</td><td>$cambio->created_at</td></tr>";
+
+}
+?>
+<?php
+$html .= "</table><br>";
+?>
+
+
 <?php
 echo $html;
 ?>

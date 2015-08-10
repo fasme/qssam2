@@ -37,7 +37,7 @@
         $form_data = array('url' => 'actividadnoprogramada/update/'.$actividadnoprogramada->id);
         $action    = 'Editar';
     else:
-        $form_data = array('url' => 'actividadnoprogramada/insert', 'class'=>'class="form-horizontal');
+        $form_data = array('url' => 'actividadnoprogramada/insert', 'class'=>"form-horizontal");
         $action    = 'Crear';        
     endif;
 
@@ -48,8 +48,18 @@
        
 
              <div class="form-group">
-            {{Form::label('', 'Actividad',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-            {{Form::textarea('actividad', $actividadnoprogramada->actividad)}}
+            {{Form::label('', 'Actividad',array("class"=>"col-sm-1 control-label no-padding-right"))}}
+            <div class="col-sm-9">
+            {{Form::textarea('actividad', $actividadnoprogramada->actividad, array("class"=>"form-control"))}}
+            </div>
+            </div>
+
+
+            <div class="form-group">
+            {{Form::label('', 'Origen',array("class"=>"col-sm-1 control-label no-padding-right"))}}
+            <div class="col-sm-9">
+            {{Form::text('origen', $actividadnoprogramada->origen, array("class"=>"form-control"))}}
+            </div>
             </div>
 
 

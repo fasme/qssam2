@@ -104,7 +104,7 @@ var tableTools = new $.fn.dataTable.TableTools( table, {
                    {
                         "sExtends": "pdf",
                         "sButtonText":"Listado pdf",
-                        "sTitle": "Atencion Medica",
+                        "sTitle": "Ley",
                         //"sPdfMessage": "Summary Info",
                         "sFileName": "<?php print('Informe'); ?>.pdf",
                         "sPdfOrientation": "landscape",
