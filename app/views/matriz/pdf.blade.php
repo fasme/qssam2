@@ -5,9 +5,9 @@ $html .= "<h1>Identificacion de Peligros, Valoración de Riesgos y Determinacion
 $html .= "<table width='100%' border='1' style='font-size:15px;'>
 <tr style='background-color:#D8D8D8'><th colspan='6' height='25'>IDENTIFICACION DEL PELIGRO</th><th colspan='5'>EVALUACION DEL RIESGO</th><th colspan='12' height='25'>CONTROLES PREVENTIVOS: PRIORIZACION DEL CONTROL</th><th colspan='2'>RIESGO RESIDUAL</th></tr>
 <tr style='background-color:#F2F2F2'><th>Proceso</th><th>Actividad</th><th>Cargo</th><th>Peligro</th><th>R</th><th>Riesgo</th>
-<th>F. Sev.</th><th>F. Exp.</th><th>F. Prob.</th><th>Res.</th><th>Clas.</th>
+<th>F. Sev.</th><th>F. Prob.</th><th>Res.</th><th>Clas.</th>
 <th>Previo</th><th>Factor</th><th>Eliminacion</th><th>Factor</th><th>Sustitucion</th><th>Factor</th><th>Ingenieria</th><th>Factor</th><th>Administrativo</th><th>Factor</th><th>Epp</th><th>Factor</th>
-<th>Mag.</th><th>Clas.</th>
+<th>Mag.</th><th>Res.</th>
 
 </tr>
 ";
@@ -38,12 +38,16 @@ $html.=	$value->nombre."<br>";
 }
 $html .= "</td>";
 $html .= "<td>".$matriz->factorseveridad."</td>";
-$html .= "<td>".$matriz->factorexposicion."</td>";
 $html .= "<td>".$matriz->factorprobabilidad."</td>";
 $html .= "<td>".$matriz->resultado."</td>";
 
 $clasificacion = Clasificacion::Where("desde","<=",$matriz->resultado)->Where("hasta",">",$matriz->resultado)->first();
 
+if($matriz->factorseveridad == 8)
+{
+	$clasificacion->color = "red";
+	$clasificacion->clasificacion = "Riesgo Inaceptable";
+}
 $html .= "<td bgcolor=".$clasificacion->color.">$clasificacion->clasificacion</td>";
 
 
@@ -179,10 +183,12 @@ $html .= "<br><table style='page-break-after:always;'></br></table><br>";
 $html .="</table><br>";
 //$html .= "<br><table style='page-break-after:always;'></br></table><br>";  
 ?>
-<?php
 
+
+<?php
 $html .= "<table width='50%' border='1'><tr><th>Version</th><th>Cambio</th></tr>";
 ?>
+
 <?php
 
 $cambio = Cambio::orderby("id","desc")->first();
@@ -191,10 +197,6 @@ if($cambio)
 $html .= "<tr><td>$cambio->version</td><td>$cambio->descripcion</td></tr>";
 }
 ?>
-<?php
-$html .= "</table><br>";
-?>
-
 
 
 <?php
@@ -245,8 +247,6 @@ $html .= "<tr><td>$cambio->aprobado</td><td></td></tr>";
 <?php
 $html .= "</table><br>";
 ?>
-
-
 <?php
 echo $html;
 ?>
