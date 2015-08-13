@@ -196,7 +196,7 @@
 
 				<ul class="nav nav-list">
 
-				@if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "adminmantencion") || (Auth::user()->perfil == "adminprevencion") || (Auth::user()->perfil == "admingerente"))
+				@if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "adminmantencion") || (Auth::user()->perfil == "adminprevencion") || (Auth::user()->perfil == "admingerente") || (Auth::user()->perfil == "adminbodega"))
 					<li class="">
 						<a href="{{URL::to('portal')}}"> 
 							<i class="menu-icon fa fa-tachometer"></i>
