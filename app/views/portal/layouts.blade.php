@@ -82,17 +82,17 @@
                     <!--   <li id="mantencionactive"><a href="{{URL::to('mantencionportal')}}">Mantencion</a></li> -->
                        
 
-                      @if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "usuariobodega"))  
+                      @if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "usuariobodega") || (Auth::user()->perfil == "adminbodega"))  
                       <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Bodega <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="transaccionportal">Entrada/Salida</a></li>
+                                <li><a href="transaccionportal">Entrada/Salida</a></li> 
                                 <li><a href="prestamoportal">Prestamos/Devoluciones</a></li>
                          
                             </ul>
                         </li>
                         @endif
-                        @if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "adminprevencion") || (Auth::user()->perfil == "adminmantencion") || (Auth::user()->perfil == "admingerente"))
+                        @if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "adminprevencion") || (Auth::user()->perfil == "adminmantencion") || (Auth::user()->perfil == "admingerente") || (Auth::user()->perfil == "adminbodega"))
                          <li><a href="{{URL::to('/')}}">Administracion</a></li> 
                         @endif
                         @if (Auth::check())

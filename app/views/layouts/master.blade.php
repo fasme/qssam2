@@ -534,7 +534,7 @@
 @endif			
 
 
-@if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "admingerente"))
+@if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "admingerente") || (Auth::user()->perfil == "adminbodega"))
 
 					<li class="" id="bodegaactive">
 						<a href="#" class="dropdown-toggle">

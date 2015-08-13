@@ -29,7 +29,7 @@ class MatrizActividadController extends BaseController {
         $array = array();
         foreach ($leys as $value) {
             
-            $nombre = $value->nombre."->".substr($value->descripcion, 0, 20);
+            $nombre = $value->nombre."->".substr($value->descripcion, 0, 50);
             $array = array_add($array, $value->id, $nombre);
         }
     
