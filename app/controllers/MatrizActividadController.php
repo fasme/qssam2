@@ -23,14 +23,13 @@ class MatrizActividadController extends BaseController {
      public function insert()
     {
         $matrizactividad = new MatrizActividad; 
-         $leys = Ley::lists("nombre","id");
+         //$leys = Ley::lists("nombre","id");
         $leys = Ley::all();
 
         $array = array();
         foreach ($leys as $value) {
             
-            $nombre = $value->descripcion."". $value->nombre;
-            //$leys2[] = $nombre;
+            $nombre = $value->nombre."->".substr($value->descripcion, 0, 20);
             $array = array_add($array, $value->id, $nombre);
         }
     
