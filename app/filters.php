@@ -92,7 +92,7 @@ Route::filter('csrf', function()
 
 Route::filter("permisoAdmin",function()
 {
-	if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "adminbodega") || (Auth::user()->perfil == "admingerente") || (Auth::user()->perfil == "adminprevencion"))
+	if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "adminbodega") || (Auth::user()->perfil == "admingerente") || (Auth::user()->perfil == "adminprevencion") || (Auth::user()->perfil == "usuariobodega"))
 	{
 		//return "no";
 		
