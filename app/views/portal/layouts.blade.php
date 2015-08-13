@@ -92,7 +92,7 @@
                             </ul>
                         </li>
                         @endif
-                        @if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "adminprevencion") || (Auth::user()->perfil == "adminmantencion") || (Auth::user()->perfil == "admingerente") || (Auth::user()->perfil == "adminbodega"))
+                        @if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "adminprevencion") || (Auth::user()->perfil == "adminmantencion") || (Auth::user()->perfil == "admingerente") || (Auth::user()->perfil == "adminbodega") ||(Auth::user()->perfil == "usuariobodega"))
                          <li><a href="{{URL::to('/')}}">Administracion</a></li> 
                         @endif
                         @if (Auth::check())
