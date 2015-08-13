@@ -23,13 +23,20 @@ class MatrizActividadController extends BaseController {
      public function insert()
     {
         $matrizactividad = new MatrizActividad; 
-        $leys = Ley::lists("nombre","id");
-        //enviamos un usuario vacio para que cargue el formulario insert
+         $leys = Ley::lists("nombre","id");
+        $leys = Ley::all();
 
-        
+        $array = array();
+        foreach ($leys as $value) {
+            
+            $nombre = $value->descripcion."". $value->nombre;
+            //$leys2[] = $nombre;
+            $array = array_add($array, $value->id, $nombre);
+        }
+    
         return View::make('matriz.actividad.formulario')
         ->with("matrizactividad",$matrizactividad)
-        ->with("leys",$leys);
+        ->with("leys",$array);
     }
  
  
