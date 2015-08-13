@@ -22,7 +22,7 @@ $actividadresponsable = DB::table('actividad_responsable_noprogramada')->Where("
 $actividadresponsable_programada = DB::table('actividad_responsable_programada')->Where("personal_admin_id","=",Auth::user()->id)->get();
 
 //$actividadresponsable_pac = DB::table('actividad_responsable_pac')->Where("personal_admin_id","=",Auth::user()->id)->get();
-$actividadresponsable_mantencion = DB::table('actividad_responsable_mantencion')->Where("personal_id","=",Auth::user()->id)->get();
+//$actividadresponsable_mantencion = DB::table('actividad_responsable_mantencion')->Where("personal_id","=",Auth::user()->id)->get();
 
 
 ?>
@@ -143,7 +143,7 @@ $actividadresponsable_mantencion = DB::table('actividad_responsable_mantencion')
 
 
                                  @foreach(Kpi::all() as $actividad)
-                                  @foreach($actividad->muchaspersonal()->get() as $actividad2)
+                                  @foreach($actividad->muchaspersonal()->where("personal_admin_id","=",Auth::user()->id)->get() as $actividad2)
                         
                           <tr>
                             
@@ -286,7 +286,7 @@ $actividadresponsable_mantencion = DB::table('actividad_responsable_mantencion')
 
 
                                  @foreach(Pac::all() as $actividad)
-                                  @foreach($actividad->muchaspersonal()->get() as $actividad2)
+                                  @foreach($actividad->muchaspersonal()->where("personal_admin_id","=",Auth::user()->id)->get() as $actividad2)
                         
                           <tr>
                             

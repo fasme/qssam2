@@ -35,6 +35,7 @@ $actividadresponsable_mantencion = DB::table('actividad_responsable_mantencion')
                             
                            
                             <th class="hidden-480">Actividad</th>
+                            <th>Enviado por:</th>
                             <th>Tipo</th>
                              <th>Estado</th>
                             <th>Plazo</th>
@@ -89,6 +90,7 @@ $actividadresponsable_mantencion = DB::table('actividad_responsable_mantencion')
 
                             ?>
                             <td>{{$busqueda->actividad}}</td>
+                            <td>{{Personal::find($actividad->personal_admin_id)->nombre}}</td>
                             
                             
                             
@@ -167,6 +169,8 @@ $actividadresponsable_mantencion = DB::table('actividad_responsable_mantencion')
                             ?>
 
                             <td>{{ $actividad2->pivot->actividad}}</td>
+                            <td>{{Personal::find($actividad2->pivot->personal_admin_id)->nombre}}</td>
+
                             <td>{{"KPI"}}</td>
                             <td>{{$actividad2->pivot->estado}}</td>
                             
@@ -238,6 +242,8 @@ $actividadresponsable_mantencion = DB::table('actividad_responsable_mantencion')
 
                             ?>
                             <td>{{$busqueda->actividad}}</td>
+                            <td>{{Personal::find($actividad->personal_admin_id)->nombre}}</td>
+                            
                             
                             
                             
@@ -314,6 +320,8 @@ $actividadresponsable_mantencion = DB::table('actividad_responsable_mantencion')
                             ?>
 
                             <td>{{ $actividad2->pivot->actividad}}</td>
+                            <td>{{Personal::find($actividad2->pivot->personal_admin_id)->nombre}}</td>
+
                             <td>{{"Pac"}}</td>
                             <td>{{$actividad2->pivot->estado}}</td>
                             
@@ -350,74 +358,6 @@ $actividadresponsable_mantencion = DB::table('actividad_responsable_mantencion')
 
 
 
-                            @foreach($actividadresponsable_mantencion as $actividad)
-                          <tr>
-                        
-                           <?php
-                           
-                            
-                             
-                            $busqueda = "";
-                            ?>
-
-                            
-                            <?php 
-                            $busqueda = Mantencion::find($actividad->actividad_id);
-                            ?>
-                            
-
-
-
-                            <?php
-
-                            $datetime1 = new DateTime($busqueda->frecuencia);
-                            $datetime2 = new DateTime(date("Y/m/d"));
-                            $interval = $datetime1->diff($datetime2);
-                            if($interval->format("%R") == "+")
-                            {
-                              $dif = "<font color='red'>(". $interval->format('Atrasado %a')." Dias)</font>";
-                            }
-                            else
-                            {
-                              $dif = "<font color='green'>(". $interval->format('Faltan %a')." Dias)</font>";
-                            }
-
-                            if($actividad->estado == "Cerrada")
-                            {
-                              $dif = "";
-                            }
-
-                            ?>
-                            <td>{{$busqueda->mantencionrealizada}}</td>
-                            
-                            
-                            
-                            <td>{{$actividad->tipoactividad}}</td>
-                            <td>{{$actividad->estado}}</td>
-                            <td>{{date_format(date_create($busqueda->frecuencia),"d/m/Y")}} {{$dif}}</td>
-                            
-                            <td>
-                            @if($actividad->estado == "Abierta")
-                            <div class="hidden-sm hidden-xs action-buttons">
-                                <a data-toggle="modal" class="botoncito" data-id="{{$actividad2->pivot->id}}" data-actividadid="{{$actividad2->pivot->actividad_id}}" data-tipoactividad="kpi" href="#" >
-                                  <i class="ace-icon fa fa-upload bigger-130"></i>
-                                </a>
-                              </div>
-                              @else
-
-                              <a href="archivos/evidencia/{{ $actividad->adjunto1}}">{{$actividad->adjunto1}}</a><br>
-                           <a href="archivos/evidencia/{{ $actividad->adjunto2}}">{{$actividad->adjunto2}}</a><br>
-                           <a href="archivos/evidencia/{{ $actividad->adjunto3}}">{{$actividad->adjunto3}}</a><br>
-                           <a href="archivos/evidencia/{{ $actividad->adjunto4}}">{{$actividad->adjunto4}}</a><br>
-                           <a href="archivos/evidencia/{{ $actividad->adjunto5}}">{{$actividad->adjunto5}}</a><br>
-
-                              @endif
-                              </td>
-                           
-                            </tr>
-
-                            @endforeach
-                            
                             </tbody>
                             </table>
 
