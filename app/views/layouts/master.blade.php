@@ -651,7 +651,7 @@
 
 
 
-@if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "admingerente"))
+
 
 					<li class="" id="informeactive">
 						<a href="#" class="dropdown-toggle">
@@ -660,7 +660,7 @@
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
 
-
+@if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "admingerente"))
 						<ul class="submenu">
 							
 							<li class="" id="informeactive">
@@ -702,7 +702,12 @@
 						</li>
 						</ul>
 
+						@endif
 
+
+
+
+						@if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "admingerente") || (Auth::user()->perfil == "adminbodega"))
 						<ul class="submenu">
 							
 							<li class="" id="informeactive">
@@ -760,17 +765,12 @@
 									</li>
 								</ul>
 
-
-								
-
-
-
 						</li>
 						</ul>
+						@endif
 
 
-
-
+@if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "admingerente"))
 						<ul class="submenu">
 							
 							<li class="" id="informeactive">
@@ -813,14 +813,14 @@
 								</ul>
 						</li>
 						</ul>
-
+						@endif
 
 
 					
 
 
 						</li>
-@endif
+
 
 
 
