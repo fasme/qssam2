@@ -92,9 +92,13 @@ Route::filter('csrf', function()
 
 Route::filter("permisoAdmin",function()
 {
-	if(Auth::user()->perfil != "admin")
+	if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "adminbodega") || (Auth::user()->perfil == "admingerente") || (Auth::user()->perfil == "adminprevencion"))
 	{
 		//return "no";
+		
+	}
+	else
+	{
 		return View::make("portal.index");
 	}
 	
