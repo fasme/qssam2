@@ -63,7 +63,7 @@
             <div id="divocultoentrada">
               <div class="form-group">
               {{Form::label('', 'Documento',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-              {{Form::select('documento', array(1=>"Factura"),"" )}}
+              {{Form::select('documento', array(1=>"Factura", 3=>"Boleta",2=>"Guia"),"" )}}
               </div>
               <div class="form-group">
               {{Form::label('', 'Proveedor/Empresa',array("class"=>"col-sm-3 control-label no-padding-right"))}}

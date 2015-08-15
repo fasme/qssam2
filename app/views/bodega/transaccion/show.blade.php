@@ -32,14 +32,14 @@
 <div class="info"></div>
   <thead>
           <tr>
-          <th>Bodega</th>
-          <th>Producto</th>
+          <th class="select-filter">Bodega</th>
+          <th class="select-filter">Producto</th>
                             <th>Cantidad</th>
-                            <th>Documento</th>
-                            <th>N de Documento</th>
-                            <th>Tipo</th>
-                            <th>Origen/Destino</th>
-                            <th>Fecha</th>
+                            <th class="select-filter">Documento</th>
+                            <th class="select-filter">N de Documento</th>
+                            <th class="select-filter">Tipo</th>
+                            <th class="select-filter">Origen/Destino</th>
+                            <th class="select-filter">Fecha</th>
                            
           
  
@@ -55,8 +55,10 @@
                 <th></th>
                 <th></th>
                 <th></th>
-                
-              
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
             </tr>
         </tfoot>
 
@@ -68,11 +70,13 @@
       @foreach($bodega->muchasproducto as $producto)
            <tr>
            <td>{{ $bodega->nombre}}</td>
-           <td>{{ $producto->nombre}}</td>
+           <td>{{ $producto->nombre}} ({{$producto->codigo}} )</td>
            <td>{{$producto->pivot->cantidad}}</td>
            <td>
            @if($producto->pivot->tipo == 1){{"Factura"}} @endif
            @if($producto->pivot->tipo == 2){{"Guia"}} @endif
+            @if($producto->pivot->tipo == 2){{"Boleta"}} @endif
+           
           
            </td>
            <td>{{$producto->pivot->documento}}</td>
@@ -98,14 +102,32 @@
  $(document).ready(function() {
 
 
-$("#example tfoot th").eq(0).html('<input type="text" size="1" placeholder="Buscar" style="width:50px" />');
-$("#example tfoot th").eq(1).html('<input type="text" size="1" placeholder="Buscar" style="width:50px" />');
-$("#example tfoot th").eq(3).html('<input type="text" size="1" placeholder="Buscar" style="width:50px" />');
-
-
 var table = $('#example').DataTable( {
       
-       
+       initComplete: function () {
+
+            this.api().columns('.select-filter').every( function () {
+
+                var column = this;
+                var select = $('<select><option value=""></option></select>')
+                    .appendTo( $(column.footer()).empty() )
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+ 
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                    } );
+ 
+                column.data().unique().sort().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+            } );
+
+
+                  },
 
          "language": {
                 
@@ -161,20 +183,6 @@ var table = $('#example').DataTable( {
 
     } );
 
-
-
-
-
-
- table.columns().every( function () {
-        var that = this;
- 
-        $( 'input', this.footer() ).on( 'keyup change', function () {
-            that
-                .search( this.value )
-                .draw();
-        } );
-    } );
 
 
 

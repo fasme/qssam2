@@ -30,11 +30,11 @@
 <div class="info"></div>
   <thead>
           <tr>
-          <th>Bodega</th>
-          <th>Producto</th>
-          <th>Personal</th>
+          <th class="select-filter">Bodega</th>
+          <th class="select-filter">Producto</th>
+          <th class="select-filter">Personal</th>
                             <th>Cantidad</th>
-                            <th>Estado</th>
+                            <th class="select-filter"s>Estado</th>
                            
           
  
@@ -46,6 +46,7 @@
 
         <tfoot>
             <tr>
+                <th></th>
                 <th></th>
                 <th></th>
                 <th></th>
@@ -63,7 +64,7 @@
 
            <tr>
            <td>{{Bodega::find($prestamo->bodega_id)->nombre}}</td>
-           <td>{{ Producto::find($prestamo->producto_id)->nombre}}</td>
+           <td>{{ Producto::find($prestamo->producto_id)->nombre}} ({{Producto::find($prestamo->producto_id)->codigo}})</td>
            <td>{{Personal::find($prestamo->personal_id)->nombre}}</td>
            <td>{{$prestamo->cantidad}}</td>
            <td>
@@ -84,13 +85,34 @@
  $(document).ready(function() {
 
 
-//$("#example tfoot th").eq(0).html('<input type="text" size="1" placeholder="Buscar" style="width:50px" />');
-//$("#example tfoot th").eq(1).html('<input type="text" size="1" placeholder="Buscar" style="width:50px" />');
 
 
 var table = $('#example').DataTable( {
       
-       
+       initComplete: function () {
+
+            this.api().columns('.select-filter').every( function () {
+
+                var column = this;
+                var select = $('<select><option value=""></option></select>')
+                    .appendTo( $(column.footer()).empty() )
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+ 
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                    } );
+ 
+                column.data().unique().sort().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+            } );
+
+
+                  },
 
          "language": {
                 
@@ -111,18 +133,6 @@ var table = $('#example').DataTable( {
 
 
 
-/*
- table.columns().every( function () {
-        var that = this;
- 
-        $( 'input', this.footer() ).on( 'keyup change', function () {
-            that
-                .search( this.value )
-                .draw();
-        } );
-    } );
-
-*/
 
 var tableTools = new $.fn.dataTable.TableTools( table, {
   

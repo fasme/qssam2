@@ -33,6 +33,7 @@
           <th>Nombre</th>
                             
                             <th>Tipo</th>
+                            <th>Codigo</th>
                            
           
   <th>Acciones</th>
@@ -56,6 +57,7 @@
                             @elseif ($producto->tipoproducto == 4)
                             Activo
                             @endif</td>
+            <td>{{$producto->codigo}}</td>
                             
          
 
@@ -110,6 +112,7 @@ var tableTools = new $.fn.dataTable.TableTools( table, {
                         "sFileName": "<?php print('Informe'); ?>.pdf",
                         "sPdfOrientation": "landscape",
                         "oSelectorOpts": {page: 'current'},
+                        "mColumns": [ 0, 1,2 ]
 
                     }
 

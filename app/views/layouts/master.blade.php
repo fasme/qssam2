@@ -275,7 +275,7 @@
 
 
 
-@if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "adminmantencion") || (Auth::user()->perfil == "adminprevencion") || (Auth::user()->perfil == "admingerente"))
+@if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "adminmantencion") || (Auth::user()->perfil == "adminprevencion") || (Auth::user()->perfil == "admingerente") || (Auth::user()->perfil == "liderdearea"))
 
 					<li class="" id="actividadactive">
 						<a href="#" class="dropdown-toggle">
@@ -323,7 +323,7 @@
 @endif
 
 
-				@if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "adminmantencion") || (Auth::user()->perfil == "adminprevencion") || (Auth::user()->perfil == "admingerente"))
+				@if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "adminmantencion") || (Auth::user()->perfil == "adminprevencion") || (Auth::user()->perfil == "admingerente") || (Auth::user()->perfil == "liderdearea"))
 
 					<li class="" id="evidenciaactive">
 						<a href="{{URL::to('evidenciaadmin')}}">
@@ -473,7 +473,7 @@
 @endif
 
 
-@if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "adminmantencion") || (Auth::user()->perfil == "adminprevencion") || (Auth::user()->perfil == "admingerente"))
+@if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "adminmantencion") || (Auth::user()->perfil == "adminprevencion") || (Auth::user()->perfil == "admingerente") || (Auth::user()->perfil == "liderdearea"))
 
 					<li class="" id="noticiaactive">
 						<a href="{{URL::to('noticia')}}">
@@ -534,7 +534,7 @@
 @endif			
 
 
-@if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "admingerente") || (Auth::user()->perfil == "adminbodega") || (Auth::user()->perfil == "usuariobodega"))
+@if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "admingerente") || (Auth::user()->perfil == "adminbodega") )
 
 					<li class="" id="bodegaactive">
 						<a href="#" class="dropdown-toggle">
@@ -660,7 +660,7 @@
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
 
-@if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "admingerente"))
+@if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "admingerente") || (Auth::user()->perfil == "liderdearea"))
 						<ul class="submenu">
 							
 							<li class="" id="informeactive">
