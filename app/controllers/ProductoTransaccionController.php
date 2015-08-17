@@ -149,14 +149,15 @@ return Redirect::to('productotransaccion/update/'.$id)->withInput()->withErrors(
       
     }
 
-
+*/
 
     public function eliminar()
     {
         $id = Input::get('id'); //acedemos a la variable id traida por AJAX ($.get)
-        $productotransaccion = ProductoTransaccion::find($id);
+        //$productotransaccion = ProductoTransaccion::find($id);
 
-        $productotransaccion->delete();
+        DB::table('bodega_producto')->where("id","=",$id)->delete();
+        //$productotransaccion->delete();
 
     //return Redirect::to('usuarios/insert');
     }
@@ -164,7 +165,7 @@ return Redirect::to('productotransaccion/update/'.$id)->withInput()->withErrors(
 
 
 
-*/
+
 
 
 

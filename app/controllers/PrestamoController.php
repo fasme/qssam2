@@ -76,7 +76,7 @@ class PrestamoController extends BaseController {
      /**
      * Ver usuario con id
      */
-
+/*
     public function update($id) //get
     {
         //echo $id;
@@ -139,13 +139,11 @@ return Redirect::to('prestamo/update/'.$id)->withInput()->withErrors($prestamo->
     }
 
 
-
+*/
     public function eliminar()
     {
         $id = Input::get('id'); //acedemos a la variable id traida por AJAX ($.get)
-        $prestamo = Prestamo::find($id);
-
-        $prestamo->delete();
+        DB::table('prestamo')->where("id","=",$id)->delete();
 
     //return Redirect::to('usuarios/insert');
     }

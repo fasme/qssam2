@@ -35,6 +35,7 @@
           <th class="select-filter">Personal</th>
                             <th>Cantidad</th>
                             <th class="select-filter"s>Estado</th>
+                            <th>Acciones</th>
                            
           
  
@@ -73,6 +74,9 @@
                           </a> @endif
            @if($prestamo->tipo == 0) {{"Entregado"}} @endif
            </td>
+           <td><a class="red bootbox-confirm2" data-id={{ $prestamo->id }}>
+                            <i class="fa fa-trash bigger-130"></i>
+                          </a></td>
 </tr>
     @endforeach
         </tbody>
@@ -211,6 +215,28 @@ $(".bootbox-confirm").on(ace.click_event, function() {
         });
 
         
+
+
+$(".bootbox-confirm2").on(ace.click_event, function() {
+  var id = $(this).data('id');
+var tr = $(this).parents('tr'); 
+
+          bootbox.confirm("Deseas Eliminar el registro "+id, function(result) {
+            if(result) { // si se seleccion OK
+              
+           
+             
+             $.get("{{ url('prestamo/eliminar')}}",
+              { id: id },
+
+              function(data,status){ tr.fadeOut(1000); }
+).fail(function(data){bootbox.alert("No se puede eliminar un registro padre: una restricción de clave externa falla");});
+
+     
+            }
+           
+          });
+        });
 
 
 

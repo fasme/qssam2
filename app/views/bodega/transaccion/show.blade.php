@@ -40,6 +40,7 @@
                             <th class="select-filter">Tipo</th>
                             <th class="select-filter">Origen/Destino</th>
                             <th class="select-filter">Fecha</th>
+                            <th>Accion</th>
                            
           
  
@@ -68,6 +69,7 @@
 
   @foreach($bodegas as $bodega)
       @foreach($bodega->muchasproducto as $producto)
+      
            <tr>
            <td>{{ $bodega->nombre}}</td>
            <td>{{ $producto->nombre}} ({{$producto->codigo}} )</td>
@@ -87,7 +89,10 @@
            @if($producto->pivot->tipo == 4){{"Devolucion"}} @endif
            </td>
            <td>{{$producto->pivot->origendestino}}</td>
-           <td>{{ date_format(date_create($producto->pivot->created_at), 'd/m/Y')}}
+           <td>{{ date_format(date_create($producto->pivot->created_at), 'd/m/Y')}}</td>
+           <td><a class="red bootbox-confirm" data-id={{ $producto->pivot->id }}>
+                            <i class="fa fa-trash bigger-130"></i>
+                          </a></td>
          
 </tr>
           @endforeach
@@ -229,7 +234,7 @@ var tr = $(this).parents('tr');
               
            
              
-             $.get("{{ url('bodega/eliminar')}}",
+             $.get("{{ url('productotransaccion/eliminar')}}",
               { id: id },
 
               function(data,status){ tr.fadeOut(1000); }
