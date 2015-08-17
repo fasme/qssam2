@@ -39,7 +39,7 @@ class MatrizActividadController extends BaseController {
                 }
                 $texto.= substr($desc,$i,1); 
             }  
-            $nombre = $value->nombre.":".$texto;
+            $nombre = "<b>".$value->nombre.":</b>".$texto;
             $array = array_add($array, $value->id, $nombre);
         }
     
