@@ -20,8 +20,12 @@
 
             {{Form::select('ano',array("2015"=>"2015","2016"=>"2016","2017"=>"2017","2018"=>"2018"), $data["ano"])}}
             {{Form::select('personal',$personals, $data["personal"])}}
-            
 
+            {{Form::select('diaturno',$diaturno,$data["diaturno"])}}
+            
+            {{Form::select('diagnostico',$diagnostico,$data["diagnostico"])}}
+            {{Form::select('clasificacion',$clasificacion,$data["clasificacion"])}}
+            {{Form::select('comuna',$comuna,$data["comuna"])}}
             {{Form::submit()}}
 
       {{ Form::close()}}

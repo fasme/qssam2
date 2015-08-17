@@ -439,8 +439,25 @@ public function atencionmedicaanual(){
 
     $titulo = "Cantidad de atencion medicas";
     $personals = Personal::lists("nombre","id");
-    $personals0 = array(""=>"-- ninguno --");
+    $personals0 = array(""=>"-- Personal --");
     $personals = $personals0 + $personals;
+
+    $diaturno = Medica::lists("diaturno","diaturno");
+    $diaturno0 = array(""=>"--Dia Turno--");
+    $diaturno = $diaturno0 + $diaturno;
+
+    $diagnostico = Medica::lists("diagnostico","diagnostico");
+    $diagnostico0 = array(""=>"--Diagnostico--");
+    $diagnostico = $diagnostico0 + $diagnostico;
+
+    $clasificacion = Medica::lists("clasificacion","clasificacion");
+    $clasificacion0 = array(""=>"--Clasificacion--");
+    $clasificacion = $clasificacion0 + $clasificacion;
+
+    $comuna = Medica::lists("comuna","comuna");
+    $comuna0 = array(""=>"--Comuna--");
+    $comuna = $comuna0 + $comuna;
+
         $data = Input::all();
        
         if(!isset($data["ano"]))
@@ -451,6 +468,22 @@ public function atencionmedicaanual(){
         {
             $data["personal"] = "";
         }  
+        if(!isset($data["diaturno"]))
+        {
+            $data["diaturno"] = "";
+        }
+        if(!isset($data["diagnostico"]))
+        {
+            $data["diagnostico"] = "";
+        }
+        if(!isset($data["clasificacion"]))
+        {
+            $data["clasificacion"] = "";
+        }
+        if(!isset($data["comuna"]))
+        {
+            $data["comuna"] = "";
+        }
        
 
 
@@ -464,6 +497,22 @@ public function atencionmedicaanual(){
            {
             $sql = $sql->where("personal_id","=",$data["personal"]); 
            }
+           if($data["diaturno"] != "")
+           {
+            $sql = $sql->where("diaturno","=",$data["diaturno"]);
+           }
+            if($data["diagnostico"] != "")
+           {
+            $sql = $sql->where("diagnostico","=",$data["diagnostico"]);
+           }
+           if($data["clasificacion"] != "")
+           {
+            $sql = $sql->where("clasificacion","=",$data["clasificacion"]);
+           }
+           if($data["comuna"] != "")
+           {
+            $sql = $sql->where("comuna","=",$data["comuna"]);
+           }
 
 
 
@@ -476,6 +525,10 @@ public function atencionmedicaanual(){
         ->with("cantidad",$cantidad)
         ->with("personals",$personals)
         ->with("titulo", $titulo)
+        ->with("diaturno",$diaturno)
+        ->with("diagnostico",$diagnostico)
+        ->with("clasificacion",$clasificacion)
+        ->with("comuna",$comuna)
         ->with("data",$data);
 }
 
