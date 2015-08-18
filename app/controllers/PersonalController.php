@@ -145,29 +145,6 @@ return Redirect::to('personal/update/'.$id)->withInput()->withErrors($personal->
           $datos = Input::all();
         $random = rand(0,99999);
 
-       
-
-        foreach (Personal::Where("perfil","=","admin")->get() as $administrador) {
-
-        $alerta = new Alertas;
-        $alerta->mensaje = "ha enviado una nueva evidencia";
-        $alerta->personal_id = Auth::user()->id; // id de
-        $alerta->personal_id_admin = $administrador->id; //id para
-        $alerta->tipo = "aadmin";
-        $alerta->save();
-
-
-        // CORREO
-            Mail::send('emails.emailactividad', array('key' => 'value'), function($message) use($datos)
-{             
-
-    $message->from(Personal::find(Auth::user()->id)->correo, '');
-    $message->to(Personal::find($administrador->id)->correo, '')->subject('Nueva Evidencia!');
-});
-            // FIN correo
-
-       
-        }
         
 
 
@@ -178,7 +155,8 @@ return Redirect::to('personal/update/'.$id)->withInput()->withErrors($personal->
 
 
 
-            $actividadrespoonsable = DB::table('actividad_responsable_noprogramada')
+
+             $actividadrespoonsable = DB::table('actividad_responsable_noprogramada')
             ->Where("id","=",$datos["id"]);
 
             $adjunto11 ="";
@@ -187,7 +165,19 @@ return Redirect::to('personal/update/'.$id)->withInput()->withErrors($personal->
             $adjunto44 ="";
             $adjunto55 ="";
 
-            //return $actividadrespoonsable;
+            $actividadrespoonsable2 = DB::table('actividad_responsable_noprogramada')->select("personal_admin_id")
+            ->Where("id","=",$datos["id"])->first();
+            return $actividadrespoonsable2->personal_admin_id;
+           
+
+             // CORREO
+            Mail::send('emails.emailactividad', array('key' => 'value'), function($message) use($actividadrespoonsable2)
+{             
+
+    $message->from(Personal::find(Auth::user()->id)->correo, '');
+    $message->to(Personal::find($actividadrespoonsable2->personal_admin_id)->correo, '')->subject('Nuevo KPI!');
+});
+            // FIN correo
 
           
 
@@ -244,6 +234,19 @@ return Redirect::to('personal/update/'.$id)->withInput()->withErrors($personal->
 
                 $actividadrespoonsable = DB::table('actividad_responsable_noprogramada')
             ->Where("id","=",$datos["id"])->update(array('adjunto1' => $adjunto11,'adjunto2' => $adjunto22,'adjunto3' => $adjunto33,'adjunto4' => $adjunto44,'adjunto5' => $adjunto55, "estado"=>"Pendiente", "fechaenvio"=>date("Y-m-d")));
+
+
+
+/*
+        // CORREO
+            Mail::send('emails.emailactividad', array('key' => 'value'), function($message) use($datos)
+{             
+
+    $message->from(Personal::find(Auth::user()->id)->correo, '');
+   /$message->to(Personal::find($administrador->id)->correo, '')->subject('Nueva Evidencia!');
+});
+            // FIN correo
+*/
 
         }
 
