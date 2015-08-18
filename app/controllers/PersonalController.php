@@ -167,7 +167,7 @@ return Redirect::to('personal/update/'.$id)->withInput()->withErrors($personal->
 
             $actividadrespoonsable2 = DB::table('actividad_responsable_noprogramada')->select("personal_admin_id")
             ->Where("id","=",$datos["id"])->first();
-            return $actividadrespoonsable2->personal_admin_id;
+            //$actividadrespoonsable2->personal_admin_id;
            
 
              // CORREO
