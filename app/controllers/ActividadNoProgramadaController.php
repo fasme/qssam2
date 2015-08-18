@@ -75,7 +75,7 @@ class ActividadNoProgramadaController extends BaseController {
 
 
 // CORREO
-            Mail::send('emails.welcome', array('key' => 'value'), function($message) use($datos, $i)
+            Mail::send('emails.emailactividad', array('key' => 'value'), function($message) use($datos, $i)
 {             
 
     $message->from(Personal::find(Auth::user()->id)->correo, '');
@@ -159,6 +159,16 @@ return Redirect::to('actividadnoprogramada/update/'.$id)->withInput()->withError
             $alerta->personal_id_admin = Auth::user()->id;  // id_para
             $alerta->tipo = "aportal";
             $alerta->save();
+
+
+            // CORREO
+            Mail::send('emails.emailactividad', array('key' => 'value'), function($message) use($datos, $i)
+{             
+
+    $message->from(Personal::find(Auth::user()->id)->correo, '');
+    $message->to(Personal::find($datos["personal_id"][$i])->correo, '')->subject('Nueva Actividad No Programada!');
+});
+            // FIN correo
             
            }
 

@@ -412,11 +412,12 @@ Route::get("informeatencionmedicapersonal", "InformeController@atencionmedicaper
 //Mail
 Route::get("enviaremail", function(){
 
-
 Mail::send('emails.welcome', array('key' => 'value'), function($message)
 {
     $message->to('fasme2h@gmail.com', 'John Smith')->subject('Welcome!');
 });
+
+
 });
 // Manual
 
