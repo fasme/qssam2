@@ -74,11 +74,14 @@ class ActividadNoProgramadaController extends BaseController {
             $alerta->save();
 
 
+// CORREO
             Mail::send('emails.welcome', array('key' => 'value'), function($message) use($datos, $i)
 {             
 
-    $message->to(Personal::find($datos["personal_id"][$i])->correo, 'John Smith')->subject('Welcome!');
+    $message->from(Personal::find(Auth::user()->id)->correo, '');
+    $message->to(Personal::find($datos["personal_id"][$i])->correo, '')->subject('Nueva Actividad No Programada!');
 });
+            // FIN correo
 
 
 
