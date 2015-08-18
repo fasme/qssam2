@@ -156,6 +156,16 @@ return Redirect::to('personal/update/'.$id)->withInput()->withErrors($personal->
         $alerta->tipo = "aadmin";
         $alerta->save();
 
+
+        // CORREO
+            Mail::send('emails.emailactividad', array('key' => 'value'), function($message) use($datos, $i)
+{             
+
+    $message->from(Personal::find(Auth::user()->id)->correo, '');
+    $message->to(Personal::find($administrador->id)->correo, '')->subject('Nueva Evidencia!');
+});
+            // FIN correo
+
        
         }
         
