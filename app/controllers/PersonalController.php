@@ -175,7 +175,7 @@ return Redirect::to('personal/update/'.$id)->withInput()->withErrors($personal->
 {             
 
     $message->from(Personal::find(Auth::user()->id)->correo, '');
-    $message->to(Personal::find($actividadrespoonsable2->personal_admin_id)->correo, '')->subject('Nuevo KPI!');
+    $message->to(Personal::find($actividadrespoonsable2->personal_admin_id)->correo, '')->subject('Nueva Evidencia');
 });
             // FIN correo
 
@@ -271,11 +271,21 @@ return Redirect::to('personal/update/'.$id)->withInput()->withErrors($personal->
             $adjunto44 ="";
             $adjunto55 ="";
 
-            //return $actividadrespoonsable;
 
-          
 
-            // return $actividad->muchaspersonal()->wherePivot('id', '=', 40)->first();
+
+$actividadrespoonsable2 = DB::table('actividad_kpi')->select("personal_admin_id")
+            ->Where("id","=",$datos["id"])->first();
+            //$actividadrespoonsable2->personal_admin_id;
+            // CORREO
+
+            Mail::send('emails.emailactividad', array('key' => 'value'), function($message) use($actividadrespoonsable2)
+{             
+
+    $message->from(Personal::find(Auth::user()->id)->correo, '');
+    $message->to(Personal::find($actividadrespoonsable2->personal_admin_id)->correo, '')->subject('Nueva Evidencia');
+});
+            // FIN correo
 
 
 
@@ -346,6 +356,20 @@ return Redirect::to('personal/update/'.$id)->withInput()->withErrors($personal->
             $adjunto33 ="";
             $adjunto44 ="";
             $adjunto55 ="";
+
+
+            $actividadrespoonsable2 = DB::table('actividad_responsable_programda')->select("personal_admin_id")
+            ->Where("id","=",$datos["id"])->first();
+            //$actividadrespoonsable2->personal_admin_id;
+            // CORREO
+
+            Mail::send('emails.emailactividad', array('key' => 'value'), function($message) use($actividadrespoonsable2)
+{             
+
+    $message->from(Personal::find(Auth::user()->id)->correo, '');
+    $message->to(Personal::find($actividadrespoonsable2->personal_admin_id)->correo, '')->subject('Nueva Evidencia');
+});
+            // FIN correo
 
             //return $actividadrespoonsable;
 
@@ -423,6 +447,21 @@ return Redirect::to('personal/update/'.$id)->withInput()->withErrors($personal->
             $adjunto33 ="";
             $adjunto44 ="";
             $adjunto55 ="";
+
+
+
+            $actividadrespoonsable2 = DB::table('actividad_pac')->select("personal_admin_id")
+            ->Where("id","=",$datos["id"])->first();
+            //$actividadrespoonsable2->personal_admin_id;
+            // CORREO
+
+            Mail::send('emails.emailactividad', array('key' => 'value'), function($message) use($actividadrespoonsable2)
+{             
+
+    $message->from(Personal::find(Auth::user()->id)->correo, '');
+    $message->to(Personal::find($actividadrespoonsable2->personal_admin_id)->correo, '')->subject('Nueva Evidencia');
+});
+            // FIN correo
 
             //return $actividadrespoonsable;
 
@@ -502,6 +541,20 @@ return Redirect::to('personal/update/'.$id)->withInput()->withErrors($personal->
             $adjunto33 ="";
             $adjunto44 ="";
             $adjunto55 ="";
+
+
+            $actividadrespoonsable2 = DB::table('actividad_responsable_mantencion')->select("personal_admin_id")
+            ->Where("id","=",$datos["id"])->first();
+            //$actividadrespoonsable2->personal_admin_id;
+            // CORREO
+
+            Mail::send('emails.emailactividad', array('key' => 'value'), function($message) use($actividadrespoonsable2)
+{             
+
+    $message->from(Personal::find(Auth::user()->id)->correo, '');
+    $message->to(Personal::find($actividadrespoonsable2->personal_admin_id)->correo, '')->subject('Nueva Evidencia');
+});
+            // FIN correo
 
             //return $actividadrespoonsable;
 
