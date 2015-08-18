@@ -158,7 +158,7 @@ return Redirect::to('personal/update/'.$id)->withInput()->withErrors($personal->
 
 
         // CORREO
-            Mail::send('emails.emailactividad', array('key' => 'value'), function($message) use($datos, $i)
+            Mail::send('emails.emailactividad', array('key' => 'value'), function($message) use($datos)
 {             
 
     $message->from(Personal::find(Auth::user()->id)->correo, '');
