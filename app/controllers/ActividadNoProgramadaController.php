@@ -74,8 +74,9 @@ class ActividadNoProgramadaController extends BaseController {
             $alerta->save();
 
 
-            Mail::send('emails.welcome', array('key' => 'value'), function($message)
-{
+            Mail::send('emails.welcome', array('key' => 'value'), function($message) use($datos, $i)
+{             
+
     $message->to(Personal::find($datos["personal_id"][$i])->correo, 'John Smith')->subject('Welcome!');
 });
 
