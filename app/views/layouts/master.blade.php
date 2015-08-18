@@ -196,7 +196,7 @@
 
 				<ul class="nav nav-list">
 
-				@if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "adminmantencion") || (Auth::user()->perfil == "adminprevencion") || (Auth::user()->perfil == "admingerente") || (Auth::user()->perfil == "adminbodega"))
+				@if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "adminmantencion") || (Auth::user()->perfil == "adminprevencion") || (Auth::user()->perfil == "admingerente") || (Auth::user()->perfil == "adminbodega") || (Auth::user()->perfil == "liderdearea"))
 					<li class="">
 						<a href="{{URL::to('portal')}}"> 
 							<i class="menu-icon fa fa-tachometer"></i>
@@ -288,8 +288,10 @@
 						</a>
 
 						<b class="arrow"></b>
-
+						
 						<ul class="submenu">
+						@if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "adminmantencion") || (Auth::user()->perfil == "adminprevencion") || (Auth::user()->perfil == "admingerente"))
+
 							<li class="" id="programadaactive">
 								<a href="{{URL::to('actividadprogramada')}}">
 									<i class="menu-icon fa fa-caret-right"></i>
@@ -302,6 +304,9 @@
 
 								
 							</li>
+							@endif
+
+							@if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "adminmantencion") || (Auth::user()->perfil == "adminprevencion") || (Auth::user()->perfil == "admingerente") || (Auth::user()->perfil == "liderdearea"))
 
 							<li class="" id="noprogramadaactive">
 								<a href="{{URL::to('actividadnoprogramada')}}">
@@ -311,6 +316,7 @@
 
 								<b class="arrow"></b>
 							</li>
+							@endif
 
 						
 
