@@ -348,7 +348,7 @@ $actividadrespoonsable2 = DB::table('actividad_kpi')->select("personal_admin_id"
 
 
 
-            $actividadrespoonsable = DB::table('actividad_responsable_programda')
+            $actividadrespoonsable = DB::table('actividad_responsable_programada')
             ->Where("id","=",$datos["id"]);
 
             $adjunto11 ="";
@@ -358,7 +358,7 @@ $actividadrespoonsable2 = DB::table('actividad_kpi')->select("personal_admin_id"
             $adjunto55 ="";
 
 
-            $actividadrespoonsable2 = DB::table('actividad_responsable_programda')->select("personal_admin_id")
+            $actividadrespoonsable2 = DB::table('actividad_responsable_programada')->select("personal_admin_id")
             ->Where("id","=",$datos["id"])->first();
             //$actividadrespoonsable2->personal_admin_id;
             // CORREO
