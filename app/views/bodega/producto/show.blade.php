@@ -34,6 +34,7 @@
                             
                             <th>Tipo</th>
                             <th>Codigo</th>
+                            <th>Unidad</th>
                            
           
   <th>Acciones</th>
@@ -56,8 +57,11 @@
                             Equipo
                             @elseif ($producto->tipoproducto == 4)
                             Activo
+                            @elseif ($producto->tipoproducto == 5)
+                            Articulo Seguridad
                             @endif</td>
             <td>{{$producto->codigo}}</td>
+            <td>{{$producto->unidad}}</td>
                             
          
 

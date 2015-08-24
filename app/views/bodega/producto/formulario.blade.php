@@ -59,13 +59,13 @@
 
             <div class="form-group">
             {{Form::label('', 'Unidad',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-            {{Form::select('unidad',array("kg"=>"kg","lt"=>"lt","un"=>"un","metrol"=>"metrol"), $producto->unidad)}}
+            {{Form::select('unidad',array("kg"=>"kg","lt"=>"lt","un"=>"un","metrol"=>"metrol","par"=>"par"), $producto->unidad)}}
             
             </div>
 
             <div class="form-group">
             {{Form::label('', 'Tipo',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-            {{Form::select('tipoproducto', array(1=>"Insumo",2=>"Herramienta",3=>"Equipo",4=>"Activo"), $producto->tipoproducto)}}
+            {{Form::select('tipoproducto', array(1=>"Insumo",2=>"Herramienta",3=>"Equipo",4=>"Activo",5=>"Articulo Seguridad"), $producto->tipoproducto)}}
             </div>
 
 

@@ -35,7 +35,7 @@ class MatrizActividadController extends BaseController {
             for($i=0;$i<strlen($desc);$i++){ 
                 if($i%150==0)
                 {
-                    $texto .= "\n";
+                    $texto .= "<br>";
                 }
                 $texto.= substr($desc,$i,1); 
             }  
