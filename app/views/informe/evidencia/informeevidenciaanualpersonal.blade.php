@@ -81,6 +81,16 @@
            // highlightStroke: "rgba(220,220,220,1)",
             data: [{{$cerradas["0"]}},{{$cerradas["1"]}},{{$cerradas["2"]}},{{$cerradas["3"]}},{{$cerradas["4"]}},{{$cerradas["5"]}},{{$cerradas["6"]}},{{$cerradas["7"]}},{{$cerradas["8"]}},{{$cerradas["9"]}},{{$cerradas["10"]}},{{$cerradas["11"]}}]
           
+        },
+
+         {
+            label: "Atrasadas",
+            fillColor: "yellow",
+          //  strokeColor: "rgba(220,220,220,0.8)",
+           // highlightFill: "rgba(220,220,220,0.75)",
+           // highlightStroke: "rgba(220,220,220,1)",
+            data: [{{$atrasadas["0"]}},{{$atrasadas["1"]}},{{$atrasadas["2"]}},{{$atrasadas["3"]}},{{$atrasadas["4"]}},{{$atrasadas["5"]}},{{$atrasadas["6"]}},{{$atrasadas["7"]}},{{$atrasadas["8"]}},{{$atrasadas["9"]}},{{$atrasadas["10"]}},{{$atrasadas["11"]}}]
+          
         }
     ]
 };

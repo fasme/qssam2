@@ -210,7 +210,6 @@ public function informeevidenciaanualpersonal(){
         {
             $data["mes"] = $i;
  
-           // $cantidad[] = $sql->count("*");
         
    $actividadresponsable = DB::table('actividad_responsable_noprogramada')->join("actividad_noprogramada","actividad_responsable_noprogramada.actividad_id","=","actividad_noprogramada.id")->Where(DB::raw("MONTH(actividad_responsable_noprogramada.frecuencia)"),"=",$data["mes"])->where(DB::raw("YEAR(actividad_responsable_noprogramada.frecuencia)"),"=",$data["ano"])->Where("estado","=","Abierta")->where("personal_id","=",$data["personal"])->count("*");
  $actividadresponsable_kpi = DB::table('actividad_kpi')->join("kpi","actividad_kpi.kpi_id","=","kpi.id")->Where(DB::raw("MONTH(actividad_kpi.frecuencia)"),"=",$data["mes"])->where(DB::raw("YEAR(actividad_kpi.frecuencia)"),"=",$data["ano"])->Where("estado","=","Abierta")->where("personal_id","=",$data["personal"])->count("*");
@@ -229,6 +228,19 @@ $actividadresponsable_pac = DB::table('actividad_pac')->join("pac","actividad_pa
 $actividadresponsable_mantencion = DB::table('actividad_responsable_mantencion')->join("mantencion","actividad_responsable_mantencion.actividad_id","=","mantencion.id")->Where(DB::raw("MONTH(mantencion.fecha_mantencion)"),"=",$data["mes"])->where(DB::raw("YEAR(mantencion.fecha_mantencion)"),"=",$data["ano"])->Where("estado","=","Cerrada")->where("personal_id","=",$data["personal"])->count("*");
 
 $cerradas[] = $actividadresponsable + $actividadresponsable_kpi + $actividadresponsable_programada + $actividadresponsable_pac + $actividadresponsable_mantencion;
+    
+
+
+    $actividadresponsable = DB::table('actividad_responsable_noprogramada')->join("actividad_noprogramada","actividad_responsable_noprogramada.actividad_id","=","actividad_noprogramada.id")->Where(DB::raw("MONTH(actividad_responsable_noprogramada.frecuencia)"),"=",$data["mes"])->where(DB::raw("YEAR(actividad_responsable_noprogramada.frecuencia)"),"=",$data["ano"])->Where("frecuencia",">","fechaenvio")->where("personal_id","=",$data["personal"])->count("*");
+ $actividadresponsable_kpi = DB::table('actividad_kpi')->join("kpi","actividad_kpi.kpi_id","=","kpi.id")->Where(DB::raw("MONTH(actividad_kpi.frecuencia)"),"=",$data["mes"])->where(DB::raw("YEAR(actividad_kpi.frecuencia)"),"=",$data["ano"])->Where("frecuencia",">","fechaenvio")->where("personal_id","=",$data["personal"])->count("*");
+$actividadresponsable_programada = DB::table('actividad_responsable_programada')->join("actividad_programada","actividad_responsable_programada.actividad_id","=","actividad_programada.id")->Where(DB::raw("MONTH(actividad_responsable_programada.frecuencia)"),"=",$data["mes"])->where(DB::raw("YEAR(actividad_responsable_programada.frecuencia)"),"=",$data["ano"])->Where("frecuencia",">","fechaenvio")->where("personal_id","=",$data["personal"])->count("*");
+$actividadresponsable_pac = DB::table('actividad_pac')->join("pac","actividad_pac.pac_id","=","pac.id")->Where(DB::raw("MONTH(actividad_pac.frecuencia)"),"=",$data["mes"])->where(DB::raw("YEAR(actividad_pac.frecuencia)"),"=",$data["ano"])->Where("frecuencia",">","fechaenvio")->where("actividad_pac.personal_id","=",$data["personal"])->count("*");
+$actividadresponsable_mantencion = DB::table('actividad_responsable_mantencion')->join("mantencion","actividad_responsable_mantencion.actividad_id","=","mantencion.id")->Where(DB::raw("MONTH(mantencion.fecha_mantencion)"),"=",$data["mes"])->where(DB::raw("YEAR(mantencion.fecha_mantencion)"),"=",$data["ano"])->Where("fecha_mantencion",">","fechaenvio")->where("personal_id","=",$data["personal"])->count("*");
+
+$atrasadas[] = $actividadresponsable + $actividadresponsable_kpi + $actividadresponsable_programada + $actividadresponsable_pac + $actividadresponsable_mantencion;
+    
+
+
     }
     
     //return json_encode($abiertas);
@@ -236,6 +248,7 @@ $cerradas[] = $actividadresponsable + $actividadresponsable_kpi + $actividadresp
     return View::make('informe.evidencia.informeevidenciaanualpersonal')
         ->with("abiertas",$abiertas)
         ->with("cerradas",$cerradas)
+        ->with("atrasadas",$atrasadas)
         ->with("titulo", $titulo)
         ->with("data",$data)
         ->with("personals",$personals);
