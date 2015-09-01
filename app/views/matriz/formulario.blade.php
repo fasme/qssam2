@@ -71,7 +71,7 @@
                           </ul>
                         </div>
                       </div>
-
+{{$matriz}}
                       <div class="widget-body">
                         <div class="widget-main padding-6">
                           <div class="tab-content">
@@ -86,7 +86,7 @@
 
                                <div class="form-group">
                               {{Form::label('', 'Peligro',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-                              {{Form::select('matriz_peligro_id', $matrizPeligro, "", array("class"=>"chosen-select"))}}
+                              {{Form::select('matriz_peligro_id', $matrizPeligro, $matriz->matriz_peligro_id, array("class"=>"chosen-select"))}}
                               </div>
 
 
@@ -97,7 +97,7 @@
                               {
 
                               foreach ($array->muchasactividad as $key) {
-                                $arrayName[] = $key->id;
+                                $arrayName1[] = $key->id;
                                
                               }
                             }
@@ -106,7 +106,7 @@
 
                               <div class="form-group">
                               {{Form::label('', 'Actividad',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-                              {{Form::select('actividad_id[]', $matrizActividad, $arrayName, array("class"=>"chosen-select", "multiple"=>"multiple"))}}
+                              {{Form::select('actividad_id[]', $matrizActividad, $arrayName1, array("class"=>"chosen-select", "multiple"=>"multiple"))}}
                               </div>
 
                               <?php
@@ -116,7 +116,7 @@
 
 
                               foreach ($array->muchasriesgo as $key) {
-                                $arrayName[] = $key->id;
+                                $arrayName2[] = $key->id;
                                
                               }
                             }
@@ -125,7 +125,7 @@
 
                               <div class="form-group">
                               {{Form::label('', 'Riesgo',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-                              {{Form::select('riesgo_id[]', $matrizRiesgo, $arrayName, array("class"=>"chosen-select", "multiple"=>"multiple"))}}
+                              {{Form::select('riesgo_id[]', $matrizRiesgo, $arrayName2, array("class"=>"chosen-select", "multiple"=>"multiple"))}}
                               </div>
 
                               <div class="form-group">
@@ -138,7 +138,7 @@
                                if(count($array)>0)
                               {
                               foreach ($array->muchascargo as $key) {
-                                $arrayName[] = $key->id;
+                                $arrayName3[] = $key->id;
                                
                               }
                             }
@@ -146,7 +146,7 @@
 
                               <div class="form-group">
                               {{Form::label('', 'Cargo',array("class"=>"col-sm-3 control-label no-padding-right"))}}
-                              {{Form::select('cargo_id[]', $matrizCargo, $arrayName, array("class"=>"chosen-select", "multiple"=>"multiple"))}}
+                              {{Form::select('cargo_id[]', $matrizCargo, $arrayName3, array("class"=>"chosen-select", "multiple"=>"multiple"))}}
                               </div>
 
 
