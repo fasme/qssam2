@@ -93,6 +93,9 @@
                               <?php
                               $array = Matriz::find($matriz->id);
                               $arrayName = "";
+                              $arrayName1 = "";
+                              $arrayName2 = "";
+                              $arrayName3 = "";
                               if(count($array) >0)
                               {
 
