@@ -365,30 +365,37 @@ $.get("{{url('matriz/cargarMatrizColor')}}",
 
 
 $(".fun2").change(function(){
-
+var riesgopuro = $("#resultado1").val();
 var factorprevio = $("#factorprevio").val();
 var resultado2 = Math.pow(0.8,factorprevio) + ((1-(Math.pow(0.8,factorprevio)))*80)/100;
+resultado2 = riesgopuro * resultado2;
 $("#resultado2").val(resultado2);
+
 
 var factorsustitucion = $("#factorsustitucion").val();
 var resultado4 = Math.pow(0.35,factorsustitucion);
+resultado4 = riesgopuro * resultado4;
 $("#resultado4").val(resultado4);
 
 var factoradministrativo = $("#factoradministrativo").val();
 var resultado6 = Math.pow(0.8,factoradministrativo);
+resultado6 = riesgopuro * resultado6;
 $("#resultado6").val(resultado6);
 
 var factoreliminacion = $("#factoreliminacion").val();
 var resultado3 = Math.pow(0.2,factoreliminacion);
+resultado3 = riesgopuro * resultado3;
 $("#resultado3").val(resultado3);
 
 
 var factoringenieria = $("#factoringenieria").val();
 var resultado5 = Math.pow(0.6,factoringenieria);
+resultado5 = riesgopuro * resultado5;
 $("#resultado5").val(resultado5);
 
 var factorepp = $("#factorepp").val();
 var resultado7 = Math.pow(0.9,factorepp);
+resultado7 = riesgopuro * resultado7;
 $("#resultado7").val(resultado7);
 
 
