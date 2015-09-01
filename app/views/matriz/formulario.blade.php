@@ -220,7 +220,7 @@
 <div class="hr hr-24"></div>
 
                               <div class="form-group">
-                                  {{Form::label('', 'Administrativo',array("class"=>"col-sm-3 control-label no-padding-right"))}}
+                                  {{Form::label('', 'Señales, advertencia y/o controles administrativos',array("class"=>"col-sm-3 control-label no-padding-right"))}}
                                   {{Form::textarea('actadministrativo', $matriz->actadministrativo, ['size' => '30x5'])}}
                                   </div>
 
