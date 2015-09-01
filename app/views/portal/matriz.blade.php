@@ -37,6 +37,8 @@
                             
                             <th>Peligro</th>
                             <th>Actividad</th>
+                             <th>Peligro</th>
+            <th>Riesgo</th>
                             <th>Acciones</th>
                             
 
@@ -57,6 +59,14 @@
                             {{$actividad->nombre}}
                             @endforeach
                             </td>
+
+                             <td>{{$matriz->peligro->nombre}}</td>
+          <td>@foreach($matriz->muchasriesgo as $riesgo)
+                            {{$riesgo->nombre." / "}}
+                            @endforeach
+                            </td>
+
+                            
                             <td>
                             <a href= {{ 'matriz/pdf/'.$matriz->id }}>
                             <span class="label label-success arrowed">Descargar</span>
