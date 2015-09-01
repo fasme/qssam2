@@ -71,7 +71,7 @@
                           </ul>
                         </div>
                       </div>
-{{$matriz}}
+
                       <div class="widget-body">
                         <div class="widget-main padding-6">
                           <div class="tab-content">
