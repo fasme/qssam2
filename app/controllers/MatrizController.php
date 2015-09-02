@@ -247,8 +247,8 @@ return Response::make(PDF::load($view, 'tabloid', 'landscape')->show('my_pdf'), 
       //  return PDF::load($view, 'tabloid', 'landscape')->download();
            $headers = array('Content-Type' => 'application/pdf');
 
-return $view;
-//return Response::make(PDF::load($view, 'tabloid', 'landscape')->show('my_pdf'), 200, $headers);
+//return $view;
+return Response::make(PDF::load($view, 'tabloid', 'landscape')->show('my_pdf'), 200, $headers);
 
 
     }
