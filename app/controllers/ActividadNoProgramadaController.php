@@ -7,8 +7,8 @@ class ActividadNoProgramadaController extends BaseController {
      */
     public function show()
     {
-       // $actividadnoprogramadas = ActividadNoProgramada::join("actividad_responsable_noprogramada","actividad_noprogramada.id","=","actividad_responsable_noprogramada.actividad_id")->Where("personal_admin_id","=",Auth::user()->id)->get();
-        $actividadnoprogramadas = ActividadNoProgramada::all();
+        $actividadnoprogramadas = ActividadNoProgramada::join("actividad_responsable_noprogramada","actividad_noprogramada.id","=","actividad_responsable_noprogramada.actividad_id")->Where("personal_admin_id","=",Auth::user()->id)->get();
+        //$actividadnoprogramadas = ActividadNoProgramada::all();
         // Con el método all() le estamos pidiendo al modelo de Usuario
         // que busque todos los registros contenidos en esa tabla y los devuelva en un Array
         
