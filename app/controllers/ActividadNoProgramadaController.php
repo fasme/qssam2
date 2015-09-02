@@ -7,8 +7,8 @@ class ActividadNoProgramadaController extends BaseController {
      */
     public function show()
     {
-        $actividadnoprogramadas = ActividadNoProgramada::join("actividad_responsable_noprogramada","actividad_noprogramada.id","=","actividad_responsable_noprogramada.actividad_id")->Where("personal_admin_id","=",Auth::user()->id)->get();
-        
+       // $actividadnoprogramadas = ActividadNoProgramada::join("actividad_responsable_noprogramada","actividad_noprogramada.id","=","actividad_responsable_noprogramada.actividad_id")->Where("personal_admin_id","=",Auth::user()->id)->get();
+        $actividadnoprogramadas = ActividadNoProgramada::all();
         // Con el método all() le estamos pidiendo al modelo de Usuario
         // que busque todos los registros contenidos en esa tabla y los devuelva en un Array
         
@@ -65,15 +65,16 @@ class ActividadNoProgramadaController extends BaseController {
 
             $actividadnoprogramada->muchaspersonal()->attach($datos["personal_id"][$i],array("frecuencia"=>$frecuencia, "personal_admin_id"=>Auth::user()->id, "estado"=>"Abierta","tipoactividad"=>"noprogramada"));
             
-
+/*
             $alerta = new Alertas;
             $alerta->mensaje = "ha enviado una Nueva Actividad";
             $alerta->personal_id = $datos["personal_id"][$i];  // id_de
             $alerta->personal_id_admin = Auth::user()->id;  // id_para
             $alerta->tipo = "aportal";
             $alerta->save();
+*/
 
-
+/*
 // CORREO
             Mail::send('emails.emailactividad', array('key' => 'value'), function($message) use($datos, $i)
 {             
@@ -83,7 +84,7 @@ class ActividadNoProgramadaController extends BaseController {
 });
             // FIN correo
 
-
+*/
 
            }
 
