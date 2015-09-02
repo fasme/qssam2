@@ -231,10 +231,10 @@ return Redirect::to('matriz/update/'.$id)->withInput()->withErrors($matriz->erro
         $view = View::make('matriz.pdf')->with("matrizs",$matrizs);
         //return PDF::load($view, 'tabloid', 'landscape')->show();
 
-  //      $headers = array('Content-Type' => 'application/pdf');
-return $view;
+        $headers = array('Content-Type' => 'application/pdf');
+//return $view;
         //return PDF::load($view, 'tabloid', 'landscape')->show();
-//return Response::make(PDF::load($view, 'tabloid', 'landscape')->show('my_pdf'), 200, $headers);
+return Response::make(PDF::load($view, 'tabloid', 'landscape')->show('my_pdf'), 200, $headers);
 
     }
 
