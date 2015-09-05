@@ -89,7 +89,7 @@
              <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">Cumple </label>
 
               <div class="col-md-9">
-            {{Form::select('cumple', array("si"=>"si","no"=>"no","noaplica"=>"noaplica"), $matrizley->cumple, array("class"=>"form-control"))}}
+            {{Form::select('cumple', array("si"=>"si","no"=>"no","No Aplica"=>"No Aplica"), $matrizley->cumple, array("class"=>"form-control"))}}
               </div>
             </div>
 
