@@ -35,7 +35,7 @@
                             
                             <th class="hidden-480">Proceso</th>
                             
-                            <th>Peligro</th>
+                  
                             <th>Actividad</th>
                              <th>Peligro</th>
             <th>Riesgo</th>
@@ -53,7 +53,7 @@
                           <tr id="{{$matriz->id}}">
                             
                             <td>{{$matriz->proceso}}</td>
-                            <td>{{$matriz->peligro->nombre}}</td>
+                           
                             <td>
                             @foreach($matriz->muchasactividad as $actividad)
                             {{$actividad->nombre}}
