@@ -6,7 +6,7 @@ $html .= "<table width='100%' border='1' style='font-size:15px;'>
 <tr style='background-color:#D8D8D8'><th colspan='6' height='25'>IDENTIFICACION DEL PELIGRO</th><th colspan='5'>EVALUACION DEL RIESGO</th><th colspan='12' height='25'>CONTROLES PREVENTIVOS: PRIORIZACION DEL CONTROL</th><th colspan='2'>RIESGO RESIDUAL</th></tr>
 <tr style='background-color:#F2F2F2'><th>Proceso</th><th>Actividad</th><th>Cargo</th><th>Peligro</th><th>R</th><th>Riesgo</th>
 <th>F. Sev.</th><th>F. Prob.</th><th>Res.</th><th>Clas.</th>
-<th>Previo</th><th>Factor</th><th>Eliminacion</th><th>Factor</th><th>Sustitucion</th><th>Factor</th><th>Ingenieria</th><th>Factor</th><th>Administrativo</th><th>Factor</th><th>Epp</th><th>Factor</th>
+<th>Previo</th><th>Factor</th><th>Eli.</th><th>Factor</th><th>Sust.</th><th>Factor</th><th>Ing.</th><th>Factor</th><th>Admin.</th><th>Factor</th><th>Epp</th><th>Factor</th>
 <th>Mag.</th><th>Res.</th>
 
 </tr>
