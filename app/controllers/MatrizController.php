@@ -234,7 +234,7 @@ return Redirect::to('matriz/update/'.$id)->withInput()->withErrors($matriz->erro
         $headers = array('Content-Type' => 'application/pdf');
 //return $view;
         //return PDF::load($view, 'tabloid', 'landscape')->show();
-return Response::make(PDF::load($view, 'a3', 'landscape')->show('my_pdf'), 200, $headers);
+return Response::make(PDF::load($view, 'a4', 'landscape')->show('my_pdf'), 200, $headers);
 
     }
 
