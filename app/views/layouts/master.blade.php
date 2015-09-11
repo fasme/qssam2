@@ -450,7 +450,7 @@
 							<li class="" id="matrizleyactive">
 								<a href="{{URL::to('matrizLey')}}">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Ley
+									Requisito Legal
 								</a>
 
 								<b class="arrow"></b>
