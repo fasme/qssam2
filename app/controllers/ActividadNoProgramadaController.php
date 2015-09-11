@@ -74,7 +74,7 @@ class ActividadNoProgramadaController extends BaseController {
             $alerta->save();
 */
 
-/*
+
 // CORREO
             Mail::send('emails.emailactividad', array('key' => 'value'), function($message) use($datos, $i)
 {             
@@ -84,7 +84,7 @@ class ActividadNoProgramadaController extends BaseController {
 });
             // FIN correo
 
-*/
+
 
            }
 
