@@ -275,7 +275,7 @@
 
 
 
-@if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "adminmantencion") || (Auth::user()->perfil == "adminprevencion") || (Auth::user()->perfil == "admingerente") || (Auth::user()->perfil == "liderdearea"))
+@if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "adminmantencion") || (Auth::user()->perfil == "adminprevencion") || (Auth::user()->perfil == "admingerente") || (Auth::user()->perfil == "liderdearea") || (Auth::user()->perfil == "adminbodega"))
 
 					<li class="" id="actividadactive">
 						<a href="#" class="dropdown-toggle">
@@ -306,7 +306,7 @@
 							</li>
 							@endif
 
-							@if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "adminmantencion") || (Auth::user()->perfil == "adminprevencion") || (Auth::user()->perfil == "admingerente") || (Auth::user()->perfil == "liderdearea"))
+							@if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "adminmantencion") || (Auth::user()->perfil == "adminprevencion") || (Auth::user()->perfil == "admingerente") || (Auth::user()->perfil == "liderdearea") || (Auth::user()->perfil == "adminbodega"))
 
 							<li class="" id="noprogramadaactive">
 								<a href="{{URL::to('actividadnoprogramada')}}">
@@ -329,7 +329,7 @@
 @endif
 
 
-				@if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "adminmantencion") || (Auth::user()->perfil == "adminprevencion") || (Auth::user()->perfil == "admingerente") || (Auth::user()->perfil == "liderdearea"))
+				@if((Auth::user()->perfil == "admin") || (Auth::user()->perfil == "adminmantencion") || (Auth::user()->perfil == "adminprevencion") || (Auth::user()->perfil == "admingerente") || (Auth::user()->perfil == "liderdearea") || (Auth::user()->perfil == "adminbodega"))
 
 					<li class="" id="evidenciaactive">
 						<a href="{{URL::to('evidenciaadmin')}}">
