@@ -30,7 +30,7 @@
 {{HTML::script('js/ace.min.js')}}	
 {{HTML::script('js/jquery.dataTables.min.js')}}
 {{HTML::script('js/jquery.dataTables.bootstrap.min.js')}}
-{{HTML::script('js/bootbox.min.js')}}
+
 {{HTML::script('js/chosen.jquery.min.js')}}
 {{HTML::script('js/bootstrap-wysiwyg.min.js')}}
 {{HTML::script('js/jquery.hotkeys.min.js')}}
@@ -39,7 +39,7 @@
 
 
 {{HTML::script('js/chartjs/Chart.js')}}
-
+{{HTML::script('js/bootbox.min.js')}}
 
 
 

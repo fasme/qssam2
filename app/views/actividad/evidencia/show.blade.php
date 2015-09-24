@@ -405,6 +405,7 @@ $( "#evidenciaactive" ).addClass( "active" );
 
 
 var table = $('#example').DataTable({
+  "iDisplayLength": -1,
 initComplete: function () {
             this.api().columns().every( function () {
                 var column = this;
@@ -429,35 +430,6 @@ initComplete: function () {
   );
 
 
-var oTable2 = 
-        $('#example1')
-        //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
-        .dataTable( {
-
-          initComplete: function () {
-            this.api().columns().every( function () {
-                var column = this;
-                var select = $('<select><option value=""></option></select>')
-                    .appendTo( $(column.footer()).empty() )
-                    .on( 'change', function () {
-                        var val = $.fn.dataTable.util.escapeRegex(
-                            $(this).val()
-                        );
- 
-                        column
-                            .search( val ? '^'+val+'$' : '', true, false )
-                            .draw();
-                    } );
- 
-                column.data().unique().sort().each( function ( d, j ) {
-                    select.append( '<option value="'+d+'">'+d+'</option>' )
-                } );
-            } );
-        },
-            "language": {
-                "url": "js/spanish.datatables.json"
-            }
-        });
 
 
 
