@@ -587,7 +587,9 @@ public function informepdf(){
     $view = View::make('informe.informepdf')
     ->with("data",$data);
 
-    return PDF::load($view, 'a4', 'portrait')->download();
+    $headers = array('Content-Type' => 'application/pdf');
+
+    return Response::make(PDF::load($view, 'a2', 'landscape')->show('my_pdf'), 200, $headers);
 
 }
 
