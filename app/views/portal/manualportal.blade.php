@@ -34,12 +34,14 @@
     <div class="panel-heading" role="tab" id="headingTwo">
       <h4 class="panel-title">
         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          ---
+          Administrador
         </a>
       </h4>
     </div>
     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
       <div class="panel-body">
+      <iframe width="640" height="390" src="https://youtu.be/Az37mMMGUY8" frameborder="0" allowfullscreen></iframe>
+     
       </div>
     </div>
   </div>
