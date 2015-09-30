@@ -88,7 +88,7 @@
 
 
 var table = $('#example').DataTable( {
-      
+      "iDisplayLength": -1,
        "language": {
                 "url": "datatables.spanish.json"
             }
@@ -104,8 +104,8 @@ var tableTools = new $.fn.dataTable.TableTools( table, {
                    {
                         "sExtends": "pdf",
                         "sButtonText":"Listado pdf",
-                        "sTitle": "Ley",
-                        //"sPdfMessage": "Summary Info",
+                        "sTitle": "Requisito Legal",
+                        "sPdfMessage": "Fecha de impresión: <?php echo date('d/m/Y') ?>",
                         "sFileName": "<?php print('Informe'); ?>.pdf",
                         "sPdfOrientation": "landscape",
                         "oSelectorOpts": {page: 'current'},
