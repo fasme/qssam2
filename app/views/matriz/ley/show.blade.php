@@ -88,6 +88,7 @@
 
 
 var table = $('#example').DataTable( {
+  "order": [[ 2, "desc" ]],
       "iDisplayLength": -1,
        "language": {
                 "url": "datatables.spanish.json"
