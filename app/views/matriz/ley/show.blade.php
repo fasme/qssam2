@@ -108,6 +108,7 @@ var tableTools = new $.fn.dataTable.TableTools( table, {
                         "sPdfMessage": "Fecha de impresión: <?php echo date('d/m/Y') ?>",
                         "sFileName": "<?php print('Informe'); ?>.pdf",
                         "sPdfOrientation": "landscape",
+                        "sPdfSize": "tabloid",
                         "oSelectorOpts": {page: 'current'},
                         "mColumns": [ 0, 1,2,3,4,5 ]
 
