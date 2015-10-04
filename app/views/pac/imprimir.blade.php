@@ -130,10 +130,10 @@ $arreglo = array("1"=>"Plan de accion inmediato","2"=>"Plan de accion Correctivo
 <table width='100%' class='oli'>
   @foreach($pac->muchaspersonal as $actividadpac)
  <tr>
-  <td>Personal</td><td>{{Personal::find($actividadpac->pivot->personal_id)->nombre}}</td>
-  <td>Actividad</td><td>{{$actividadpac->pivot->actividad}}</td>
- <td>Fecha</td><td> {{date_format(date_create($actividadpac->pivot->plazo), 'd/m/Y')}}</td>
- <td>Plan</td><td> {{$arreglo[$actividadpac->pivot->tipoplan]}}</td>
+  <td>{{Personal::find($actividadpac->pivot->personal_id)->nombre}}</td>
+ <td>{{$actividadpac->pivot->actividad}}</td>
+<td> {{date_format(date_create($actividadpac->pivot->plazo), 'd/m/Y')}}</td>
+<td> {{$arreglo[$actividadpac->pivot->tipoplan]}}</td>
 </tr>
   @endforeach
 </table>
