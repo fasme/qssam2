@@ -288,6 +288,7 @@ Route::get('pac/update/{id}', 'PacController@update');
 Route::post('pac/update/{id}', 'PacController@update2');
 Route::get('pac/eliminar', 'PacController@eliminar');
 Route::get('pac/mostrar', 'PacController@mostrar');
+Route::get("pac/imprimir/{id}", "PacController@imprimir");
 
 //KPI
 Route::get('kpi', array('uses' => 'KpiController@show')); 

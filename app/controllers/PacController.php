@@ -288,6 +288,26 @@ return Redirect::to('pac/update/'.$id)->withInput()->withErrors($pac->errors);
 
 
 
+    public function imprimir($id)
+    {
+            $data = Input::all();
+
+             $personals = Personal::lists("nombre","id");
+            $personal = Personal::where("id","=",Auth::user()->id)->lists("nombre","id");
+            $pac = Pac::find($id);
+    $view = View::make('pac.imprimir')
+    ->with("data",$data)->with("pac",$pac)
+        ->with("personals",$personals)
+        ->with("personal",$personal);
+
+    $headers = array('Content-Type' => 'application/pdf');
+
+    return Response::make(PDF::load($view, 'a2', 'portrait')->show('my_pdf'), 200, $headers);
+
+    }
+
+
+
  
 
 
