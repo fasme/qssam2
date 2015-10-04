@@ -1,4 +1,4 @@
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 
 
@@ -125,7 +125,7 @@ echo "<tr>
 
 
 <div style="position: absolute;top: 600px; left: 0px; background-color: #F2F2F2">
-<table width='30%' class='oli'>
+<table width='100%' class='oli'>
   @foreach($pac->muchaspersonal as $actividadpac)
  <tr>
   <td>Personal</td><td>{{$actividadpac->pivot->personal_id}}</td>
