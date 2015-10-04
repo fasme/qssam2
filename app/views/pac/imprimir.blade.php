@@ -88,7 +88,7 @@ echo "<tr>
 
 
 <div style="position: absolute;top: 100px; left: 400px; background-color: #F2F2F2">
-    <table width='30%' class='oli'>
+    <table width='100%' class='oli'>
     <tr>
       
       <td>Causa</td><td>:</td><td>{{$pac->identificacion}}</td>
@@ -124,7 +124,7 @@ echo "<tr>
 </div>
 
 
-<div style="position: absolute;top: 400px; left: 0px; background-color: #F2F2F2">
+<div style="position: absolute;top: 600px; left: 0px; background-color: #F2F2F2">
 <table width='30%' class='oli'>
   @foreach($pac->muchaspersonal as $actividadpac)
  <tr>
