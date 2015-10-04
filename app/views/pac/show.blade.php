@@ -70,6 +70,10 @@
                          <a class="red bootbox-confirm" data-id={{ $pac->id }}>
                             <i class="fa fa-trash bigger-130"></i>
                           </a>
+
+                          <a href={{"pac/imprimir/".$pac->id}}>
+                          Imprimir
+                          </a>
                       </td>
 </tr>
           @endforeach

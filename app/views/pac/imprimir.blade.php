@@ -15,21 +15,19 @@
 ?>
 
 
+<h1>Plan de Acción</h1>
+
 <div style="position: absolute;top: 100px; left:0px;">
-<?php
 
-echo "<table width='30%' class='oli'>
+<table width='30%' class='oli'>
 
 <tr>
-<td>Quien Ingresa Reporte</td><td>:</td><td>$pac->personal_id</td>
+<td>Quien Ingresa Reporte</td><td>:</td><td>{{Personal::find($pac->personal_id)->nombre}}</td>
 </tr>
 <tr>
-<td>Faena</td><td>:</td><td>$pac->faena</td>
+<td>Faena</td><td>:</td><td>{{$pac->faena}}</td>
 </tr>
 
-";
-
-?>
 </div>
 
 
@@ -124,14 +122,18 @@ echo "<tr>
 </div>
 
 
+<?php
+$arreglo = array("1"=>"Plan de accion inmediato","2"=>"Plan de accion Correctivo","3"=>"Plan de accion preventivo");
+?>
+
 <div style="position: absolute;top: 600px; left: 0px; background-color: #F2F2F2">
 <table width='100%' class='oli'>
   @foreach($pac->muchaspersonal as $actividadpac)
  <tr>
-  <td>Personal</td><td>{{$actividadpac->pivot->personal_id}}</td>
+  <td>Personal</td><td>{{Personal::find($actividadpac->pivot->personal_id)->nombre}}</td>
   <td>Actividad</td><td>{{$actividadpac->pivot->actividad}}</td>
  <td>Fecha</td><td> {{date_format(date_create($actividadpac->pivot->plazo), 'd/m/Y')}}</td>
- <td>Plan</td><td> {{$actividadpac->pivot->tipoplan}}</td>
+ <td>Plan</td><td> {{$arreglo[$actividadpac->pivot->tipoplan]}}</td>
 </tr>
   @endforeach
 </table>
